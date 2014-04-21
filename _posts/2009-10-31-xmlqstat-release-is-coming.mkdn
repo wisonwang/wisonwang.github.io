@@ -2,6 +2,7 @@
 layout: post
 title: xml-qstat release is coming
 tags: [gridengine, xmlqstat]
+published: false
 ---
 
 The long promised version 1.0 is finally on its way. In the past, the major

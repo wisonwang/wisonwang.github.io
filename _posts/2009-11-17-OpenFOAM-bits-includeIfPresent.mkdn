@@ -2,6 +2,7 @@
 layout: post
 title: "OpenFOAM bits: the #includeIfPresent dictionary directive"
 tags: [OpenFOAM]
+published: false
 ---
 
 As mentioned in the ReleaseNotes-1.6,

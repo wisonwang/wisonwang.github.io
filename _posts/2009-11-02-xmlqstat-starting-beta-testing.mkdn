@@ -2,6 +2,7 @@
 layout: post
 title: Starting beta testing of HTTPi-xmlqstat
 tags: [gridengine, xmlqstat]
+published: false
 ---
 
 As announced on the [mailing

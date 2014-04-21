@@ -2,6 +2,7 @@
 layout: post
 title: Getting more out of system/controlDict
 tags: [OpenFOAM]
+published: false
 ---
 
 With OpenFOAM-1.6, the `functions` entry in *system/controlDict* changed
