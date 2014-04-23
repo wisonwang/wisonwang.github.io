@@ -2,7 +2,6 @@
 layout: post
 title: Updated flex-grid - Release 2009-10-12
 tags: [gridengine, flexlm]
-published: false
 ---
 
 A new version of my FlexLM / GridEngine integration has been released. The

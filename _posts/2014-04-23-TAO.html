@@ -1,0 +1,96 @@
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">ACE TAO学习日志</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">下载页面</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p><a href="http://download.dre.vanderbilt.edu/">http://download.dre.vanderbilt.edu/</a>
+<a href="http://download.dre.vanderbilt.edu/previous_versions/ACE+TAO+CIAO-6.2.5.tar.bz2">http://download.dre.vanderbilt.edu/previous_versions/ACE+TAO+CIAO-6.2.5.tar.bz2</a>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">安装</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1">ACE&amp;gperf</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+<ol>
+<li>安装 GNU make 3.79.1 or greater
+</li>
+<li>添加ACE<sub>ROOT环境变量，值为解压后的ACE代码路径，如：</sub>
+</li>
+</ol>
+
+<p>ACE<sub>ROOT</sub>=/home/cs/faculty/schmidt/ACE<sub>wrappers</sub>; export ACE<sub>ROOT</sub>
+</p><ol>
+<li>添加配置文件$ACE<sub>ROOT</sub>/ace/config.h，插入如下内容：
+</li>
+</ol>
+
+<ol>
+<li>添加配置文件 $ACE<sub>ROOT</sub>/include/makeinclude/platform<sub>macros</sub>.GNU, 添加如下内容：
+</li>
+</ol>
+
+<p>include $(ACE<sub>ROOT</sub>)/include/makeinclude/platform<sub>linux</sub>.GNU
+  :: 如果你需要安装ACE 到指定目录中，可以上面的文件中加上：INSTALL<sub>PREFIX</sub> = /usr/local(目标路径)
+</p><ol>
+<li>开始编译ACE，生成ACE到ACE<sub>ROOT文件夹下的bin，lib</sub>,share,include 等目录中
+</li>
+<li>在platform<sub>macros</sub>.GNU文件中配置了INSTALL<sub>PREFIX，则可以使用make</sub> install 命令将ACE 安装到指定目录
+</li>
+</ol>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2">安装TAO</h4>
+<div class="outline-text-4" id="text-1-2-2">
+
+<ol>
+<li>set TAO<sub>ROOT</sub>=$ACE<sub>ROOT</sub>/TAO
+</li>
+<li>执行 make 在 $TAO<sub>ROOT</sub> 目录
+</li>
+</ol>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3">MPC</h4>
+<div class="outline-text-4" id="text-1-2-3">
+
+<p>ACE 的编译方法有makefile和vc方式，这些都是MPC配置生成，如下是该项目的说明。
+<a href="https://www.ociweb.com/products/mpc">https://www.ociweb.com/products/mpc</a>
+<a href="http://downloads.ociweb.com/MPC/docs/html/MakeProjectCreator.html">http://downloads.ociweb.com/MPC/docs/html/MakeProjectCreator.html</a>
+<a href="http://aleung.github.io/blog/2005/02/24/Use-MPC-to-generate-makefile-for-you/">http://aleung.github.io/blog/2005/02/24/Use-MPC-to-generate-makefile-for-you/</a>
+</p>
+
+
+</div>
+</div>
+</div>
+</div>
