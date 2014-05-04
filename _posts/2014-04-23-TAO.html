@@ -18,7 +18,7 @@ tags: [ace, c++, network, patterns]
 <div class="outline-text-3" id="text-1-1">
 
 <p><a href="http://download.dre.vanderbilt.edu/">http://download.dre.vanderbilt.edu/</a>
-<a href="http://download.dre.vanderbilt.edu/previous_versions/ACE+TAO+CIAO-6.2.5.tar.bz2">http://download.dre.vanderbilt.edu/previous_versions/ACE+TAO+CIAO-6.2.5.tar.bz2</a>
+<a href="http://download.dre.vanderbilt.edu/previous_versions/ACE+TAO+CIAO-6.2.5.tar.bz2">http://download.dre.vanderbilt.edu/previous\_versions/ACE+TAO+CIAO-6.2.5.tar.bz2</a>
 </p>
 </div>
 
@@ -39,27 +39,27 @@ tags: [ace, c++, network, patterns]
 <ol>
 <li>安装 GNU make 3.79.1 or greater
 </li>
-<li>添加ACE<sub>ROOT环境变量，值为解压后的ACE代码路径，如：</sub>
+<li>添加ACE_ROOT环境变量，值为解压后的ACE代码路径，如：
 </li>
 </ol>
 
-<p>ACE<sub>ROOT</sub>=/home/cs/faculty/schmidt/ACE<sub>wrappers</sub>; export ACE<sub>ROOT</sub>
+<p>ACE_ROOT=/home/cs/faculty/schmidt/ACE_wrappers; export ACE_ROOT
 </p><ol>
-<li>添加配置文件$ACE<sub>ROOT</sub>/ace/config.h，插入如下内容：
+<li>添加配置文件$ACE_ROOT/ace/config.h，插入如下内容：
 </li>
 </ol>
 
 <ol>
-<li>添加配置文件 $ACE<sub>ROOT</sub>/include/makeinclude/platform<sub>macros</sub>.GNU, 添加如下内容：
+<li>添加配置文件 $ACE_ROOT/include/makeinclude/platform_macros.GNU, 添加如下内容：
 </li>
 </ol>
 
-<p>include $(ACE<sub>ROOT</sub>)/include/makeinclude/platform<sub>linux</sub>.GNU
-  :: 如果你需要安装ACE 到指定目录中，可以上面的文件中加上：INSTALL<sub>PREFIX</sub> = /usr/local(目标路径)
+<p>include $(ACE_ROOT)/include/makeinclude/platform_linux.GNU
+  :: 如果你需要安装ACE 到指定目录中，可以上面的文件中加上：INSTALL_PREFIX = /usr/local(目标路径)
 </p><ol>
-<li>开始编译ACE，生成ACE到ACE<sub>ROOT文件夹下的bin，lib</sub>,share,include 等目录中
+<li>开始编译ACE，生成ACE到ACE_ROOT文件夹下的bin，lib,share,include 等目录中
 </li>
-<li>在platform<sub>macros</sub>.GNU文件中配置了INSTALL<sub>PREFIX，则可以使用make</sub> install 命令将ACE 安装到指定目录
+<li>在platform_macros.GNU文件中配置了INSTALL_PREFIX，则可以使用make install 命令将ACE 安装到指定目录
 </li>
 </ol>
 
@@ -74,9 +74,9 @@ tags: [ace, c++, network, patterns]
 <div class="outline-text-4" id="text-1-2-2">
 
 <ol>
-<li>set TAO<sub>ROOT</sub>=$ACE<sub>ROOT</sub>/TAO
+<li>set TAO_ROOT=$ACE_ROOT/TAO
 </li>
-<li>执行 make 在 $TAO<sub>ROOT</sub> 目录
+<li>执行 make 在 $TAO_ROOT 目录
 </li>
 </ol>
 
