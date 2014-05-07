@@ -1,0 +1,236 @@
+---
+layout: default
+title: github blog.
+excerpt: github blog.
+categories: [git, github, blog]
+tags: [git, github, blog]
+---
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">github 个人博客</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+  学习网站 <a href="http://www.worldhello.net/gotgithub/index.html">http://www.worldhello.net/gotgithub/index.html</a>  
+  我到github主页：<a href="http://wisonwang.github.io/">http://wisonwang.github.io/</a>
+  google git 使用方法介绍：<a href="http://dev.chromium.org/developers/how-tos/get-the-code">http://dev.chromium.org/developers/how-tos/get-the-code</a>
+</p>
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">git 使用说明</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p><a href="https://help.github.com/articles/set-up-git">https://help.github.com/articles/set-up-git</a>
+</p></div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">Jekyll 主页</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>   <a href="http://jekyllrb.com/docs/github-pages/">http://jekyllrb.com/docs/github-pages/</a>
+   主页<a href="http://jekyllrb.com/">http://jekyllrb.com/</a>
+   <a href="http://orgmode.org/worg/org-tutorials/org-jekyll.html">http://orgmode.org/worg/org-tutorials/org-jekyll.html</a>
+</p>
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1">基本使用样例</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3">ruby</h3>
+<div class="outline-text-3" id="text-1-3">
+
+
+</div>
+
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1">RVM</h4>
+<div class="outline-text-4" id="text-1-3-1">
+
+<p><a href="https://rvm.io/">https://rvm.io/</a>
+</p></div>
+
+</div>
+
+<div id="outline-container-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2">ruby install</h4>
+<div class="outline-text-4" id="text-1-3-2">
+
+<p>下载ruby2.0：<a href="http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p353.tar.gz">http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p353.tar.gz</a>
+你可以在上面得到源代码，进行编译，自本文截止的最新版本为1.8.5(stable)，下载地址为:<a href="ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.8.5.tar.gz">ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.8.5.tar.gz</a> 
+</p>
+<p>
+这里推荐大家使用源码安装，因为这样可以得到最新的版本。 
+安装ruby： 
+$ ./configure 
+$ make 
+$ make install (run as root) 
+</p>
+<p>
+记得ruby就不应该忘记gem，下载地址：<a href="http://rubyforge.org/frs/download.php/11289/rubygems-0.9.0.tgz这个时候的最新版本是：0.9.0">http://rubyforge.org/frs/download.php/11289/rubygems-0.9.0.tgz这个时候的最新版本是：0.9.0</a> 
+gem安装很方便，gem是基于ruby-zlib的，所以先安装ruby-zlib(<a href="http://raa.ruby-lang.org/project/ruby-zlib">http://raa.ruby-lang.org/project/ruby-zlib</a>)，这一步不一定是必须的，这和发行版本有一定的关系 
+$ make install (run as root) 
+</p>
+<p>
+这样安装gem就没有问题了，安装如下，进入gem的目录： 
+$sudo ruby setup.rb 
+就可以进行安装，加入想要知道更多的信息，请参考：<a href="http://docs.rubygems.org/read/chapter/3">http://docs.rubygems.org/read/chapter/3</a> 
+</p>
+<p>
+这样我们就大致完成了ruby的安装，有了ruby，自然要用rails（也许是比较偏激的看法）： 
+$gem install rails 
+</p>
+<p>
+一直谈到的是web，其实出了web之外ruby也可以做desktop，并且以及有人这么做了，fxri就是最好的例子,还有一些项目，比如ruby- gnome2等，在windows我们可以感觉到fxri有多慢，linux情况会有所改变，然而，ruby毕竟是解释型，桌面领域还有待发展。 
+</p>
+<p>
+个人认为ruby在桌面的开发模式可以是：开发前端。使用更高效的语言开发基于CLI的实用程序，由于基于CLI的实用程序抛开了GUI的困扰，使得质量和性能都会有一定的提高，然后用ruby写GUI界面作为此程序的前端。
+</p></div>
+
+</div>
+
+<div id="outline-container-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3">Jekyll安装和生成站点文件</h4>
+<div class="outline-text-4" id="text-1-3-3">
+
+<p><a href="http://www.cnblogs.com/wuya16/p/3416283.html">http://www.cnblogs.com/wuya16/p/3416283.html</a>
+~ $ gem install jekyll
+~ $ jekyll new myblog
+~ $ cd myblog
+~/myblog $ jekyll serve
+</p></div>
+
+</div>
+
+<div id="outline-container-1-3-4" class="outline-4">
+<h4 id="sec-1-3-4">生成站点结构</h4>
+<div class="outline-text-4" id="text-1-3-4">
+
+<p>├── _config.yml
+├── _drafts
+</p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption></caption>
+<colgroup><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">├── begin-with-the-crazy-ideas.textile</td></tr>
+<tr><td class="left">└── on-simplicity-in-technology.markdown</td></tr>
+</tbody>
+</table>
+
+├── _includes
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption></caption>
+<colgroup><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">├── footer.html</td></tr>
+<tr><td class="left">└── header.html</td></tr>
+</tbody>
+</table>
+
+├── _layouts
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption></caption>
+<colgroup><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">├── default.html</td></tr>
+<tr><td class="left">└── post.html</td></tr>
+</tbody>
+</table>
+
+├── _posts
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption></caption>
+<colgroup><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">├── 2007-10-29-why-every-programmer-should-play-nethack.textile</td></tr>
+<tr><td class="left">└── 2009-04-26-barcamp-boston-4-roundup.textile</td></tr>
+</tbody>
+</table>
+
+├── _data
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption></caption>
+<colgroup><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">└── members.yml</td></tr>
+</tbody>
+</table>
+
+├── _site
+└── index.html
+</div>
+
+</div>
+
+<div id="outline-container-1-3-5" class="outline-4">
+<h4 id="sec-1-3-5">YAML</h4>
+<div class="outline-text-4" id="text-1-3-5">
+
+<p><a href="http://yaml.org/">http://yaml.org/</a>
+</p>
+</div>
+
+<div id="outline-container-1-3-5-1" class="outline-5">
+<h5 id="sec-1-3-5-1">样本</h5>
+<div class="outline-text-5" id="text-1-3-5-1">
+
+<p>---
+layout: post
+title: Blogging Like a Hacker
+---
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3-5-2" class="outline-5">
+<h5 id="sec-1-3-5-2">YAML 前置脚本</h5>
+<div class="outline-text-5" id="text-1-3-5-2">
+
+<p>layout：
+If set, this specifies the layout file to use. Use the layout file name without the file extension. Layout files must be placed in the  _layouts directory.
+permalink：
+If you need your processed blog post URLs to be something other than the default /year/month/day/title.html then you can set this variable and it will be used as the final URL.
+published：
+Set to false if you don’t want a specific post to show up when the site is generated.
+category, categories：
+Instead of placing posts inside of folders, you can specify one or more categories that the post belongs to. When the site is generated the post will act as though it had been set with these categories normally. Categories (plural key) can be specified as a YAML list or a space-separated string.
+tags：
+Similar to categories, one or multiple tags can be added to a post. Also like categories, tags can be specified as a YAML list or a space- separated string.
+</p></div>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4">disqus 评论功能</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<p><a href="http://pizn.github.io/2011/11/15/use-disqus-for-your-post.html">http://pizn.github.io/2011/11/15/use-disqus-for-your-post.html</a>
+</p>
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
