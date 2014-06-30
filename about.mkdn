@@ -5,27 +5,11 @@ title:  About
 
 ### This site ###{: class="vlist"}
 
-Born out of necessity (to get github project pages working), I figured
-blogging may even prove a useful means of noting things that would otherwise
-get buried in mailing lists.
+github项目托管功能十分的强大，同时每个项目主页功能，也十分适合作为个人的blog系统，所以我使用jeklly和disqus生成blog个人博客，同时也方便版本控制和更新。
 
 ### About me ###{: class="vlist"}
 
-My background is in [Computational Fluid
-Dynamics](http://en.wikipedia.org/wiki/Computational_fluid_dynamics).
-
-I am well-versed in Perl, which I consider an excellent tool for data
-munging and for a variety of other tasks. Since starting to use OpenFOAM for
-CFD calculations a few years ago, I have also upgraded my C++ skills to
-match. As a further outcome of practicing CFD, which generally requires
-parallel processing to achieve acceptable run-times, I continue to
-reconfigure and maintain a Linux cluster using GridEngine as the resource
-management (queuing) system.
-
-As a side-note, I maintained and enhanced an orphaned
-[rxvt](http://en.wikipedia.org/wiki/Rxvt) many years ago when my
-underpowered workstation found XTerm to be a memory hog.
-
+3年码龄，纯种吊丝，擅长C++&Python，了解一些java web和数据库技术，主要专注基于C/C++的分布式应用程序开发工作。
 
 ### Disclaimers ###{: class="vlist"}
 
