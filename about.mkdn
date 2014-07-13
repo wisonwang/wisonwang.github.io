@@ -9,9 +9,11 @@ github项目托管功能十分的强大，同时每个项目主页功能，也�
 
 ### About me ###{: class="vlist"}
 
-3年码龄，纯种吊丝，擅长C++&Python，了解一些java web和数据库技术，主要专注基于C/C++的分布式应用程序开发工作。
+3年码龄，学校毕业后，各种折腾，擅长C++&Python，目前主要专注基于C/C++的分布式应用程序开发技术的学习研究。
 
 ### Disclaimers ###{: class="vlist"}
+
+博客的内容只代表我个人的观点意见，不授权任何公司或提及的机构，也不是任何所属暗示。对被外部引用的内容不承担责任。
 
 The contents of the blog represent my *personal* opinion and are not
 authorized by any of the companies or institutions mentioned, nor is any
