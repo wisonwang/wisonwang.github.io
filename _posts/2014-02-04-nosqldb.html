@@ -1,0 +1,298 @@
+---
+layout: post
+title: NoSql 数据库.
+excerpt: NoSQL选择合适的数据库。
+tags: [ dailyMgr ]
+published: true
+---
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 NoSql 数据库（转载）</a></li>
+<li><a href="#sec-2">2 NoSQL系列：选择合适的数据库</a></li>
+<li><a href="#sec-3">3 为什么使用NoSQL数据库？</a></li>
+<li><a href="#sec-4">4 NoSQL数据库的分类</a>
+<ul>
+<li><a href="#sec-4-1">4.1 键值数据库</a>
+<ul>
+<li><a href="#sec-4-1-1">4.1.1 产品</a></li>
+<li><a href="#sec-4-1-2">4.1.2 适用场景</a></li>
+<li><a href="#sec-4-1-3">4.1.3 不适合的场景</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-2">4.2 文档数据库</a>
+<ul>
+<li><a href="#sec-4-2-1">4.2.1 产品</a></li>
+<li><a href="#sec-4-2-2">4.2.2 适用场景</a></li>
+<li><a href="#sec-4-2-3">4.2.3 不适合场景</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-3">4.3 列族数据库</a>
+<ul>
+<li><a href="#sec-4-3-1">4.3.1 产品</a></li>
+<li><a href="#sec-4-3-2">4.3.2 适用场景</a></li>
+<li><a href="#sec-4-3-3">4.3.3 不适用场景</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-4">4.4 图数据库</a>
+<ul>
+<li><a href="#sec-4-4-1">4.4.1 产品</a></li>
+<li><a href="#sec-4-4-2">4.4.2 适用场景</a></li>
+<li><a href="#sec-4-4-3">4.4.3 不适用场景</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">NoSql 数据库（转载）</h2>
+<div class="outline-text-2" id="text-1">
+
+<p><a href="http://www.cnblogs.com/me115/p/3829115.html#h21">nosql数据库</a>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">NoSQL系列：选择合适的数据库</h2>
+<div class="outline-text-2" id="text-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">为什么使用NoSQL数据库？</h2>
+<div class="outline-text-2" id="text-3">
+
+<ul>
+<li>阻抗失衡 
+</li>
+<li>关系模型和内存中的数据结构不匹配 
+</li>
+<li>采用更为方便的数据交互方式提升开发效率
+
+</li>
+<li>待处理的数据量很大 
+</li>
+<li>数据量超过关系型数据库的承载能力 
+</li>
+<li>大集群的出现 
+</li>
+<li>在成本方面，集群中应用关系数据库，许可费用是一笔很大的支出； 
+</li>
+<li>横向扩展和纵向扩展：关系数据库一般只能是纵向扩展，通过对单机服务器的性能换代增强而实现；而对于扩展到多个服务器， 
+</li>
+<li>DBMS先天不足；（DBMS不是设计给集群使用的）
+
+</li>
+<li>对数据的访问效率要求高
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">NoSQL数据库的分类</h2>
+<div class="outline-text-2" id="text-4">
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1">键值数据库</h3>
+<div class="outline-text-3" id="text-4-1">
+
+
+
+</div>
+
+<div id="outline-container-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1">产品</h4>
+<div class="outline-text-4" id="text-4-1-1">
+
+<p>Redis 
+BerkerleyDB 
+Memcached 
+Project Voldemort 
+Riak 
+LevelDB
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4-1-2" class="outline-4">
+<h4 id="sec-4-1-2">适用场景</h4>
+<div class="outline-text-4" id="text-4-1-2">
+
+<p>存放会话信息 
+用户配置信息 
+购物车数据
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4-1-3" class="outline-4">
+<h4 id="sec-4-1-3">不适合的场景</h4>
+<div class="outline-text-4" id="text-4-1-3">
+
+<p>数据间有大量关系 
+含有多项操作的事务 
+根据键值的部分来查询数据 
+操作关键字集合
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2">文档数据库</h3>
+<div class="outline-text-3" id="text-4-2">
+
+
+
+</div>
+
+<div id="outline-container-4-2-1" class="outline-4">
+<h4 id="sec-4-2-1">产品</h4>
+<div class="outline-text-4" id="text-4-2-1">
+
+<p>MongoDB 
+CouchDB 
+RavenDB 
+Terrastore 
+OrientDB
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4-2-2" class="outline-4">
+<h4 id="sec-4-2-2">适用场景</h4>
+<div class="outline-text-4" id="text-4-2-2">
+
+<p>事件记录 
+内容管理系统及博客平台 
+网站分析及实时分析 
+电子商务应用程序 
+（需要较灵活的模式，低成本建立数据模型）
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4-2-3" class="outline-4">
+<h4 id="sec-4-2-3">不适合场景</h4>
+<div class="outline-text-4" id="text-4-2-3">
+
+<p>包含多项操作的复杂查询 
+查询持续变化的聚合结构
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4-3" class="outline-3">
+<h3 id="sec-4-3">列族数据库</h3>
+<div class="outline-text-3" id="text-4-3">
+
+
+
+</div>
+
+<div id="outline-container-4-3-1" class="outline-4">
+<h4 id="sec-4-3-1">产品</h4>
+<div class="outline-text-4" id="text-4-3-1">
+
+<p>HBase 
+Amazon SimpleDB 
+Cassdndra 
+Hypertable 
+BigTable（google）
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4-3-2" class="outline-4">
+<h4 id="sec-4-3-2">适用场景</h4>
+<div class="outline-text-4" id="text-4-3-2">
+
+<p>事件记录 
+（保存应用程序状态，运行中遇到的错误） 
+CMS及博客平台 
+计数器
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4-3-3" class="outline-4">
+<h4 id="sec-4-3-3">不适用场景</h4>
+<div class="outline-text-4" id="text-4-3-3">
+
+<p>需要ACID事务 
+查询模式变化频繁的场合
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4-4" class="outline-3">
+<h3 id="sec-4-4">图数据库</h3>
+<div class="outline-text-3" id="text-4-4">
+
+
+
+</div>
+
+<div id="outline-container-4-4-1" class="outline-4">
+<h4 id="sec-4-4-1">产品</h4>
+<div class="outline-text-4" id="text-4-4-1">
+
+<p>FlockDB 
+HyperGraphDB 
+Infinite Graph 
+Neo4J 
+OrientDB
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4-4-2" class="outline-4">
+<h4 id="sec-4-4-2">适用场景</h4>
+<div class="outline-text-4" id="text-4-4-2">
+
+<p>互联数据 
+推荐引擎 
+基于位置的服务
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4-4-3" class="outline-4">
+<h4 id="sec-4-4-3">不适用场景</h4>
+<div class="outline-text-4" id="text-4-4-3">
+
+<p>更新全部或某个子集的实体
+</p></div>
+</div>
+</div>
+</div>
