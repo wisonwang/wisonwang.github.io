@@ -1,0 +1,433 @@
+---
+layout: post
+title: 推荐系统.
+excerpt: Recommender system introduction.
+tags: [ web, Recommender Sys, big data, AI]
+---
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 推荐系统发展过程</a>
+<ul>
+<li><a href="#sec-1-1">1.1 面向系统的搜索</a></li>
+<li><a href="#sec-1-2">1.2 快速商业化-规模和价值的挑战</a></li>
+<li><a href="#sec-1-3">1.3 研究大爆炸-推荐成为主流</a></li>
+<li><a href="#sec-1-4">1.4 前进-基于上下文的推荐</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2 协同过滤推荐</a>
+<ul>
+<li><a href="#sec-2-1">2.1 基于用户的最近邻推荐</a></li>
+<li><a href="#sec-2-2">2.2 基于物品的最近邻推荐</a></li>
+<li><a href="#sec-2-3">2.3 关于评分</a></li>
+<li><a href="#sec-2-4">2.4 更多基于模型和预处理的方法</a></li>
+<li><a href="#sec-2-5">2.5 近来实际的方法和系统</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 基于内容推荐</a>
+<ul>
+<li><a href="#sec-3-1">3.1 内容表示和相似度</a></li>
+<li><a href="#sec-3-2">3.2 基于内容的相似度检索</a></li>
+<li><a href="#sec-3-3">3.3 其他文本分类方法</a></li>
+<li><a href="#sec-3-4">3.4 讨论</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4 基于知识推荐</a>
+<ul>
+<li><a href="#sec-4-1">4.1 知识表示法和推理</a></li>
+<li><a href="#sec-4-2">4.2 与基于约束推荐系统交互</a></li>
+<li><a href="#sec-4-3">4.3 与基于实例的推荐系统交互</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5 混合推荐方法</a>
+<ul>
+<li><a href="#sec-5-1">5.1 混合推荐的时机</a></li>
+<li><a href="#sec-5-2">5.2 整体混合模式设计</a></li>
+<li><a href="#sec-5-3">5.3 并行式混合模式设计</a></li>
+<li><a href="#sec-5-4">5.4 流水线混合设计</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6 推荐系统的解释</a>
+<ul>
+<li><a href="#sec-6-1">6.1 基于约束的推荐系统中的解释</a></li>
+<li><a href="#sec-6-2">6.2 基于实例推荐系统的解释</a></li>
+<li><a href="#sec-6-3">6.3 协同过滤推荐系统的解释</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7 评估推荐系统</a>
+<ul>
+<li><a href="#sec-7-1">7.1 评估研究的一般特性</a></li>
+<li><a href="#sec-7-2">7.2 主流推荐方案</a></li>
+<li><a href="#sec-7-3">7.3 历史数据集评估</a></li>
+<li><a href="#sec-7-4">7.4 其他评估方案</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8 案例研究</a>
+<ul>
+<li><a href="#sec-8-1">8.1 移动互联网个性化游戏推荐</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">9 新进展</a>
+<ul>
+<li><a href="#sec-9-1">9.1 针对协同推荐系统的攻击</a></li>
+<li><a href="#sec-9-2">9.2 在线消费决策</a></li>
+<li><a href="#sec-9-3">9.3 推荐系统和下一代互联网</a></li>
+<li><a href="#sec-9-4">9.4 普适环境中的推荐</a></li>
+</ul>
+</li>
+<li><a href="#sec-10">10 参考文档</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">推荐系统发展过程</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">面向系统的搜索</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>第一阶段的重要实例协同过滤系统，比如FindMe系统。
+</p></div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">快速商业化-规模和价值的挑战</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>这一时期主要工作目标是解决实现推荐系统的技术挑战，如计算性能，评分方式，可信度，可解释性，等用户体验相关的问题。
+</p></div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3">研究大爆炸-推荐成为主流</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<p>2000-2005年，人工智能，信息检索，数据挖掘，安全与隐私以及商业营销等各个领域的研究为推荐系统提供了新的分析和方法。关键事件：Netflix 大奖。
+</p></div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4">前进-基于上下文的推荐</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<p>部分研究回归到探索和价值上。关键事件：2006 年MyStands组织Recommenders06,第一届ACM推荐系统大会。
+</p>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">协同过滤推荐</h2>
+<div class="outline-text-2" id="text-2">
+
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1">基于用户的最近邻推荐</h3>
+<div class="outline-text-3" id="text-2-1">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2">基于物品的最近邻推荐</h3>
+<div class="outline-text-3" id="text-2-2">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3">关于评分</h3>
+<div class="outline-text-3" id="text-2-3">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-4" class="outline-3">
+<h3 id="sec-2-4">更多基于模型和预处理的方法</h3>
+<div class="outline-text-3" id="text-2-4">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5" class="outline-3">
+<h3 id="sec-2-5">近来实际的方法和系统</h3>
+<div class="outline-text-3" id="text-2-5">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">基于内容推荐</h2>
+<div class="outline-text-2" id="text-3">
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1">内容表示和相似度</h3>
+<div class="outline-text-3" id="text-3-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2">基于内容的相似度检索</h3>
+<div class="outline-text-3" id="text-3-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-3-3" class="outline-3">
+<h3 id="sec-3-3">其他文本分类方法</h3>
+<div class="outline-text-3" id="text-3-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-3-4" class="outline-3">
+<h3 id="sec-3-4">讨论</h3>
+<div class="outline-text-3" id="text-3-4">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">基于知识推荐</h2>
+<div class="outline-text-2" id="text-4">
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1">知识表示法和推理</h3>
+<div class="outline-text-3" id="text-4-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2">与基于约束推荐系统交互</h3>
+<div class="outline-text-3" id="text-4-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-4-3" class="outline-3">
+<h3 id="sec-4-3">与基于实例的推荐系统交互</h3>
+<div class="outline-text-3" id="text-4-3">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">混合推荐方法</h2>
+<div class="outline-text-2" id="text-5">
+
+
+</div>
+
+<div id="outline-container-5-1" class="outline-3">
+<h3 id="sec-5-1">混合推荐的时机</h3>
+<div class="outline-text-3" id="text-5-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-5-2" class="outline-3">
+<h3 id="sec-5-2">整体混合模式设计</h3>
+<div class="outline-text-3" id="text-5-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-5-3" class="outline-3">
+<h3 id="sec-5-3">并行式混合模式设计</h3>
+<div class="outline-text-3" id="text-5-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-5-4" class="outline-3">
+<h3 id="sec-5-4">流水线混合设计</h3>
+<div class="outline-text-3" id="text-5-4">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6">推荐系统的解释</h2>
+<div class="outline-text-2" id="text-6">
+
+
+</div>
+
+<div id="outline-container-6-1" class="outline-3">
+<h3 id="sec-6-1">基于约束的推荐系统中的解释</h3>
+<div class="outline-text-3" id="text-6-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-2" class="outline-3">
+<h3 id="sec-6-2">基于实例推荐系统的解释</h3>
+<div class="outline-text-3" id="text-6-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-3" class="outline-3">
+<h3 id="sec-6-3">协同过滤推荐系统的解释</h3>
+<div class="outline-text-3" id="text-6-3">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7">评估推荐系统</h2>
+<div class="outline-text-2" id="text-7">
+
+
+</div>
+
+<div id="outline-container-7-1" class="outline-3">
+<h3 id="sec-7-1">评估研究的一般特性</h3>
+<div class="outline-text-3" id="text-7-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-7-2" class="outline-3">
+<h3 id="sec-7-2">主流推荐方案</h3>
+<div class="outline-text-3" id="text-7-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-7-3" class="outline-3">
+<h3 id="sec-7-3">历史数据集评估</h3>
+<div class="outline-text-3" id="text-7-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-7-4" class="outline-3">
+<h3 id="sec-7-4">其他评估方案</h3>
+<div class="outline-text-3" id="text-7-4">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8">案例研究</h2>
+<div class="outline-text-2" id="text-8">
+
+
+</div>
+
+<div id="outline-container-8-1" class="outline-3">
+<h3 id="sec-8-1">移动互联网个性化游戏推荐</h3>
+<div class="outline-text-3" id="text-8-1">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-9" class="outline-2">
+<h2 id="sec-9">新进展</h2>
+<div class="outline-text-2" id="text-9">
+
+
+</div>
+
+<div id="outline-container-9-1" class="outline-3">
+<h3 id="sec-9-1">针对协同推荐系统的攻击</h3>
+<div class="outline-text-3" id="text-9-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-9-2" class="outline-3">
+<h3 id="sec-9-2">在线消费决策</h3>
+<div class="outline-text-3" id="text-9-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-9-3" class="outline-3">
+<h3 id="sec-9-3">推荐系统和下一代互联网</h3>
+<div class="outline-text-3" id="text-9-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-9-4" class="outline-3">
+<h3 id="sec-9-4">普适环境中的推荐</h3>
+<div class="outline-text-3" id="text-9-4">
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-10" class="outline-2">
+<h2 id="sec-10">参考文档</h2>
+<div class="outline-text-2" id="text-10">
+
+<p>&lt;Recommender Systems - An Introduction&gt; by Dietmar Jannach  Markus Zanker  Alexander Felfernig  Gerhard Friedrich  蒋凡 译 
+</p></div>
+</div>

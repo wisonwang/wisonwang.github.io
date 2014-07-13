@@ -5,8 +5,82 @@ excerpt: ace learning.
 tags: [ace, c++, network, patterns]
 ---
 
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 高级ACE指南</a>
+<ul>
+<li><a href="#sec-1-1">1.1 目录</a></li>
+<li><a href="#sec-1-2">1.2 软件开发环境</a></li>
+<li><a href="#sec-1-3">1.3 复杂性由来</a>
+<ul>
+<li><a href="#sec-1-3-1">1.3.1 固有复杂性</a></li>
+<li><a href="#sec-1-3-2">1.3.2 偶发复杂性</a></li>
+<li><a href="#sec-1-3-3">1.3.3 固有复杂性源头</a>
+<ul>
+<li><a href="#sec-1-3-3-1">1.3.3.1 并发编程</a></li>
+<li><a href="#sec-1-3-3-2">1.3.3.2 分布式编程</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3-4">1.3.4 偶发复杂性的来源</a></li>
+<li><a href="#sec-1-3-5">1.3.5 OO 方法对并发和分布式应用的贡献</a>
+<ul>
+<li><a href="#sec-1-3-5-1">1.3.5.1 网络并发编程传统方法为使用OS 底层的机制，如：</a></li>
+<li><a href="#sec-1-3-5-2">1.3.5.2 模式和框架提升程序开发层次集中到和应用相关的内容上，如：</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3-6">1.3.6 模式总览</a>
+<ul>
+<li><a href="#sec-1-3-6-1">1.3.6.1 模式指的是用于一个特定的条件或上下文环境下开发软件所使用的解决问题的方按。</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3-7">1.3.7 框架及组件</a></li>
+<li><a href="#sec-1-3-8">1.3.8 框架与类库</a></li>
+<li><a href="#sec-1-3-9">1.3.9 ace 组成</a>
+<ul>
+<li><a href="#sec-1-3-9-1">1.3.9.1 总览</a></li>
+<li><a href="#sec-1-3-9-2">1.3.9.2 C++ WRAPPER FACADE LAYER</a></li>
+<li><a href="#sec-1-3-9-3">1.3.9.3 FRAMEWORK LAYER</a></li>
+<li><a href="#sec-1-3-9-4">1.3.9.4 NETWORKED SERVICE COMPONENTS LAYER</a></li>
+<li><a href="#sec-1-3-9-5">1.3.9.5 关键组件和模式</a></li>
+<li><a href="#sec-1-3-9-6">1.3.9.6 TAO</a></li>
+<li><a href="#sec-1-3-9-7">1.3.9.7 JAWS</a></li>
+<li><a href="#sec-1-3-9-8">1.3.9.8 java ACE</a></li>
+</ul></li>
+</ul>
+</li>
+<li><a href="#sec-1-4">1.4 面向模式的软件架构（POSA2）</a>
+<ul>
+<li><a href="#sec-1-4-1">1.4.1 Service Access &amp; Configuration Patterns</a></li>
+<li><a href="#sec-1-4-2">1.4.2 Event Handling Patterns</a></li>
+<li><a href="#sec-1-4-3">1.4.3 Synchronization Patterns</a></li>
+<li><a href="#sec-1-4-4">1.4.4 Concurrency Patterns</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-5">1.5 实例讲解 Networked Logging Service</a>
+<ul>
+<li><a href="#sec-1-5-1">1.5.1 api</a></li>
+<li><a href="#sec-1-5-2">1.5.2 Limitations with Algorithmic Decomposition</a></li>
+<li><a href="#sec-1-5-3">1.5.3 Overcoming Limitations via OO</a></li>
+<li><a href="#sec-1-5-4">1.5.4 OO Contributions to Software</a></li>
+<li><a href="#sec-1-5-5">1.5.5 Patterns in the Networked Logging Server</a></li>
+<li><a href="#sec-1-5-6">1.5.6 Summary of Pattern Intents</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-6">1.6 OO Logging Server</a>
+<ul>
+<li><a href="#sec-1-6-1">1.6.1 Components in the OO Logging Server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">高级ACE向导</h2>
+<h2 id="sec-1">高级ACE指南</h2>
 <div class="outline-text-2" id="text-1">
 
 
@@ -236,14 +310,289 @@ tags: [ace, c++, network, patterns]
 </div>
 
 <div id="outline-container-1-3-6-1" class="outline-5">
-<h5 id="sec-1-3-6-1">模式指的是用于一个特定的条件或上下文环境下开发软件所使用的解决问题的方安</h5>
+<h5 id="sec-1-3-6-1">模式指的是用于一个特定的条件或上下文环境下开发软件所使用的解决问题的方按。</h5>
 <div class="outline-text-5" id="text-1-3-6-1">
 
 <p>:: i.e., “Patterns == problem/solution pairs within a context”
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-1-3-7" class="outline-4">
+<h4 id="sec-1-3-7">框架及组件</h4>
+<div class="outline-text-4" id="text-1-3-7">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-8" class="outline-4">
+<h4 id="sec-1-3-8">框架与类库</h4>
+<div class="outline-text-4" id="text-1-3-8">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-9" class="outline-4">
+<h4 id="sec-1-3-9">ace 组成</h4>
+<div class="outline-text-4" id="text-1-3-9">
+
+
+</div>
+
+<div id="outline-container-1-3-9-1" class="outline-5">
+<h5 id="sec-1-3-9-1">总览</h5>
+<div class="outline-text-5" id="text-1-3-9-1">
+
+<p><a href="#images-a.jpg">images/a.jpg</a>
+</p></div>
+
+</div>
+
+<div id="outline-container-1-3-9-2" class="outline-5">
+<h5 id="sec-1-3-9-2">C++ WRAPPER FACADE LAYER</h5>
+<div class="outline-text-5" id="text-1-3-9-2">
+
+<ul>
+<li id="sec-1-3-9-2-1">os&amp;platform C APIS<br/>
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-1-3-9-3" class="outline-5">
+<h5 id="sec-1-3-9-3">FRAMEWORK LAYER</h5>
+<div class="outline-text-5" id="text-1-3-9-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-9-4" class="outline-5">
+<h5 id="sec-1-3-9-4">NETWORKED SERVICE COMPONENTS LAYER</h5>
+<div class="outline-text-5" id="text-1-3-9-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-9-5" class="outline-5">
+<h5 id="sec-1-3-9-5">关键组件和模式</h5>
+<div class="outline-text-5" id="text-1-3-9-5">
+
+<p>Acceptor Connector  -&gt; Reactor &lt;- Proactor
+Service Configurator -&gt; Streams &lt;-  Task
 </p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3-9-6" class="outline-5">
+<h5 id="sec-1-3-9-6">TAO</h5>
+<div class="outline-text-5" id="text-1-3-9-6">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-9-7" class="outline-5">
+<h5 id="sec-1-3-9-7">JAWS</h5>
+<div class="outline-text-5" id="text-1-3-9-7">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-9-8" class="outline-5">
+<h5 id="sec-1-3-9-8">java ACE</h5>
+<div class="outline-text-5" id="text-1-3-9-8">
+
 
 </div>
 </div>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4">面向模式的软件架构（POSA2）</h3>
+<div class="outline-text-3" id="text-1-4">
+
+
+</div>
+
+<div id="outline-container-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1">Service Access &amp; Configuration Patterns</h4>
+<div class="outline-text-4" id="text-1-4-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2">Event Handling Patterns</h4>
+<div class="outline-text-4" id="text-1-4-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-3" class="outline-4">
+<h4 id="sec-1-4-3">Synchronization Patterns</h4>
+<div class="outline-text-4" id="text-1-4-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-4" class="outline-4">
+<h4 id="sec-1-4-4">Concurrency Patterns</h4>
+<div class="outline-text-4" id="text-1-4-4">
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5">实例讲解 Networked Logging Service</h3>
+<div class="outline-text-3" id="text-1-5">
+
+
+
+</div>
+
+<div id="outline-container-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1">api</h4>
+<div class="outline-text-4" id="text-1-5-1">
+
+<p>logging API is similar to printf(), e.g.:
+ACE_ERROR ((LM_ERROR, "(%t) fork failed"));
+Generates on logging server host:
+Oct 31 14:50:13 1992@tango.ics.uci.edu@2766@LM_ERROR@client
+::(4) fork failed
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2">Limitations with Algorithmic Decomposition</h4>
+<div class="outline-text-4" id="text-1-5-2">
+
+<p>  Algorithmic decomposition tightly couples application-specific
+functionality and the following configuration-related characteristics:
+Application Structure
+– The number of services per process
+– Time when services are configured into a process
+Communication and Demultiplexing Mechanisms
+– The underlying IPC mechanisms that communicate with other
+participating clients and servers
+– Event demultiplexing and event handler dispatching mechanisms
+Concurrency and Synchronization Model
+– The process and/or thread architecture that executes service(s) at
+run-time
+</p></div>
+
+</div>
+
+<div id="outline-container-1-5-3" class="outline-4">
+<h4 id="sec-1-5-3">Overcoming Limitations via OO</h4>
+<div class="outline-text-4" id="text-1-5-3">
+
+<p>The algorithmic decomposition illustrated above specifies many
+low-level details
+– Moreover, the excessive coupling impedes reusability,
+extensibility, and portability&hellip;
+In contrast, OO focuses on application-specific behavior, e.g.,
+int Logging_Handler::handle_input (void)
+{
+ssize_t n = handle_log_record (peer ().get_handle (),
+ACE_STDOUT);
+if (n &gt; 0)
+++request_count; // Count the # of logging records
+return n &lt;= 0 ? -1 : 0;
+}
+</p></div>
+
+</div>
+
+<div id="outline-container-1-5-4" class="outline-4">
+<h4 id="sec-1-5-4">OO Contributions to Software</h4>
+<div class="outline-text-4" id="text-1-5-4">
+
+<p>Patterns facilitate the large-scale reuse of software architecture
+– Even when reuse of algorithms, detailed designs, and
+implementations is not feasible
+Frameworks achieve large-scale design and code reuse
+– In contrast, traditional techniques focus on the functions and
+algorithms that solve particular requirements
+Note that patterns and frameworks are not unique to OO!
+– However, objects and classes are useful abstraction mechanisms
+</p></div>
+
+</div>
+
+<div id="outline-container-1-5-5" class="outline-4">
+<h4 id="sec-1-5-5">Patterns in the Networked Logging Server</h4>
+<div class="outline-text-4" id="text-1-5-5">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5-6" class="outline-4">
+<h4 id="sec-1-5-6">Summary of Pattern Intents</h4>
+<div class="outline-text-4" id="text-1-5-6">
+
+<p>Wrapper Facade ! “Encapsulates the functions and data provided
+by existing non-OO APIs within more concise, robust, portable,
+maintainable, and cohesive OO class interfaces”
+Reactor ! “Demultiplexes and dispatches requests that are
+delivered concurrently to an application by one or more clients”
+Acceptor ! “Decouple the passive connection and initialization of a
+peer service in a distributed system from the processing performed
+once the peer service is connected and initialized”
+Component Configurator ! “Decouples the implementation of
+services from the time when they are configured”
+Active Object ! “Decouples method execution from method
+invocation to enhance concurrency and simplify synchronized
+access to an object that resides in its own thread of control”
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6">OO Logging Server</h3>
+<div class="outline-text-3" id="text-1-6">
+
+
+</div>
+
+<div id="outline-container-1-6-1" class="outline-4">
+<h4 id="sec-1-6-1">Components in the OO Logging Server</h4>
+<div class="outline-text-4" id="text-1-6-1">
+
+<p>Application-specific components
+– Process logging records received from clients
+Connection-oriented application components
+– ACE_Svc_Handler (service handler)
+ Performs I/O-related tasks with clients
+– ACE_Acceptor factory
+ Passively accepts connection requests
+ Dynamically creates a service handler for each client and
+“activates” it
+Application-independent ACE framework components
+– Perform IPC, explicit dynamic linking, event demultiplexing, event
+handler dispatching, multi-threading, etc.
+</p></div>
 </div>
 </div>
 </div>

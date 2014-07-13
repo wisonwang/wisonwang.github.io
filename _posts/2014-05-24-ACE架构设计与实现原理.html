@@ -1,0 +1,850 @@
+---
+layout: post
+title: 推荐系统.
+excerpt: Recommender system introduction.
+tags: [ web, Recommender Sys, big data, AI]
+published:false
+---
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 概述</a>
+<ul>
+<li><a href="#sec-1-1">1.1 模式和框架</a></li>
+<li><a href="#sec-1-2">1.2 ACE框架</a></li>
+<li><a href="#sec-1-3">1.3 ACE Socket封装器</a></li>
+<li><a href="#sec-1-4">1.4 进一步学习</a></li>
+<li><a href="#sec-1-5">1.5 总结</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2 Reactor框架</a>
+<ul>
+<li><a href="#sec-2-1">2.1 Reactor结构模式</a></li>
+<li><a href="#sec-2-2">2.2 Reactor框架概述</a></li>
+<li><a href="#sec-2-3">2.3 Reactor框架应用实例</a>
+<ul>
+<li><a href="#sec-2-3-1">2.3.1 IO事件处理处理器的实现</a></li>
+<li><a href="#sec-2-3-2">2.3.2 Accept事件处理器实现</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-4">2.4 事件处理器接口实现</a></li>
+<li><a href="#sec-2-5">2.5 Reactor管理器的设计</a></li>
+<li><a href="#sec-2-6">2.6 IO事件调度的分析</a></li>
+<li><a href="#sec-2-7">2.7 信号量事件调度分析</a></li>
+<li><a href="#sec-2-8">2.8 定时器时间调度分析</a></li>
+<li><a href="#sec-2-9">2.9 Notify事件调度分析</a></li>
+<li><a href="#sec-2-10">2.10 进一步学习</a></li>
+<li><a href="#sec-2-11">2.11 总结</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 Service Configurator 框架</a>
+<ul>
+<li><a href="#sec-3-1">3.1 Service Configurator 框架架构模式</a></li>
+<li><a href="#sec-3-2">3.2 Service Configurator 框架概述</a></li>
+<li><a href="#sec-3-3">3.3 Service Configurator 框架应用实例</a></li>
+<li><a href="#sec-3-4">3.4 ACE动态库接口封装的分析</a></li>
+<li><a href="#sec-3-5">3.5 配置组件接口的分析</a></li>
+<li><a href="#sec-3-6">3.6 组件工厂函数分析</a></li>
+<li><a href="#sec-3-7">3.7 组件配置器设计的分析</a></li>
+<li><a href="#sec-3-8">3.8 动态库符号定位的分析</a></li>
+<li><a href="#sec-3-9">3.9 配置组件仓库的分析</a></li>
+<li><a href="#sec-3-10">3.10 配置组件类型的分析</a></li>
+<li><a href="#sec-3-11">3.11 指令解析功能分析</a></li>
+<li><a href="#sec-3-12">3.12 配置文件解析流程的分析</a></li>
+<li><a href="#sec-3-13">3.13 Service Configurator 框架应用实例</a>
+<ul>
+<li><a href="#sec-3-13-1">3.13.1 可配置组件</a></li>
+<li><a href="#sec-3-13-2">3.13.2 配置文件</a></li>
+<li><a href="#sec-3-13-3">3.13.3 配置文件解析流程分析</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-14">3.14 配置改变</a></li>
+<li><a href="#sec-3-15">3.15 Service Configurator 框架应用实例</a>
+<ul>
+<li><a href="#sec-3-15-1">3.15.1 静态配置组件</a></li>
+<li><a href="#sec-3-15-2">3.15.2 配置文件</a></li>
+<li><a href="#sec-3-15-3">3.15.3 静态配置组件分析</a></li>
+</ul></li>
+</ul>
+</li>
+<li><a href="#sec-4">4 Task框架</a>
+<ul>
+<li><a href="#sec-4-1">4.1 Task框架概述</a></li>
+<li><a href="#sec-4-2">4.2 Task框架应用实例</a>
+<ul>
+<li><a href="#sec-4-2-1">4.2.1 生产者&amp;消费者</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-3">4.3 ACE消息队列实现分析</a></li>
+<li><a href="#sec-4-4">4.4 ACE多线程编程</a></li>
+<li><a href="#sec-4-5">4.5 Task框架接口分析</a></li>
+<li><a href="#sec-4-6">4.6 Active Object设计模式</a></li>
+<li><a href="#sec-4-7">4.7 进一步学习</a></li>
+<li><a href="#sec-4-8">4.8 小结</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5 Acceptor_Connector框架</a>
+<ul>
+<li><a href="#sec-5-1">5.1 Acceptor_Connector框架架构模式</a></li>
+<li><a href="#sec-5-2">5.2 Acceptor_Connector框架概述</a></li>
+<li><a href="#sec-5-3">5.3 Acceptor_Connector框架应用实例</a></li>
+<li><a href="#sec-5-4">5.4 服务处理器接口分析</a></li>
+<li><a href="#sec-5-5">5.5 Acceptor设计的分析</a></li>
+<li><a href="#sec-5-6">5.6 Connector设计分析</a>
+<ul>
+<li><a href="#sec-5-6-1">5.6.1 阻塞和非阻塞模式链接的分析</a></li>
+</ul>
+</li>
+<li><a href="#sec-5-7">5.7 进一步学习</a></li>
+<li><a href="#sec-5-8">5.8 总结</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6 Proactor框架</a>
+<ul>
+<li><a href="#sec-6-1">6.1 Proactor框架架构模式</a></li>
+<li><a href="#sec-6-2">6.2 Proactor框架概述</a></li>
+<li><a href="#sec-6-3">6.3 Proactor框架应用实例</a>
+<ul>
+<li><a href="#sec-6-3-1">6.3.1 IO事件完成处理器的实现</a></li>
+<li><a href="#sec-6-3-2">6.3.2 异步Acceptor的实现</a></li>
+</ul>
+</li>
+<li><a href="#sec-6-4">6.4 事件完成处理接口分析</a></li>
+<li><a href="#sec-6-5">6.5 Proactor管理器的设计分析</a></li>
+<li><a href="#sec-6-6">6.6 异步操作初始化器和操作结果分析</a></li>
+<li><a href="#sec-6-7">6.7 ACE_POSIX_AIOCB_Proactor管理其实现分析</a></li>
+<li><a href="#sec-6-8">6.8 异步非IO事件调度的分析</a></li>
+<li><a href="#sec-6-9">6.9 网络链接之accept事件调度的分析</a></li>
+<li><a href="#sec-6-10">6.10 Proactor框架调度分析</a></li>
+<li><a href="#sec-6-11">6.11 进一步学习</a></li>
+<li><a href="#sec-6-12">6.12 总结</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7 Stream框架</a>
+<ul>
+<li><a href="#sec-7-1">7.1 管道和过滤架构模式</a></li>
+<li><a href="#sec-7-2">7.2 Streams框架的概述</a></li>
+<li><a href="#sec-7-3">7.3 Streams框架应用实例</a></li>
+<li><a href="#sec-7-4">7.4 ACE_Module类的分析</a></li>
+<li><a href="#sec-7-5">7.5 ACE_Stream类的分析</a></li>
+<li><a href="#sec-7-6">7.6 进一步学习</a></li>
+<li><a href="#sec-7-7">7.7 总结</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">概述</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">模式和框架</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">ACE框架</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3">ACE Socket封装器</h3>
+<div class="outline-text-3" id="text-1-3">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4">进一步学习</h3>
+<div class="outline-text-3" id="text-1-4">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5">总结</h3>
+<div class="outline-text-3" id="text-1-5">
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">Reactor框架</h2>
+<div class="outline-text-2" id="text-2">
+
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1">Reactor结构模式</h3>
+<div class="outline-text-3" id="text-2-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2">Reactor框架概述</h3>
+<div class="outline-text-3" id="text-2-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3">Reactor框架应用实例</h3>
+<div class="outline-text-3" id="text-2-3">
+
+
+</div>
+
+<div id="outline-container-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1">IO事件处理处理器的实现</h4>
+<div class="outline-text-4" id="text-2-3-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3-2" class="outline-4">
+<h4 id="sec-2-3-2">Accept事件处理器实现</h4>
+<div class="outline-text-4" id="text-2-3-2">
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2-4" class="outline-3">
+<h3 id="sec-2-4">事件处理器接口实现</h3>
+<div class="outline-text-3" id="text-2-4">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5" class="outline-3">
+<h3 id="sec-2-5">Reactor管理器的设计</h3>
+<div class="outline-text-3" id="text-2-5">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-6" class="outline-3">
+<h3 id="sec-2-6">IO事件调度的分析</h3>
+<div class="outline-text-3" id="text-2-6">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-7" class="outline-3">
+<h3 id="sec-2-7">信号量事件调度分析</h3>
+<div class="outline-text-3" id="text-2-7">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-8" class="outline-3">
+<h3 id="sec-2-8">定时器时间调度分析</h3>
+<div class="outline-text-3" id="text-2-8">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-9" class="outline-3">
+<h3 id="sec-2-9">Notify事件调度分析</h3>
+<div class="outline-text-3" id="text-2-9">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-10" class="outline-3">
+<h3 id="sec-2-10">进一步学习</h3>
+<div class="outline-text-3" id="text-2-10">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-11" class="outline-3">
+<h3 id="sec-2-11">总结</h3>
+<div class="outline-text-3" id="text-2-11">
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">Service Configurator 框架</h2>
+<div class="outline-text-2" id="text-3">
+
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1">Service Configurator 框架架构模式</h3>
+<div class="outline-text-3" id="text-3-1">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2">Service Configurator 框架概述</h3>
+<div class="outline-text-3" id="text-3-2">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-3" class="outline-3">
+<h3 id="sec-3-3">Service Configurator 框架应用实例</h3>
+<div class="outline-text-3" id="text-3-3">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-4" class="outline-3">
+<h3 id="sec-3-4">ACE动态库接口封装的分析</h3>
+<div class="outline-text-3" id="text-3-4">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-5" class="outline-3">
+<h3 id="sec-3-5">配置组件接口的分析</h3>
+<div class="outline-text-3" id="text-3-5">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-6" class="outline-3">
+<h3 id="sec-3-6">组件工厂函数分析</h3>
+<div class="outline-text-3" id="text-3-6">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-7" class="outline-3">
+<h3 id="sec-3-7">组件配置器设计的分析</h3>
+<div class="outline-text-3" id="text-3-7">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-8" class="outline-3">
+<h3 id="sec-3-8">动态库符号定位的分析</h3>
+<div class="outline-text-3" id="text-3-8">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-9" class="outline-3">
+<h3 id="sec-3-9">配置组件仓库的分析</h3>
+<div class="outline-text-3" id="text-3-9">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-10" class="outline-3">
+<h3 id="sec-3-10">配置组件类型的分析</h3>
+<div class="outline-text-3" id="text-3-10">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-11" class="outline-3">
+<h3 id="sec-3-11">指令解析功能分析</h3>
+<div class="outline-text-3" id="text-3-11">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-12" class="outline-3">
+<h3 id="sec-3-12">配置文件解析流程的分析</h3>
+<div class="outline-text-3" id="text-3-12">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-13" class="outline-3">
+<h3 id="sec-3-13">Service Configurator 框架应用实例</h3>
+<div class="outline-text-3" id="text-3-13">
+
+
+
+</div>
+
+<div id="outline-container-3-13-1" class="outline-4">
+<h4 id="sec-3-13-1">可配置组件</h4>
+<div class="outline-text-4" id="text-3-13-1">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-13-2" class="outline-4">
+<h4 id="sec-3-13-2">配置文件</h4>
+<div class="outline-text-4" id="text-3-13-2">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-13-3" class="outline-4">
+<h4 id="sec-3-13-3">配置文件解析流程分析</h4>
+<div class="outline-text-4" id="text-3-13-3">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3-14" class="outline-3">
+<h3 id="sec-3-14">配置改变</h3>
+<div class="outline-text-3" id="text-3-14">
+
+</div>
+
+</div>
+
+<div id="outline-container-3-15" class="outline-3">
+<h3 id="sec-3-15">Service Configurator 框架应用实例</h3>
+<div class="outline-text-3" id="text-3-15">
+
+
+</div>
+
+<div id="outline-container-3-15-1" class="outline-4">
+<h4 id="sec-3-15-1">静态配置组件</h4>
+<div class="outline-text-4" id="text-3-15-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-3-15-2" class="outline-4">
+<h4 id="sec-3-15-2">配置文件</h4>
+<div class="outline-text-4" id="text-3-15-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-3-15-3" class="outline-4">
+<h4 id="sec-3-15-3">静态配置组件分析</h4>
+<div class="outline-text-4" id="text-3-15-3">
+
+</div>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">Task框架</h2>
+<div class="outline-text-2" id="text-4">
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1">Task框架概述</h3>
+<div class="outline-text-3" id="text-4-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2">Task框架应用实例</h3>
+<div class="outline-text-3" id="text-4-2">
+
+
+</div>
+
+<div id="outline-container-4-2-1" class="outline-4">
+<h4 id="sec-4-2-1">生产者&amp;消费者</h4>
+<div class="outline-text-4" id="text-4-2-1">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4-3" class="outline-3">
+<h3 id="sec-4-3">ACE消息队列实现分析</h3>
+<div class="outline-text-3" id="text-4-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-4-4" class="outline-3">
+<h3 id="sec-4-4">ACE多线程编程</h3>
+<div class="outline-text-3" id="text-4-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-4-5" class="outline-3">
+<h3 id="sec-4-5">Task框架接口分析</h3>
+<div class="outline-text-3" id="text-4-5">
+
+</div>
+
+</div>
+
+<div id="outline-container-4-6" class="outline-3">
+<h3 id="sec-4-6">Active Object设计模式</h3>
+<div class="outline-text-3" id="text-4-6">
+
+</div>
+
+</div>
+
+<div id="outline-container-4-7" class="outline-3">
+<h3 id="sec-4-7">进一步学习</h3>
+<div class="outline-text-3" id="text-4-7">
+
+</div>
+
+</div>
+
+<div id="outline-container-4-8" class="outline-3">
+<h3 id="sec-4-8">小结</h3>
+<div class="outline-text-3" id="text-4-8">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">Acceptor_Connector框架</h2>
+<div class="outline-text-2" id="text-5">
+
+
+</div>
+
+<div id="outline-container-5-1" class="outline-3">
+<h3 id="sec-5-1">Acceptor_Connector框架架构模式</h3>
+<div class="outline-text-3" id="text-5-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-5-2" class="outline-3">
+<h3 id="sec-5-2">Acceptor_Connector框架概述</h3>
+<div class="outline-text-3" id="text-5-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-5-3" class="outline-3">
+<h3 id="sec-5-3">Acceptor_Connector框架应用实例</h3>
+<div class="outline-text-3" id="text-5-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-5-4" class="outline-3">
+<h3 id="sec-5-4">服务处理器接口分析</h3>
+<div class="outline-text-3" id="text-5-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-5-5" class="outline-3">
+<h3 id="sec-5-5">Acceptor设计的分析</h3>
+<div class="outline-text-3" id="text-5-5">
+
+</div>
+
+</div>
+
+<div id="outline-container-5-6" class="outline-3">
+<h3 id="sec-5-6">Connector设计分析</h3>
+<div class="outline-text-3" id="text-5-6">
+
+
+</div>
+
+<div id="outline-container-5-6-1" class="outline-4">
+<h4 id="sec-5-6-1">阻塞和非阻塞模式链接的分析</h4>
+<div class="outline-text-4" id="text-5-6-1">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-5-7" class="outline-3">
+<h3 id="sec-5-7">进一步学习</h3>
+<div class="outline-text-3" id="text-5-7">
+
+</div>
+
+</div>
+
+<div id="outline-container-5-8" class="outline-3">
+<h3 id="sec-5-8">总结</h3>
+<div class="outline-text-3" id="text-5-8">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6">Proactor框架</h2>
+<div class="outline-text-2" id="text-6">
+
+
+</div>
+
+<div id="outline-container-6-1" class="outline-3">
+<h3 id="sec-6-1">Proactor框架架构模式</h3>
+<div class="outline-text-3" id="text-6-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-2" class="outline-3">
+<h3 id="sec-6-2">Proactor框架概述</h3>
+<div class="outline-text-3" id="text-6-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-3" class="outline-3">
+<h3 id="sec-6-3">Proactor框架应用实例</h3>
+<div class="outline-text-3" id="text-6-3">
+
+
+</div>
+
+<div id="outline-container-6-3-1" class="outline-4">
+<h4 id="sec-6-3-1">IO事件完成处理器的实现</h4>
+<div class="outline-text-4" id="text-6-3-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-3-2" class="outline-4">
+<h4 id="sec-6-3-2">异步Acceptor的实现</h4>
+<div class="outline-text-4" id="text-6-3-2">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-6-4" class="outline-3">
+<h3 id="sec-6-4">事件完成处理接口分析</h3>
+<div class="outline-text-3" id="text-6-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-5" class="outline-3">
+<h3 id="sec-6-5">Proactor管理器的设计分析</h3>
+<div class="outline-text-3" id="text-6-5">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-6" class="outline-3">
+<h3 id="sec-6-6">异步操作初始化器和操作结果分析</h3>
+<div class="outline-text-3" id="text-6-6">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-7" class="outline-3">
+<h3 id="sec-6-7">ACE_POSIX_AIOCB_Proactor管理其实现分析</h3>
+<div class="outline-text-3" id="text-6-7">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-8" class="outline-3">
+<h3 id="sec-6-8">异步非IO事件调度的分析</h3>
+<div class="outline-text-3" id="text-6-8">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-9" class="outline-3">
+<h3 id="sec-6-9">网络链接之accept事件调度的分析</h3>
+<div class="outline-text-3" id="text-6-9">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-10" class="outline-3">
+<h3 id="sec-6-10">Proactor框架调度分析</h3>
+<div class="outline-text-3" id="text-6-10">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-11" class="outline-3">
+<h3 id="sec-6-11">进一步学习</h3>
+<div class="outline-text-3" id="text-6-11">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-12" class="outline-3">
+<h3 id="sec-6-12">总结</h3>
+<div class="outline-text-3" id="text-6-12">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7">Stream框架</h2>
+<div class="outline-text-2" id="text-7">
+
+
+</div>
+
+<div id="outline-container-7-1" class="outline-3">
+<h3 id="sec-7-1">管道和过滤架构模式</h3>
+<div class="outline-text-3" id="text-7-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-7-2" class="outline-3">
+<h3 id="sec-7-2">Streams框架的概述</h3>
+<div class="outline-text-3" id="text-7-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-7-3" class="outline-3">
+<h3 id="sec-7-3">Streams框架应用实例</h3>
+<div class="outline-text-3" id="text-7-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-7-4" class="outline-3">
+<h3 id="sec-7-4">ACE_Module类的分析</h3>
+<div class="outline-text-3" id="text-7-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-7-5" class="outline-3">
+<h3 id="sec-7-5">ACE_Stream类的分析</h3>
+<div class="outline-text-3" id="text-7-5">
+
+</div>
+
+</div>
+
+<div id="outline-container-7-6" class="outline-3">
+<h3 id="sec-7-6">进一步学习</h3>
+<div class="outline-text-3" id="text-7-6">
+
+</div>
+
+</div>
+
+<div id="outline-container-7-7" class="outline-3">
+<h3 id="sec-7-7">总结</h3>
+<div class="outline-text-3" id="text-7-7">
+
+</div>
+</div>
+</div>

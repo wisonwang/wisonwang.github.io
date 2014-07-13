@@ -1,0 +1,52 @@
+---
+layout: post
+title: c++ 开发常用知识.
+excerpt: c++ developpment tech.
+tags: [ace, c++, network, patterns]
+---
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 c++ 常用知识链接</a>
+<ul>
+<li><a href="#sec-1-1">1.1 静态检查工具</a></li>
+<li><a href="#sec-1-2">1.2 内存检查工具</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">c++ 常用知识链接</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">静态检查工具</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>引用链接：<a href="http://www.taobaotest.com/blogs/qa?bid=14231">http://www.taobaotest.com/blogs/qa?bid=14231</a>
+FormatGuard：Linux下防止格式化字符串攻击的工具，是对glibc的增强。具体通过预处理提供的宏功能来对类printf函数中的参数个数进行计数，通过glibc提供的parse_printf_format函数来对转换说明符进行计数。如果转换说明符的数目大于提供给printf的参数个数，_proteced_printf函数认为可能遭受格式串攻击，发出警告。但该工具不能分析类vprintf函数（而此类函数却大量存在）
+LibFormat：Unix中提供了一个有用的环境变量LD_PRELOAD，它允许我们定义在程序允许前优先加载的动态链接库。主要思想，通过动态连接器将自己插入到程序中，在程序以后的运行中如果发现了包含%n的格式串出现在可写内存中，则终止程序。但对读操作却无能为力，而且遇到的任何%n格式串，都会终止程序，误报高。
+ANTLR：识别和处理编程语言是 Antlr 的首要任务，编程语言的处理是一项繁重复杂的任务，为了简化处理，一般的编译技术都将语言处理工作分为前端和后端两个部分。其中前端包括词法分析、语法分析、语义分析、中间代码生成等若干步骤，后端包括目标代码生成和代码优化等步骤。Antlr 致力于解决编译前端的所有工作。使用 Anltr 的语法可以定义目标语言的词法记号和语法规则，Antlr 自动生成目标语言的词法分析器和语法分析器；此外，如果在语法规则中指定抽象语法树的规则，在生成语法分析器的同时，Antlr 还能够生成抽象语法树；最终使用树分析器遍历抽象语法树，完成语义分析和中间代码生成。整个工作在 Anltr 强大的支持下，将变得非常轻松和愉快。另外，Antlr的词法分析器生成器，可以很容易的完成正则表达式能够完成的所有工作；除此之外使用 Anltr 还可以完成一些正则表达式难以完成的工作，比如识别左括号和右括号的成对匹配等。
+GOLD：它是一个较为复杂的分析器，支持很多语言，包括：Assembly - Intel x86 、ANSI C、C#、D、Delphi、Java、Pascal、Python、Visual Basic、Visual Basic .NET、Visual C++、所有.NET语言、所有ActiveX语言。是个免费的软件。
+Its4：读取一个或多个C/C++源程序，将每个源程序分割成函数标志流，然后检查生成的标志是否存在于漏洞数据库中，从而得到每个源程序的所有错误警告列表，并带有相关的描述。其规则库vulns.i4d定义了各种函数的危险等级，描述等，通过规则匹配来报出风险，但它不能理解程序上下文意思，存在很大的误报。
+Flawfinder：词法扫描和分析，内嵌了一些漏洞数据库，如缓冲区溢出、格式化串漏洞等，扫描快，按照代码中漏洞的风险等级对漏洞进行划分，可以快速找到存在的问题，误报较高
+Rats：扫描C、C++、Perl、PHP和Python开发的源程序中潜在的漏洞，扫描规则比较粗糙
+</p></div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">内存检查工具</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>Valgrind：<a href="http://blog.s135.com/post/419/">http://blog.s135.com/post/419/</a>
+</p></div>
+</div>
+</div>
