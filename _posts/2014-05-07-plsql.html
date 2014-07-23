@@ -14,15 +14,53 @@ tags: [database, sql, plsql]
 <ul>
 <li><a href="#sec-1-1">1.1 基本对象</a>
 <ul>
-<li><a href="#sec-1-1-1">1.1.1 表</a></li>
-<li><a href="#sec-1-1-2">1.1.2 视图</a></li>
-<li><a href="#sec-1-1-3">1.1.3 索引</a></li>
-<li><a href="#sec-1-1-4">1.1.4 函数</a></li>
-<li><a href="#sec-1-1-5">1.1.5 存储过程</a></li>
+<li><a href="#sec-1-1-1">1.1.1 表</a>
+<ul>
+<li><a href="#sec-1-1-1-1">1.1.1.1 基本表</a></li>
+<li><a href="#sec-1-1-1-2">1.1.1.2 默认值</a></li>
+<li><a href="#sec-1-1-1-3">1.1.1.3 约束</a></li>
+<li><a href="#sec-1-1-1-4">1.1.1.4 系统默认列</a></li>
+<li><a href="#sec-1-1-1-5">1.1.1.5 修改表</a></li>
+<li><a href="#sec-1-1-1-6">1.1.1.6 Schemas</a></li>
+<li><a href="#sec-1-1-1-7">1.1.1.7 表继承</a></li>
+<li><a href="#sec-1-1-1-8">1.1.1.8 表分区</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-2">1.2 查询语句</a></li>
-<li><a href="#sec-1-3">1.3 控制语句</a></li>
+<li><a href="#sec-1-1-2">1.1.2 视图</a></li>
+<li><a href="#sec-1-1-3">1.1.3 索引</a>
+<ul>
+<li><a href="#sec-1-1-3-1">1.1.3.1 索引类型</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-1-4">1.1.4 函数</a></li>
+<li><a href="#sec-1-1-5">1.1.5 存储过程</a></li>
+<li><a href="#sec-1-1-6">1.1.6 触发器和重写规则</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-2">1.2 查询语句</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1 简单查询</a></li>
+<li><a href="#sec-1-2-2">1.2.2 FROM 分句</a>
+<ul>
+<li><a href="#sec-1-2-2-1">1.2.2.1 JOIN 表</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-2-3">1.2.3 WHERE 分句</a></li>
+<li><a href="#sec-1-2-4">1.2.4 GROUP BY 和 HAVING 分句</a></li>
+<li><a href="#sec-1-2-5">1.2.5 Select Lists</a></li>
+<li><a href="#sec-1-2-6">1.2.6 联合查询</a></li>
+<li><a href="#sec-1-2-7">1.2.7 排序</a></li>
+<li><a href="#sec-1-2-8">1.2.8 LIMIT 和 OFFSET</a></li>
+<li><a href="#sec-1-2-9">1.2.9 VALUES Lists</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3">1.3 控制语句</a>
+<ul>
+<li><a href="#sec-1-3-1">1.3.1 插入数据</a></li>
+<li><a href="#sec-1-3-2">1.3.2 更新修改数据</a></li>
+<li><a href="#sec-1-3-3">1.3.3 删除数据</a></li>
+</ul>
+</li>
 <li><a href="#sec-1-4">1.4 关系型数据库优化</a>
 <ul>
 <li><a href="#sec-1-4-1">1.4.1 sql查询语句优化</a></li>
@@ -57,6 +95,347 @@ tags: [database, sql, plsql]
 <h4 id="sec-1-1-1">表</h4>
 <div class="outline-text-4" id="text-1-1-1">
 
+
+</div>
+
+<div id="outline-container-1-1-1-1" class="outline-5">
+<h5 id="sec-1-1-1-1">基本表</h5>
+<div class="outline-text-5" id="text-1-1-1-1">
+
+
+
+
+<pre class="src src-sql">CREATE TABLE products (
+product_no integer,
+name text,
+price numeric 
+);
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-1-2" class="outline-5">
+<h5 id="sec-1-1-1-2">默认值</h5>
+<div class="outline-text-5" id="text-1-1-1-2">
+
+
+
+
+<pre class="src src-sql">CREATE TABLE products (
+product_no integer,
+name text,
+price numeric DEFAULT 9.99
+);
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-1-3" class="outline-5">
+<h5 id="sec-1-1-1-3">约束</h5>
+<div class="outline-text-5" id="text-1-1-1-3">
+
+<ul>
+<li id="sec-1-1-1-3-1">check 约束<br/>
+
+
+
+<pre class="src src-sql">CREATE TABLE products (
+product_no integer,
+name text,
+price numeric CHECK (price &gt; 0)
+);
+CREATE TABLE products1 (
+product_no integer,
+name text,
+price numeric,
+CHECK (price &gt; 0),
+discounted_price numeric,
+CHECK (discounted_price &gt; 0),
+CHECK (price &gt; discounted_price)
+);
+</pre>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-1-1-3-2">not-null 约束<br/>
+
+
+
+<pre class="src src-sql">CREATE TABLE products (
+product_no integer NOT NULL,
+name text NOT NULL,
+price numeric
+);
+</pre>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-1-1-3-3">Unique 约束<br/>
+
+
+
+<pre class="src src-sql">CREATE TABLE products (
+product_no integer UNIQUE,
+name text,
+price numeric
+);
+CREATE TABLE products (
+product_no integer,
+name text,
+price numeric,
+UNIQUE (product_no)
+);
+</pre>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-1-1-3-4">主键<br/>
+
+
+
+<pre class="src src-sql">CREATE TABLE products (
+product_no integer UNIQUE NOT NULL,
+name text,
+price numeric
+);
+CREATE TABLE products (
+product_no integer PRIMARY KEY,
+name text,
+price numeric
+);
+or
+CREATE TABLE example (
+a integer,
+b integer,
+c integer,
+PRIMARY KEY (a, c)
+);
+</pre>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-1-1-3-5">外健<br/>
+
+
+
+<pre class="src src-sql">CREATE TABLE products (
+product_no integer PRIMARY KEY,
+name text,
+price numeric
+);
+CREATE TABLE orders (
+order_id integer PRIMARY KEY,
+product_no integer REFERENCES products (product_no),
+quantity integer
+);
+</pre>
+
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-1-1-1-4" class="outline-5">
+<h5 id="sec-1-1-1-4">系统默认列</h5>
+<div class="outline-text-5" id="text-1-1-1-4">
+
+<p>postgresql 数据库会隐式地在每个数据库表对象中加入一些系统定义列，这些列用户不可更改或重定义，同时一般情况下也不要用户去使用这些列，只要知道有这些列即可。这些列包括：oid（和Unique约束实现有关），tableoid，xmin，cmi，xmax，cmax，ctid。
+</p></div>
+
+</div>
+
+<div id="outline-container-1-1-1-5" class="outline-5">
+<h5 id="sec-1-1-1-5">修改表</h5>
+<div class="outline-text-5" id="text-1-1-1-5">
+
+<ul>
+<li id="sec-1-1-1-5-1">添加删除列<br/>
+
+
+
+<pre class="src src-sql">ALTER TABLE products ADD COLUMN description text;
+ALTER TABLE products ADD COLUMN description text CHECK (description &lt;&gt; &#8221;);
+ALTER TABLE products DROP COLUMN description;
+</pre>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-1-1-5-2">添加删除约束<br/>
+
+
+
+<pre class="src src-sql">ALTER TABLE products ADD CHECK (name &lt;&gt; &#8221;);
+ALTER TABLE products ADD CONSTRAINT some_name UNIQUE (product_no);
+ALTER TABLE products ADD FOREIGN KEY (product_group_id) REFERENCES product_groups;
+
+ALTER TABLE products DROP CONSTRAINT some_name;
+ALTER TABLE products ALTER COLUMN product_no DROP NOT NULL;
+</pre>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-1-1-5-3">默认值修改<br/>
+
+
+
+<pre class="src src-sql">ALTER TABLE products ALTER COLUMN price DROP DEFAULT;
+</pre>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-1-1-5-4">修改列类型<br/>
+
+
+
+<pre class="src src-sql">ALTER TABLE products ALTER COLUMN price TYPE numeric(10,2);
+</pre>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-1-1-5-5">修改列名称<br/>
+
+
+
+<pre class="src src-sql">ALTER TABLE products RENAME COLUMN product_no TO product_number;
+</pre>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-1-1-5-6">重名名表<br/>
+
+
+
+<pre class="src src-sql">ALTER TABLE products RENAME TO items;
+</pre>
+
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-1-1-1-6" class="outline-5">
+<h5 id="sec-1-1-1-6">Schemas</h5>
+<div class="outline-text-5" id="text-1-1-1-6">
+
+<p>待完善。
+</p></div>
+
+</div>
+
+<div id="outline-container-1-1-1-7" class="outline-5">
+<h5 id="sec-1-1-1-7">表继承</h5>
+<div class="outline-text-5" id="text-1-1-1-7">
+
+
+
+
+<pre class="src src-sql">PostgreSQL &#23454;&#29616;&#20102;SQL:1999 &#20013;&#34920;&#32487;&#25215;&#26426;&#21046;&#65292;&#20197;&#26041;&#20415;&#25968;&#25454;&#24211;&#35774;&#35745;&#32773;&#12290;
+CREATE TABLE cities
+name
+population
+altitude
+);
+(
+text,
+float,
+int
+<span style="color: #465457; font-style: italic;">-- in feet</span>
+CREATE TABLE capitals (
+state
+char(2)
+) INHERITS (cities);
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-1-8" class="outline-5">
+<h5 id="sec-1-1-1-8">表分区</h5>
+<div class="outline-text-5" id="text-1-1-1-8">
+
+<p>表分区是指将一个逻辑上的一个表分割成多个物理上的分表，对于用户来说仍然可以和未分表时一样操作主表，而分表后，数据库查询或修改动作可以一定程度在个分表上并行执行，大大提高效率，尤其是在合理的索引和分区策略的情况下，使得查询集中在一个分区时，性能提升更加明显。
+</p><ul>
+<li id="sec-1-1-1-8-1">分表步骤<br/>
+<ul>
+<li id="sec-1-1-1-8-1-1">创建主表<br/>
+
+
+
+<pre class="src src-sql">CREATE TABLE measurement (
+city_id
+int not null,
+logdate
+date not null,
+peaktemp
+int,
+unitsales
+int
+);
+</pre>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-1-1-8-1-2">创建分表<br/>
+
+
+
+<pre class="src src-sql">CREATE TABLE measurement_y2006m02 (
+CHECK ( logdate &gt;= DATE &#8217;2006-02-01&#8217; AND logdate &lt; DATE &#8217;2006-03-01&#8217; )
+62Chapter 5. Data Definition
+) INHERITS (measurement);
+CREATE TABLE measurement_y2006m03 (
+CHECK ( logdate &gt;= DATE &#8217;2006-03-01&#8217;
+) INHERITS (measurement);
+...
+CREATE TABLE measurement_y2007m11 (
+CHECK ( logdate &gt;= DATE &#8217;2007-11-01&#8217;
+) INHERITS (measurement);
+CREATE TABLE measurement_y2007m12 (
+CHECK ( logdate &gt;= DATE &#8217;2007-12-01&#8217;
+) INHERITS (measurement);
+CREATE TABLE measurement_y2008m01 (
+CHECK ( logdate &gt;= DATE &#8217;2008-01-01&#8217;
+) INHERITS (measurement);
+AND logdate &lt; DATE &#8217;2006-04-01&#8217; )
+AND logdate &lt; DATE &#8217;2007-12-01&#8217; )
+</pre>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-1-1-8-1-3">创建分表索引<br/>
+
+
+
+<pre class="src src-sql">CREATE INDEX measurement_y2006m02_logdate ON measurement_y2006m02 (logdate);
+CREATE INDEX measurement_y2006m03_logdate ON measurement_y2006m03 (logdate);
+CREATE INDEX measurement_y2007m11_logdate ON measurement_y2007m11 (logdate);
+CREATE INDEX measurement_y2007m12_logdate ON measurement_y2007m12 (logdate);
+CREATE INDEX measurement_y2008m01_logdate ON measurement_y2008m01 (logdate);
+</pre>
+
+</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 
 </div>
@@ -73,6 +452,15 @@ tags: [database, sql, plsql]
 <h4 id="sec-1-1-3">索引</h4>
 <div class="outline-text-4" id="text-1-1-3">
 
+
+</div>
+
+<div id="outline-container-1-1-3-1" class="outline-5">
+<h5 id="sec-1-1-3-1">索引类型</h5>
+<div class="outline-text-5" id="text-1-1-3-1">
+
+<p>PostgreSQL 支持B-tree, Hash, GiST and GIN四种索引类型，每种索引都有不同的算法实现。
+</p></div>
 </div>
 
 </div>
@@ -90,6 +478,14 @@ tags: [database, sql, plsql]
 <div class="outline-text-4" id="text-1-1-5">
 
 </div>
+
+</div>
+
+<div id="outline-container-1-1-6" class="outline-4">
+<h4 id="sec-1-1-6">触发器和重写规则</h4>
+<div class="outline-text-4" id="text-1-1-6">
+
+</div>
 </div>
 
 </div>
@@ -98,6 +494,207 @@ tags: [database, sql, plsql]
 <h3 id="sec-1-2">查询语句</h3>
 <div class="outline-text-3" id="text-1-2">
 
+
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1">简单查询</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+
+
+
+<pre class="src src-sql">SELECT select_list FROM table_expression [sort_specification]
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2">FROM 分句</h4>
+<div class="outline-text-4" id="text-1-2-2">
+
+
+
+
+<pre class="src src-sql">FROM table_reference [, table_reference [, ...]]
+</pre>
+
+
+</div>
+
+<div id="outline-container-1-2-2-1" class="outline-5">
+<h5 id="sec-1-2-2-1">JOIN 表</h5>
+<div class="outline-text-5" id="text-1-2-2-1">
+
+<p>JOIN 表指的是将多个表通过一定的链接规则生产一张表的过程。Join方式包括Inner, outer, and cross-joins.
+</p><ul>
+<li id="sec-1-2-2-1-1">JOIN 类型说明<br/>
+<ul>
+<li>INNER JOIN
+</li>
+</ul>
+
+<p>For each row R1 of T1, the joined table has a row for each row in T2 that satisfies the join
+condition with R1.
+</p><ul>
+<li>LEFT OUTER JOIN
+</li>
+</ul>
+
+<p>First, an inner join is performed. Then, for each row in T1 that does not satisfy the join
+condition with any row in T2, a joined row is added with null values in columns of T2.
+Thus, the joined table unconditionally has at least one row for each row in T1.
+</p><ul>
+<li>RIGHT OUTER JOIN
+</li>
+</ul>
+
+<p>First, an inner join is performed. Then, for each row in T2 that does not satisfy the join
+condition with any row in T1, a joined row is added with null values in columns of T1. This
+is the converse of a left join: the result table will unconditionally have a row for each row
+in T2.
+</p><ul>
+<li>FULL OUTER JOIN
+</li>
+</ul>
+
+<p>First, an inner join is performed. Then, for each row in T1 that does not satisfy the join
+condition with any row in T2, a joined row is added with null values in columns of T2.
+Also, for each row of T2 that does not satisfy the join condition with any row in T1, a
+joined row with null values in the columns of T1 is added.
+</p></li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3">WHERE 分句</h4>
+<div class="outline-text-4" id="text-1-2-3">
+
+
+
+
+<pre class="src src-sql">WHERE search_condition
+SELECT ... FROM fdt WHERE c1 &gt; 5
+SELECT ... FROM fdt WHERE c1 IN (1, 2, 3)
+SELECT ... FROM fdt WHERE c1 IN (SELECT c1 FROM t2)
+SELECT ... FROM fdt WHERE c1 IN (SELECT c3 FROM t2 WHERE c2 = fdt.c1 + 10)
+SELECT ... FROM fdt WHERE c1 BETWEEN (SELECT c3 FROM t2 WHERE c2 = fdt.c1 + 10) AND 100
+SELECT ... FROM fdt WHERE EXISTS (SELECT c1 FROM t2 WHERE c2 &gt; fdt.c1)
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4">GROUP BY 和 HAVING 分句</h4>
+<div class="outline-text-4" id="text-1-2-4">
+
+
+
+
+<pre class="src src-sql">SELECT select_list
+FROM ...
+[WHERE ...]
+GROUP BY grouping_column_reference [, grouping_column_reference]...
+
+SELECT select_list FROM ... [WHERE ...] GROUP BY ... HAVING boolean_expression
+
+SELECT product_id, p.name, (sum(s.units) * (p.price - p.cost)) AS profit
+FROM products p LEFT JOIN sales s USING (product_id)
+WHERE s.date &gt; CURRENT_DATE - INTERVAL &#8217;4 weeks&#8217;
+GROUP BY product_id, p.name, p.price, p.cost
+HAVING sum(p.price * s.units) &gt; 5000;
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5">Select Lists</h4>
+<div class="outline-text-4" id="text-1-2-5">
+
+
+
+
+<pre class="src src-sql">SELECT a, b, c FROM ...
+SELECT a AS value, b + c AS sum FROM ...
+SELECT DISTINCT ON (expression [, expression ...]) select_list ...
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-6" class="outline-4">
+<h4 id="sec-1-2-6">联合查询</h4>
+<div class="outline-text-4" id="text-1-2-6">
+
+
+
+
+<pre class="src src-sql">query1 UNION [ALL] query2
+query1 INTERSECT [ALL] query2
+query1 EXCEPT [ALL] query2
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-7" class="outline-4">
+<h4 id="sec-1-2-7">排序</h4>
+<div class="outline-text-4" id="text-1-2-7">
+
+
+
+
+<pre class="src src-sql">SELECT select_list
+FROM table_expression
+ORDER BY sort_expression1 [ASC | DESC] [NULLS { FIRST | LAST }]
+[, sort_expression2 [ASC | DESC] [NULLS { FIRST | LAST }] ...]
+SELECT a + b AS sum, c FROM table1 ORDER BY sum;
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-8" class="outline-4">
+<h4 id="sec-1-2-8">LIMIT 和 OFFSET</h4>
+<div class="outline-text-4" id="text-1-2-8">
+
+
+
+
+<pre class="src src-sql">SELECT select_list
+FROM table_expression
+[ ORDER BY ... ]
+[ LIMIT { number | ALL } ] [ OFFSET number ]
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-9" class="outline-4">
+<h4 id="sec-1-2-9">VALUES Lists</h4>
+<div class="outline-text-4" id="text-1-2-9">
+
+
+
+
+<pre class="src src-sql">VALUES ( expression [, ...] ) [, ...]
+VALUES (1, &#8217;one&#8217;), (2, &#8217;two&#8217;), (3, &#8217;three&#8217;);
+</pre>
+
+</div>
 </div>
 
 </div>
@@ -106,6 +703,53 @@ tags: [database, sql, plsql]
 <h3 id="sec-1-3">控制语句</h3>
 <div class="outline-text-3" id="text-1-3">
 
+
+</div>
+
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1">插入数据</h4>
+<div class="outline-text-4" id="text-1-3-1">
+
+
+
+
+<pre class="src src-sql">CREATE TABLE products (
+product_no integer,
+name text,
+price numeric
+);
+INSERT INTO products VALUES (1, &#8217;Cheese&#8217;, 9.99);
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2">更新修改数据</h4>
+<div class="outline-text-4" id="text-1-3-2">
+
+
+
+
+<pre class="src src-sql">UPDATE products SET price = 10 WHERE price = 5;
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3">删除数据</h4>
+<div class="outline-text-4" id="text-1-3-3">
+
+
+
+
+<pre class="src src-sql">DELETE products SET price = 10 WHERE price = 5;
+</pre>
+
+</div>
 </div>
 
 </div>
