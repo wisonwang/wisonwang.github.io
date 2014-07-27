@@ -444,6 +444,16 @@ CREATE INDEX measurement_y2008m01_logdate ON measurement_y2008m01 (logdate);
 <h4 id="sec-1-1-2">视图</h4>
 <div class="outline-text-4" id="text-1-1-2">
 
+
+
+
+<pre class="src src-sql">CREATE VIEW myview AS
+SELECT city, temp_lo, temp_hi, prcp, date, location
+FROM weather, cities
+WHERE city = name;
+SELECT * FROM myview;
+</pre>
+
 </div>
 
 </div>
@@ -459,8 +469,15 @@ CREATE INDEX measurement_y2008m01_logdate ON measurement_y2008m01 (logdate);
 <h5 id="sec-1-1-3-1">索引类型</h5>
 <div class="outline-text-5" id="text-1-1-3-1">
 
-<p>PostgreSQL 支持B-tree, Hash, GiST and GIN四种索引类型，每种索引都有不同的算法实现。
-</p></div>
+<p>PostgreSQL 支持B-tree, Hash, GiST and GIN四种索引类型，每种索引都有不同的算法实现。实际上PostgreSQL 都是secondary indexes，就是不存储在表文件中，而使用单独的文件存储。
+详见：[[][PostgreSQL的四种索引类型]]
+</p>
+
+
+<pre class="src src-sql">CREATE INDEX measurement ON logdate;
+</pre>
+
+</div>
 </div>
 
 </div>
@@ -468,6 +485,18 @@ CREATE INDEX measurement_y2008m01_logdate ON measurement_y2008m01 (logdate);
 <div id="outline-container-1-1-4" class="outline-4">
 <h4 id="sec-1-1-4">函数</h4>
 <div class="outline-text-4" id="text-1-1-4">
+
+
+
+
+<pre class="src src-sql">CREATE FUNCTION messages_trigger() RETURNS trigger AS $$
+begin
+new.tsv :=
+setweight(to_tsvector(&#8217;pg_catalog.english&#8217;, coalesce(new.title,&#8221;)), &#8217;A&#8217;) ||
+setweight(to_tsvector(&#8217;pg_catalog.english&#8217;, coalesce(new.body,&#8221;)), &#8217;D&#8217;);
+return new;
+end
+</pre>
 
 </div>
 
