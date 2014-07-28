@@ -5,7 +5,9 @@ title:  About
 
 ### This site ###{: class="vlist"}
 
-github项目托管功能十分的强大，同时每个项目主页功能，也十分适合作为个人的blog系统，所以我使用jeklly和disqus生成blog个人博客，同时也方便版本控制和及时的更新。除此之外，我先前的博客http://fangfu.blog.51cto.com现在已不再使用，
+github项目托管功能十分的强大，同时每个项目主页功能，也十分适合作为个人的blog系统，所以我使用jeklly和disqus生成blog个人博客，同时也方便版本控制和及时的更新。除此之外，我先前的博客http://fangfu.blog.51cto.com现在已不再使用。
+
+<a href="http://www.cnblogs.com/fangfu">博客园博客</a> (由于本站的功能还不是很齐全，因此偶尔使用博客园的博客进行收藏分享)。
 
 ### About me ###{: class="vlist"}
 
