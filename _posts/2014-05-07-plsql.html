@@ -469,8 +469,8 @@ SELECT * FROM myview;
 <h5 id="sec-1-1-3-1">索引类型</h5>
 <div class="outline-text-5" id="text-1-1-3-1">
 
-<p>PostgreSQL 支持B-tree, Hash, GiST and GIN四种索引类型，每种索引都有不同的算法实现。实际上PostgreSQL 都是secondary indexes，就是不存储在表文件中，而使用单独的文件存储。
-详见：[[][PostgreSQL的四种索引类型]]
+<p>PostgreSQL 支持B-tree, Hash, GiST and GIN四种索引类型，每种索引都有不同的算法实现。实际上PostgreSQL 都是secondary indexes，就是不存储在表文件中，而使用单独的文件存储。缺省时，CREATE INDEX 命令将创建一个 B-tree 索引，它适合大多数情况。
+详见：<a href="http://blog.csdn.net/jdream314/article/details/6770110">PostgreSQL的四种索引类型</a>
 </p>
 
 

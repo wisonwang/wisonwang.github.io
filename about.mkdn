@@ -5,7 +5,7 @@ title:  About
 
 ### This site ###{: class="vlist"}
 
-github项目托管功能十分的强大，同时每个项目主页功能，也十分适合作为个人的blog系统，所以我使用jeklly和disqus生成blog个人博客，同时也方便版本控制和更新。
+github项目托管功能十分的强大，同时每个项目主页功能，也十分适合作为个人的blog系统，所以我使用jeklly和disqus生成blog个人博客，同时也方便版本控制和及时的更新。除此之外，我先前的博客http://fangfu.blog.51cto.com现在已不再使用，
 
 ### About me ###{: class="vlist"}
 
@@ -20,14 +20,9 @@ authorized by any of the companies or institutions mentioned, nor is any
 affiliation implied. No responsibility is taken for the contents of
 external links.
 
-- [Grid Engine&reg;](http://gridengine.sunsource.net/) is a registered
-  trademark of [SUN microsystems](http://www.sun.com/)
-- [OpenFOAM&reg;](http://www.openfoam.com/) is a registered trademark
-  of [OpenCFD Ltd.](http://www.openfoam.com/about/)
-
 <small class="meta final">
 The site content is managed in a
-<a href="http://github.com/olesenm/olesenm.github.io">git repository</a>
+<a href="https://github.com/wisonwang/wisonwang.github.io">git repository</a>
 and published with <a href="http://jekyllrb.com">jekyll</a>.
 <br/>The site layout can be reused with (cc)
 <a href="http://creativecommons.org/licenses/by-sa/3.0/">some rights reserved</a>.
