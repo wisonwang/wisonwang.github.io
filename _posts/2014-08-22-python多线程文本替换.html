@@ -1,0 +1,209 @@
+---
+layout: post
+title: python 文本替换.
+excerpt: 养成每日三问的好习惯.
+tags: [ python 文本替换 多线程 map-reduce ]
+published: true
+---
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 python 实现多线程文本替换</a>
+<ul>
+<li><a href="#sec-1-1">1.1 功能简介</a></li>
+<li><a href="#sec-1-2">1.2 代码</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">python 实现多线程文本替换</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">功能简介</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>通过输入一个csv文件和一个文件路径，将根据csv文件中前两列数据对输入的文件路径下的特定后缀文件进行文本替换，替换方式正则表达式匹配方式，csv文件可以有多行替换项目，程序将使用多线程的方式处理各个文件，使用方法：
+</p>
+
+
+<pre class="src src-python">python testcsv.py ./temp.csv ./targetfiles/
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">代码</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+
+
+<pre class="src src-python"><span style="color: #465457; font-style: italic;">#</span><span style="color: #465457; font-style: italic;">!/usr/bin/env python</span>
+
+<span style="color: #66D9EF;">import</span> os
+<span style="color: #66D9EF;">import</span> os.path
+<span style="color: #66D9EF;">import</span> sys
+<span style="color: #66D9EF;">import</span> re
+<span style="color: #66D9EF;">import</span> shutil
+<span style="color: #66D9EF;">import</span> csv
+<span style="color: #66D9EF;">from</span> multiprocessing <span style="color: #66D9EF;">import</span> Pool <span style="color: #465457; font-style: italic;">#</span><span style="color: #465457; font-style: italic;">support muti thread map reduce function</span>
+
+
+<span style="color: #F92672;">specialChars</span> = [<span style="color: #E6DB74;">'.'</span>, <span style="color: #E6DB74;">'^'</span> , <span style="color: #E6DB74;">'$'</span>, <span style="color: #E6DB74;">'*'</span>, <span style="color: #E6DB74;">'+'</span>, <span style="color: #E6DB74;">'?'</span> ,<span style="color: #E6DB74;">'\\'</span>, <span style="color: #E6DB74;">'['</span>, <span style="color: #E6DB74;">']'</span>, <span style="color: #E6DB74;">'|'</span>, <span style="color: #E6DB74;">'('</span>, <span style="color: #E6DB74;">')'</span> ]
+
+<span style="color: #F92672;">g_max_thread_pool_size</span> = 30<span style="color: #465457; font-style: italic;">#</span><span style="color: #465457; font-style: italic;">max thread pool size</span>
+
+<span style="color: #66D9EF;">def</span> <span style="color: #F92672; font-style: italic;">dealSpecialChars</span>(<span style="color: #A6E22E;">str</span>):
+    <span style="color: #F92672;">s</span> = <span style="color: #E6DB74;">''</span>
+    <span style="color: #66D9EF;">for</span> c <span style="color: #66D9EF;">in</span> <span style="color: #A6E22E;">str</span>:
+        <span style="color: #66D9EF;">if</span> c <span style="color: #66D9EF;">in</span> specialChars:
+            <span style="color: #F92672;">s</span> = s + (<span style="color: #E6DB74;">'['</span> + c + <span style="color: #E6DB74;">']'</span>)
+        <span style="color: #66D9EF;">else</span>:
+            <span style="color: #F92672;">s</span> = s+c
+    <span style="color: #66D9EF;">return</span> s
+
+<span style="color: #66D9EF;">def</span> <span style="color: #F92672; font-style: italic;">readDictsFromCsv</span>(filePath):
+    <span style="color: #465457; font-style: italic;">#</span><span style="color: #465457; font-style: italic;">print filePath</span>
+    <span style="color: #F92672;">dicts</span> = <span style="color: #A6E22E;">dict</span>()
+    <span style="color: #66D9EF;">with</span> <span style="color: #A6E22E;">open</span>(filePath, <span style="color: #E6DB74;">'rb'</span>) <span style="color: #66D9EF;">as</span> csvfile:
+        <span style="color: #F92672;">dictsReader</span> = csv.DictReader(csvfile, fieldnames=[<span style="color: #E6DB74;">'srcName'</span>, <span style="color: #E6DB74;">'newName'</span>], restkey=<span style="color: #AE81FF;">None</span>, delimiter=<span style="color: #E6DB74;">','</span>, quotechar=<span style="color: #E6DB74;">'|'</span>)
+        <span style="color: #66D9EF;">for</span> d <span style="color: #66D9EF;">in</span> dictsReader:
+            <span style="color: #465457; font-style: italic;">#</span><span style="color: #465457; font-style: italic;">dicts[dealSpecialChars(d['srcName'])] = d['newName']</span>
+            dicts[d[<span style="color: #E6DB74;">'srcName'</span>]] = d[<span style="color: #E6DB74;">'newName'</span>]
+    <span style="color: #66D9EF;">return</span> dicts
+
+<span style="color: #F92672;">BinaryExtList</span> = [<span style="color: #E6DB74;">'.bmp'</span>, <span style="color: #E6DB74;">'.avi'</span>, <span style="color: #E6DB74;">'.res'</span>, <span style="color: #E6DB74;">'.xls'</span>, <span style="color: #E6DB74;">'.doc'</span>, <span style="color: #E6DB74;">'.dll'</span>, <span style="color: #E6DB74;">'.lib'</span>, <span style="color: #E6DB74;">'.bpl'</span>, <span style="color: #E6DB74;">'.exe'</span>, <span style="color: #E6DB74;">'.chm'</span>]
+
+<span style="color: #F92672;">replaceDicts</span> = {r<span style="color: #E6DB74;">"RNC820V400R008C00SPC500"</span>: r<span style="color: #E6DB74;">"93"</span> }  
+
+<span style="color: #66D9EF;">def</span> <span style="color: #F92672; font-style: italic;">ApplyReplace</span>(<span style="color: #A6E22E;">str</span>, keys, replaceDicts):
+    <span style="color: #F92672;">ret</span> = <span style="color: #A6E22E;">str</span>    
+    <span style="color: #66D9EF;">for</span> pattern <span style="color: #66D9EF;">in</span> keys:
+        <span style="color: #66D9EF;">try</span>:
+            <span style="color: #F92672;">ret</span> = re.sub(pattern, replaceDicts[pattern], ret)
+        <span style="color: #66D9EF;">except</span>:
+            <span style="color: #66D9EF;">print</span> <span style="color: #E6DB74;">"Unexpected error ApplyReplace(str, keys, replaceDicts):"</span>,<span style="color: #A6E22E;">str</span>, 
+        <span style="color: #66D9EF;">finally</span>:
+            <span style="color: #66D9EF;">print</span>  <span style="color: #A6E22E;">str</span>, ret
+    <span style="color: #66D9EF;">return</span> ret
+
+<span style="color: #66D9EF;">def</span> <span style="color: #F92672; font-style: italic;">NeedReplace</span>(<span style="color: #A6E22E;">str</span>, keys):
+    <span style="color: #66D9EF;">for</span> pattern <span style="color: #66D9EF;">in</span> keys:
+        <span style="color: #465457; font-style: italic;">#</span><span style="color: #465457; font-style: italic;">print pattern, str</span>
+        <span style="color: #66D9EF;">try</span>:
+            <span style="color: #66D9EF;">if</span> re.search(pattern, <span style="color: #A6E22E;">str</span>):
+                <span style="color: #66D9EF;">return</span> <span style="color: #AE81FF;">True</span>
+        <span style="color: #66D9EF;">except</span>:
+            <span style="color: #66D9EF;">print</span> <span style="color: #E6DB74;">"Unexpected error NeedReplace(str, keys):"</span>,<span style="color: #A6E22E;">str</span>, <span style="color: #E6DB74;">':'</span>
+    <span style="color: #66D9EF;">return</span> <span style="color: #AE81FF;">False</span>
+
+
+<span style="color: #F92672;">defaultExtList</span> = [<span style="color: #E6DB74;">'.txt'</span>, <span style="color: #E6DB74;">'.xml'</span>]  
+<span style="color: #66D9EF;">def</span> <span style="color: #F92672; font-style: italic;">findFile</span>(srcDir, <span style="color: #A6E22E;">filter</span> = <span style="color: #AE81FF;">None</span>):
+    <span style="color: #66D9EF;">if</span>(<span style="color: #A6E22E;">filter</span> == <span style="color: #AE81FF;">None</span>):
+        <span style="color: #A6E22E;">filter</span> = defaultExtList
+    <span style="color: #F92672;">filelist</span> = []
+    <span style="color: #66D9EF;">for</span> name <span style="color: #66D9EF;">in</span> os.listdir(srcDir):
+        <span style="color: #F92672;">fullPath</span> = srcPath + <span style="color: #E6DB74;">'\\'</span> + name
+        <span style="color: #66D9EF;">if</span> os.path.isdir(fullPath):
+            filelist.append(findFile(fullPath))
+        <span style="color: #66D9EF;">else</span>:
+            <span style="color: #66D9EF;">if</span> os.path.splitext(fullPath)[1].lower() <span style="color: #66D9EF;">in</span> <span style="color: #A6E22E;">filter</span>:
+                filelist.append(fullPath)
+
+    <span style="color: #66D9EF;">return</span> filelist
+
+
+<span style="color: #66D9EF;">def</span> <span style="color: #F92672; font-style: italic;">ReplaceAllStrInFile</span>(<span style="color: #A6E22E;">file</span>, dicts, keys, <span style="color: #A6E22E;">filter</span> = defaultExtList):
+    <span style="color: #66D9EF;">print</span> <span style="color: #E6DB74;">'ReplaceAllStrInFile:file-'</span>,<span style="color: #A6E22E;">file</span>, <span style="color: #E6DB74;">'begin!'</span>
+
+    <span style="color: #66D9EF;">for</span> key <span style="color: #66D9EF;">in</span> keys:
+        <span style="color: #66D9EF;">print</span> key, dicts[key]<span style="color: #465457; font-style: italic;">#</span><span style="color: #465457; font-style: italic;">for test</span>
+    <span style="color: #F92672;">fullPath</span> = <span style="color: #A6E22E;">file</span>
+    <span style="color: #66D9EF;">if</span> os.path.splitext(fullPath)[1].lower() <span style="color: #66D9EF;">not</span> <span style="color: #66D9EF;">in</span> <span style="color: #A6E22E;">filter</span>:
+        <span style="color: #66D9EF;">return</span>
+    <span style="color: #465457; font-style: italic;">#</span><span style="color: #465457; font-style: italic;">print 'convert file:', fullPath</span>
+    <span style="color: #66D9EF;">try</span>:
+        <span style="color: #F92672;">srcFile</span> = <span style="color: #A6E22E;">open</span>(fullPath, <span style="color: #E6DB74;">'r'</span>)
+        <span style="color: #F92672;">tempfile</span> = fullPath+<span style="color: #E6DB74;">'temp'</span>
+        <span style="color: #F92672;">destFile</span> = <span style="color: #A6E22E;">open</span>(tempfile, <span style="color: #E6DB74;">'w'</span>)
+        <span style="color: #F92672;">needRewrite</span> = <span style="color: #AE81FF;">False</span>
+        <span style="color: #66D9EF;">try</span>:
+            <span style="color: #66D9EF;">for</span> line <span style="color: #66D9EF;">in</span> srcFile:
+                <span style="color: #66D9EF;">if</span> NeedReplace(line, keys):
+                    <span style="color: #F92672;">line</span> = ApplyReplace(line, keys, dicts)
+                destFile.write(line)
+            srcFile.close()
+            destFile.close()
+            os.remove(fullPath)
+            os.rename(tempfile, fullPath)
+            <span style="color: #66D9EF;">print</span> <span style="color: #E6DB74;">'convert file:'</span>, fullPath, <span style="color: #E6DB74;">'success!'</span>
+        <span style="color: #66D9EF;">except</span>:
+            <span style="color: #66D9EF;">print</span> <span style="color: #E6DB74;">'convert file:'</span>, fullPath, <span style="color: #E6DB74;">'failed!'</span>
+            srcFile.close()
+            destFile.close()
+            os.remove(tempfile)
+
+    <span style="color: #66D9EF;">except</span>:
+        <span style="color: #66D9EF;">print</span> <span style="color: #E6DB74;">'convert file:'</span>, fullPath, <span style="color: #E6DB74;">'failed!'</span>
+        <span style="color: #66D9EF;">return</span> <span style="color: #AE81FF;">False</span>
+    <span style="color: #66D9EF;">return</span> <span style="color: #AE81FF;">True</span>
+
+<span style="color: #66D9EF;">def</span> <span style="color: #F92672; font-style: italic;">ReplaceAllStrInFileByRows</span>(srcfile, csvfilePath, maxRow = 10):
+    <span style="color: #66D9EF;">if</span> maxRow &lt; 1:
+        <span style="color: #66D9EF;">return</span> false
+    <span style="color: #F92672;">dicts</span> = readDictsFromCsv(csvfilePath)
+    <span style="color: #F92672;">keys</span>=(<span style="color: #A6E22E;">sorted</span>(dicts.keys(), key=<span style="color: #66D9EF;">lambda</span> key: <span style="color: #A6E22E;">len</span>(key), reverse=<span style="color: #AE81FF;">True</span>))<span style="color: #465457; font-style: italic;">#</span><span style="color: #465457; font-style: italic;">reverse keys by elements' length</span>
+    <span style="color: #F92672;">length</span> = <span style="color: #A6E22E;">len</span>(keys)
+    <span style="color: #F92672;">rows</span> = <span style="color: #A6E22E;">range</span>(length/maxRow + 1)
+    <span style="color: #66D9EF;">for</span> i <span style="color: #66D9EF;">in</span> rows:
+        ReplaceAllStrInFile(srcfile, dicts, keys[(i*maxRow):(i+1)*maxRow])
+        <span style="color: #66D9EF;">print</span> <span style="color: #E6DB74;">' '</span>.join(keys[(i*maxRow):(i+1)*maxRow])
+
+<span style="color: #66D9EF;">def</span> <span style="color: #F92672; font-style: italic;">f</span>(x):
+    <span style="color: #66D9EF;">return</span> ReplaceAllStrInFileByRows(x[0], x[1])
+
+<span style="color: #66D9EF;">if</span> <span style="color: #A6E22E;">__name__</span> == <span style="color: #E6DB74;">"__main__"</span>:
+    args = sys.argv    
+    <span style="color: #66D9EF;">if</span> <span style="color: #A6E22E;">len</span>(args) &lt;&gt; 3:
+        <span style="color: #66D9EF;">print</span> <span style="color: #E6DB74;">'''</span>
+<span style="color: #E6DB74;">        usage: python testcsv.py D:\ss\temp.csv D:\ss\test\</span>
+<span style="color: #E6DB74;">        '''</span>
+        <span style="color: #AE81FF;">exit</span>    
+    csvfilePath = args[1]
+    srcPath = args[2]
+
+    filelist = findFile(srcPath)
+    <span style="color: #465457; font-style: italic;">#</span><span style="color: #465457; font-style: italic;">print filelist, len(filelist)</span>
+
+    dataItems = []
+    <span style="color: #66D9EF;">for</span> <span style="color: #A6E22E;">file</span> <span style="color: #66D9EF;">in</span> filelist:
+        dataItems.append([<span style="color: #A6E22E;">file</span>, csvfilePath])
+    <span style="color: #465457; font-style: italic;">#</span><span style="color: #465457; font-style: italic;">ReplaceAllStrInFileByRows(dataItems[0][0], dataItems[0][1])    </span>
+    pool_size = g_max_thread_pool_size
+    <span style="color: #66D9EF;">if</span> <span style="color: #A6E22E;">len</span>(filelist) &lt; g_max_thread_pool_size:
+        pool_size = <span style="color: #A6E22E;">len</span>(filelist)
+    pool = Pool(processes=pool_size)<span style="color: #465457; font-style: italic;">#</span><span style="color: #465457; font-style: italic;">muti thread</span>
+
+    pool.<span style="color: #A6E22E;">map</span>(f, dataItems)
+    <span style="color: #465457; font-style: italic;">#</span><span style="color: #465457; font-style: italic;">print result.get(timeout=10)</span>
+    <span style="color: #465457; font-style: italic;">#</span><span style="color: #465457; font-style: italic;">pool.map</span>
+</pre>
+
+</div>
+</div>
+</div>
