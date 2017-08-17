@@ -1,0 +1,5 @@
+/_site/
+cache
+*.bak
+.doit.db
+
