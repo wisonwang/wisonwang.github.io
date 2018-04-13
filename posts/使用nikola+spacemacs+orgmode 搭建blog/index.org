@@ -10,5 +10,10 @@
 #+END_COMMENT
 
 
-* 
+* 使用nikola 搭建blog
+
+[[https://qiwulun.github.io/posts/%25E7%2594%25A8%2520Nikola%2520%25E5%2586%2599%25E5%258D%259A%25E5%25AE%25A2.html][使用nikola搭建blog]]
+
+
  
+
