@@ -1366,4 +1366,4 @@ GLOBAL_CONTEXT = {}
 # GLOBAL_CONTEXT as parameter when the template is about to be
 # rendered
 GLOBAL_CONTEXT_FILLER = []
-ONE_FILE_POSTS = False
+ONE_FILE_POSTS = True
