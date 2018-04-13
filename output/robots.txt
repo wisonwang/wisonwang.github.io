@@ -1,4 +1,0 @@
-Sitemap: http://wisonwang.github.io/sitemapindex.xml
-
-User-Agent: *
-Host: wisonwang.github.io
