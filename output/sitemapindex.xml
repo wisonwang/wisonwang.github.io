@@ -6,19 +6,23 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
+  <loc>https://wisonwang.github.io/categories/cat_nikola-spacemacs-emacs-blog.xml</loc>
+  <lastmod>2018-04-13T15:34:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://wisonwang.github.io/galleries/demo/rss.xml</loc>
-  <lastmod>2018-04-13T09:56:00Z</lastmod>
+  <lastmod>2018-04-13T00:48:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/galleries/rss.xml</loc>
-  <lastmod>2018-04-13T09:56:00Z</lastmod>
+  <lastmod>2018-04-13T00:48:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/rss.xml</loc>
-  <lastmod>2018-04-13T09:56:00Z</lastmod>
+  <lastmod>2018-04-13T15:34:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/sitemap.xml</loc>
-  <lastmod>2018-04-13T09:56:00Z</lastmod>
+  <lastmod>2018-04-13T15:34:00Z</lastmod>
  </sitemap>
 </sitemapindex>
