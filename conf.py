@@ -135,16 +135,20 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-        ("/archive.html", "文章存档"),
-        ("/categories/", "标签"),
-        ("/pages/about", "About"),
-        ("/rss.xml", "RSS 源"),)
+         ('/index.html', 'Home', 'icon-home'),
+        ("/archive.html", "文章存档", 'icon-archive'),
+        ("/categories/", "标签", 'icon-tags'),
+        ("/pages/about", "About", 'icon-about'),
+        ("/rss.xml", "RSS 源", 'icon-rss'),
+        ('https://twitter.com/wisonwang', 'My Twitter', 'icon-twitter'),
+        ('https://github.com/wisonwang', 'My Github', 'icon-github'),
+    )
 }
 
 # Name of the theme to use.
 # THEME = "bootstrap3"
-THEME="srcco.de"
-
+# THEME="srcco.de"
+THEME = "zen-ipython"
 # Primary color of your theme. This will be used to customize your theme and
 # auto-generate related colors in POSTS_SECTION_COLORS. Must be a HEX value.
 THEME_COLOR = '#5670d4'
@@ -1367,3 +1371,4 @@ GLOBAL_CONTEXT = {}
 # rendered
 GLOBAL_CONTEXT_FILLER = []
 ONE_FILE_POSTS = True
+USE_BUNDLES = True
