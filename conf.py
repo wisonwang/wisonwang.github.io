@@ -21,12 +21,12 @@ BLOG_AUTHOR = "vincent wang"  # (translatable)
 BLOG_TITLE = "vincent blog"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
-SITE_URL = "https://example.com/"
+SITE_URL = "https://wisonwang.github.io"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "https://example.com/"
 BLOG_EMAIL = "fangfu2012@gmail.com"
-BLOG_DESCRIPTION = "vincent blog"  # (translatable)
+BLOG_DESCRIPTION = "python, go, ML, bigdata"  # (translatable)
 
 # Nikola is multilingual!
 #
@@ -137,8 +137,8 @@ NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/archive.html", "文章存档"),
         ("/categories/", "标签"),
-        ("/rss.xml", "RSS 源"),
-    ),
+        ("/about/index.html", "About"),
+        ("/rss.xml", "RSS 源"),)
 }
 
 # Name of the theme to use.
@@ -197,8 +197,8 @@ PAGES = (
 )
 
 # Add org files to your POSTS, PAGES
-POSTS = POSTS + (("posts/*.org", "posts", "post.tmpl"),)
-PAGES = PAGES + (("stories/*.org", "stories", "story.tmpl"),)
+POSTS = (("posts/*.org", "posts", "post.tmpl"),) + POSTS
+PAGES = (("stories/*.org", "stories", "story.tmpl"),) + PAGES
 
 # Below this point, everything is optional
 
@@ -525,7 +525,7 @@ HIDDEN_CATEGORIES = []
 
 # If ENABLE_AUTHOR_PAGES is set to True and there is more than one
 # author, author pages are generated.
-# ENABLE_AUTHOR_PAGES = True
+ENABLE_AUTHOR_PAGES = False
 
 # Path to author pages. Final locations are:
 # output / TRANSLATION[lang] / AUTHOR_PATH / index.html (list of authors)
@@ -991,7 +991,7 @@ COMMENT_SYSTEM = "disqus"
 # depends on what comment system you use. The default is
 # "nikolademo" which is a test account for Disqus. More information
 # is in the manual.
-COMMENT_SYSTEM_ID = "disqusid"
+COMMENT_SYSTEM_ID = "nikolademo"
 
 # Create index.html for page folders?
 # WARNING: if a page would conflict with the index file (usually
@@ -1366,3 +1366,4 @@ GLOBAL_CONTEXT = {}
 # GLOBAL_CONTEXT as parameter when the template is about to be
 # rendered
 GLOBAL_CONTEXT_FILLER = []
+ONE_FILE_POSTS = False

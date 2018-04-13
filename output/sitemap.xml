@@ -6,167 +6,183 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
-  <loc>https://example.com/</loc>
-  <lastmod>2018-04-12T23:46:00Z</lastmod>
+  <loc>https://wisonwang.github.io/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/2012/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/2012/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/2018/</loc>
-  <lastmod>2018-04-09T15:12:00Z</lastmod>
+  <loc>https://wisonwang.github.io/2018/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/archive.html</loc>
-  <lastmod>2018-04-11T00:50:00Z</lastmod>
+  <loc>https://wisonwang.github.io/archive.html</loc>
+  <lastmod>2018-04-13T00:30:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/categories/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/categories/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/categories/blog/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/categories/blog/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/categories/cat_nikola/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/categories/cat_nikola/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/categories/demo/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/categories/demo/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/categories/nikola/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/categories/nikola/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/categories/python/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/categories/python/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/galleries/</loc>
-  <lastmod>2018-04-09T14:39:00Z</lastmod>
+  <loc>https://wisonwang.github.io/galleries/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/galleries/demo/</loc>
-  <lastmod>2018-04-09T14:39:00Z</lastmod>
+  <loc>https://wisonwang.github.io/galleries/demo/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/listings/</loc>
-  <lastmod>2018-04-09T14:39:00Z</lastmod>
+  <loc>https://wisonwang.github.io/listings/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/listings/__pycache__/</loc>
-  <lastmod>2018-04-09T14:39:00Z</lastmod>
+  <loc>https://wisonwang.github.io/listings/__pycache__/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/listings/hello.py.html</loc>
-  <lastmod>2018-04-09T14:45:00Z</lastmod>
+  <loc>https://wisonwang.github.io/listings/hello.py.html</loc>
+  <lastmod>2018-04-13T00:32:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/about-nikola/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/about-nikola/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/bootstrap-demo/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/bootstrap-demo/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/charts/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/charts/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/creating-a-theme/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/creating-a-theme/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/dr-nikolas-vendetta/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/dr-nikolas-vendetta/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/extending/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/extending/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/handbook/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/handbook/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/internals/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/internals/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/listings-demo/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/listings-demo/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/path-handlers/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/path-handlers/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/quickref/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/quickref/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/quickstart/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/quickstart/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/slides-demo/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/slides-demo/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/social_buttons/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/social_buttons/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/test_page/</loc>
-  <lastmod>2018-04-12T23:46:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/test_page/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/pages/theming/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/pages/theming/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/posts/aaa/</loc>
-  <lastmod>2018-04-09T15:15:00Z</lastmod>
+  <loc>https://wisonwang.github.io/posts/aa/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/posts/jjjlllll/</loc>
-  <lastmod>2018-04-09T15:12:00Z</lastmod>
+  <loc>https://wisonwang.github.io/posts/aaa/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/posts/jljflals/</loc>
-  <lastmod>2018-04-12T23:46:00Z</lastmod>
+  <loc>https://wisonwang.github.io/posts/jjjlllll/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/posts/nlllaaa/</loc>
-  <lastmod>2018-04-09T15:12:00Z</lastmod>
+  <loc>https://wisonwang.github.io/posts/jljflals/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/posts/nnnnn/</loc>
-  <lastmod>2018-04-09T15:12:00Z</lastmod>
+  <loc>https://wisonwang.github.io/posts/nlllaaa/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/posts/test-org/</loc>
-  <lastmod>2018-04-12T23:46:00Z</lastmod>
+  <loc>https://wisonwang.github.io/posts/nnljljlj/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/posts/test/</loc>
-  <lastmod>2018-04-09T15:12:00Z</lastmod>
+  <loc>https://wisonwang.github.io/posts/nnnnn/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/posts/ttt/</loc>
-  <lastmod>2018-04-12T23:46:00Z</lastmod>
+  <loc>https://wisonwang.github.io/posts/shi-yong-nikola%2Bspacemacsda-jian-blog/</loc>
+  <lastmod>2018-04-13T00:32:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/posts/welcome-to-nikola/</loc>
-  <lastmod>2018-04-09T14:40:00Z</lastmod>
+  <loc>https://wisonwang.github.io/posts/test-org/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/stories/test_page_org/</loc>
-  <lastmod>2018-04-12T23:46:00Z</lastmod>
+  <loc>https://wisonwang.github.io/posts/test/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/posts/ttt/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/posts/welcome-to-nikola/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/stories/about/</loc>
+  <lastmod>2018-04-13T00:32:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/stories/test_page_org/</loc>
+  <lastmod>2018-04-12T23:59:00Z</lastmod>
  </url>
 </urlset>
