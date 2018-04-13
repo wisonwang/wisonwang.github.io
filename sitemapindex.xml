@@ -6,23 +6,47 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
+  <loc>https://wisonwang.github.io/categories/blog.xml</loc>
+  <lastmod>2018-04-13T17:01:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://wisonwang.github.io/categories/cat_nikola-spacemacs-emacs-blog.xml</loc>
-  <lastmod>2018-04-13T15:39:00Z</lastmod>
+  <lastmod>2018-04-13T16:51:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://wisonwang.github.io/categories/cat_nikola.xml</loc>
+  <lastmod>2018-04-13T17:01:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://wisonwang.github.io/categories/emacs.xml</loc>
+  <lastmod>2018-04-13T17:01:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://wisonwang.github.io/categories/nikola-spacemacs-emacs-blog.xml</loc>
+  <lastmod>2018-04-13T16:57:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://wisonwang.github.io/categories/nikola.xml</loc>
+  <lastmod>2018-04-13T17:01:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://wisonwang.github.io/categories/spacemacs.xml</loc>
+  <lastmod>2018-04-13T17:01:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/galleries/demo/rss.xml</loc>
-  <lastmod>2018-04-13T00:48:00Z</lastmod>
+  <lastmod>2018-04-13T16:47:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/galleries/rss.xml</loc>
-  <lastmod>2018-04-13T00:48:00Z</lastmod>
+  <lastmod>2018-04-13T16:47:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/rss.xml</loc>
-  <lastmod>2018-04-13T15:39:00Z</lastmod>
+  <lastmod>2018-04-13T17:03:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/sitemap.xml</loc>
-  <lastmod>2018-04-13T15:39:00Z</lastmod>
+  <lastmod>2018-04-13T17:03:00Z</lastmod>
  </sitemap>
 </sitemapindex>
