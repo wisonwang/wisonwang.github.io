@@ -21,10 +21,10 @@ BLOG_AUTHOR = "vincent wang"  # (translatable)
 BLOG_TITLE = "vincent blog"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
-SITE_URL = "https://wisonwang.github.io"
+SITE_URL = "https://wisonwang.github.io/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
-# BASE_URL = "https://example.com/"
+BASE_URL = SITE_URL
 BLOG_EMAIL = "fangfu2012@gmail.com"
 BLOG_DESCRIPTION = "python, go, ML, bigdata"  # (translatable)
 
@@ -198,7 +198,7 @@ PAGES = (
 
 # Add org files to your POSTS, PAGES
 POSTS = (("posts/*.org", "posts", "post.tmpl"),) + POSTS
-PAGES = (("stories/*.org", "stories", "story.tmpl"),) + PAGES
+PAGES = (("pages/*.org", "pages", "page.tmpl"),) + PAGES
 
 # Below this point, everything is optional
 
