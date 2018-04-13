@@ -137,7 +137,7 @@ NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/archive.html", "文章存档"),
         ("/categories/", "标签"),
-        ("/about/index.html", "About"),
+        ("/pages/about", "About"),
         ("/rss.xml", "RSS 源"),)
 }
 
