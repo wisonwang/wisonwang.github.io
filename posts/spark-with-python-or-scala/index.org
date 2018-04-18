@@ -1,0 +1,41 @@
+#+BEGIN_COMMENT
+.. title: 使用python还是scala开发spark程序？
+.. slug: spark-with-python-or-scala
+.. date: 2018-04-17 16:16:02 UTC+08:00
+.. tags: spark,python,scala,pyspark
+.. category: spark
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+
+* scala和python开发spark程序各自优点
+
+** python优点
+   
+1. 动态语言开发效率高，工程难度低
+2. 算法类库丰富，易于移移植现有算法到spark平台
+3. 工具支持丰富，包括jupyter notebook之类的工具，能够做到程序结果可视化，方便调优
+
+** python缺点   
+
+1. 性能差： 动态语言载加上通过py4j来和spark交互的，在计算量很大的情况下慢的可怕；
+2. 因为不是通过py4j调用，不能像scala那样和java可以直接调用，导致不能直接调用java或者scala类库
+
+   
+* python 开发spark程序的一些问题
+
+** python 依赖环境分发
+   用 Java 和 Scala 访问 Spark 提供了许多优点 : 因为 Spark 它自己运行在 JVM 中，运行在 JVM 内部是平台无关的，独立的代码包和它打入到 JAR 文件中的依赖，以及更高的性能。如果您使用 Spark Python API 将会失去这些优势。
+
+   管理依赖并让它们可用于群集上的 Python Job 是很难的。为了确定哪些依赖在群集上是需要的，您必须了解运行在分布式 群集 中的 Spark executor 进程中的 Spark 应用程序的代码。如果您定义的 Python 转换使用的任何的第三方库，比如 NumPy 或者 nltk，当它们运行在远程的 executor 上时 Spark executor 需要访问这些库。
+
+   主要可以通过一下方式，推荐第四种方法：
+   
+   1. 独立的依赖关系
+   2. 复杂的依赖关系
+   3. 分发 Egg 文件的限制
+   4. 设置 Python 路径(推荐)
+   [[http://cwiki.apachecn.org/pages/viewpage.action?pageId=2886878][详细参考：运行 Spark Python 应用]]
+
