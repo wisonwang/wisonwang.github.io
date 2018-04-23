@@ -10,10 +10,14 @@
 #+END_COMMENT
 
 
-* 使用nikola 搭建blog
+* 使用nikola+spacemacs搭建blog
 
+{{{TEASER_END}}}
+
+** 参考文档
 [[https://qiwulun.github.io/posts/%E7%94%A8%20Nikola%20%E5%86%99%E5%8D%9A%E5%AE%A2.html][使用nikola搭建blog]]
 
+[[https://lengyueyang.github.io/Life/bo-ke-qian-yi-za-ji-cong-hexodao-nikola.html][博客迁移杂记-从 Hexo 到 Nikola]]
 
 ** nikola 详细&主题 
 [[https://getnikola.com/getting-started.html][nikola start]]
@@ -21,3 +25,5 @@
 ** zen-ipython 主题
 
 [[http://www.damian.oquanta.info/posts/nikolas-zen-theme-finally-released.html][zen-ipython主题介绍]]
+
+
