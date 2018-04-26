@@ -9,6 +9,8 @@
 .. type: text
 #+END_COMMENT
 
+spark 官方提供了python,java, scala,R 三种语言的封装，scala和java都建立jvm可以相互调用，R一般人用的不多，如下比较一下python
+和scala开发spark程序的优缺点。
 
 * scala和python开发spark程序各自优点
 
@@ -21,7 +23,7 @@
 ** pyspark缺点   
 
 1. 性能差： 动态语言载加上通过py4j来和spark交互的，在计算量很大的情况下慢的可怕；
-2. 不能使用全部spark api： 因为不是通过py4j调用，不能像scala那样和java可以直接调用，导致不能直接调用java或者scala类库。
+2. 不能使用全部spark api： 因为是通过py4j调用，需要必要的封装（pyspark），不能像scala那样和java可以直接调用， 导致不能直接调用java或者scala类库。
 
 {{{TEASER_END}}}
 
