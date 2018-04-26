@@ -1,0 +1,19 @@
+#+BEGIN_COMMENT
+.. title: scala_maven_to_sbt
+.. slug: scala_maven_to_sbt
+.. date: 2018-04-23 11:00:59 UTC+08:00
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+* scala 工程使用sbt还是maven
+[[http://www.hammerlab.org/2017/04/06/scala-build-tools/#sbt][
+scala by maven or sbt]]
+
+* 转换maven为sbt
+网上有可以直接使用maven pom.xml文件的，sbt插件。新版本sbt可能会提示找不到仓库，可以尝试本地编译。
+[[https://github.com/shivawu/sbt-maven-plugin][maven转sbt插件]]
+
