@@ -15,7 +15,7 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/archive.html</loc>
-  <lastmod>2018-04-23T00:22:00Z</lastmod>
+  <lastmod>2018-04-26T12:50:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/</loc>
@@ -148,6 +148,14 @@
  <url>
   <loc>https://wisonwang.github.io/pages/theming/</loc>
   <lastmod>2018-04-23T00:17:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/posts/scala_maven_to_sbt/</loc>
+  <lastmod>2018-04-26T12:50:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/posts/scala_sbt_on_spacemacs/</loc>
+  <lastmod>2018-04-26T12:50:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/posts/spark-with-python-or-scala/</loc>
