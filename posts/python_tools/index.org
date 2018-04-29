@@ -1,0 +1,22 @@
+#+BEGIN_COMMENT
+.. title: python_tools
+.. slug: python_tools
+.. date: 2018-04-28 12:30:35 UTC+08:00
+.. tags: draft
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+* 编辑开发工具
+
+* 虚拟机
+
+
+* 文档工具
+
+** sphinx
+  
+** pydoc
+
