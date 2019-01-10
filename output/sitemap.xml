@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/archive.html</loc>
-  <lastmod>2019-01-10T14:38:00Z</lastmod>
+  <lastmod>2019-01-10T14:56:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/</loc>
@@ -79,18 +79,10 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/listings/hello.py.html</loc>
-  <lastmod>2019-01-10T14:38:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/pages/about-nikola/</loc>
-  <lastmod>2018-04-23T00:17:00Z</lastmod>
+  <lastmod>2019-01-10T14:56:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/pages/about/</loc>
-  <lastmod>2018-04-23T00:17:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/pages/bootstrap-demo/</loc>
   <lastmod>2018-04-23T00:17:00Z</lastmod>
  </url>
  <url>
@@ -98,27 +90,11 @@
   <lastmod>2018-04-23T00:17:00Z</lastmod>
  </url>
  <url>
-  <loc>https://wisonwang.github.io/pages/creating-a-theme/</loc>
-  <lastmod>2018-04-23T00:17:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/pages/dr-nikolas-vendetta/</loc>
-  <lastmod>2018-04-23T00:17:00Z</lastmod>
- </url>
- <url>
   <loc>https://wisonwang.github.io/pages/extending/</loc>
   <lastmod>2018-04-23T00:17:00Z</lastmod>
  </url>
  <url>
-  <loc>https://wisonwang.github.io/pages/handbook/</loc>
-  <lastmod>2018-04-23T00:17:00Z</lastmod>
- </url>
- <url>
   <loc>https://wisonwang.github.io/pages/internals/</loc>
-  <lastmod>2018-04-23T00:17:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/pages/listings-demo/</loc>
   <lastmod>2018-04-23T00:17:00Z</lastmod>
  </url>
  <url>
@@ -130,32 +106,8 @@
   <lastmod>2018-04-23T00:17:00Z</lastmod>
  </url>
  <url>
-  <loc>https://wisonwang.github.io/pages/quickref/</loc>
-  <lastmod>2018-04-23T00:17:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/pages/quickstart/</loc>
-  <lastmod>2018-04-23T00:17:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/pages/slides-demo/</loc>
-  <lastmod>2018-04-23T00:17:00Z</lastmod>
- </url>
- <url>
   <loc>https://wisonwang.github.io/pages/social_buttons/</loc>
   <lastmod>2018-04-23T00:17:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/pages/test_page/</loc>
-  <lastmod>2018-04-23T00:17:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/pages/theming/</loc>
-  <lastmod>2018-04-23T00:17:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/posts/golang_cluster/</loc>
-  <lastmod>2018-05-15T04:28:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/posts/scala_maven_to_sbt/</loc>
