@@ -1,0 +1,28 @@
+#+BEGIN_COMMENT
+.. title: python 入门
+.. slug: python 入门
+.. date: 2018-12-16 22:00:06 UTC+08:00
+.. tags: draft
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+* python简介
+
+** 动态脚本语言，支持交互式开发效率高
+** 语法简洁，支持多种编程模式（函数式编程，面向对象编程）
+** 类库强大，可以作为胶水和很多种类语言交互，能够完成很多令人惊叹的功能（桌面开发，自动化程序开发，服务器程序开发，作为胶水语言等任务）
+** python的现状-python2.x python3.x,目前python2.x 和python3.x语法上并不完全兼容，两者都有大量的用户，推荐优先采用python3.x的语法，进行学习开发
+
+
+* 安装python
+
+PyCharm
+
+* 开发环境
+
+
+
+

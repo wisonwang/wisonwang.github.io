@@ -1,0 +1,18 @@
+#+BEGIN_COMMENT
+.. title: devops tools
+.. slug: devops,tools
+.. date: 2018-05-09 15:28:39 UTC+08:00
+.. tags: draft
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+* fabric
+
+* ansible
+
+* 监控
+** opentsdb
+** elk

@@ -6,31 +6,42 @@ article: http://ogp.me/ns/article#
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>scala_maven_to_sbt | vincent blog</title>
+<title>golang服务的集群方案 | vincent blog</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
-<link rel="canonical" href="https://wisonwang.github.io/posts/scala_maven_to_sbt/">
+<link rel="canonical" href="https://wisonwang.github.io/posts/golang%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88/">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
 <meta property="og:site_name" content="vincent blog">
-<meta property="og:title" content="scala_maven_to_sbt">
-<meta property="og:url" content="https://wisonwang.github.io/posts/scala_maven_to_sbt/">
-<meta property="og:description" content="scala 工程使用sbt还是maven
+<meta property="og:title" content="golang服务的集群方案">
+<meta property="og:url" content="https://wisonwang.github.io/posts/golang%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88/">
+<meta property="og:description" content="golang服务的集群方案
 
 
 
-scala by maven or sbt
+基于zookeeper
+
+
+手把手教你使用 Go 基于 zookeeper 编写服务发现
 
 
 
 
 
-转换maven为sbt
+consul 轻量级服务发现服务
 
 
-网上有可以直接使用maven pom.xml文件的，sbt插件。新版本sbt可能会提示找不到仓库，可以尝试本地编译。
-maven转sbt插件">
+consul 服务发现
+
+
+
+
+
+apollo配置中心
+
+
+[[https://github.com/ctripcorp/apollo][apollo配置中心]">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2018-04-23T11:00:59+08:00">
+<meta property="article:published_time" content="2018-05-10T16:36:25+08:00">
 </head>
 <body>
     <section class="social"><ul>
@@ -44,53 +55,57 @@ maven转sbt插件">
 
         </ul></section><section class="page-content"><div class="content" rel="main">
     <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">scala_maven_to_sbt</h1>
+        <h1 class="p-name entry-title" itemprop="headline name">golang服务的集群方案</h1>
 
         <div class="meta">
             <div class="authordate">
-                <time class="timeago" datetime="2018-04-23T11:00:59+08:00">2018-04-23 11:00</time>
+                <time class="timeago" datetime="2018-05-10T16:36:25+08:00">2018-05-10 16:36</time>
             
                       |  
-        <a href="index.org" id="sourcelink">源代码</a>
+        <a href="../golang%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88/index.org" id="sourcelink">源代码</a>
 
             </div>
             
         </div>
         <div class="body">
-            <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">scala 工程使用sbt还是maven</h2>
-<div class="outline-text-2" id="text-1">
+            <p>
+golang服务的集群方案
+</p>
+
+<div id="outline-container-org4a209c8" class="outline-2">
+<h2 id="org4a209c8">基于zookeeper</h2>
+<div class="outline-text-2" id="text-org4a209c8">
 <p>
-<a href="http://www.hammerlab.org/2017/04/06/scala-build-tools/#sbt">
-scala by maven or sbt</a>
+<a href="https://www.v2ex.com/t/440662">手把手教你使用 Go 基于 zookeeper 编写服务发现</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">转换maven为sbt</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orge1b920a" class="outline-2">
+<h2 id="orge1b920a">consul 轻量级服务发现服务</h2>
+<div class="outline-text-2" id="text-orge1b920a">
 <p>
-网上有可以直接使用maven pom.xml文件的，sbt插件。新版本sbt可能会提示找不到仓库，可以尝试本地编译。
-<a href="https://github.com/shivawu/sbt-maven-plugin">maven转sbt插件</a>
+<a href="https://www.consul.io/">consul 服务发现</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge4f24e7" class="outline-2">
+<h2 id="orge4f24e7">apollo配置中心</h2>
+<div class="outline-text-2" id="text-orge4f24e7">
+<p>
+[[<a href="https://github.com/ctripcorp/apollo">https://github.com/ctripcorp/apollo</a>][apollo配置中心]
 </p>
 </div>
 </div>
         </div>
-                <ul class="pager hidden-print">
-<li class="previous">
-                <a href="../spark-with-python-or-scala/" rel="prev" title="使用python还是scala开发spark程序？">前一篇</a>
-            </li>
-            <li class="next">
-                <a href="../scala_sbt_on_spacemacs/" rel="next" title="scala_sbt_on_spacemacs">后一篇</a>
-            </li>
-        </ul>
-<div id="disqus_thread"></div>
+        
+                            <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="nikolademo",
-            disqus_url="https://wisonwang.github.io/posts/scala_maven_to_sbt/",
-        disqus_title="scala_maven_to_sbt",
-        disqus_identifier="cache/posts/scala_maven_to_sbt.html",
+            disqus_url="https://wisonwang.github.io/posts/golang%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88/",
+        disqus_title="golang\u670d\u52a1\u7684\u96c6\u7fa4\u65b9\u6848",
+        disqus_identifier="cache/posts/golang_cluster.html",
         disqus_config = function () {
             this.language = "zh_cn";
         };

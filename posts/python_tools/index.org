@@ -12,6 +12,8 @@
 * 编辑开发工具
 
 * 虚拟机
+** pyevn + anaconda
+** virtualenv + virtualenvwrapper
 
 
 * 文档工具
