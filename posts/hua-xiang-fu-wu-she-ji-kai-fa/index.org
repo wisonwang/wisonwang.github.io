@@ -1,0 +1,40 @@
+#+BEGIN_COMMENT
+.. title: 画像服务设计开发
+.. slug: hua-xiang-fu-wu-she-ji-kai-fa
+.. date: 2019-10-14 10:04:28 UTC+08:00
+.. tags: draft
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+
+在推荐系统和广告系统中用户/物品画像都属于核心功能，要设计一个高性能可扩展的画像服务，要注意如下几个要点：
+
+1. 分布式服务，高性能，易于弹性伸缩
+
+2. 通信协议简单，易于扩展
+
+3. 分布式存储，支持内存（快速读）和磁盘（持久化）存储
+
+{{{TEASER_END}}}
+
+#+BEGIN_COMMENT
+
+{{{TEASER_END}}}
+
+#+END_COMMENT
+
+
+* 分布式服务架构设计
+  
+* 通信协议选择 
+
+* 存储设计
+
+
+[fn:1] [[https://db-engines.com/en/ranking][db-engine ranking]]
+
+
+

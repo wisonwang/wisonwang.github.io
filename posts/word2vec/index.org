@@ -1,13 +1,11 @@
-#+BEGIN_COMMENT
+#+begin_comment
 .. title: word2vec
 .. slug: word2vec
 .. date: 2018-04-13 17:55:51 UTC+08:00
 .. tags: draft
-.. category: 
-.. link: 
-.. description: 
 .. type: text
-#+END_COMMENT
+.. status: private
+#+end_comment
 
 
 在这里书写你的文章。

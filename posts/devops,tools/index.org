@@ -2,7 +2,7 @@
 .. title: devops tools
 .. slug: devops,tools
 .. date: 2018-05-09 15:28:39 UTC+08:00
-.. tags: draft
+.. tags: 
 .. category: 
 .. link: 
 .. description: 

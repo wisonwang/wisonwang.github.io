@@ -6,42 +6,46 @@ article: http://ogp.me/ns/article#
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>golang服务的集群方案 | vincent blog</title>
+<title>sklearn word2vec算法 | Vincent's Blog</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
-<link rel="canonical" href="https://wisonwang.github.io/posts/golang%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88/">
+<link rel="canonical" href="https://wisonwang.github.io/posts/sklearn-word2vecsuan-fa/">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
-<meta property="og:site_name" content="vincent blog">
-<meta property="og:title" content="golang服务的集群方案">
-<meta property="og:url" content="https://wisonwang.github.io/posts/golang%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88/">
-<meta property="og:description" content="golang服务的集群方案
+<meta property="og:site_name" content="Vincent's Blog">
+<meta property="og:title" content="sklearn word2vec算法">
+<meta property="og:url" content="https://wisonwang.github.io/posts/sklearn-word2vecsuan-fa/">
+<meta property="og:description" content="In [1]:
 
+    
+import sklearn
 
+import sys
 
-基于zookeeper
-
-
-手把手教你使用 Go 基于 zookeeper 编写服务发现
-
-
-
-
-
-consul 轻量级服务发现服务
-
-
-consul 服务发现
+sys.path
 
 
 
 
 
-apollo配置中心
 
 
-[[https://github.com/ctripcorp/apollo][apollo配置中心]">
+
+
+
+
+
+Out[1]:
+
+
+
+
+
+['',
+ '/anaconda3/envs/py36spark21/lib/python36.zip',
+ '/anaconda3/envs/py36spark21/lib/python3.6',
+ '/anaconda3/envs/py36sp">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2018-05-10T16:36:25+08:00">
+<meta property="article:published_time" content="2019-01-21T11:06:35+08:00">
 </head>
 <body>
     <section class="social"><ul>
@@ -55,57 +59,83 @@ apollo配置中心
 
         </ul></section><section class="page-content"><div class="content" rel="main">
     <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">golang服务的集群方案</h1>
+        <h1 class="p-name entry-title" itemprop="headline name">sklearn word2vec算法</h1>
 
         <div class="meta">
             <div class="authordate">
-                <time class="timeago" datetime="2018-05-10T16:36:25+08:00">2018-05-10 16:36</time>
+                <time class="timeago" datetime="2019-01-21T11:06:35+08:00">2019-01-21 11:06</time>
             
                       |  
-        <a href="../golang%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88/index.org" id="sourcelink">源代码</a>
+        <a href="index.ipynb" id="sourcelink">源代码</a>
 
             </div>
             
         </div>
         <div class="body">
-            <p>
-golang服务的集群方案
-</p>
+            <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
 
-<div id="outline-container-org4a209c8" class="outline-2">
-<h2 id="org4a209c8">基于zookeeper</h2>
-<div class="outline-text-2" id="text-org4a209c8">
-<p>
-<a href="https://www.v2ex.com/t/440662">手把手教你使用 Go 基于 zookeeper 编写服务发现</a>
-</p>
-</div>
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sklearn</span>
 
-<div id="outline-container-orge1b920a" class="outline-2">
-<h2 id="orge1b920a">consul 轻量级服务发现服务</h2>
-<div class="outline-text-2" id="text-orge1b920a">
-<p>
-<a href="https://www.consul.io/">consul 服务发现</a>
-</p>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+</pre></div>
+
+</div>
 </div>
 </div>
 
-<div id="outline-container-orge4f24e7" class="outline-2">
-<h2 id="orge4f24e7">apollo配置中心</h2>
-<div class="outline-text-2" id="text-orge4f24e7">
-<p>
-[[<a href="https://github.com/ctripcorp/apollo">https://github.com/ctripcorp/apollo</a>][apollo配置中心]
-</p>
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[1]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>['',
+ '/anaconda3/envs/py36spark21/lib/python36.zip',
+ '/anaconda3/envs/py36spark21/lib/python3.6',
+ '/anaconda3/envs/py36spark21/lib/python3.6/lib-dynload',
+ '/anaconda3/envs/py36spark21/lib/python3.6/site-packages',
+ '/anaconda3/envs/py36spark21/lib/python3.6/site-packages/IPython/extensions',
+ '/Users/vincent/.ipython']</pre>
+</div>
+
+</div>
+
 </div>
 </div>
+
+</div>
+    </div>
+  </div>
+
         </div>
-        
-                            <div id="disqus_thread"></div>
+                <ul class="pager hidden-print">
+<li class="previous">
+                <a href="../scipy_example/" rel="prev" title="scipy_example">前一篇</a>
+            </li>
+            <li class="next">
+                <a href="../python-function-tools/" rel="next" title="python function tools">后一篇</a>
+            </li>
+        </ul>
+<div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="wisonwanghomepage",
-            disqus_url="https://wisonwang.github.io/posts/golang%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88/",
-        disqus_title="golang\u670d\u52a1\u7684\u96c6\u7fa4\u65b9\u6848",
-        disqus_identifier="cache/posts/golang_cluster.html",
+            disqus_url="https://wisonwang.github.io/posts/sklearn-word2vecsuan-fa/",
+        disqus_title="sklearn word2vec\u7b97\u6cd5",
+        disqus_identifier="cache/posts/sklearn-word2vecsuan-fa.html",
         disqus_config = function () {
             this.language = "zh_cn";
         };

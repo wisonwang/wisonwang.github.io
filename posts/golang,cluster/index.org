@@ -1,6 +1,6 @@
 #+BEGIN_COMMENT
-.. title: golang服务的集群方案
-.. slug: golang服务的集群方案
+.. title: golang cluster
+.. slug: golang,cluster
 .. date: 2018-05-10 16:36:25 UTC+08:00
 .. tags: draft
 .. category: 

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="zh_cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>tensorflow word2vec | Vincent's Blog</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://wisonwang.github.io/posts/tensorflow-word2vec/">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
+<meta property="og:site_name" content="Vincent's Blog">
+<meta property="og:title" content="tensorflow word2vec">
+<meta property="og:url" content="https://wisonwang.github.io/posts/tensorflow-word2vec/">
+<meta property="og:description" content="使用tensorflow演示word2vec算法.
+
+
+
+
+
+
+
+In [1]:
+
+    
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+import argparse
+import collections
+import m">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-01-24T14:52:32+08:00">
+</head>
+<body>
+    <section class="social"><ul>
+<li><a href="../../index.html" title="Home"><i class="icon-home"></i></a></li>
+            <li><a href="../../archive.html" title="文章存档"><i class="icon-archive"></i></a></li>
+            <li><a href="../../categories/" title="标签"><i class="icon-tags"></i></a></li>
+            <li><a href="../../pages/about" title="About"><i class="icon-about"></i></a></li>
+            <li><a href="../../rss.xml" title="RSS 源"><i class="icon-rss"></i></a></li>
+            <li><a href="https://twitter.com/wisonwang" title="My Twitter"><i class="icon-twitter"></i></a></li>
+            <li><a href="https://github.com/wisonwang" title="My Github"><i class="icon-github"></i></a></li>
+
+        </ul></section><section class="page-content"><div class="content" rel="main">
+    <div class="post">
+        <h1 class="p-name entry-title" itemprop="headline name">tensorflow word2vec</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2019-01-24T14:52:32+08:00">2019-01-24 14:52</time>
+            
+                      |  
+        <a href="index.ipynb" id="sourcelink">源代码</a>
+
+            </div>
+            
+        </div>
+        <div class="body">
+            <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>使用tensorflow演示word2vec算法.
+<!-- TEASER_END --></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">gettempdir</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="n">urllib</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="n">xrange</span>  <span class="c1"># pylint: disable=redefined-builtin</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.contrib.tensorboard.plugins</span> <span class="k">import</span> <span class="n">projector</span>
+
+<span class="n">data_index</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+<span class="k">def</span> <span class="nf">word2vec_basic</span><span class="p">(</span><span class="n">log_dir</span><span class="p">):</span>
+  <span class="sd">"""Example of building, training and visualizing a word2vec model."""</span>
+  <span class="c1"># Create the directory for TensorBoard variables if there is not.</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">log_dir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">log_dir</span><span class="p">)</span>
+
+  <span class="c1"># Step 1: Download the data.</span>
+  <span class="n">url</span> <span class="o">=</span> <span class="s1">'http://mattmahoney.net/dc/'</span>
+
+  <span class="c1"># pylint: disable=redefined-outer-name</span>
+  <span class="k">def</span> <span class="nf">maybe_download</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">expected_bytes</span><span class="p">):</span>
+    <span class="sd">"""Download a file if not present, and make sure it's the right size."""</span>
+    <span class="n">local_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gettempdir</span><span class="p">(),</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">local_filename</span><span class="p">):</span>
+      <span class="n">local_filename</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span> <span class="o">+</span> <span class="n">filename</span><span class="p">,</span>
+                                                     <span class="n">local_filename</span><span class="p">)</span>
+    <span class="n">statinfo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">local_filename</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">statinfo</span><span class="o">.</span><span class="n">st_size</span> <span class="o">==</span> <span class="n">expected_bytes</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">'Found and verified'</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>     
+      <span class="nb">print</span><span class="p">(</span><span class="n">statinfo</span><span class="o">.</span><span class="n">st_size</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'Failed to verify '</span> <span class="o">+</span> <span class="n">local_filename</span> <span class="o">+</span>
+                      <span class="s1">'. Can you get to it with a browser?'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">local_filename</span>
+
+  <span class="n">filename</span> <span class="o">=</span> <span class="n">maybe_download</span><span class="p">(</span><span class="s1">'text8.zip'</span><span class="p">,</span> <span class="mi">31344016</span><span class="p">)</span>
+
+  <span class="c1"># Read the data into a list of strings.</span>
+  <span class="k">def</span> <span class="nf">read_data</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">"""Extract the first file enclosed in a zip file as a list of words."""</span>
+    <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">as_str</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">namelist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+  <span class="n">vocabulary</span> <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Data size'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">vocabulary</span><span class="p">))</span>
+
+  <span class="c1"># Step 2: Build the dictionary and replace rare words with UNK token.</span>
+  <span class="n">vocabulary_size</span> <span class="o">=</span> <span class="mi">50000</span>
+
+  <span class="k">def</span> <span class="nf">build_dataset</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">n_words</span><span class="p">):</span>
+    <span class="sd">"""Process raw inputs into a dataset."""</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">'UNK'</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+    <span class="n">count</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="n">n_words</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">dictionary</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">count</span><span class="p">:</span>
+      <span class="n">dictionary</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">unk_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+      <span class="n">index</span> <span class="o">=</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># dictionary['UNK']</span>
+        <span class="n">unk_count</span> <span class="o">+=</span> <span class="mi">1</span>
+      <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">count</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">unk_count</span>
+    <span class="n">reversed_dictionary</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">dictionary</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">reversed_dictionary</span>
+
+  <span class="c1"># Filling 4 global variables:</span>
+  <span class="c1"># data - list of codes (integers from 0 to vocabulary_size-1).</span>
+  <span class="c1">#   This is the original text but words are replaced by their codes</span>
+  <span class="c1"># count - map of words(strings) to count of occurrences</span>
+  <span class="c1"># dictionary - map of words(strings) to their codes(integers)</span>
+  <span class="c1"># reverse_dictionary - maps codes(integers) to words(strings)</span>
+  <span class="n">data</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">unused_dictionary</span><span class="p">,</span> <span class="n">reverse_dictionary</span> <span class="o">=</span> <span class="n">build_dataset</span><span class="p">(</span>
+      <span class="n">vocabulary</span><span class="p">,</span> <span class="n">vocabulary_size</span><span class="p">)</span>
+  <span class="k">del</span> <span class="n">vocabulary</span>  <span class="c1"># Hint to reduce memory.</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Most common words (+UNK)'</span><span class="p">,</span> <span class="n">count</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Sample data'</span><span class="p">,</span> <span class="n">data</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="n">reverse_dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[:</span><span class="mi">10</span><span class="p">]])</span>
+
+  <span class="c1"># Step 3: Function to generate a training batch for the skip-gram model.</span>
+  <span class="k">def</span> <span class="nf">generate_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_skips</span><span class="p">,</span> <span class="n">skip_window</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">data_index</span>
+    <span class="k">assert</span> <span class="n">batch_size</span> <span class="o">%</span> <span class="n">num_skips</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="n">num_skips</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">skip_window</span>
+    <span class="n">batch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+    <span class="n">span</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">skip_window</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># [ skip_window target skip_window ]</span>
+    <span class="n">buffer</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="n">span</span><span class="p">)</span>  <span class="c1"># pylint: disable=redefined-builtin</span>
+    <span class="k">if</span> <span class="n">data_index</span> <span class="o">+</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+      <span class="n">data_index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">buffer</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data_index</span><span class="p">:</span><span class="n">data_index</span> <span class="o">+</span> <span class="n">span</span><span class="p">])</span>
+    <span class="n">data_index</span> <span class="o">+=</span> <span class="n">span</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span> <span class="o">//</span> <span class="n">num_skips</span><span class="p">):</span>
+      <span class="n">context_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">span</span><span class="p">)</span> <span class="k">if</span> <span class="n">w</span> <span class="o">!=</span> <span class="n">skip_window</span><span class="p">]</span>
+      <span class="n">words_to_use</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">context_words</span><span class="p">,</span> <span class="n">num_skips</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">context_word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">words_to_use</span><span class="p">):</span>
+        <span class="n">batch</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">num_skips</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">buffer</span><span class="p">[</span><span class="n">skip_window</span><span class="p">]</span>
+        <span class="n">labels</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">num_skips</span> <span class="o">+</span> <span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">buffer</span><span class="p">[</span><span class="n">context_word</span><span class="p">]</span>
+      <span class="k">if</span> <span class="n">data_index</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="n">buffer</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">span</span><span class="p">])</span>
+        <span class="n">data_index</span> <span class="o">=</span> <span class="n">span</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">buffer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data_index</span><span class="p">])</span>
+        <span class="n">data_index</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># Backtrack a little bit to avoid skipping words in the end of a batch</span>
+    <span class="n">data_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_index</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">span</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">batch</span><span class="p">,</span> <span class="n">labels</span>
+
+  <span class="n">batch</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">generate_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">num_skips</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">skip_window</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">reverse_dictionary</span><span class="p">[</span><span class="n">batch</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="s1">'-&gt;'</span><span class="p">,</span> <span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+          <span class="n">reverse_dictionary</span><span class="p">[</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+
+  <span class="c1"># Step 4: Build and train a skip-gram model.</span>
+
+  <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
+  <span class="n">embedding_size</span> <span class="o">=</span> <span class="mi">128</span>  <span class="c1"># Dimension of the embedding vector.</span>
+  <span class="n">skip_window</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># How many words to consider left and right.</span>
+  <span class="n">num_skips</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># How many times to reuse an input to generate a label.</span>
+  <span class="n">num_sampled</span> <span class="o">=</span> <span class="mi">64</span>  <span class="c1"># Number of negative examples to sample.</span>
+
+  <span class="c1"># We pick a random validation set to sample nearest neighbors. Here we limit</span>
+  <span class="c1"># the validation samples to the words that have a low numeric ID, which by</span>
+  <span class="c1"># construction are also the most frequent. These 3 variables are used only for</span>
+  <span class="c1"># displaying model accuracy, they don't affect calculation.</span>
+  <span class="n">valid_size</span> <span class="o">=</span> <span class="mi">16</span>  <span class="c1"># Random set of words to evaluate similarity on.</span>
+  <span class="n">valid_window</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># Only pick dev samples in the head of the distribution.</span>
+  <span class="n">valid_examples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">valid_window</span><span class="p">,</span> <span class="n">valid_size</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+  <span class="n">graph</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+
+  <span class="k">with</span> <span class="n">graph</span><span class="o">.</span><span class="n">as_default</span><span class="p">():</span>
+
+    <span class="c1"># Input data.</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">'inputs'</span><span class="p">):</span>
+      <span class="n">train_inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">batch_size</span><span class="p">])</span>
+      <span class="n">train_labels</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+      <span class="n">valid_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">valid_examples</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+    <span class="c1"># Ops and variables pinned to the CPU because of missing GPU implementation</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'/cpu:0'</span><span class="p">):</span>
+      <span class="c1"># Look up embeddings for inputs.</span>
+      <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">'embeddings'</span><span class="p">):</span>
+        <span class="n">embeddings</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
+            <span class="n">tf</span><span class="o">.</span><span class="n">random_uniform</span><span class="p">([</span><span class="n">vocabulary_size</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">],</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+        <span class="n">embed</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">embedding_lookup</span><span class="p">(</span><span class="n">embeddings</span><span class="p">,</span> <span class="n">train_inputs</span><span class="p">)</span>
+
+      <span class="c1"># Construct the variables for the NCE loss</span>
+      <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">'weights'</span><span class="p">):</span>
+        <span class="n">nce_weights</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
+            <span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">([</span><span class="n">vocabulary_size</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">],</span>
+                                <span class="n">stddev</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">embedding_size</span><span class="p">)))</span>
+      <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">'biases'</span><span class="p">):</span>
+        <span class="n">nce_biases</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">vocabulary_size</span><span class="p">]))</span>
+
+    <span class="c1"># Compute the average NCE loss for the batch.</span>
+    <span class="c1"># tf.nce_loss automatically draws a new sample of the negative labels each</span>
+    <span class="c1"># time we evaluate the loss.</span>
+    <span class="c1"># Explanation of the meaning of NCE loss:</span>
+    <span class="c1">#   http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">'loss'</span><span class="p">):</span>
+      <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span>
+          <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">nce_loss</span><span class="p">(</span>
+              <span class="n">weights</span><span class="o">=</span><span class="n">nce_weights</span><span class="p">,</span>
+              <span class="n">biases</span><span class="o">=</span><span class="n">nce_biases</span><span class="p">,</span>
+              <span class="n">labels</span><span class="o">=</span><span class="n">train_labels</span><span class="p">,</span>
+              <span class="n">inputs</span><span class="o">=</span><span class="n">embed</span><span class="p">,</span>
+              <span class="n">num_sampled</span><span class="o">=</span><span class="n">num_sampled</span><span class="p">,</span>
+              <span class="n">num_classes</span><span class="o">=</span><span class="n">vocabulary_size</span><span class="p">))</span>
+
+    <span class="c1"># Add the loss value as a scalar to summary.</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="s1">'loss'</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
+
+    <span class="c1"># Construct the SGD optimizer using a learning rate of 1.0.</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">'optimizer'</span><span class="p">):</span>
+      <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+
+    <span class="c1"># Compute the cosine similarity between minibatch examples and all</span>
+    <span class="c1"># embeddings.</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">embeddings</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="n">normalized_embeddings</span> <span class="o">=</span> <span class="n">embeddings</span> <span class="o">/</span> <span class="n">norm</span>
+    <span class="n">valid_embeddings</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">embedding_lookup</span><span class="p">(</span><span class="n">normalized_embeddings</span><span class="p">,</span>
+                                              <span class="n">valid_dataset</span><span class="p">)</span>
+    <span class="n">similarity</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span>
+        <span class="n">valid_embeddings</span><span class="p">,</span> <span class="n">normalized_embeddings</span><span class="p">,</span> <span class="n">transpose_b</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Merge all summaries.</span>
+    <span class="n">merged</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">merge_all</span><span class="p">()</span>
+
+    <span class="c1"># Add variable initializer.</span>
+    <span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span>
+
+    <span class="c1"># Create a saver.</span>
+    <span class="n">saver</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">Saver</span><span class="p">()</span>
+
+  <span class="c1"># Step 5: Begin training.</span>
+  <span class="n">num_steps</span> <span class="o">=</span> <span class="mi">100001</span>
+
+  <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">graph</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+    <span class="c1"># Open a writer to write summaries.</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">FileWriter</span><span class="p">(</span><span class="n">log_dir</span><span class="p">,</span> <span class="n">session</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
+
+    <span class="c1"># We must initialize all variables before we use them.</span>
+    <span class="n">init</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Initialized'</span><span class="p">)</span>
+
+    <span class="n">average_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
+      <span class="n">batch_inputs</span><span class="p">,</span> <span class="n">batch_labels</span> <span class="o">=</span> <span class="n">generate_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_skips</span><span class="p">,</span>
+                                                  <span class="n">skip_window</span><span class="p">)</span>
+      <span class="n">feed_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">train_inputs</span><span class="p">:</span> <span class="n">batch_inputs</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">:</span> <span class="n">batch_labels</span><span class="p">}</span>
+
+      <span class="c1"># Define metadata variable.</span>
+      <span class="n">run_metadata</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">RunMetadata</span><span class="p">()</span>
+
+      <span class="c1"># We perform one update step by evaluating the optimizer op (including it</span>
+      <span class="c1"># in the list of returned values for session.run()</span>
+      <span class="c1"># Also, evaluate the merged op to get all summaries from the returned</span>
+      <span class="c1"># "summary" variable. Feed metadata variable to session for visualizing</span>
+      <span class="c1"># the graph in TensorBoard.</span>
+      <span class="n">_</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">loss_val</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">merged</span><span class="p">,</span> <span class="n">loss</span><span class="p">],</span>
+                                         <span class="n">feed_dict</span><span class="o">=</span><span class="n">feed_dict</span><span class="p">,</span>
+                                         <span class="n">run_metadata</span><span class="o">=</span><span class="n">run_metadata</span><span class="p">)</span>
+      <span class="n">average_loss</span> <span class="o">+=</span> <span class="n">loss_val</span>
+
+      <span class="c1"># Add returned summaries to writer in each step.</span>
+      <span class="n">writer</span><span class="o">.</span><span class="n">add_summary</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+      <span class="c1"># Add metadata to visualize the graph for the last run.</span>
+      <span class="k">if</span> <span class="n">step</span> <span class="o">==</span> <span class="p">(</span><span class="n">num_steps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">add_run_metadata</span><span class="p">(</span><span class="n">run_metadata</span><span class="p">,</span> <span class="s1">'step</span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">step</span><span class="p">)</span>
+
+      <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">2000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">step</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+          <span class="n">average_loss</span> <span class="o">/=</span> <span class="mi">2000</span>
+        <span class="c1"># The average loss is an estimate of the loss over the last 2000</span>
+        <span class="c1"># batches.</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'Average loss at step '</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="s1">': '</span><span class="p">,</span> <span class="n">average_loss</span><span class="p">)</span>
+        <span class="n">average_loss</span> <span class="o">=</span> <span class="mi">0</span>
+
+      <span class="c1"># Note that this is expensive (~20% slowdown if computed every 500 steps)</span>
+      <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">10000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">sim</span> <span class="o">=</span> <span class="n">similarity</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">valid_size</span><span class="p">):</span>
+          <span class="n">valid_word</span> <span class="o">=</span> <span class="n">reverse_dictionary</span><span class="p">[</span><span class="n">valid_examples</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+          <span class="n">top_k</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># number of nearest neighbors</span>
+          <span class="n">nearest</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">sim</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:])</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[</span><span class="mi">1</span><span class="p">:</span><span class="n">top_k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+          <span class="n">log_str</span> <span class="o">=</span> <span class="s1">'Nearest to </span><span class="si">%s</span><span class="s1">:'</span> <span class="o">%</span> <span class="n">valid_word</span>
+          <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">top_k</span><span class="p">):</span>
+            <span class="n">close_word</span> <span class="o">=</span> <span class="n">reverse_dictionary</span><span class="p">[</span><span class="n">nearest</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span>
+            <span class="n">log_str</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">,'</span> <span class="o">%</span> <span class="p">(</span><span class="n">log_str</span><span class="p">,</span> <span class="n">close_word</span><span class="p">)</span>
+          <span class="nb">print</span><span class="p">(</span><span class="n">log_str</span><span class="p">)</span>
+    <span class="n">final_embeddings</span> <span class="o">=</span> <span class="n">normalized_embeddings</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+    <span class="c1"># Write corresponding labels for the embeddings.</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">log_dir</span> <span class="o">+</span> <span class="s1">'/metadata.tsv'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">vocabulary_size</span><span class="p">):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">reverse_dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+
+    <span class="c1"># Save the model for checkpoints.</span>
+    <span class="n">saver</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">log_dir</span><span class="p">,</span> <span class="s1">'model.ckpt'</span><span class="p">))</span>
+
+    <span class="c1"># Create a configuration for visualizing embeddings with the labels in</span>
+    <span class="c1"># TensorBoard.</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">projector</span><span class="o">.</span><span class="n">ProjectorConfig</span><span class="p">()</span>
+    <span class="n">embedding_conf</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+    <span class="n">embedding_conf</span><span class="o">.</span><span class="n">tensor_name</span> <span class="o">=</span> <span class="n">embeddings</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">embedding_conf</span><span class="o">.</span><span class="n">metadata_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">log_dir</span><span class="p">,</span> <span class="s1">'metadata.tsv'</span><span class="p">)</span>
+    <span class="n">projector</span><span class="o">.</span><span class="n">visualize_embeddings</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+
+  <span class="n">writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+  <span class="c1"># Step 6: Visualize the embeddings.</span>
+
+  <span class="c1"># pylint: disable=missing-docstring</span>
+  <span class="c1"># Function to draw visualization of distance between embeddings.</span>
+  <span class="k">def</span> <span class="nf">plot_with_labels</span><span class="p">(</span><span class="n">low_dim_embs</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">low_dim_embs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="s1">'More labels than embeddings'</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>  <span class="c1"># in inches</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
+      <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">low_dim_embs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span>
+      <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+      <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+          <span class="n">label</span><span class="p">,</span>
+          <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>
+          <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+          <span class="n">textcoords</span><span class="o">=</span><span class="s1">'offset points'</span><span class="p">,</span>
+          <span class="n">ha</span><span class="o">=</span><span class="s1">'right'</span><span class="p">,</span>
+          <span class="n">va</span><span class="o">=</span><span class="s1">'bottom'</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+  <span class="k">try</span><span class="p">:</span>
+    <span class="c1"># pylint: disable=g-import-not-at-top</span>
+    <span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="k">import</span> <span class="n">TSNE</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+    <span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span>
+        <span class="n">perplexity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">'pca'</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">'exact'</span><span class="p">)</span>
+    <span class="n">plot_only</span> <span class="o">=</span> <span class="mi">500</span>
+    <span class="n">low_dim_embs</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">final_embeddings</span><span class="p">[:</span><span class="n">plot_only</span><span class="p">,</span> <span class="p">:])</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">reverse_dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">plot_only</span><span class="p">)]</span>
+    <span class="n">plot_with_labels</span><span class="p">(</span><span class="n">low_dim_embs</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gettempdir</span><span class="p">(),</span>
+                                                        <span class="s1">'tsne.png'</span><span class="p">))</span>
+
+  <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Please install sklearn, matplotlib, and scipy to show embeddings.'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+
+
+<span class="c1"># All functionality is run after tf.app.run() (b/122547914). This could be split</span>
+<span class="c1"># up but the methods are laid sequentially with their usage for clarity.</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">unused_argv</span><span class="p">):</span>
+  <span class="c1"># Give a folder path as an argument with '--log_dir' to save</span>
+  <span class="c1"># TensorBoard summaries. Default is a log folder in current directory.</span>
+  <span class="n">current_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+  <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+  <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+      <span class="s1">'--log_dir'</span><span class="p">,</span>
+      <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+      <span class="n">default</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_path</span><span class="p">,</span> <span class="s1">'log'</span><span class="p">),</span>
+      <span class="n">help</span><span class="o">=</span><span class="s1">'The log directory for TensorBoard summaries.'</span><span class="p">)</span>
+  <span class="n">flags</span><span class="p">,</span> <span class="n">unused_flags</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">()</span>
+  <span class="n">word2vec_basic</span><span class="p">(</span><span class="n">flags</span><span class="o">.</span><span class="n">log_dir</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/home/vincent/.pyenv/versions/anaconda3-5.0.0/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-1-2f416a8e8068&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">     19</span> <span class="ansi-green-fg">import</span> tensorflow <span class="ansi-green-fg">as</span> tf
+<span class="ansi-green-intense-fg ansi-bold">     20</span> 
+<span class="ansi-green-fg">---&gt; 21</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> tensorflow<span class="ansi-blue-fg">.</span>contrib<span class="ansi-blue-fg">.</span>tensorboard<span class="ansi-blue-fg">.</span>plugins <span class="ansi-green-fg">import</span> projector
+<span class="ansi-green-intense-fg ansi-bold">     22</span> 
+<span class="ansi-green-intense-fg ansi-bold">     23</span> data_index <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">0</span>
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named 'tensorflow.contrib'</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Found and verified text8.zip
+Data size 17005207
+Most common words (+UNK) [['UNK', 418391], ('the', 1061396), ('of', 593677), ('and', 416629), ('one', 411764)]
+Sample data [5234, 3081, 12, 6, 195, 2, 3134, 46, 59, 156] ['anarchism', 'originated', 'as', 'a', 'term', 'of', 'abuse', 'first', 'used', 'against']
+3081 originated -&gt; 12 as
+3081 originated -&gt; 5234 anarchism
+12 as -&gt; 6 a
+12 as -&gt; 3081 originated
+6 a -&gt; 12 as
+6 a -&gt; 195 term
+195 term -&gt; 2 of
+195 term -&gt; 6 a
+Initialized
+Average loss at step  0 :  275.5062255859375
+Nearest to th: breeder, chroniclers, senex, koizumi, passers, differed, actuality, magician,
+Nearest to united: peake, keyboard, consummated, instructing, seditious, bavarians, eurosceptic, sufficiently,
+Nearest to than: toffler, undulating, crimson, bremer, impacting, neapolitan, cincinnati, dredging,
+Nearest to s: phantom, skinned, homeschooling, veterans, missouri, decreased, harald, srinagar,
+Nearest to be: classifies, tad, rearranging, cession, argos, eostre, inelastic, goggles,
+Nearest to two: piece, nymph, flared, infallible, diesels, praxis, knapsack, agreements,
+Nearest to has: idol, dreidel, stereoisomers, inelastic, fia, jules, pellucidar, fv,
+Nearest to over: terrell, sponsored, best, fashion, capitalization, prometheus, scripts, australis,
+Nearest to also: modernizing, commentators, ranjit, inanna, chaldea, amati, trilobites, joint,
+Nearest to other: macroscopic, lifespan, dive, ourselves, tucson, ablaut, heyerdahl, nonverbal,
+Nearest to up: conquerors, banister, spat, ratifying, clockless, comparatively, distributions, times,
+Nearest to use: balancing, budo, lafayette, cowl, przewodnicz, jorge, absorbed, airports,
+Nearest to these: pb, fudge, better, seismology, outskirts, jacobite, tonal, galois,
+Nearest to such: highlighting, can, zanzibar, suppressive, occurrences, lexical, superconductor, irreducible,
+Nearest to five: wicked, baggins, dodgers, burke, prez, awe, imo, neoplatonist,
+Nearest to that: proclaimed, sarcastic, technique, pope, var, bornu, marley, benin,
+Average loss at step  2000 :  113.56282890415191
+Average loss at step  4000 :  52.77377490878105
+Average loss at step  6000 :  33.4376979393959
+Average loss at step  8000 :  23.34735692024231
+Average loss at step  10000 :  17.907435940384865
+Nearest to th: one, molinari, slave, eight, equipped, borrow, ads, russell,
+Nearest to united: scored, keyboard, instructing, louis, car, bavarians, christian, archie,
+Nearest to than: toffler, cincinnati, canaris, add, two, wikibooks, conceived, exploration,
+Nearest to s: and, veterans, of, the, equilibrium, aberdeenshire, missouri, examines,
+Nearest to be: have, database, communal, lymphoma, thirteenth, is, classifies, seo,
+Nearest to two: one, zero, nine, eight, coke, three, km, UNK,
+Nearest to has: is, coming, gaseous, and, was, jules, in, nhra,
+Nearest to over: best, sponsored, decade, town, impressive, alternative, fashion, agave,
+Nearest to also: feminist, letters, prized, widespread, joint, service, bang, lymphoma,
+Nearest to other: fins, lifespan, population, class, ho, ourselves, differ, insisted,
+Nearest to up: references, times, comparatively, banister, looks, particles, false, von,
+Nearest to use: lafayette, balancing, basins, budo, truth, remains, summers, molinari,
+Nearest to these: better, ascii, reduced, convention, vs, carbine, agave, expression,
+Nearest to such: fins, can, zanzibar, main, routes, springfield, duty, israel,
+Nearest to five: eight, nine, zero, four, seven, lnot, jpg, six,
+Nearest to that: unification, but, untrue, blitz, conquer, proclaimed, hell, and,
+Average loss at step  12000 :  14.247750891923904
+Average loss at step  14000 :  11.624572651028632
+Average loss at step  16000 :  10.033084413290023
+Average loss at step  18000 :  8.564940582990646
+Average loss at step  20000 :  8.064424519777297
+Nearest to th: eight, one, molinari, chroniclers, marines, breeder, michigan, borrow,
+Nearest to united: keyboard, scored, consummated, instructing, louis, car, arose, parliaments,
+Nearest to than: toffler, backslash, add, and, or, ibos, cincinnati, canaris,
+Nearest to s: and, veterans, the, of, zero, his, circ, or,
+Nearest to be: have, is, was, communal, by, naturalists, database, thirteenth,
+Nearest to two: one, three, eight, five, dasyprocta, four, zero, six,
+Nearest to has: is, was, had, amiable, gaseous, have, trapezohedron, coming,
+Nearest to over: best, sponsored, hbox, decade, terrell, and, town, alternative,
+Nearest to also: feminist, it, prized, joint, which, apatosaurus, anisotropy, recordings,
+Nearest to other: fins, operatorname, insisted, acacia, vaccines, lifespan, population, macroscopic,
+Nearest to up: references, comparatively, banister, sancti, dope, alcibiades, canonical, archimedean,
+Nearest to use: basins, balancing, lafayette, budo, truth, jorge, summers, molinari,
+Nearest to these: wcw, the, convention, galois, acacia, his, some, and,
+Nearest to such: zanzibar, fins, can, subkey, antoninus, operatorname, flammable, routes,
+Nearest to five: eight, nine, zero, six, two, four, seven, three,
+Nearest to that: but, hell, this, unification, which, haider, turkmenistan, and,
+Average loss at step  22000 :  6.9623263918161395
+Average loss at step  24000 :  6.964725037455559
+Average loss at step  26000 :  6.774261701703072
+Average loss at step  28000 :  6.320326884865761
+Average loss at step  30000 :  5.970973012447357
+Nearest to th: eight, molinari, chroniclers, marines, two, nine, breeder, fertile,
+Nearest to united: reuptake, keyboard, scored, instructing, consummated, car, parliaments, louis,
+Nearest to than: toffler, or, add, backslash, amalthea, ibos, and, neapolitan,
+Nearest to s: and, his, zero, veterans, two, or, the, six,
+Nearest to be: have, is, was, by, communal, ely, analysed, naturalists,
+Nearest to two: three, four, six, one, five, eight, dasyprocta, zero,
+Nearest to has: had, is, was, have, gaseous, trapezohedron, amiable, coming,
+Nearest to over: best, sponsored, hbox, on, terrell, alternative, enhancing, decade,
+Nearest to also: it, which, prized, feminist, airshow, accountant, that, lymphoma,
+Nearest to other: tucson, fins, operatorname, insisted, acacia, otimes, mag, vaccines,
+Nearest to up: otimes, comparatively, references, dope, him, conquerors, archimedean, banister,
+Nearest to use: basins, balancing, summers, martyrs, molinari, budo, truth, lafayette,
+Nearest to these: some, the, wcw, convention, albuquerque, acts, acacia, dasyprocta,
+Nearest to such: subkey, irreducible, zanzibar, fins, antoninus, opteron, can, please,
+Nearest to five: six, eight, four, zero, nine, seven, three, two,
+Nearest to that: which, this, but, hell, digs, unification, turkmenistan, haider,
+Average loss at step  32000 :  5.972531417250633
+Average loss at step  34000 :  5.670918852448463
+Average loss at step  36000 :  5.758019926190376
+Average loss at step  38000 :  5.511159575223923
+Average loss at step  40000 :  5.301835968375206
+Nearest to th: eight, zero, six, molinari, chroniclers, two, nine, senex,
+Nearest to united: reuptake, keyboard, scored, instructing, bavarians, albury, consummated, parliaments,
+Nearest to than: or, toffler, backslash, amalthea, add, ibos, neapolitan, capability,
+Nearest to s: and, veterans, his, zero, two, the, david, circ,
+Nearest to be: have, is, was, by, been, communal, analysed, ely,
+Nearest to two: three, one, four, five, six, eight, zero, seven,
+Nearest to has: had, was, is, have, trapezohedron, albury, gaseous, faso,
+Nearest to over: best, sponsored, promoter, enhancing, on, hbox, terrell, protects,
+Nearest to also: which, it, that, recitative, prized, accountant, airshow, feminist,
+Nearest to other: tucson, fins, operatorname, insisted, command, acacia, mag, reuptake,
+Nearest to up: otimes, him, out, comparatively, dope, references, conquerors, disabilities,
+Nearest to use: basins, molinari, martyrs, balancing, summers, budo, truth, appomattox,
+Nearest to these: some, wcw, all, the, convention, albuquerque, acts, their,
+Nearest to such: well, known, irreducible, subkey, please, everywhere, can, zanzibar,
+Nearest to five: four, zero, six, eight, three, seven, nine, two,
+Nearest to that: which, this, but, hell, there, turkmenistan, it, what,
+Average loss at step  42000 :  5.344022329211235
+Average loss at step  44000 :  5.219912086963654
+Average loss at step  46000 :  5.2491682794094086
+Average loss at step  48000 :  5.224814400315284
+Average loss at step  50000 :  4.973896819710731
+Nearest to th: eight, six, chroniclers, one, molinari, nine, zero, marines,
+Nearest to united: reuptake, keyboard, parliaments, bavarians, instructing, scored, albury, louis,
+Nearest to than: or, toffler, amalthea, backslash, and, add, environmentally, neapolitan,
+Nearest to s: his, and, the, of, zero, veterans, tackle, four,
+Nearest to be: have, is, was, by, been, were, analysed, ely,
+Nearest to two: three, four, one, six, five, dasyprocta, seven, eight,
+Nearest to has: had, is, was, have, trapezohedron, albury, gaseous, faso,
+Nearest to over: sponsored, best, promoter, on, pitching, terrell, protects, four,
+Nearest to also: which, it, still, often, that, aberdeenshire, prized, accountant,
+Nearest to other: tucson, mag, fins, insisted, command, acacia, operatorname, reuptake,
+Nearest to up: out, otimes, him, comparatively, dots, them, dope, cheaply,
+Nearest to use: martyrs, roshan, molinari, basins, summers, appomattox, trapezohedron, basis,
+Nearest to these: some, all, the, wcw, their, mukherjee, acts, they,
+Nearest to such: well, known, irreducible, subkey, please, these, everywhere, opteron,
+Nearest to five: six, four, three, eight, seven, two, zero, dasyprocta,
+Nearest to that: which, this, but, hell, what, digs, it, turkmenistan,
+Average loss at step  52000 :  5.065765946507454
+Average loss at step  54000 :  5.1847815514802935
+Average loss at step  56000 :  5.051638772130013
+Average loss at step  58000 :  5.049841791749
+Average loss at step  60000 :  4.951089532136917
+Nearest to th: eight, six, five, nine, four, breeder, chroniclers, molinari,
+Nearest to united: reuptake, keyboard, albury, parliaments, bavarians, car, louis, instructing,
+Nearest to than: or, toffler, amalthea, backslash, environmentally, add, neapolitan, capability,
+Nearest to s: his, zero, and, ursus, circ, tackle, renouf, pulau,
+Nearest to be: have, been, was, by, is, analysed, refer, ely,
+Nearest to two: three, four, one, six, five, dasyprocta, eight, reddy,
+Nearest to has: had, was, have, is, trapezohedron, albury, gaseous, faso,
+Nearest to over: sponsored, best, on, promoter, four, pitching, five, protects,
+Nearest to also: which, it, still, that, recitative, prized, aberdeenshire, often,
+Nearest to other: mag, tucson, three, many, acacia, stanshall, fins, insisted,
+Nearest to up: out, him, otimes, them, comparatively, cheaply, dots, mantra,
+Nearest to use: martyrs, molinari, roshan, basins, appomattox, summers, trapezohedron, basis,
+Nearest to these: some, all, their, wcw, such, many, the, they,
+Nearest to such: well, known, these, irreducible, please, subkey, everywhere, opteron,
+Nearest to five: six, four, eight, three, seven, nine, zero, dasyprocta,
+Nearest to that: which, this, but, digs, what, hell, unification, there,
+Average loss at step  62000 :  5.0246215391159055
+Average loss at step  64000 :  4.863810496687889
+Average loss at step  66000 :  4.609608381986618
+Average loss at step  68000 :  4.975918267130852
+Average loss at step  70000 :  4.897445597529411
+Nearest to th: eight, six, chroniclers, breeder, five, nine, three, marines,
+Nearest to united: reuptake, parliaments, tamarin, albury, keyboard, car, bavarians, dormant,
+Nearest to than: or, toffler, amalthea, backslash, environmentally, add, and, frankly,
+Nearest to s: his, and, beastie, renouf, tackle, anchored, ursus, microcebus,
+Nearest to be: been, have, by, refer, was, analysed, ely, is,
+Nearest to two: three, four, six, five, one, eight, seven, dasyprocta,
+Nearest to has: had, have, was, is, trapezohedron, albury, gaseous, ineffable,
+Nearest to over: mitral, promoter, best, on, sponsored, four, pitching, protects,
+Nearest to also: which, still, it, often, now, leontopithecus, callithrix, sometimes,
+Nearest to other: many, mag, some, different, insisted, stanshall, various, tucson,
+Nearest to up: him, out, them, otimes, cheaply, comparatively, mantra, dots,
+Nearest to use: martyrs, molinari, appomattox, mitral, basins, roshan, summers, basis,
+Nearest to these: some, all, many, they, such, their, which, the,
+Nearest to such: well, these, known, other, subkey, please, irreducible, everywhere,
+Nearest to five: six, four, three, eight, seven, zero, two, nine,
+Nearest to that: which, this, what, but, hell, digs, there, unification,
+Average loss at step  72000 :  4.754181856274605
+Average loss at step  74000 :  4.8085017256736755
+Average loss at step  76000 :  4.719898520708084
+Average loss at step  78000 :  4.809274360358715
+Average loss at step  80000 :  4.796544206976891
+Nearest to th: six, eight, nine, chroniclers, breeder, five, borrow, marines,
+Nearest to united: reuptake, parliaments, car, bavarians, louis, tamarin, albury, dormant,
+Nearest to than: or, backslash, and, amalthea, toffler, environmentally, add, frankly,
+Nearest to s: his, zero, beastie, five, circ, tackle, iit, busan,
+Nearest to be: been, have, by, was, were, refer, is, analysed,
+Nearest to two: three, four, five, six, one, seven, dasyprocta, eight,
+Nearest to has: had, have, was, is, trapezohedron, albury, gaseous, ineffable,
+Nearest to over: mitral, promoter, on, best, sponsored, pitching, protects, enhancing,
+Nearest to also: which, still, often, it, sometimes, now, prized, callithrix,
+Nearest to other: many, various, different, stanshall, mag, some, insisted, acacia,
+Nearest to up: out, him, them, otimes, comparatively, cheaply, mantra, dots,
+Nearest to use: martyrs, appomattox, molinari, summers, basis, tamarin, mitral, roshan,
+Nearest to these: some, all, many, such, which, their, they, microcebus,
+Nearest to such: well, these, known, other, regarded, please, subkey, everywhere,
+Nearest to five: six, four, seven, three, eight, zero, two, nine,
+Nearest to that: which, this, but, what, hell, digs, when, however,
+Average loss at step  82000 :  4.764600761771202
+Average loss at step  84000 :  4.729135670661926
+Average loss at step  86000 :  4.7773123524189
+Average loss at step  88000 :  4.7431066297292706
+Average loss at step  90000 :  4.7670251888036725
+Nearest to th: eight, six, nine, breeder, five, seven, chroniclers, borrow,
+Nearest to united: reuptake, parliaments, albury, tamarin, louis, car, keyboard, dormant,
+Nearest to than: or, amalthea, backslash, environmentally, toffler, frankly, add, and,
+Nearest to s: his, tackle, and, beastie, microcebus, six, zero, circ,
+Nearest to be: been, have, was, by, refer, were, is, analysed,
+Nearest to two: three, four, five, one, six, seven, eight, dasyprocta,
+Nearest to has: had, have, was, is, trapezohedron, dreidel, ineffable, albury,
+Nearest to over: mitral, jati, promoter, on, best, pitching, sponsored, rudolph,
+Nearest to also: which, still, often, now, sometimes, it, cen, aberdeenshire,
+Nearest to other: many, various, different, some, stanshall, mag, acacia, tucson,
+Nearest to up: out, him, them, otimes, comparatively, cheaply, off, busan,
+Nearest to use: basis, appomattox, martyrs, molinari, summers, mico, trapezohedron, chymotrypsin,
+Nearest to these: some, all, many, such, which, their, several, they,
+Nearest to such: well, these, known, regarded, other, many, everywhere, subkey,
+Nearest to five: four, seven, six, eight, three, zero, nine, two,
+Nearest to that: which, this, but, what, however, unification, digs, turkmenistan,
+Average loss at step  92000 :  4.6707258099317555
+Average loss at step  94000 :  4.733905524849892
+Average loss at step  96000 :  4.678418792963028
+Average loss at step  98000 :  4.588950929403305
+Average loss at step  100000 :  4.688749561667442
+Nearest to th: eight, six, nine, breeder, chroniclers, borrow, marines, seven,
+Nearest to united: reuptake, parliaments, tamarin, albury, keyboard, dormant, louis, restriction,
+Nearest to than: or, stenella, backslash, amalthea, frankly, environmentally, toffler, mtsho,
+Nearest to s: his, circ, microcebus, and, beastie, ursus, iit, tackle,
+Nearest to be: been, have, refer, by, is, was, were, analysed,
+Nearest to two: three, four, five, six, seven, one, eight, dasyprocta,
+Nearest to has: had, have, was, is, trapezohedron, dreidel, albury, maeshowe,
+Nearest to over: mitral, promoter, jati, pitching, topol, on, rudolph, masorti,
+Nearest to also: which, still, often, now, sometimes, it, aberdeenshire, leontopithecus,
+Nearest to other: various, many, mag, different, stanshall, including, acacia, some,
+Nearest to up: out, him, them, off, cheaply, otimes, comparatively, failures,
+Nearest to use: basis, appomattox, trapezohedron, molinari, summers, martyrs, mico, roshan,
+Nearest to these: some, many, all, such, several, their, they, which,
+Nearest to such: well, these, known, many, regarded, other, subkey, opteron,
+Nearest to five: four, seven, three, eight, six, two, zero, nine,
+Nearest to that: which, what, this, but, however, unification, digs, hell,
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+An exception has occurred, use %tb to see the full traceback.
+
+<span class="ansi-red-fg">SystemExit</span>
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/anaconda3/envs/py36spark21/lib/python3.6/site-packages/IPython/core/interactiveshell.py:2971: UserWarning: To exit: use 'exit', 'quit', or Ctrl-D.
+  warn("To exit: use 'exit', 'quit', or Ctrl-D.", stacklevel=1)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+An exception has occurred, use %tb to see the full traceback.
+
+<span class="ansi-red-fg">SystemExit</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+
+        </div>
+        
+                            <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="wisonwanghomepage",
+            disqus_url="https://wisonwang.github.io/posts/tensorflow-word2vec/",
+        disqus_title="tensorflow word2vec",
+        disqus_identifier="cache/posts/tensorflow-word2vec.html",
+        disqus_config = function () {
+            this.language = "zh_cn";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    </div>
+                     <footer id="footer"><p>Contents © 2019         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+    </section><script src="../../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+    </script><script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>

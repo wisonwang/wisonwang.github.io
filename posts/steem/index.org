@@ -1,13 +1,11 @@
-#+BEGIN_COMMENT
+#+begin_comment
 .. title: steem
 .. slug: steem
 .. date: 2018-11-14 17:01:23 UTC+08:00
 .. tags: draft
-.. category: 
-.. link: 
-.. description: 
 .. type: text
-#+END_COMMENT
+.. status: draft
+#+end_comment
 
 * 简介
 
