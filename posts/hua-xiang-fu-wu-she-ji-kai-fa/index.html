@@ -6,12 +6,12 @@ article: http://ogp.me/ns/article#
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>画像服务设计开发 | Vincent's Blog</title>
+<title>画像服务设计开发 | vincent blog</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://wisonwang.github.io/posts/hua-xiang-fu-wu-she-ji-kai-fa/">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
-<meta property="og:site_name" content="Vincent's Blog">
+<meta property="og:site_name" content="vincent blog">
 <meta property="og:title" content="画像服务设计开发">
 <meta property="og:url" content="https://wisonwang.github.io/posts/hua-xiang-fu-wu-she-ji-kai-fa/">
 <meta property="og:description" content="在推荐系统和广告系统中用户/物品画像都属于核心功能，要设计一个高性能可扩展的画像服务，要注意如下几个要点：
@@ -37,7 +37,25 @@ article: http://ogp.me/ns/article#
 
 
 
-存储设计">
+grpc&amp;thrift
+
+
+
+http restful
+
+
+
+
+数据存储
+
+
+要点：
+
+
+
+非关系型数据库
+
+非固">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2019-10-14T10:04:28+08:00">
 </head>
@@ -77,17 +95,56 @@ article: http://ogp.me/ns/article#
 
 <li>分布式存储，支持内存（快速读）和磁盘（持久化）存储</li>
 </ol>
-<!-- TEASER_END --><div id="outline-container-org6de2711" class="outline-2">
-<h2 id="org6de2711">分布式服务架构设计</h2>
+<!-- TEASER_END --><div id="outline-container-orgc29cdc7" class="outline-2">
+<h2 id="orgc29cdc7">分布式服务架构设计</h2>
 </div>
 
-<div id="outline-container-org9c7b007" class="outline-2">
-<h2 id="org9c7b007">通信协议选择</h2>
+<div id="outline-container-orgb10da99" class="outline-2">
+<h2 id="orgb10da99">通信协议选择</h2>
+<div class="outline-text-2" id="text-orgb10da99">
+</div>
+<div id="outline-container-orga304b76" class="outline-3">
+<h3 id="orga304b76">grpc&amp;thrift</h3>
 </div>
 
-<div id="outline-container-org0db80fd" class="outline-2">
-<h2 id="org0db80fd">存储设计</h2>
-<div class="outline-text-2" id="text-org0db80fd">
+<div id="outline-container-org60a238a" class="outline-3">
+<h3 id="org60a238a">http restful</h3>
+</div>
+</div>
+
+<div id="outline-container-org45d524a" class="outline-2">
+<h2 id="org45d524a">数据存储</h2>
+<div class="outline-text-2" id="text-org45d524a">
+<p>
+要点：
+</p>
+
+<ul class="org-ul">
+<li>非关系型数据库</li>
+
+<li>非固定结构定义/固定列</li>
+
+<li>分布式易于扩展</li>
+
+<li>优秀的性能</li>
+
+<li>支持冷热数据/经济</li>
+</ul>
+<p>
+可选项：
+</p>
+
+<ul class="org-ul">
+<li>hbase</li>
+
+<li>mongodb</li>
+
+<li>cassandra</li>
+
+<li>couchbase</li>
+
+<li>…</li>
+</ul>
 </div>
 </div>
         </div>
@@ -112,7 +169,7 @@ article: http://ogp.me/ns/article#
 
 
     </div>
-                     <footer id="footer"><p>Contents © 2019         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+                     <footer id="footer"><p>Contents © 2020         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
 </div>

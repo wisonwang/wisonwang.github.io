@@ -6,12 +6,12 @@ article: http://ogp.me/ns/article#
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>numpy_example | Vincent's Blog</title>
+<title>numpy_example | vincent blog</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://wisonwang.github.io/posts/numpy_example/">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
-<meta property="og:site_name" content="Vincent's Blog">
+<meta property="og:site_name" content="vincent blog">
 <meta property="og:title" content="numpy_example">
 <meta property="og:url" content="https://wisonwang.github.io/posts/numpy_example/">
 <meta property="og:description" content="介绍numpy/scipy库的基本用法.
@@ -28,7 +28,7 @@ import numpy as np
 import scipy
 
 
-
+    
 
 
 
@@ -43,6 +43,7 @@ a = np.arange(15).reshape(3, 5)
 print(a)
 
 
+    
 
 
 
@@ -52,13 +53,11 @@ print(a)
 
 
 
+    
 
 
 
-
-
-[[ 0  1  2  3  4]
- [ 5  6  ">
+[[ 0  1  2  3  ">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2018-05-22T16:58:15+08:00">
 </head>
@@ -109,7 +108,7 @@ print(a)
 <span class="kn">import</span> <span class="nn">scipy</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -124,7 +123,7 @@ print(a)
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -134,7 +133,7 @@ print(a)
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -160,7 +159,7 @@ print(a)
 <span class="nb">print</span><span class="p">(</span><span class="s2">"总元素大小"</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -170,7 +169,7 @@ print(a)
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -215,7 +214,7 @@ print(a)
 <span class="nb">print</span><span class="p">(</span> <span class="s2">"更改数组纬度:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -225,7 +224,7 @@ print(a)
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -277,7 +276,7 @@ print(a)
 <span class="nb">print</span><span class="p">(</span><span class="s2">"a &lt; 35 = "</span><span class="p">,</span> <span class="n">a</span><span class="o">&lt;</span><span class="mi">35</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -287,7 +286,7 @@ print(a)
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -317,7 +316,7 @@ a &lt; 35 =  [ True  True False False]
 <span class="nb">print</span><span class="p">(</span><span class="s2">"B: "</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -327,7 +326,7 @@ a &lt; 35 =  [ True  True False False]
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -354,7 +353,7 @@ B:  [[4 5]
 <span class="nb">print</span><span class="p">(</span><span class="s2">"a+b="</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -364,7 +363,7 @@ B:  [[4 5]
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -399,7 +398,7 @@ B:  [[4 5]
 <span class="nb">print</span><span class="p">(</span><span class="s2">"a cumulative sum of cumulative each row"</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -409,7 +408,7 @@ B:  [[4 5]
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -444,7 +443,7 @@ a cumulative sum of cumulative each row [[ 0  1  3]
 <span class="nb">print</span><span class="p">(</span><span class="s2">"np.sqrt(B)="</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">B</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -454,7 +453,7 @@ a cumulative sum of cumulative each row [[ 0  1  3]
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -484,7 +483,7 @@ np.sqrt(B)= [0.         1.         1.41421356]
 <span class="nb">print</span><span class="p">(</span><span class="s2">"a[ : :-1] = "</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span> <span class="p">:</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -494,7 +493,7 @@ np.sqrt(B)= [0.         1.         1.41421356]
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -526,7 +525,7 @@ a[ : :-1] =  [  729   512   343   216   125 -1000    27 -1000     1 -1000]
 <span class="nb">print</span><span class="p">(</span><span class="s2">"b[0:5, 1]="</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -536,7 +535,7 @@ a[ : :-1] =  [  729   512   343   216   125 -1000    27 -1000     1 -1000]
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -568,7 +567,7 @@ b[0:5, 1]= [ 1 11 21 31 41]
 <span class="nb">print</span><span class="p">(</span><span class="s1">'c.flat='</span><span class="p">,</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">flat</span><span class="p">])</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -578,7 +577,7 @@ b[0:5, 1]= [ 1 11 21 31 41]
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -619,7 +618,7 @@ c.flat= [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 <span class="nb">print</span><span class="p">(</span><span class="s2">"np.concatenate((a, b), axis=0)="</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -629,7 +628,7 @@ c.flat= [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -667,7 +666,7 @@ np.concatenate((a, b), axis=0)= [[8. 4.]
 <span class="nb">print</span><span class="p">(</span><span class="s2">"np.array_split(a, 4 , axis=1)="</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array_split</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">4</span> <span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -677,7 +676,7 @@ np.concatenate((a, b), axis=0)= [[8. 4.]
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -735,7 +734,7 @@ np.concatenate((a, b), axis=0)= [[8. 4.]
 <span class="nb">print</span><span class="p">(</span><span class="s2">"e is a = "</span><span class="p">,</span> <span class="n">e</span> <span class="ow">is</span> <span class="n">a</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -745,7 +744,7 @@ np.concatenate((a, b), axis=0)= [[8. 4.]
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -787,7 +786,7 @@ e is a =  False
 <span class="nb">print</span><span class="p">(</span><span class="s2">"after a[b] = 0, a = "</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -797,7 +796,7 @@ e is a =  False
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -844,7 +843,7 @@ after a[b] = 0, a =  [[0 1 2 3]
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -854,7 +853,7 @@ after a[b] = 0, a =  [[0 1 2 3]
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -884,7 +883,7 @@ after a[b] = 0, a =  [[0 1 2 3]
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -894,7 +893,7 @@ after a[b] = 0, a =  [[0 1 2 3]
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -918,7 +917,7 @@ after a[b] = 0, a =  [[0 1 2 3]
                 <a href="../%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9https%E6%9C%8D%E5%8A%A1/" rel="prev" title="如何搭建免费https服务">前一篇</a>
             </li>
             <li class="next">
-                <a href="../pythonlei-ji-zhi/" rel="next" title="python类机制">后一篇</a>
+                <a href="../shi-yong-ipython-notebookxie-bo-ke/" rel="next" title="使用ipython-notebook写博客">后一篇</a>
             </li>
         </ul>
 <div id="disqus_thread"></div>
@@ -941,7 +940,7 @@ after a[b] = 0, a =  [[0 1 2 3]
 
 
     </div>
-                     <footer id="footer"><p>Contents © 2019         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+                     <footer id="footer"><p>Contents © 2020         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
 </div>

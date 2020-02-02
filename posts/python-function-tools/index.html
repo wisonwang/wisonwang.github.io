@@ -6,12 +6,12 @@ article: http://ogp.me/ns/article#
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>python function tools | Vincent's Blog</title>
+<title>python function tools | vincent blog</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://wisonwang.github.io/posts/python-function-tools/">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
-<meta property="og:site_name" content="Vincent's Blog">
+<meta property="og:site_name" content="vincent blog">
 <meta property="og:title" content="python function tools">
 <meta property="og:url" content="https://wisonwang.github.io/posts/python-function-tools/">
 <meta property="og:description" content="In [3]:
@@ -20,7 +20,7 @@ article: http://ogp.me/ns/article#
 import functools
 
 
-
+    
 
 
 
@@ -35,7 +35,7 @@ import urllib
 @functools.lru_cache(maxsize=32)
 def get_pep(num):
     'Retrieve text of a Python Enhancement Proposal'
-    resource = 'http://www.">
+    resource = 'http://">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2019-04-02T16:55:28+08:00">
 </head>
@@ -84,7 +84,7 @@ def get_pep(num):
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">functools</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -116,7 +116,7 @@ def get_pep(num):
 <span class="n">get_pep</span><span class="o">.</span><span class="n">cache_info</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -126,7 +126,7 @@ def get_pep(num):
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -147,7 +147,7 @@ def get_pep(num):
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -175,7 +175,7 @@ def get_pep(num):
 <span class="n">basetwo</span><span class="p">(</span><span class="s1">'10010'</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -185,7 +185,7 @@ def get_pep(num):
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -207,7 +207,7 @@ def get_pep(num):
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># functools.partialmethod 固定对象成员函数</span>
 <span class="k">class</span> <span class="nc">Cell</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_alive</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="nd">@property</span>
@@ -228,7 +228,7 @@ def get_pep(num):
 <span class="n">c</span><span class="o">.</span><span class="n">alive</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -238,7 +238,7 @@ def get_pep(num):
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[6]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -261,7 +261,7 @@ def get_pep(num):
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">functools</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="p">[</span><span class="n">y</span><span class="p">],</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="p">[])</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -271,7 +271,7 @@ def get_pep(num):
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -342,7 +342,7 @@ def get_pep(num):
 <span class="n">fun</span><span class="p">(</span><span class="n">D</span><span class="p">())</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -352,7 +352,7 @@ def get_pep(num):
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -395,7 +395,7 @@ print B obj:  &lt;__main__.D object at 0x10c9449e8&gt;
 <span class="nb">print</span><span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -405,7 +405,7 @@ print B obj:  &lt;__main__.D object at 0x10c9449e8&gt;
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -421,13 +421,39 @@ functools.partial(&lt;function update_wrapper at 0x10aa9d8c8&gt;, wrapped=&lt;cl
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
     </div>
   </div>
 
         </div>
                 <ul class="pager hidden-print">
 <li class="previous">
-                <a href="../sklearn-word2vecsuan-fa/" rel="prev" title="sklearn word2vec算法">前一篇</a>
+                <a href="../django-authoauth20/" rel="prev" title="django auth&amp;oauth2.0">前一篇</a>
             </li>
             <li class="next">
                 <a href="../python-meta-class/" rel="next" title="python meta class">后一篇</a>
@@ -453,7 +479,7 @@ functools.partial(&lt;function update_wrapper at 0x10aa9d8c8&gt;, wrapped=&lt;cl
 
 
     </div>
-                     <footer id="footer"><p>Contents © 2019         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+                     <footer id="footer"><p>Contents © 2020         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
 </div>

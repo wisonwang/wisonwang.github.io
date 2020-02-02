@@ -1,0 +1,13 @@
+#+BEGIN_COMMENT
+.. title: 轻量级事务实现cas(compara and set)
+.. slug: qing-liang-ji-shi-wu-shi-xian-cascompara-and-set
+.. date: 2019-10-21 10:55:47 UTC+08:00
+.. tags: draft
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+
+在这里书写你的文章。

@@ -31,10 +31,38 @@
   
 * 通信协议选择 
 
-* 存储设计
+** grpc&thrift 
 
+** http restful 
+
+* 数据存储
+
+要点：
+
+- 非关系型数据库
+
+- 非固定结构定义/固定列
+
+- 分布式易于扩展
+
+- 优秀的性能
+
+- 支持冷热数据/经济
+
+可选项：
+
+- hbase 
+
+- mongodb
+
+- cassandra
+
+- couchbase
+
+- ...
 
 [fn:1] [[https://db-engines.com/en/ranking][db-engine ranking]]
+
 
 
 

@@ -6,12 +6,12 @@ article: http://ogp.me/ns/article#
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>tensorflow word2vec | Vincent's Blog</title>
+<title>tensorflow word2vec | vincent blog</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://wisonwang.github.io/posts/tensorflow-word2vec/">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
-<meta property="og:site_name" content="Vincent's Blog">
+<meta property="og:site_name" content="vincent blog">
 <meta property="og:title" content="tensorflow word2vec">
 <meta property="og:url" content="https://wisonwang.github.io/posts/tensorflow-word2vec/">
 <meta property="og:description" content="使用tensorflow演示word2vec算法.
@@ -79,9 +79,9 @@ import m">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 
 <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">collections</span>
@@ -89,15 +89,15 @@ import m">
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">gettempdir</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">gettempdir</span>
 <span class="kn">import</span> <span class="nn">zipfile</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="n">urllib</span>
-<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="n">xrange</span>  <span class="c1"># pylint: disable=redefined-builtin</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">urllib</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">xrange</span>  <span class="c1"># pylint: disable=redefined-builtin</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 
-<span class="kn">from</span> <span class="nn">tensorflow.contrib.tensorboard.plugins</span> <span class="k">import</span> <span class="n">projector</span>
+<span class="kn">from</span> <span class="nn">tensorflow.contrib.tensorboard.plugins</span> <span class="kn">import</span> <span class="n">projector</span>
 
 <span class="n">data_index</span> <span class="o">=</span> <span class="mi">0</span>
 
@@ -386,7 +386,7 @@ import m">
 
   <span class="k">try</span><span class="p">:</span>
     <span class="c1"># pylint: disable=g-import-not-at-top</span>
-    <span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="k">import</span> <span class="n">TSNE</span>
+    <span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
     <span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span>
@@ -419,7 +419,7 @@ import m">
   <span class="n">word2vec_basic</span><span class="p">(</span><span class="n">flags</span><span class="o">.</span><span class="n">log_dir</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -429,7 +429,7 @@ import m">
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stderr output_text">
@@ -441,7 +441,7 @@ import m">
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_text output_error">
@@ -471,7 +471,7 @@ import m">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -481,7 +481,7 @@ import m">
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -731,7 +731,7 @@ Nearest to that: which, what, this, but, however, unification, digs, hell,
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_text output_error">
@@ -745,7 +745,7 @@ An exception has occurred, use %tb to see the full traceback.
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stderr output_text">
@@ -757,7 +757,7 @@ An exception has occurred, use %tb to see the full traceback.
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_text output_error">
@@ -798,7 +798,7 @@ An exception has occurred, use %tb to see the full traceback.
 
 
     </div>
-                     <footer id="footer"><p>Contents © 2019         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+                     <footer id="footer"><p>Contents © 2020         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
 </div>

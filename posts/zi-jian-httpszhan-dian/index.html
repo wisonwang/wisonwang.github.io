@@ -6,12 +6,12 @@ article: http://ogp.me/ns/article#
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>自建https站点 | Vincent's Blog</title>
+<title>自建https站点 | vincent blog</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://wisonwang.github.io/posts/zi-jian-httpszhan-dian/">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
-<meta property="og:site_name" content="Vincent's Blog">
+<meta property="og:site_name" content="vincent blog">
 <meta property="og:title" content="自建https站点">
 <meta property="og:url" content="https://wisonwang.github.io/posts/zi-jian-httpszhan-dian/">
 <meta property="og:description" content="现在https已经成为web服务的标配了，由于完整的https部署流程需要一系列的备案申请ca的一些过程，
@@ -75,9 +75,9 @@ sudo openssl">
 
 <!-- TEASER_END -->
 
-<div id="outline-container-org0fcaf9b" class="outline-2">
-<h2 id="org0fcaf9b">生成证书</h2>
-<div class="outline-text-2" id="text-org0fcaf9b">
+<div id="outline-container-org68f7571" class="outline-2">
+<h2 id="org68f7571">生成证书</h2>
+<div class="outline-text-2" id="text-org68f7571">
 <div class="highlight"><pre><span></span>sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 </pre></div>
 
@@ -88,13 +88,13 @@ sudo openssl">
 </div>
 </div>
 
-<div id="outline-container-orgeff251b" class="outline-2">
-<h2 id="orgeff251b">配置nginx</h2>
-<div class="outline-text-2" id="text-orgeff251b">
+<div id="outline-container-org1f58fa1" class="outline-2">
+<h2 id="org1f58fa1">配置nginx</h2>
+<div class="outline-text-2" id="text-org1f58fa1">
 </div>
-<div id="outline-container-org224b605" class="outline-3">
-<h3 id="org224b605">配置/etc/nginx/snippets/self-signed.conf</h3>
-<div class="outline-text-3" id="text-org224b605">
+<div id="outline-container-org64b950d" class="outline-3">
+<h3 id="org64b950d">配置/etc/nginx/snippets/self-signed.conf</h3>
+<div class="outline-text-3" id="text-org64b950d">
 <p>
 添加如下内容:
 </p>
@@ -105,9 +105,9 @@ ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
 </div>
 </div>
 
-<div id="outline-container-org7d994af" class="outline-3">
-<h3 id="org7d994af">配置/etc/nginx/snippets/ssl-params.conf</h3>
-<div class="outline-text-3" id="text-org7d994af">
+<div id="outline-container-orgbbff576" class="outline-3">
+<h3 id="orgbbff576">配置/etc/nginx/snippets/ssl-params.conf</h3>
+<div class="outline-text-3" id="text-orgbbff576">
 <p>
 添加内容：
 </p>
@@ -131,18 +131,18 @@ add_header X-XSS-Protection "1; mode=block";
 </div>
 </div>
 
-<div id="outline-container-org2545e5f" class="outline-3">
-<h3 id="org2545e5f">生成dhparam</h3>
-<div class="outline-text-3" id="text-org2545e5f">
+<div id="outline-container-orga445216" class="outline-3">
+<h3 id="orga445216">生成dhparam</h3>
+<div class="outline-text-3" id="text-orga445216">
 <div class="highlight"><pre><span></span>openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 </pre></div>
 </div>
 </div>
 
 
-<div id="outline-container-org9c54a34" class="outline-3">
-<h3 id="org9c54a34">配置nginx站点</h3>
-<div class="outline-text-3" id="text-org9c54a34">
+<div id="outline-container-org0addb36" class="outline-3">
+<h3 id="org0addb36">配置nginx站点</h3>
+<div class="outline-text-3" id="text-org0addb36">
 <p>
 以example.com域名为例子：
 </p>
@@ -223,7 +223,7 @@ server {
 
 
     </div>
-                     <footer id="footer"><p>Contents © 2019         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+                     <footer id="footer"><p>Contents © 2020         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
 </div>

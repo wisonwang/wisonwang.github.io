@@ -1,11 +1,14 @@
-#+begin_comment
+#+BEGIN_COMMENT
 .. title: python 入门
 .. slug: python 入门
 .. date: 2018-12-16 22:00:06 UTC+08:00
 .. tags: draft
+.. category: 
+.. link: 
+.. description: 
 .. type: text
-.. status: draft
-#+end_comment
+#+END_COMMENT
+
 * python简介
 
 ** 动态脚本语言，支持交互式开发效率高

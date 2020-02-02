@@ -6,12 +6,12 @@ article: http://ogp.me/ns/article#
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>使用python还是scala开发spark程序？ | Vincent's Blog</title>
+<title>使用python还是scala开发spark程序？ | vincent blog</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://wisonwang.github.io/posts/spark-with-python-or-scala/">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
-<meta property="og:site_name" content="Vincent's Blog">
+<meta property="og:site_name" content="vincent blog">
 <meta property="og:title" content="使用python还是scala开发spark程序？">
 <meta property="og:url" content="https://wisonwang.github.io/posts/spark-with-python-or-scala/">
 <meta property="og:description" content="spark 官方提供了python,java, scala,R 三种语言的封装，scala和java都建立jvm可以相互调用，R一般人用的不多，如下比较一下python
@@ -75,13 +75,13 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 和scala开发spark程序的优缺点。
 </p>
 
-<div id="outline-container-org122b76e" class="outline-2">
-<h2 id="org122b76e">scala和python开发spark程序各自优点</h2>
-<div class="outline-text-2" id="text-org122b76e">
+<div id="outline-container-orgbaf403a" class="outline-2">
+<h2 id="orgbaf403a">scala和python开发spark程序各自优点</h2>
+<div class="outline-text-2" id="text-orgbaf403a">
 </div>
-<div id="outline-container-org14067f5" class="outline-3">
-<h3 id="org14067f5">pyspark优点</h3>
-<div class="outline-text-3" id="text-org14067f5">
+<div id="outline-container-orgef7354b" class="outline-3">
+<h3 id="orgef7354b">pyspark优点</h3>
+<div class="outline-text-3" id="text-orgef7354b">
 <ol class="org-ol">
 <li>动态语言开发效率高，工程难度低</li>
 <li>算法类库丰富，易于移移植现有算法到spark平台</li>
@@ -90,9 +90,9 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 </div>
 </div>
 
-<div id="outline-container-org6811bf6" class="outline-3">
-<h3 id="org6811bf6">pyspark缺点</h3>
-<div class="outline-text-3" id="text-org6811bf6">
+<div id="outline-container-orgdd6c6cb" class="outline-3">
+<h3 id="orgdd6c6cb">pyspark缺点</h3>
+<div class="outline-text-3" id="text-orgdd6c6cb">
 <ol class="org-ol">
 <li>性能差： 动态语言载加上通过py4j来和spark交互的，在计算量很大的情况下慢的可怕；</li>
 <li>不能使用全部spark api： 因为是通过py4j调用，需要必要的封装（pyspark），不能像scala那样和java可以直接调用， 导致不能直接调用java或者scala类库。</li>
@@ -102,9 +102,9 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 </div>
 </div>
 
-<div id="outline-container-orge8ddf85" class="outline-2">
-<h2 id="orge8ddf85">总结</h2>
-<div class="outline-text-2" id="text-orge8ddf85">
+<div id="outline-container-orgb161005" class="outline-2">
+<h2 id="orgb161005">总结</h2>
+<div class="outline-text-2" id="text-orgb161005">
 <ol class="org-ol">
 <li>对于算法实现的初步阶段可以使用python开发原型，配合一些工具进行快速评估，演示;</li>
 
@@ -113,13 +113,13 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 </div>
 </div>
 
-<div id="outline-container-orgba8f3d4" class="outline-2">
-<h2 id="orgba8f3d4">python 开发spark程序的一些问题</h2>
-<div class="outline-text-2" id="text-orgba8f3d4">
+<div id="outline-container-org9a91394" class="outline-2">
+<h2 id="org9a91394">python 开发spark程序的一些问题</h2>
+<div class="outline-text-2" id="text-org9a91394">
 </div>
-<div id="outline-container-org736045d" class="outline-3">
-<h3 id="org736045d">python 依赖环境分发</h3>
-<div class="outline-text-3" id="text-org736045d">
+<div id="outline-container-orgf8a8a1a" class="outline-3">
+<h3 id="orgf8a8a1a">python 依赖环境分发</h3>
+<div class="outline-text-3" id="text-orgf8a8a1a">
 <p>
 用 Java 和 Scala 访问 Spark 提供了许多优点 : 因为 Spark 它自己运行在 JVM 中，运行在 JVM 内部是平台无关的，独立的代码包和它打入到 JAR 文件中的依赖，以及更高的性能。如果您使用 Spark Python API 将会失去这些优势。
 </p>
@@ -172,7 +172,7 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 
 
     </div>
-                     <footer id="footer"><p>Contents © 2019         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+                     <footer id="footer"><p>Contents © 2020         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
 </div>

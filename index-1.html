@@ -7,7 +7,7 @@ article: http://ogp.me/ns/article#
 <meta charset="utf-8">
 <meta name="description" content="python, go, ML, bigdata">
 <meta name="viewport" content="width=device-width">
-<title>Vincent's Blog (旧文章页 1) | Vincent's Blog</title>
+<title>vincent blog (旧文章页 1) | vincent blog</title>
 <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://wisonwang.github.io/index-1.html">
@@ -29,6 +29,111 @@ article: http://ogp.me/ns/article#
 
         </ul></section><section class="page-content"><div class="content" rel="main">
         <div class="post">
+            <h1 class="title"><a href="posts/shi-yong-ipython-notebookxie-bo-ke/">使用ipython-notebook写博客</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2019-01-09T22:52:30+08:00">2019-01-09 22:52</time>
+</div>
+                <div class="stats">
+                                <a href="posts/shi-yong-ipython-notebookxie-bo-ke/#disqus_thread" data-disqus-identifier="cache/posts/shi-yong-ipython-notebookxie-bo-ke.html">Comments</a>
+
+
+                </div>
+            
+            </div>
+            <div class="body">
+                <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>测试notebook</p>
+<ul>
+<li>
+<p>aaaa</p>
+</li>
+<li>
+<p>bbb</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">SayHello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{0}</span><span class="s2"> says hello !"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+
+<span class="n">SayHello</span><span class="p">(</span><span class="s2">"lilei"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>lilei says hello !
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+
+            </div>
+        </div>
+        <div class="post">
+            <h1 class="title"><a href="posts/numpy_example/">numpy_example</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2018-05-22T16:58:15+08:00">2018-05-22 16:58</time>
+</div>
+                <div class="stats">
+                                <a href="posts/numpy_example/#disqus_thread" data-disqus-identifier="cache/posts/numpy_example.html">Comments</a>
+
+
+                </div>
+            
+            </div>
+            <div class="body">
+                <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>介绍numpy/scipy库的基本用法.</p>
+<p class="more"><a href="posts/numpy_example/">更多…</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
             <h1 class="title"><a href="posts/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9https%E6%9C%8D%E5%8A%A1/">如何搭建免费https服务</a></h1>
             <div class="meta">
                 <div class="authordate">
@@ -49,6 +154,68 @@ https 取代http已经是一个趋势了，那么如何才能将自己的web站�
             </div>
         </div>
         <div class="post">
+            <h1 class="title"><a href="posts/golang%2Ccluster/">golang cluster</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2018-05-10T16:36:25+08:00">2018-05-10 16:36</time>
+</div>
+                <div class="stats">
+                                <a href="posts/golang%2Ccluster/#disqus_thread" data-disqus-identifier="cache/posts/golang_cluster.html">Comments</a>
+
+
+                </div>
+                    <div itemprop="keywords" class="tags">
+        <ul>
+        标签 : 
+           <li><a class="tag p-category" href="categories/draft-golang/" rel="tag">draft golang</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <p>
+golang服务的集群方案
+</p>
+<div id="outline-container-org2c1f1eb" class="outline-2">
+<h2 id="org2c1f1eb">服务发现</h2>
+<div class="outline-text-2" id="text-org2c1f1eb">
+</div>
+<div id="outline-container-org09dafda" class="outline-3">
+<h3 id="org09dafda">基于zookeeper</h3>
+<div class="outline-text-3" id="text-org09dafda">
+<p>
+<a href="https://www.v2ex.com/t/440662">手把手教你使用 Go 基于 zookeeper 编写服务发现</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org61f6f3a" class="outline-3">
+<h3 id="org61f6f3a">consul 轻量级服务发现服务</h3>
+<div class="outline-text-3" id="text-org61f6f3a">
+<p>
+<a href="https://www.consul.io/">consul 服务发现</a>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org80f837c" class="outline-2">
+<h2 id="org80f837c">配置中心</h2>
+<div class="outline-text-2" id="text-org80f837c">
+</div>
+<div id="outline-container-org0d45b5b" class="outline-3">
+<h3 id="org0d45b5b">apollo配置中心</h3>
+<div class="outline-text-3" id="text-org0d45b5b">
+<p>
+<a href="https://github.com/ctripcorp/apollo">apollo配置中心</a>
+</p>
+</div>
+</div>
+</div>
+            </div>
+        </div>
+        <div class="post">
             <h1 class="title"><a href="posts/devops%2Ctools/">devops tools</a></h1>
             <div class="meta">
                 <div class="authordate">
@@ -62,23 +229,23 @@ https 取代http已经是一个趋势了，那么如何才能将自己的web站�
             
             </div>
             <div class="body">
-                <div id="outline-container-org079f233" class="outline-2">
-<h2 id="org079f233">fabric</h2>
+                <div id="outline-container-org9a6a38f" class="outline-2">
+<h2 id="org9a6a38f">fabric</h2>
 </div>
 
-<div id="outline-container-orgf336e74" class="outline-2">
-<h2 id="orgf336e74">ansible</h2>
+<div id="outline-container-orgb1681ba" class="outline-2">
+<h2 id="orgb1681ba">ansible</h2>
 </div>
 
-<div id="outline-container-org48d166d" class="outline-2">
-<h2 id="org48d166d">监控</h2>
-<div class="outline-text-2" id="text-org48d166d">
+<div id="outline-container-org116d993" class="outline-2">
+<h2 id="org116d993">监控</h2>
+<div class="outline-text-2" id="text-org116d993">
 </div>
-<div id="outline-container-org463af6a" class="outline-3">
-<h3 id="org463af6a">opentsdb</h3>
+<div id="outline-container-orgae64139" class="outline-3">
+<h3 id="orgae64139">opentsdb</h3>
 </div>
-<div id="outline-container-org602f2b6" class="outline-3">
-<h3 id="org602f2b6">elk</h3>
+<div id="outline-container-orga48ac4c" class="outline-3">
+<h3 id="orga48ac4c">elk</h3>
 </div>
 </div>
             </div>
@@ -97,33 +264,33 @@ https 取代http已经是一个趋势了，那么如何才能将自己的web站�
             
             </div>
             <div class="body">
-                <div id="outline-container-org374fb43" class="outline-2">
-<h2 id="org374fb43">编辑开发工具</h2>
+                <div id="outline-container-org52ee7f1" class="outline-2">
+<h2 id="org52ee7f1">编辑开发工具</h2>
 </div>
 
-<div id="outline-container-org5bb7355" class="outline-2">
-<h2 id="org5bb7355">虚拟机</h2>
-<div class="outline-text-2" id="text-org5bb7355">
+<div id="outline-container-orgd936521" class="outline-2">
+<h2 id="orgd936521">虚拟机</h2>
+<div class="outline-text-2" id="text-orgd936521">
 </div>
-<div id="outline-container-orgfc29eca" class="outline-3">
-<h3 id="orgfc29eca">pyevn + anaconda</h3>
+<div id="outline-container-org9d0274b" class="outline-3">
+<h3 id="org9d0274b">pyevn + anaconda</h3>
 </div>
-<div id="outline-container-org7d9874a" class="outline-3">
-<h3 id="org7d9874a">virtualenv + virtualenvwrapper</h3>
+<div id="outline-container-org141b537" class="outline-3">
+<h3 id="org141b537">virtualenv + virtualenvwrapper</h3>
 </div>
-</div>
-
-
-<div id="outline-container-org08fe4b2" class="outline-2">
-<h2 id="org08fe4b2">文档工具</h2>
-<div class="outline-text-2" id="text-org08fe4b2">
-</div>
-<div id="outline-container-orga63c7ff" class="outline-3">
-<h3 id="orga63c7ff">sphinx</h3>
 </div>
 
-<div id="outline-container-org7183b4e" class="outline-3">
-<h3 id="org7183b4e">pydoc</h3>
+
+<div id="outline-container-org65b72c0" class="outline-2">
+<h2 id="org65b72c0">文档工具</h2>
+<div class="outline-text-2" id="text-org65b72c0">
+</div>
+<div id="outline-container-org29abacd" class="outline-3">
+<h3 id="org29abacd">sphinx</h3>
+</div>
+
+<div id="outline-container-org074c56b" class="outline-3">
+<h3 id="org074c56b">pydoc</h3>
 </div>
 </div>
             </div>
@@ -160,9 +327,9 @@ https 取代http已经是一个趋势了，那么如何才能将自己的web站�
             
             </div>
             <div class="body">
-                <div id="outline-container-orga5ac6aa" class="outline-2">
-<h2 id="orga5ac6aa">scala 工程使用sbt还是maven</h2>
-<div class="outline-text-2" id="text-orga5ac6aa">
+                <div id="outline-container-org0e88e34" class="outline-2">
+<h2 id="org0e88e34">scala 工程使用sbt还是maven</h2>
+<div class="outline-text-2" id="text-org0e88e34">
 <p>
 <a href="http://www.hammerlab.org/2017/04/06/scala-build-tools/#sbt">
 scala by maven or sbt</a>
@@ -170,9 +337,9 @@ scala by maven or sbt</a>
 </div>
 </div>
 
-<div id="outline-container-org6edcd53" class="outline-2">
-<h2 id="org6edcd53">转换maven为sbt</h2>
-<div class="outline-text-2" id="text-org6edcd53">
+<div id="outline-container-org6fea7bd" class="outline-2">
+<h2 id="org6fea7bd">转换maven为sbt</h2>
+<div class="outline-text-2" id="text-org6fea7bd">
 <p>
 网上有可以直接使用maven pom.xml文件的，sbt插件。新版本sbt可能会提示找不到仓库，可以尝试本地编译。
 <a href="https://github.com/shivawu/sbt-maven-plugin">maven转sbt插件</a>
@@ -210,13 +377,13 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 和scala开发spark程序的优缺点。
 </p>
 
-<div id="outline-container-org122b76e" class="outline-2">
-<h2 id="org122b76e">scala和python开发spark程序各自优点</h2>
-<div class="outline-text-2" id="text-org122b76e">
+<div id="outline-container-orgbaf403a" class="outline-2">
+<h2 id="orgbaf403a">scala和python开发spark程序各自优点</h2>
+<div class="outline-text-2" id="text-orgbaf403a">
 </div>
-<div id="outline-container-org14067f5" class="outline-3">
-<h3 id="org14067f5">pyspark优点</h3>
-<div class="outline-text-3" id="text-org14067f5">
+<div id="outline-container-orgef7354b" class="outline-3">
+<h3 id="orgef7354b">pyspark优点</h3>
+<div class="outline-text-3" id="text-orgef7354b">
 <ol class="org-ol">
 <li>动态语言开发效率高，工程难度低</li>
 <li>算法类库丰富，易于移移植现有算法到spark平台</li>
@@ -225,9 +392,9 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 </div>
 </div>
 
-<div id="outline-container-org6811bf6" class="outline-3">
-<h3 id="org6811bf6">pyspark缺点</h3>
-<div class="outline-text-3" id="text-org6811bf6">
+<div id="outline-container-orgdd6c6cb" class="outline-3">
+<h3 id="orgdd6c6cb">pyspark缺点</h3>
+<div class="outline-text-3" id="text-orgdd6c6cb">
 <ol class="org-ol">
 <li>性能差： 动态语言载加上通过py4j来和spark交互的，在计算量很大的情况下慢的可怕；</li>
 <li>不能使用全部spark api： 因为是通过py4j调用，需要必要的封装（pyspark），不能像scala那样和java可以直接调用， 导致不能直接调用java或者scala类库。</li>
@@ -262,9 +429,9 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 
             </div>
             <div class="body">
-                <div id="outline-container-org60f8605" class="outline-2">
-<h2 id="org60f8605">使用nikola+spacemacs搭建blog</h2>
-<div class="outline-text-2" id="text-org60f8605">
+                <div id="outline-container-orga322129" class="outline-2">
+<h2 id="orga322129">使用nikola+spacemacs搭建blog</h2>
+<div class="outline-text-2" id="text-orga322129">
 <p class="more"><a href="posts/%E4%BD%BF%E7%94%A8nikola%2Bspacemacs%2Borgmode%20%E6%90%AD%E5%BB%BAblog/">更多…</a></p>
 </div>
 </div>
@@ -274,7 +441,7 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 <li class="previous">
                 <a href="." rel="prev">新一篇</a>
             </li>
-        </ul></nav><script>var disqus_shortname="wisonwanghomepage";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><footer id="footer"><p>Contents © 2019         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+        </ul></nav><script>var disqus_shortname="wisonwanghomepage";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><footer id="footer"><p>Contents © 2020         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
 </div>

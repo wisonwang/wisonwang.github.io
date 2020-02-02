@@ -6,12 +6,12 @@ article: http://ogp.me/ns/article#
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>python grpc 使用 | Vincent's Blog</title>
+<title>python grpc 使用 | vincent blog</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://wisonwang.github.io/posts/python-grpc-shi-yong/">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
-<meta property="og:site_name" content="Vincent's Blog">
+<meta property="og:site_name" content="vincent blog">
 <meta property="og:title" content="python grpc 使用">
 <meta property="og:url" content="https://wisonwang.github.io/posts/python-grpc-shi-yong/">
 <meta property="og:description" content="grpc 是google开发的远程通信协议,和它最相近的产品的产品是apache基金会下的thrift协议。
@@ -93,9 +93,9 @@ grpc 是google开发的远程通信协议,和它最相近的产品的产品是ap
 iigrpc router guide]]
 </p>
 
-<div id="outline-container-org13f752d" class="outline-2">
-<h2 id="org13f752d">创建.proto</h2>
-<div class="outline-text-2" id="text-org13f752d">
+<div id="outline-container-org526ddf6" class="outline-2">
+<h2 id="org526ddf6">创建.proto</h2>
+<div class="outline-text-2" id="text-org526ddf6">
 <p>
 创建.proto文件：
 </p>
@@ -193,9 +193,9 @@ iigrpc router guide]]
 </div>
 </div>
 
-<div id="outline-container-org4771d98" class="outline-2">
-<h2 id="org4771d98">编译</h2>
-<div class="outline-text-2" id="text-org4771d98">
+<div id="outline-container-org4717047" class="outline-2">
+<h2 id="org4717047">编译</h2>
+<div class="outline-text-2" id="text-org4717047">
 <p>
 安装grpcio-tools
 </p>
@@ -220,9 +220,9 @@ iigrpc router guide]]
 </div>
 </div>
 
-<div id="outline-container-org0cca836" class="outline-2">
-<h2 id="org0cca836">编写server-client代码</h2>
-<div class="outline-text-2" id="text-org0cca836">
+<div id="outline-container-orga635cbf" class="outline-2">
+<h2 id="orga635cbf">编写server-client代码</h2>
+<div class="outline-text-2" id="text-orga635cbf">
 <p>
 client 样例：
 </p>
@@ -252,13 +252,13 @@ client 样例：
 <span class="k">def</span> <span class="nf">guide_get_one_feature</span><span class="p">(</span><span class="n">stub</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
     <span class="n">feature</span> <span class="o">=</span> <span class="n">stub</span><span class="o">.</span><span class="n">GetFeature</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="p">:</span>
-	<span class="k">print</span><span class="p">(</span><span class="s2">"Server returned incomplete feature"</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">"Server returned incomplete feature"</span><span class="p">)</span>
 	<span class="k">return</span>
 
     <span class="k">if</span> <span class="n">feature</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
-	<span class="k">print</span><span class="p">(</span><span class="s2">"Feature called </span><span class="si">%s</span><span class="s2"> at </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="p">))</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">"Feature called </span><span class="si">%s</span><span class="s2"> at </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
-	<span class="k">print</span><span class="p">(</span><span class="s2">"Found no feature at </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">"Found no feature at </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">guide_get_feature</span><span class="p">(</span><span class="n">stub</span><span class="p">):</span>
@@ -271,12 +271,12 @@ client 样例：
     <span class="n">rectangle</span> <span class="o">=</span> <span class="n">route_guide_pb2</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span>
 	<span class="n">lo</span><span class="o">=</span><span class="n">route_guide_pb2</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="mi">400000000</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=-</span><span class="mi">750000000</span><span class="p">),</span>
 	<span class="n">hi</span><span class="o">=</span><span class="n">route_guide_pb2</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="mi">420000000</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=-</span><span class="mi">730000000</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"Looking for features between 40, -75 and 42, -73"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Looking for features between 40, -75 and 42, -73"</span><span class="p">)</span>
 
     <span class="n">features</span> <span class="o">=</span> <span class="n">stub</span><span class="o">.</span><span class="n">ListFeatures</span><span class="p">(</span><span class="n">rectangle</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
-	<span class="k">print</span><span class="p">(</span><span class="s2">"Feature called </span><span class="si">%s</span><span class="s2"> at </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="p">))</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">"Feature called </span><span class="si">%s</span><span class="s2"> at </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">feature</span><span class="o">.</span><span class="n">location</span><span class="p">))</span>
 
 
 <span class="k">def</span> <span class="nf">generate_route</span><span class="p">(</span><span class="n">feature_list</span><span class="p">):</span>
@@ -284,7 +284,7 @@ client 样例：
 	<span class="n">random_feature</span> <span class="o">=</span> <span class="n">feature_list</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">feature_list</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
 	<span class="c1"># 延迟以下 因为返回路径是一个兴趣点列表的迭代器 所以服务端接受时 也是拿到一个迭代器，相当于一个管道，客户端生成一个兴趣点，服务端就接受一个，而不是一次性接受所有生成的兴趣点</span>
 	<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
-	<span class="k">print</span><span class="p">(</span><span class="s2">"Visiting point </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">random_feature</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">"Visiting point </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">random_feature</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
 	<span class="k">yield</span> <span class="n">random_feature</span><span class="o">.</span><span class="n">location</span>
 
 
@@ -293,10 +293,10 @@ client 样例：
 
     <span class="n">route_iterator</span> <span class="o">=</span> <span class="n">generate_route</span><span class="p">(</span><span class="n">feature_list</span><span class="p">)</span>
     <span class="n">route_summary</span> <span class="o">=</span> <span class="n">stub</span><span class="o">.</span><span class="n">RecordRoute</span><span class="p">(</span><span class="n">route_iterator</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"Finished trip with </span><span class="si">%s</span><span class="s2"> points "</span> <span class="o">%</span> <span class="n">route_summary</span><span class="o">.</span><span class="n">point_count</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"Passed </span><span class="si">%s</span><span class="s2"> features "</span> <span class="o">%</span> <span class="n">route_summary</span><span class="o">.</span><span class="n">feature_count</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"Travelled </span><span class="si">%s</span><span class="s2"> meters "</span> <span class="o">%</span> <span class="n">route_summary</span><span class="o">.</span><span class="n">distance</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"It took </span><span class="si">%s</span><span class="s2"> seconds "</span> <span class="o">%</span> <span class="n">route_summary</span><span class="o">.</span><span class="n">elapsed_time</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Finished trip with </span><span class="si">%s</span><span class="s2"> points "</span> <span class="o">%</span> <span class="n">route_summary</span><span class="o">.</span><span class="n">point_count</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Passed </span><span class="si">%s</span><span class="s2"> features "</span> <span class="o">%</span> <span class="n">route_summary</span><span class="o">.</span><span class="n">feature_count</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Travelled </span><span class="si">%s</span><span class="s2"> meters "</span> <span class="o">%</span> <span class="n">route_summary</span><span class="o">.</span><span class="n">distance</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"It took </span><span class="si">%s</span><span class="s2"> seconds "</span> <span class="o">%</span> <span class="n">route_summary</span><span class="o">.</span><span class="n">elapsed_time</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">generate_messages</span><span class="p">():</span>
@@ -309,7 +309,7 @@ client 样例：
     <span class="p">]</span>
     <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
 	<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-	<span class="k">print</span><span class="p">(</span><span class="s2">"Sending </span><span class="si">%s</span><span class="s2"> at </span><span class="si">%s</span><span class="s2"> time: </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">"Sending </span><span class="si">%s</span><span class="s2"> at </span><span class="si">%s</span><span class="s2"> time: </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span>
 	      <span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">))</span>
 	<span class="k">yield</span> <span class="n">msg</span>
 
@@ -317,7 +317,7 @@ client 样例：
 <span class="k">def</span> <span class="nf">guide_route_chat</span><span class="p">(</span><span class="n">stub</span><span class="p">):</span>
     <span class="n">responses</span> <span class="o">=</span> <span class="n">stub</span><span class="o">.</span><span class="n">RouteChat</span><span class="p">(</span><span class="n">generate_messages</span><span class="p">())</span>
     <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">responses</span><span class="p">:</span>
-	<span class="k">print</span><span class="p">(</span><span class="s2">"Received message </span><span class="si">%s</span><span class="s2"> at </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">"Received message </span><span class="si">%s</span><span class="s2"> at </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span>
 	      <span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">location</span><span class="p">))</span>
 
 
@@ -327,13 +327,13 @@ client 样例：
     <span class="c1"># of the code.</span>
     <span class="k">with</span> <span class="n">grpc</span><span class="o">.</span><span class="n">insecure_channel</span><span class="p">(</span><span class="s1">'localhost:50051'</span><span class="p">)</span> <span class="k">as</span> <span class="n">channel</span><span class="p">:</span>
 	<span class="n">stub</span> <span class="o">=</span> <span class="n">route_guide_pb2_grpc</span><span class="o">.</span><span class="n">RouteGuideStub</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
-	<span class="k">print</span><span class="p">(</span><span class="s2">"-------------- GetFeature --------------"</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">"-------------- GetFeature --------------"</span><span class="p">)</span>
 	<span class="n">guide_get_feature</span><span class="p">(</span><span class="n">stub</span><span class="p">)</span>
-	<span class="k">print</span><span class="p">(</span><span class="s2">"-------------- ListFeatures --------------"</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">"-------------- ListFeatures --------------"</span><span class="p">)</span>
 	<span class="n">guide_list_features</span><span class="p">(</span><span class="n">stub</span><span class="p">)</span>
-	<span class="k">print</span><span class="p">(</span><span class="s2">"-------------- RecordRoute --------------"</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">"-------------- RecordRoute --------------"</span><span class="p">)</span>
 	<span class="n">guide_record_route</span><span class="p">(</span><span class="n">stub</span><span class="p">)</span>
-	<span class="k">print</span><span class="p">(</span><span class="s2">"-------------- RouteChat --------------"</span><span class="p">)</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">"-------------- RouteChat --------------"</span><span class="p">)</span>
 	<span class="n">guide_route_chat</span><span class="p">(</span><span class="n">stub</span><span class="p">)</span>
 
 
@@ -365,7 +365,7 @@ server 样例:
     <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">feature_db</span><span class="p">:</span>
 	<span class="k">if</span> <span class="n">feature</span><span class="o">.</span><span class="n">location</span> <span class="o">==</span> <span class="n">point</span><span class="p">:</span>
 	    <span class="k">return</span> <span class="n">feature</span>
-    <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="kc">None</span>
 
 
 <span class="k">def</span> <span class="nf">get_distance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
@@ -397,7 +397,7 @@ server 样例:
 
     <span class="k">def</span> <span class="nf">GetFeature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
 	<span class="n">feature</span> <span class="o">=</span> <span class="n">get_feature</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
-	<span class="k">if</span> <span class="n">feature</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">feature</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 	    <span class="k">return</span> <span class="n">route_guide_pb2</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
 	<span class="k">else</span><span class="p">:</span>
 	    <span class="k">return</span> <span class="n">feature</span>
@@ -418,12 +418,12 @@ server 样例:
 	<span class="n">point_count</span> <span class="o">=</span> <span class="mi">0</span>
 	<span class="n">feature_count</span> <span class="o">=</span> <span class="mi">0</span>
 	<span class="n">distance</span> <span class="o">=</span> <span class="mf">0.0</span>
-	<span class="n">prev_point</span> <span class="o">=</span> <span class="bp">None</span>
+	<span class="n">prev_point</span> <span class="o">=</span> <span class="kc">None</span>
 
 	<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 	<span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">request_iterator</span><span class="p">:</span>
 	    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
-	    <span class="k">print</span><span class="p">(</span><span class="s2">"record one route point:"</span><span class="p">,</span> <span class="n">point</span><span class="p">)</span>
+	    <span class="nb">print</span><span class="p">(</span><span class="s2">"record one route point:"</span><span class="p">,</span> <span class="n">point</span><span class="p">)</span>
 	    <span class="n">point_count</span> <span class="o">+=</span> <span class="mi">1</span>
 	    <span class="k">if</span> <span class="n">get_feature</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
 		<span class="n">feature_count</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -479,10 +479,10 @@ server 样例:
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"start grpc server:"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"start grpc server:"</span><span class="p">)</span>
     <span class="n">server_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">serve</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">())</span>
 
-    <span class="n">server_thread</span><span class="o">.</span><span class="n">setDaemon</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">server_thread</span><span class="o">.</span><span class="n">setDaemon</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">server_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
     <span class="c1"># wait server start</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -495,7 +495,7 @@ server 样例:
     <span class="n">client_executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">runclient</span><span class="p">(),</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
 
     <span class="n">server_thread</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">"exit"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"exit"</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 
@@ -506,9 +506,9 @@ server 样例:
 </div>
 
 
-<div id="outline-container-org956c86a" class="outline-2">
-<h2 id="org956c86a">运行演示</h2>
-<div class="outline-text-2" id="text-org956c86a">
+<div id="outline-container-orgf419ee7" class="outline-2">
+<h2 id="orgf419ee7">运行演示</h2>
+<div class="outline-text-2" id="text-orgf419ee7">
 <div class="highlight"><pre><span></span>cd ../files/python-grpc/
 
 python demo.py &gt; output.log
@@ -526,10 +526,10 @@ python demo.py &gt; output.log
 <span class="n">Found</span> <span class="n">no</span> <span class="n">feature</span> <span class="n">at</span> 
 <span class="o">--------------</span> <span class="n">ListFeatures</span> <span class="o">--------------</span>
 <span class="n">Looking</span> <span class="k">for</span> <span class="n">features</span> <span class="n">between</span> <span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">75</span> <span class="ow">and</span> <span class="mi">42</span><span class="p">,</span> <span class="o">-</span><span class="mi">73</span>
-<span class="n">Feature</span> <span class="n">called</span> <span class="n">Patriots</span> <span class="n">Path</span><span class="p">,</span> <span class="n">Mendham</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07</span><span class="mi">945</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">407838351</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="n">Patriots</span> <span class="n">Path</span><span class="p">,</span> <span class="n">Mendham</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07945</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">407838351</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">746143763</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">101</span> <span class="n">New</span> <span class="n">Jersey</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Whippany</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07</span><span class="mi">981</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">408122808</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">101</span> <span class="n">New</span> <span class="n">Jersey</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Whippany</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07981</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">408122808</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">743999179</span>
 
 <span class="n">Feature</span> <span class="n">called</span> <span class="n">U</span><span class="o">.</span><span class="n">S</span><span class="o">.</span> <span class="mi">6</span><span class="p">,</span> <span class="n">Shohola</span><span class="p">,</span> <span class="n">PA</span> <span class="mi">18458</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">413628156</span>
@@ -544,7 +544,7 @@ python demo.py &gt; output.log
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">287</span> <span class="n">Flugertown</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Livingston</span> <span class="n">Manor</span><span class="p">,</span> <span class="n">NY</span> <span class="mi">12758</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">419611318</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">746524769</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">4001</span> <span class="n">Tremley</span> <span class="n">Point</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Linden</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07036</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">406109563</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">4001</span> <span class="n">Tremley</span> <span class="n">Point</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Linden</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07036</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">406109563</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">742186778</span>
 
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">352</span> <span class="n">South</span> <span class="n">Mountain</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Wallkill</span><span class="p">,</span> <span class="n">NY</span> <span class="mi">12589</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">416802456</span>
@@ -553,7 +553,7 @@ python demo.py &gt; output.log
 <span class="n">Feature</span> <span class="n">called</span> <span class="n">Bailey</span> <span class="n">Turn</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Harriman</span><span class="p">,</span> <span class="n">NY</span> <span class="mi">10926</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">412950425</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">741077389</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">193</span><span class="o">-</span><span class="mi">199</span> <span class="n">Wawayanda</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Hewitt</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07421</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">412144655</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">193</span><span class="o">-</span><span class="mi">199</span> <span class="n">Wawayanda</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Hewitt</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07421</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">412144655</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">743949739</span>
 
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">406</span><span class="o">-</span><span class="mi">496</span> <span class="n">Ward</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">Pine</span> <span class="n">Bush</span><span class="p">,</span> <span class="n">NY</span> <span class="mi">12566</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">415736605</span>
@@ -562,7 +562,7 @@ python demo.py &gt; output.log
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">162</span> <span class="n">Merrill</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Highland</span> <span class="n">Mills</span><span class="p">,</span> <span class="n">NY</span> <span class="mi">10930</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">413843930</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">740501726</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="n">Clinton</span> <span class="n">Road</span><span class="p">,</span> <span class="n">West</span> <span class="n">Milford</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">074</span><span class="mi">80</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">410873075</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="n">Clinton</span> <span class="n">Road</span><span class="p">,</span> <span class="n">West</span> <span class="n">Milford</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07480</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">410873075</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">744459023</span>
 
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">16</span> <span class="n">Old</span> <span class="n">Brook</span> <span class="n">Lane</span><span class="p">,</span> <span class="n">Warwick</span><span class="p">,</span> <span class="n">NY</span> <span class="mi">10990</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">412346009</span>
@@ -607,7 +607,7 @@ python demo.py &gt; output.log
 <span class="n">Feature</span> <span class="n">called</span>  <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">411236786</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">744070769</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">211</span><span class="o">-</span><span class="mi">225</span> <span class="n">Plains</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Augusta</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07</span><span class="mi">822</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">411633782</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">211</span><span class="o">-</span><span class="mi">225</span> <span class="n">Plains</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Augusta</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07822</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">411633782</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">746784970</span>
 
 <span class="n">Feature</span> <span class="n">called</span>  <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">415830701</span>
@@ -625,7 +625,7 @@ python demo.py &gt; output.log
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">650</span><span class="o">-</span><span class="mi">652</span> <span class="n">Willi</span> <span class="n">Hill</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Swan</span> <span class="n">Lake</span><span class="p">,</span> <span class="n">NY</span> <span class="mi">12783</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">417951888</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">748484944</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">26</span> <span class="n">East</span> <span class="mi">3</span><span class="n">rd</span> <span class="n">Street</span><span class="p">,</span> <span class="n">New</span> <span class="n">Providence</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07</span><span class="mi">974</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">407033786</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">26</span> <span class="n">East</span> <span class="mi">3</span><span class="n">rd</span> <span class="n">Street</span><span class="p">,</span> <span class="n">New</span> <span class="n">Providence</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07974</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">407033786</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">743977337</span>
 
 <span class="n">Feature</span> <span class="n">called</span>  <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">417548014</span>
@@ -637,13 +637,13 @@ python demo.py &gt; output.log
 <span class="n">Feature</span> <span class="n">called</span>  <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">404615353</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">745129803</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">611</span> <span class="n">Lawrence</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">Westfield</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">070</span><span class="mi">90</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">406589790</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">611</span> <span class="n">Lawrence</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">Westfield</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07090</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">406589790</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">743560121</span>
 
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">18</span> <span class="n">Lannis</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">New</span> <span class="n">Windsor</span><span class="p">,</span> <span class="n">NY</span> <span class="mi">12553</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">414653148</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">740477477</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">82</span><span class="o">-</span><span class="mi">104</span> <span class="n">Amherst</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">Colonia</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07067</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">405957808</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">82</span><span class="o">-</span><span class="mi">104</span> <span class="n">Amherst</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">Colonia</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07067</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">405957808</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">743255336</span>
 
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">170</span> <span class="n">Seven</span> <span class="n">Lakes</span> <span class="n">Drive</span><span class="p">,</span> <span class="n">Sloatsburg</span><span class="p">,</span> <span class="n">NY</span> <span class="mi">10974</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">411733589</span>
@@ -652,19 +652,19 @@ python demo.py &gt; output.log
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">1270</span> <span class="n">Lakes</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Monroe</span><span class="p">,</span> <span class="n">NY</span> <span class="mi">10950</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">412676291</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">742606606</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">509</span><span class="o">-</span><span class="mi">535</span> <span class="n">Alphano</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Great</span> <span class="n">Meadows</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07</span><span class="mi">838</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">409224445</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">509</span><span class="o">-</span><span class="mi">535</span> <span class="n">Alphano</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Great</span> <span class="n">Meadows</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07838</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">409224445</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">748286738</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">652</span> <span class="n">Garden</span> <span class="n">Street</span><span class="p">,</span> <span class="n">Elizabeth</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07202</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">406523420</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">652</span> <span class="n">Garden</span> <span class="n">Street</span><span class="p">,</span> <span class="n">Elizabeth</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07202</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">406523420</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">742135517</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">349</span> <span class="n">Sea</span> <span class="n">Spray</span> <span class="n">Court</span><span class="p">,</span> <span class="n">Neptune</span> <span class="n">City</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07753</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">401827388</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">349</span> <span class="n">Sea</span> <span class="n">Spray</span> <span class="n">Court</span><span class="p">,</span> <span class="n">Neptune</span> <span class="n">City</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07753</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">401827388</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">740294537</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">13</span><span class="o">-</span><span class="mi">17</span> <span class="n">Stanley</span> <span class="n">Street</span><span class="p">,</span> <span class="n">West</span> <span class="n">Milford</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">074</span><span class="mi">80</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">410564152</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">13</span><span class="o">-</span><span class="mi">17</span> <span class="n">Stanley</span> <span class="n">Street</span><span class="p">,</span> <span class="n">West</span> <span class="n">Milford</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07480</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">410564152</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">743685054</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">47</span> <span class="n">Industrial</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">Teterboro</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">0760</span><span class="mi">8</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">408472324</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">47</span> <span class="n">Industrial</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">Teterboro</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07608</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">408472324</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">740726046</span>
 
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">5</span> <span class="n">White</span> <span class="n">Oak</span> <span class="n">Lane</span><span class="p">,</span> <span class="n">Stony</span> <span class="n">Point</span><span class="p">,</span> <span class="n">NY</span> <span class="mi">10980</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">412452168</span>
@@ -676,22 +676,22 @@ python demo.py &gt; output.log
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">1007</span> <span class="n">Jersey</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">New</span> <span class="n">Brunswick</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">08901</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">404701380</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">744781745</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">6</span> <span class="n">East</span> <span class="n">Emerald</span> <span class="n">Isle</span> <span class="n">Drive</span><span class="p">,</span> <span class="n">Lake</span> <span class="n">Hopatcong</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07</span><span class="mi">849</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">409642566</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">6</span> <span class="n">East</span> <span class="n">Emerald</span> <span class="n">Isle</span> <span class="n">Drive</span><span class="p">,</span> <span class="n">Lake</span> <span class="n">Hopatcong</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07849</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">409642566</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">746017679</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">1358</span><span class="o">-</span><span class="mi">1474</span> <span class="n">New</span> <span class="n">Jersey</span> <span class="mi">57</span><span class="p">,</span> <span class="n">Port</span> <span class="n">Murray</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07</span><span class="mi">865</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">408031728</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">1358</span><span class="o">-</span><span class="mi">1474</span> <span class="n">New</span> <span class="n">Jersey</span> <span class="mi">57</span><span class="p">,</span> <span class="n">Port</span> <span class="n">Murray</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07865</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">408031728</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">748645385</span>
 
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">367</span> <span class="n">Prospect</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Chester</span><span class="p">,</span> <span class="n">NY</span> <span class="mi">10918</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">413700272</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">742135189</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">10</span> <span class="n">Simon</span> <span class="n">Lake</span> <span class="n">Drive</span><span class="p">,</span> <span class="n">Atlantic</span> <span class="n">Highlands</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07716</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">404310607</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">10</span> <span class="n">Simon</span> <span class="n">Lake</span> <span class="n">Drive</span><span class="p">,</span> <span class="n">Atlantic</span> <span class="n">Highlands</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07716</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">404310607</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">740282632</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">11</span> <span class="n">Ward</span> <span class="n">Street</span><span class="p">,</span> <span class="n">Mount</span> <span class="n">Arlington</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07</span><span class="mi">856</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">409319800</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">11</span> <span class="n">Ward</span> <span class="n">Street</span><span class="p">,</span> <span class="n">Mount</span> <span class="n">Arlington</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07856</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">409319800</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">746201391</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">300</span><span class="o">-</span><span class="mi">398</span> <span class="n">Jefferson</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">Elizabeth</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07201</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">406685311</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">300</span><span class="o">-</span><span class="mi">398</span> <span class="n">Jefferson</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">Elizabeth</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07201</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">406685311</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">742108603</span>
 
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">43</span> <span class="n">Dreher</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Roscoe</span><span class="p">,</span> <span class="n">NY</span> <span class="mi">12776</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">419018117</span>
@@ -715,7 +715,7 @@ python demo.py &gt; output.log
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">231</span> <span class="n">Rocky</span> <span class="n">Run</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Glen</span> <span class="n">Gardner</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">08826</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">406898530</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">749127080</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">100</span> <span class="n">Mount</span> <span class="n">Pleasant</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">Newark</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07104</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">407586880</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">100</span> <span class="n">Mount</span> <span class="n">Pleasant</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">Newark</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07104</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">407586880</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">741670168</span>
 
 <span class="n">Feature</span> <span class="n">called</span> <span class="mi">517</span><span class="o">-</span><span class="mi">521</span> <span class="n">Huntington</span> <span class="n">Drive</span><span class="p">,</span> <span class="n">Manchester</span> <span class="n">Township</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">08759</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">400106455</span>
@@ -748,7 +748,7 @@ python demo.py &gt; output.log
 <span class="n">Feature</span> <span class="n">called</span>  <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">401809022</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">744157964</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">9</span> <span class="n">Thompson</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">Leonardo</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07737</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">404226644</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">9</span> <span class="n">Thompson</span> <span class="n">Avenue</span><span class="p">,</span> <span class="n">Leonardo</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07737</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">404226644</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">740517141</span>
 
 <span class="n">Feature</span> <span class="n">called</span>  <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">410322033</span>
@@ -784,7 +784,7 @@ python demo.py &gt; output.log
 <span class="n">Feature</span> <span class="n">called</span>  <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">418512773</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">743067823</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">42</span><span class="o">-</span><span class="mi">102</span> <span class="n">Main</span> <span class="n">Street</span><span class="p">,</span> <span class="n">Belford</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">0771</span><span class="mi">8</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">404318328</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">42</span><span class="o">-</span><span class="mi">102</span> <span class="n">Main</span> <span class="n">Street</span><span class="p">,</span> <span class="n">Belford</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07718</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">404318328</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">740835638</span>
 
 <span class="n">Feature</span> <span class="n">called</span>  <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">419020746</span>
@@ -823,7 +823,7 @@ python demo.py &gt; output.log
 <span class="n">Feature</span> <span class="n">called</span>  <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">411733222</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">744228360</span>
 
-<span class="n">Feature</span> <span class="n">called</span> <span class="mi">3</span> <span class="n">Hasta</span> <span class="n">Way</span><span class="p">,</span> <span class="n">Newton</span><span class="p">,</span> <span class="n">NJ</span> <span class="mo">07</span><span class="mi">860</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">410248224</span>
+<span class="n">Feature</span> <span class="n">called</span> <span class="mi">3</span> <span class="n">Hasta</span> <span class="n">Way</span><span class="p">,</span> <span class="n">Newton</span><span class="p">,</span> <span class="n">NJ</span> <span class="mi">07860</span><span class="p">,</span> <span class="n">USA</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">410248224</span>
 <span class="n">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mi">747127767</span>
 
 <span class="o">--------------</span> <span class="n">RecordRoute</span> <span class="o">--------------</span>
@@ -903,14 +903,14 @@ python demo.py &gt; output.log
 <span class="n">Received</span> <span class="n">message</span> <span class="n">First</span> <span class="n">message</span> <span class="n">at</span> 
 <span class="n">Received</span> <span class="n">message</span> <span class="n">Third</span> <span class="n">message</span> <span class="n">at</span> <span class="n">latitude</span><span class="p">:</span> <span class="mi">1</span>
 
-<span class="nb">exit</span>
+<span class="n">exit</span>
 </pre></div>
 </div>
 </div>
 
-<div id="outline-container-org82d6fdc" class="outline-2">
-<h2 id="org82d6fdc">grpc stream 说明</h2>
-<div class="outline-text-2" id="text-org82d6fdc">
+<div id="outline-container-orgabee717" class="outline-2">
+<h2 id="orgabee717">grpc stream 说明</h2>
+<div class="outline-text-2" id="text-orgabee717">
 <p>
 grpc stream 概念和管道的概念很相似，grpc 输入的stream参数，相当于客户端链接服务端的一个管道，
 返回的stream参数相当于服务端连接到客户端的管道。这样不管是客户端还是服务端在一次请求中，可以完全异步的进行通信。
@@ -960,7 +960,7 @@ grpc stream 概念和管道的概念很相似，grpc 输入的stream参数，相
 
 
     </div>
-                     <footer id="footer"><p>Contents © 2019         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+                     <footer id="footer"><p>Contents © 2020         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
 </div>
