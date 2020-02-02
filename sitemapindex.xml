@@ -14,10 +14,6 @@
   <lastmod>2020-02-02T03:16:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://wisonwang.github.io/categories/cat_posts.xml</loc>
-  <lastmod>2019-01-15T15:03:00Z</lastmod>
- </sitemap>
- <sitemap>
   <loc>https://wisonwang.github.io/categories/cat_spark.xml</loc>
   <lastmod>2020-02-02T03:16:00Z</lastmod>
  </sitemap>
@@ -63,10 +59,10 @@
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/rss.xml</loc>
-  <lastmod>2020-02-02T03:16:00Z</lastmod>
+  <lastmod>2020-02-02T06:40:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/sitemap.xml</loc>
-  <lastmod>2020-02-02T03:16:00Z</lastmod>
+  <lastmod>2020-02-02T06:40:00Z</lastmod>
  </sitemap>
 </sitemapindex>
