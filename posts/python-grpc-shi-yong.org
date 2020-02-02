@@ -1,0 +1,115 @@
+#+BEGIN_COMMENT
+.. title: python grpc 使用
+.. slug: python-grpc-shi-yong
+.. date: 2019-10-11 09:48:21 UTC+08:00
+.. tags: 
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+grpc 是google开发的远程通信协议,和它最相近的产品的产品是apache基金会下的thrift协议。
+两者都是很优秀的通信中间件产品，拥有很好的性能，支持大多数主要语言。
+相对于thrift协议，更年轻，更轻量，grpc基于http2传输协议和protocol buffer(也可以使用json)序列化协议。
+
+这也带来相对于thrfit的优点：
+
+1. http2相对于thrfit的tcp协议更容易扩展，参见[fn:1]:
+
+   - 相对于http1.x,http2采用二进制传输，同时多次请求时会对http协议的header信息进行压缩，从而大幅提高http2的性能
+
+   - 多路复用/请求流控制，相对于http1是同步请求，一个链接同一时间只能处理一个请求。http2是完全异步请求，
+     在同一个tcp链接上客户端和服务端可以同时进行多次请求响应。
+
+   - 基于多路复用和请求流控制，通过新增了一个带stream参数的流化或者类似于管道通信功能，这一点和通常的rpc协议差别很大，
+     不管在服务端实现上还是客户端调用上都和常规的rpc请求不同，后面的例子中可以具体看到这种差异.
+
+   - 易于扩展，例如：在异构系统（例如微服务系统）中，一次真是的客户端请求发生了，实际在发生很多次的服务间调用，
+     使用http协议可以方便的扩展，增加调用堆栈/流信息，方便日志记录。
+   
+2. protocol buffer 本身是一个独立的高性能序列化协议，在程序内部能够有很好的通用性，可以直接作为内部数据的表示方式，也可以直接
+   用于缓存数据。
+
+{{{TEASER_END}}}
+
+
+如下简单看下，如何使用python创建grpc服务。
+
+参考官方的地图导航例子：
+[[https://github.com/grpc/grpc/blob/v1.24.0/examples/protos/route_guide.proto]\
+iigrpc router guide]]
+
+* 创建.proto
+
+创建.proto文件：
+
+#+BEGIN_SRC shell
+
+vi router_guide.proto
+#+END_SRC
+
+编辑以下内容：
+
+#+include: "../files/python-grpc/route_guide.proto" src c 
+
+* 编译
+
+安装grpcio-tools
+
+#+BEGIN_SRC shell
+pip install grpcio-tools
+#+END_SRC
+
+编译:
+
+#+BEGIN_SRC shell
+python -m grpc_tools.protoc -I./ --python_out=. --grpc_python_out=. route_guide.proto
+#+END_SRC
+
+编译会生成两个文件，$package_name+"_pb2.py" 和 $package_name + "_pb2_grpc.py", 前者实现了结构体的序列化协议，后者实现了grpc的通信接口。
+
+(需要注意的是生成的_pb2这个后缀表示的pb对于的python pb api的实现版本，不是pb IDL语言协议的"proto3")
+
+* 编写server-client代码
+
+client 样例：
+
+#+include: "../files/python-grpc/route_guide_client.py" src python
+ 
+server 样例:
+
+#+include: "../files/python-grpc/route_guide_server.py" src python 
+
+#+include: "../files/python-grpc/demo.py" src python
+ 
+
+* 运行演示
+
+
+#+BEGIN_SRC shell :exports both :results raw drawer
+
+cd ../files/python-grpc/
+
+python demo.py > output.log
+
+#+END_SRC
+
+#+RESULTS:
+:results:
+:end:
+
+输出:
+
+#+include: "../files/python-grpc/output.log" src python :minlevel 4
+
+* grpc stream 说明
+
+grpc stream 概念和管道的概念很相似，grpc 输入的stream参数，相当于客户端链接服务端的一个管道，
+返回的stream参数相当于服务端连接到客户端的管道。这样不管是客户端还是服务端在一次请求中，可以完全异步的进行通信。
+
+在一次请求中， 对客户端来说，可以一边发送数据到服务端，同时也可以接受服务端的返回结果.
+
+[fn:1] [[https://blog.netsil.com/http-2-and-grpc-the-next-generation-of-microservices-interactions-aff4ffa6faed][why grpc uses http2]]
+
+[fn:2] [[https://github.com/grpc/grpc/tree/v1.24.0/examples/python/route_guide][grpc 官方route guid例子]]

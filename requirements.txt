@@ -1,0 +1,7 @@
+Nikola==7.8.15
+webassets
+pygal
+jupyter_console
+jupyter_client
+jupyter_contrib_nbextensions
+ghp-import2

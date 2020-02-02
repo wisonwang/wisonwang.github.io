@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+// 下面是生成java代码需要的声明
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.routeguide";
+option java_outer_classname = "RouteGuideProto";
+
+// objectc 选项
+option objc_class_prefix = "RTG";
+
+// 很多语言都需要的生成代码的目标包(python,go,java 等)或者命名空间（c++）
+package routeguide;
+
+// 定义接口.
+service RouteGuide {
+  // 第一个简单非流化rpc接口 单向通信，客户端传入一个位置，服务端返回这个位置的兴趣点
+  rpc GetFeature(Point) returns (Feature) {}
+
+  // 单向流化接口
+  // 服务端返回结果流化接口 
+  // 获取置顶矩形区域内的所有兴趣
+  // 因为返回的结果可能会很多 所以结果不是一次返回，而是流化的，类似于服务端通过管道将返回的
+  rpc ListFeatures(Rectangle) returns (stream Feature) {}
+
+  // 单向流化接口 
+  // 客户端输入参数流化接口
+  // 传入一个流化的位置集合，等所有流化参数都传输玩了，服务端一次性 返回路由汇总信息
+  rpc RecordRoute(stream Point) returns (RouteSummary) {}
+
+  // 双向流化接口
+  // 在双向流化接口中 客户端的输入流化参数和server端的返回流化结果，客户端和同时完全异步的相互“推送信息”
+  rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+}
+
+// 位置点
+message Point {
+  // 纬度*10的7次方 
+  int32 latitude = 1;
+  // 精度*10的7次方 
+  int32 longitude = 2;
+}
+
+// 矩形区域 两个位置点为 对角线，生成一个矩形区域
+message Rectangle {
+  Point lo = 1;
+
+  Point hi = 2;
+}
+
+// 兴趣点
+message Feature {
+  string name = 1;
+  Point location = 2;
+}
+
+// A RouteNote is a message sent while at a given point.
+message RouteNote {
+  // The location from which the message is sent.
+  Point location = 1;
+
+  // The message to be sent.
+  string message = 2;
+}
+
+// A RouteSummary is received in response to a RecordRoute rpc.
+//
+// It contains the number of individual points received, the number of
+// detected features, and the total distance covered as the cumulative sum of
+// the distance between each point.
+message RouteSummary {
+  // The number of points received.
+  int32 point_count = 1;
+
+  // The number of known features passed while traversing the route.
+  int32 feature_count = 2;
+
+  // The distance covered in metres.
+  int32 distance = 3;
+
+  // The duration of the traversal in seconds.
+  int32 elapsed_time = 4;
+}

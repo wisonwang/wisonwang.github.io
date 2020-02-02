@@ -1,8 +1,8 @@
 #+BEGIN_COMMENT
-.. title: golang服务的集群方案
-.. slug: golang服务的集群方案
+.. title: golang cluster
+.. slug: golang,cluster
 .. date: 2018-05-10 16:36:25 UTC+08:00
-.. tags: draft
+.. tags: draft golang
 .. category: 
 .. link: 
 .. description: 
@@ -10,14 +10,17 @@
 #+END_COMMENT
 
 golang服务的集群方案
-
-* 基于zookeeper
+* 服务发现
+** 基于zookeeper
 [[https://www.v2ex.com/t/440662][手把手教你使用 Go 基于 zookeeper 编写服务发现]]
 
-* consul 轻量级服务发现服务
+** consul 轻量级服务发现服务
 
 [[https://www.consul.io/][consul 服务发现]]
 
-* apollo配置中心
 
-[[https://github.com/ctripcorp/apollo][apollo配置中心]
+* 配置中心
+** apollo配置中心
+
+[[https://github.com/ctripcorp/apollo][apollo配置中心]]
+

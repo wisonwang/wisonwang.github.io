@@ -1,13 +1,12 @@
-#+BEGIN_COMMENT
+
+#+begin_comment
 .. title: python_tools
 .. slug: python_tools
 .. date: 2018-04-28 12:30:35 UTC+08:00
-.. tags: draft
-.. category: 
-.. link: 
-.. description: 
+.. tags: 
 .. type: text
-#+END_COMMENT
+.. status: private
+#+end_comment
 
 * 编辑开发工具
 
