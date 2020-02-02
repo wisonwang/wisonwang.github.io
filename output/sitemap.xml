@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://wisonwang.github.io/</loc>
-  <lastmod>2020-02-02T03:16:00Z</lastmod>
+  <lastmod>2020-02-02T06:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/2018/</loc>
@@ -19,11 +19,11 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/archive.html</loc>
-  <lastmod>2020-02-02T02:50:00Z</lastmod>
+  <lastmod>2020-02-02T06:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/</loc>
-  <lastmod>2020-02-02T03:16:00Z</lastmod>
+  <lastmod>2020-02-02T05:45:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/blog/</loc>
@@ -32,10 +32,6 @@
  <url>
   <loc>https://wisonwang.github.io/categories/cat_nikola/</loc>
   <lastmod>2020-02-02T03:16:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/categories/cat_posts/</loc>
-  <lastmod>2019-01-15T14:18:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/cat_spark/</loc>
@@ -83,7 +79,11 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/index-1.html</loc>
-  <lastmod>2020-02-02T03:16:00Z</lastmod>
+  <lastmod>2020-02-02T06:40:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/index-2.html</loc>
+  <lastmod>2020-02-02T06:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/listings/</loc>
@@ -134,20 +134,12 @@
   <lastmod>2020-02-02T03:16:00Z</lastmod>
  </url>
  <url>
-  <loc>https://wisonwang.github.io/posts/golang%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88/</loc>
-  <lastmod>2019-01-09T14:44:00Z</lastmod>
- </url>
- <url>
   <loc>https://wisonwang.github.io/posts/ipython%2Bmatplotlib%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA/</loc>
   <lastmod>2020-02-02T03:16:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/posts/numpy_example/</loc>
   <lastmod>2020-02-02T03:16:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/posts/org-blog/</loc>
-  <lastmod>2019-01-15T15:03:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/posts/orgblog/</loc>
@@ -195,6 +187,10 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/posts/spark-with-python-or-scala/</loc>
+  <lastmod>2020-02-02T03:16:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/posts/word2vec/</loc>
   <lastmod>2020-02-02T03:16:00Z</lastmod>
  </url>
  <url>
