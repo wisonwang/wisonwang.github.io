@@ -1,33 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog</title><link>https://wisonwang.github.io/</link><description>python, go, ML, bigdata</description><atom:link href="https://wisonwang.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Sun, 02 Feb 2020 06:40:00 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>python grpc 使用</title><link>https://wisonwang.github.io/posts/python-grpc-shi-yong/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog</title><link>https://wisonwang.github.io/</link><description>python, go, ML, bigdata</description><atom:link href="https://wisonwang.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Mon, 03 Feb 2020 03:42:12 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>python grpc 使用</title><link>https://wisonwang.github.io/posts/python-grpc-shi-yong/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
 grpc 是google开发的远程通信协议,和它最相近的产品的产品是apache基金会下的thrift协议。
+&lt;/p&gt;
+
+&lt;p&gt;
 两者都是很优秀的通信中间件产品，拥有很好的性能，支持大多数主要语言。
+&lt;/p&gt;
+
+&lt;p&gt;
 相对于thrift协议，更年轻，更轻量，grpc基于http2传输协议和protocol buffer(也可以使用json)序列化协议。
 &lt;/p&gt;
 
 &lt;p&gt;
 这也带来相对于thrfit的优点：
 &lt;/p&gt;
-
-&lt;ol class="org-ol"&gt;
-&lt;li&gt;http2相对于thrfit的tcp协议更容易扩展，参见&lt;sup&gt;&lt;a id="fnr.1" class="footref" href="https://wisonwang.github.io/posts/python-grpc-shi-yong/#fn.1"&gt;1&lt;/a&gt;&lt;/sup&gt;:
-
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;相对于http1.x,http2采用二进制传输，同时多次请求时会对http协议的header信息进行压缩，从而大幅提高http2的性能&lt;/li&gt;
-
-&lt;li&gt;多路复用/请求流控制，相对于http1是同步请求，一个链接同一时间只能处理一个请求。http2是完全异步请求，
-在同一个tcp链接上客户端和服务端可以同时进行多次请求响应。&lt;/li&gt;
-
-&lt;li&gt;基于多路复用和请求流控制，通过新增了一个带stream参数的流化或者类似于管道通信功能，这一点和通常的rpc协议差别很大，
-不管在服务端实现上还是客户端调用上都和常规的rpc请求不同，后面的例子中可以具体看到这种差异.&lt;/li&gt;
-
-&lt;li&gt;易于扩展，例如：在异构系统（例如微服务系统）中，一次真是的客户端请求发生了，实际在发生很多次的服务间调用，
-使用http协议可以方便的扩展，增加调用堆栈/流信息，方便日志记录。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;protocol buffer 本身是一个独立的高性能序列化协议，在程序内部能够有很好的通用性，可以直接作为内部数据的表示方式，也可以直接
-用于缓存数据。&lt;/li&gt;
-&lt;/ol&gt;
 
 &lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-grpc-shi-yong/"&gt;更多…&lt;/a&gt; (剩余 11 分钟去阅读)&lt;/p&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/python-grpc-shi-yong/</guid><pubDate>Fri, 11 Oct 2019 01:48:21 GMT</pubDate></item><item><title>自建https站点</title><link>https://wisonwang.github.io/posts/zi-jian-httpszhan-dian/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
 现在https已经成为web服务的标配了，由于完整的https部署流程需要一系列的备案申请ca的一些过程，

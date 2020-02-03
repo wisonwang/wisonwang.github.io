@@ -10,10 +10,14 @@
 #+END_COMMENT
 
 grpc 是google开发的远程通信协议,和它最相近的产品的产品是apache基金会下的thrift协议。
+
 两者都是很优秀的通信中间件产品，拥有很好的性能，支持大多数主要语言。
+
 相对于thrift协议，更年轻，更轻量，grpc基于http2传输协议和protocol buffer(也可以使用json)序列化协议。
 
 这也带来相对于thrfit的优点：
+
+{{{TEASER_END}}}
 
 1. http2相对于thrfit的tcp协议更容易扩展，参见[fn:1]:
 
@@ -30,8 +34,6 @@ grpc 是google开发的远程通信协议,和它最相近的产品的产品是ap
    
 2. protocol buffer 本身是一个独立的高性能序列化协议，在程序内部能够有很好的通用性，可以直接作为内部数据的表示方式，也可以直接
    用于缓存数据。
-
-{{{TEASER_END}}}
 
 
 如下简单看下，如何使用python创建grpc服务。
