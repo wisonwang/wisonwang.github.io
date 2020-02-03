@@ -15,7 +15,13 @@ article: http://ogp.me/ns/article#
 <meta property="og:title" content="python grpc 使用">
 <meta property="og:url" content="https://wisonwang.github.io/posts/python-grpc-shi-yong/">
 <meta property="og:description" content="grpc 是google开发的远程通信协议,和它最相近的产品的产品是apache基金会下的thrift协议。
+
+
+
 两者都是很优秀的通信中间件产品，拥有很好的性能，支持大多数主要语言。
+
+
+
 相对于thrift协议，更年轻，更轻量，grpc基于http2传输协议和protocol buffer(也可以使用json)序列化协议。
 
 
@@ -24,7 +30,9 @@ article: http://ogp.me/ns/article#
 
 
 
-http2相对于thrfit的tc">
+
+
+http2相对于t">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2019-10-11T09:48:21+08:00">
 </head>
@@ -55,13 +63,21 @@ http2相对于thrfit的tc">
         <div class="body">
             <p>
 grpc 是google开发的远程通信协议,和它最相近的产品的产品是apache基金会下的thrift协议。
+</p>
+
+<p>
 两者都是很优秀的通信中间件产品，拥有很好的性能，支持大多数主要语言。
+</p>
+
+<p>
 相对于thrift协议，更年轻，更轻量，grpc基于http2传输协议和protocol buffer(也可以使用json)序列化协议。
 </p>
 
 <p>
 这也带来相对于thrfit的优点：
 </p>
+
+<!-- TEASER_END -->
 
 <ol class="org-ol">
 <li>http2相对于thrfit的tcp协议更容易扩展，参见<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>:
@@ -83,7 +99,7 @@ grpc 是google开发的远程通信协议,和它最相近的产品的产品是ap
 <li>protocol buffer 本身是一个独立的高性能序列化协议，在程序内部能够有很好的通用性，可以直接作为内部数据的表示方式，也可以直接
 用于缓存数据。</li>
 </ol>
-<!-- TEASER_END --><p>
+<p>
 如下简单看下，如何使用python创建grpc服务。
 </p>
 
@@ -93,9 +109,9 @@ grpc 是google开发的远程通信协议,和它最相近的产品的产品是ap
 iigrpc router guide]]
 </p>
 
-<div id="outline-container-org526ddf6" class="outline-2">
-<h2 id="org526ddf6">创建.proto</h2>
-<div class="outline-text-2" id="text-org526ddf6">
+<div id="outline-container-orge453995" class="outline-2">
+<h2 id="orge453995">创建.proto</h2>
+<div class="outline-text-2" id="text-orge453995">
 <p>
 创建.proto文件：
 </p>
@@ -193,9 +209,9 @@ iigrpc router guide]]
 </div>
 </div>
 
-<div id="outline-container-org4717047" class="outline-2">
-<h2 id="org4717047">编译</h2>
-<div class="outline-text-2" id="text-org4717047">
+<div id="outline-container-org095a12a" class="outline-2">
+<h2 id="org095a12a">编译</h2>
+<div class="outline-text-2" id="text-org095a12a">
 <p>
 安装grpcio-tools
 </p>
@@ -220,9 +236,9 @@ iigrpc router guide]]
 </div>
 </div>
 
-<div id="outline-container-orga635cbf" class="outline-2">
-<h2 id="orga635cbf">编写server-client代码</h2>
-<div class="outline-text-2" id="text-orga635cbf">
+<div id="outline-container-org21a0ee5" class="outline-2">
+<h2 id="org21a0ee5">编写server-client代码</h2>
+<div class="outline-text-2" id="text-org21a0ee5">
 <p>
 client 样例：
 </p>
@@ -506,9 +522,9 @@ server 样例:
 </div>
 
 
-<div id="outline-container-orgf419ee7" class="outline-2">
-<h2 id="orgf419ee7">运行演示</h2>
-<div class="outline-text-2" id="text-orgf419ee7">
+<div id="outline-container-org7ee3a55" class="outline-2">
+<h2 id="org7ee3a55">运行演示</h2>
+<div class="outline-text-2" id="text-org7ee3a55">
 <div class="highlight"><pre><span></span>cd ../files/python-grpc/
 
 python demo.py &gt; output.log
@@ -908,9 +924,9 @@ python demo.py &gt; output.log
 </div>
 </div>
 
-<div id="outline-container-orgabee717" class="outline-2">
-<h2 id="orgabee717">grpc stream 说明</h2>
-<div class="outline-text-2" id="text-orgabee717">
+<div id="outline-container-org4b6aec6" class="outline-2">
+<h2 id="org4b6aec6">grpc stream 说明</h2>
+<div class="outline-text-2" id="text-org4b6aec6">
 <p>
 grpc stream 概念和管道的概念很相似，grpc 输入的stream参数，相当于客户端链接服务端的一个管道，
 返回的stream参数相当于服务端连接到客户端的管道。这样不管是客户端还是服务端在一次请求中，可以完全异步的进行通信。

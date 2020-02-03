@@ -45,7 +45,13 @@ article: http://ogp.me/ns/article#
                 <div>
 <p>
 grpc 是google开发的远程通信协议,和它最相近的产品的产品是apache基金会下的thrift协议。
+</p>
+
+<p>
 两者都是很优秀的通信中间件产品，拥有很好的性能，支持大多数主要语言。
+</p>
+
+<p>
 相对于thrift协议，更年轻，更轻量，grpc基于http2传输协议和protocol buffer(也可以使用json)序列化协议。
 </p>
 
@@ -53,26 +59,6 @@ grpc 是google开发的远程通信协议,和它最相近的产品的产品是ap
 这也带来相对于thrfit的优点：
 </p>
 
-<ol class="org-ol">
-<li>http2相对于thrfit的tcp协议更容易扩展，参见<sup><a id="fnr.1" class="footref" href="posts/python-grpc-shi-yong/#fn.1">1</a></sup>:
-
-<ul class="org-ul">
-<li>相对于http1.x,http2采用二进制传输，同时多次请求时会对http协议的header信息进行压缩，从而大幅提高http2的性能</li>
-
-<li>多路复用/请求流控制，相对于http1是同步请求，一个链接同一时间只能处理一个请求。http2是完全异步请求，
-在同一个tcp链接上客户端和服务端可以同时进行多次请求响应。</li>
-
-<li>基于多路复用和请求流控制，通过新增了一个带stream参数的流化或者类似于管道通信功能，这一点和通常的rpc协议差别很大，
-不管在服务端实现上还是客户端调用上都和常规的rpc请求不同，后面的例子中可以具体看到这种差异.</li>
-
-<li>易于扩展，例如：在异构系统（例如微服务系统）中，一次真是的客户端请求发生了，实际在发生很多次的服务间调用，
-使用http协议可以方便的扩展，增加调用堆栈/流信息，方便日志记录。</li>
-</ul>
-</li>
-
-<li>protocol buffer 本身是一个独立的高性能序列化协议，在程序内部能够有很好的通用性，可以直接作为内部数据的表示方式，也可以直接
-用于缓存数据。</li>
-</ol>
 <p class="more"><a href="posts/python-grpc-shi-yong/">更多…</a></p>
 </div>
             </div>
