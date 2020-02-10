@@ -39,8 +39,7 @@ grpc 是google开发的远程通信协议,和它最相近的产品的产品是ap
 如下简单看下，如何使用python创建grpc服务。
 
 参考官方的地图导航例子：
-[[https://github.com/grpc/grpc/blob/v1.24.0/examples/protos/route_guide.proto]\
-iigrpc router guide]]
+[[https://github.com/grpc/grpc/blob/v1.24.0/examples/protos/route_guide.proto]grpc router guide]]
 
 * 创建.proto
 
@@ -112,6 +111,8 @@ grpc stream 概念和管道的概念很相似，grpc 输入的stream参数，相
 
 在一次请求中， 对客户端来说，可以一边发送数据到服务端，同时也可以接受服务端的返回结果.
 
+
 [fn:1] [[https://blog.netsil.com/http-2-and-grpc-the-next-generation-of-microservices-interactions-aff4ffa6faed][why grpc uses http2]]
 
 [fn:2] [[https://github.com/grpc/grpc/tree/v1.24.0/examples/python/route_guide][grpc 官方route guid例子]]
+

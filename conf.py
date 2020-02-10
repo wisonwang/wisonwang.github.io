@@ -648,6 +648,7 @@ REDIRECTIONS = []
 DEPLOY_COMMANDS = {
      'default': [
          "rsync -rav --delete output/ vincent@mydev:/home/vincent/work/myblog/output",
+         "nikola github_deploy"
     ]
 }
 

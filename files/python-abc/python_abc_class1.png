@@ -1,0 +1,13 @@
+# Out[1]:
+New called with
+metaname <class '__main__.MyMeta'>
+classname Kls
+baseclasses ()
+attrs {'__module__': '__main__', '__qualname__': 'Kls', '__init__': <function Kls.__init__ at 0x1159eb6a8>, 'printd': <function Kls.printd at 0x1159eb730>}
+init called with
+classobject <class '__main__.Kls'>
+classname Kls
+baseclasses ()
+attrs {'__module__': '__main__', '__qualname__': 'Kls', '__init__': <function Kls.__init__ at 0x1159eb6a8>, 'printd': <function Kls.printd at 0x1159eb730>, 'getdata': <function a.getd3 at 0x1159eb510>}
+arun
+arunarunarun

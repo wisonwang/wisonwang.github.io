@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://wisonwang.github.io/</loc>
-  <lastmod>2020-02-02T06:40:00Z</lastmod>
+  <lastmod>2020-02-09T09:13:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/2018/</loc>
@@ -18,12 +18,16 @@
   <lastmod>2020-02-02T03:16:00Z</lastmod>
  </url>
  <url>
+  <loc>https://wisonwang.github.io/2020/</loc>
+  <lastmod>2020-02-09T09:13:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://wisonwang.github.io/archive.html</loc>
-  <lastmod>2020-02-02T06:40:00Z</lastmod>
+  <lastmod>2020-02-09T09:13:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/</loc>
-  <lastmod>2020-02-02T05:45:00Z</lastmod>
+  <lastmod>2020-02-09T09:13:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/blog/</loc>
@@ -32,6 +36,10 @@
  <url>
   <loc>https://wisonwang.github.io/categories/cat_nikola/</loc>
   <lastmod>2020-02-02T03:16:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/categories/cat_python/</loc>
+  <lastmod>2020-02-09T09:13:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/cat_spark/</loc>
@@ -46,12 +54,20 @@
   <lastmod>2020-02-02T03:16:00Z</lastmod>
  </url>
  <url>
+  <loc>https://wisonwang.github.io/categories/golang/</loc>
+  <lastmod>2020-02-09T09:12:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://wisonwang.github.io/categories/nikola/</loc>
   <lastmod>2020-02-02T03:16:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/pyspark/</loc>
   <lastmod>2020-02-02T03:16:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/categories/python-yu-fa/</loc>
+  <lastmod>2020-02-09T09:13:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/python/</loc>
@@ -79,11 +95,11 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/index-1.html</loc>
-  <lastmod>2020-02-02T06:40:00Z</lastmod>
+  <lastmod>2020-02-09T09:13:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/index-2.html</loc>
-  <lastmod>2020-02-02T06:40:00Z</lastmod>
+  <lastmod>2020-02-08T11:54:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/listings/</loc>
@@ -126,10 +142,6 @@
   <lastmod>2020-02-02T03:16:00Z</lastmod>
  </url>
  <url>
-  <loc>https://wisonwang.github.io/posts/django-authoauth20/</loc>
-  <lastmod>2020-02-02T03:16:00Z</lastmod>
- </url>
- <url>
   <loc>https://wisonwang.github.io/posts/golang%2Ccluster/</loc>
   <lastmod>2020-02-02T03:16:00Z</lastmod>
  </url>
@@ -142,8 +154,8 @@
   <lastmod>2020-02-02T03:16:00Z</lastmod>
  </url>
  <url>
-  <loc>https://wisonwang.github.io/posts/orgblog/</loc>
-  <lastmod>2020-02-02T03:16:00Z</lastmod>
+  <loc>https://wisonwang.github.io/posts/python-abclei/</loc>
+  <lastmod>2020-02-07T07:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/posts/python-function-tools/</loc>
@@ -152,6 +164,10 @@
  <url>
   <loc>https://wisonwang.github.io/posts/python-grpc-shi-yong/</loc>
   <lastmod>2020-02-02T03:16:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</loc>
+  <lastmod>2020-02-09T09:07:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/posts/python-meta-class/</loc>
@@ -199,10 +215,6 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/posts/%E4%BD%BF%E7%94%A8nikola%2Bspacemacs%2Borgmode%20%E6%90%AD%E5%BB%BAblog/</loc>
-  <lastmod>2020-02-02T03:16:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/posts/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9https%E6%9C%8D%E5%8A%A1/</loc>
   <lastmod>2020-02-02T03:16:00Z</lastmod>
  </url>
 </urlset>

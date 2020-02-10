@@ -1,0 +1,54 @@
+#+BEGIN_COMMENT
+.. title: python 基础一：基础语法和解释执行
+.. slug: python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing
+.. date: 2020-02-09 17:07:45 UTC+08:00
+.. tags: python 
+.. category: python
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+* 认识python
+- python是解释执行的动态语言
+
+    python一般是运行解释器解析python文件（模块）来运行，
+  或者可以通过调用（python -i）进行交互式开发（边写代码，边运行，是不是很酷？）
+  作为初学者，可以先通过“pip install ipython”安装ipython，
+  然后通过调用“ipython”来启动交互界面，ipython是python交互式开发的增强工具，提供了自动补全，语法高亮的功能，可以更好的进行更好的进行交互式开发。
+  后面大部分提供的代码示例都可以放到ipython里演示。
+
+{{{TEASER_END}}}
+
+- 语法简洁，优美，工程简单
+
+  1. python没有大多数语言的“;”语句分割符号，依靠缩进来规范语句段落间隔，同时因为python大量的内置函数，语法非常精简，
+良好规范后的python的代码简洁优美，后面会介绍如何使用flake8工具来规范代码。
+
+  2. 简单的python程序可以是单个文件，也可以是一个python包（模块， 后面会介绍python的包管理），
+所以很多运维工程师和自动化测试工程师会选择python作为任务脚本语言，一个文件就是一个完整的程序，结构简单。
+
+- python和CPython
+
+  python是一种语言规范，Cpython是基于c语言实现的一个现实版本，多数情况下我们说的python其实是CPYthon，除了
+
+- 功能扩展库多，应用广泛
+
+
+- python2.x & python 3.x
+
+
+
+* 基础语法
+** 变量
+** 函数
+** 注释
+
+** python2.x & python 3.x
+
+
+
+* 基本类型
+
+* 简单规范
+
