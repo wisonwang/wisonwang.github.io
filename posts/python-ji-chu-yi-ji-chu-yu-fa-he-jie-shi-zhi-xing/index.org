@@ -448,17 +448,17 @@ print(a_dict1, a_dict2, a_dict3)
 
 #+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
 
-  class CallerObject(object):
-		def __call__(self, *args, **kw):
-			"""
-             可调用对象,必须实现“__call__”成员方法          
-			"""
-			print("hello ", *args, **kw)
+class CallerObject(object):
+  def __call__(self, *args, **kw):
+  """
+  可调用对象,必须实现“__call__”成员方法          
+  """
+    print("hello ", *args, **kw)
 
 
-  caller = CallerObject()
+caller = CallerObject()
 
-  caller("object caller")
+caller("object caller")
 #+END_SRC
 
 #+RESULTS:
