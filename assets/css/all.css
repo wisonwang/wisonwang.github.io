@@ -315,6 +315,7 @@ section {
   padding: 48px 0 60px 42px;
   margin-left: 180px;
 }
+
 @media (min-width: 774px) and (max-width: 1047px) {
   .page-content {
     padding-left: 24px;
@@ -2241,7 +2242,8 @@ a:focus {
   -ms-hyphens: auto;
   -o-hyphens: auto;
   hyphens: auto;
-  margin: 0 0 12px;
+  margin: 5 5 12px;
+  line-height:1.5;
 }
 .page-content > .content em {
   font-style: italic;

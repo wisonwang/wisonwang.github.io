@@ -6,15 +6,34 @@ article: http://ogp.me/ns/article#
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>轻量级事务实现cas(compara and set) | vincent blog</title>
+<title>轻量级事务实现cas(compare and set) | vincent blog</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://wisonwang.github.io/posts/qing-liang-ji-shi-wu-shi-xian-cascompara-and-set/">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
 <meta property="og:site_name" content="vincent blog">
-<meta property="og:title" content="轻量级事务实现cas(compara and set)">
+<meta property="og:title" content="轻量级事务实现cas(compare and set)">
 <meta property="og:url" content="https://wisonwang.github.io/posts/qing-liang-ji-shi-wu-shi-xian-cascompara-and-set/">
-<meta property="og:description" content="在这里书写你的文章。">
+<meta property="og:description" content="cas是一种常见事务操作方式，因为逻辑上容易理解，所以大量被使用。
+
+
+
+为什么会需要事务操作
+
+
+简单的说，事务就是为了存取数据库中同一数据时不破坏操作的隔离性和原子性，从而保证数据的一致性。
+
+
+
+例如： mongo只提供了单个文档的原子性操作，当多个线程同时更新一个文档的值的时候，结果并不是确定的，
+
+
+
+只能保存其中一次更新的结果。
+
+
+
+这种情况下造成数据不一致，和实际要求是不一致的，c">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2019-10-21T10:55:47+08:00">
 </head>
@@ -30,7 +49,7 @@ article: http://ogp.me/ns/article#
 
         </ul></section><section class="page-content"><div class="content" rel="main">
     <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">轻量级事务实现cas(compara and set)</h1>
+        <h1 class="p-name entry-title" itemprop="headline name">轻量级事务实现cas(compare and set)</h1>
 
         <div class="meta">
             <div class="authordate">
@@ -44,14 +63,43 @@ article: http://ogp.me/ns/article#
         </div>
         <div class="body">
             <p>
-在这里书写你的文章。</p>
+cas是一种常见事务操作方式，因为逻辑上容易理解，所以大量被使用。
+</p>
+
+<div id="outline-container-orgcd9bf4d" class="outline-2">
+<h2 id="orgcd9bf4d">为什么会需要事务操作</h2>
+<div class="outline-text-2" id="text-orgcd9bf4d">
+<p>
+简单的说，事务就是为了存取数据库中同一数据时不破坏操作的隔离性和原子性，从而保证数据的一致性。
+</p>
+
+<p>
+例如： mongo只提供了单个文档的原子性操作，当多个线程同时更新一个文档的值的时候，结果并不是确定的，
+</p>
+
+<p>
+只能保存其中一次更新的结果。
+</p>
+
+<p>
+这种情况下造成数据不一致，和实际要求是不一致的，cas（先比较再更新）简单事务操作可以在一定程度解决上面那个问题。
+</p>
+
+<!-- TEASER_END -->
+</div>
+</div>
+
+
+<div id="outline-container-org3f4d43e" class="outline-2">
+<h2 id="org3f4d43e">cas 事务处理案例</h2>
+</div>
         </div>
         
                             <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="wisonwanghomepage",
             disqus_url="https://wisonwang.github.io/posts/qing-liang-ji-shi-wu-shi-xian-cascompara-and-set/",
-        disqus_title="\u8f7b\u91cf\u7ea7\u4e8b\u52a1\u5b9e\u73b0cas(compara and set)",
+        disqus_title="\u8f7b\u91cf\u7ea7\u4e8b\u52a1\u5b9e\u73b0cas(compare and set)",
         disqus_identifier="cache/posts/qing-liang-ji-shi-wu-shi-xian-cascompara-and-set.html",
         disqus_config = function () {
             this.language = "zh_cn";

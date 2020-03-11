@@ -75,9 +75,9 @@ sudo openssl">
 
 <!-- TEASER_END -->
 
-<div id="outline-container-org68f7571" class="outline-2">
-<h2 id="org68f7571">生成证书</h2>
-<div class="outline-text-2" id="text-org68f7571">
+<div id="outline-container-org3807930" class="outline-2">
+<h2 id="org3807930">生成证书</h2>
+<div class="outline-text-2" id="text-org3807930">
 <div class="highlight"><pre><span></span>sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 </pre></div>
 
@@ -88,13 +88,13 @@ sudo openssl">
 </div>
 </div>
 
-<div id="outline-container-org1f58fa1" class="outline-2">
-<h2 id="org1f58fa1">配置nginx</h2>
-<div class="outline-text-2" id="text-org1f58fa1">
+<div id="outline-container-org8a5f587" class="outline-2">
+<h2 id="org8a5f587">配置nginx</h2>
+<div class="outline-text-2" id="text-org8a5f587">
 </div>
-<div id="outline-container-org64b950d" class="outline-3">
-<h3 id="org64b950d">配置/etc/nginx/snippets/self-signed.conf</h3>
-<div class="outline-text-3" id="text-org64b950d">
+<div id="outline-container-org19998dc" class="outline-3">
+<h3 id="org19998dc">配置/etc/nginx/snippets/self-signed.conf</h3>
+<div class="outline-text-3" id="text-org19998dc">
 <p>
 添加如下内容:
 </p>
@@ -105,9 +105,9 @@ ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
 </div>
 </div>
 
-<div id="outline-container-orgbbff576" class="outline-3">
-<h3 id="orgbbff576">配置/etc/nginx/snippets/ssl-params.conf</h3>
-<div class="outline-text-3" id="text-orgbbff576">
+<div id="outline-container-orga31d53b" class="outline-3">
+<h3 id="orga31d53b">配置/etc/nginx/snippets/ssl-params.conf</h3>
+<div class="outline-text-3" id="text-orga31d53b">
 <p>
 添加内容：
 </p>
@@ -131,18 +131,18 @@ add_header X-XSS-Protection "1; mode=block";
 </div>
 </div>
 
-<div id="outline-container-orga445216" class="outline-3">
-<h3 id="orga445216">生成dhparam</h3>
-<div class="outline-text-3" id="text-orga445216">
+<div id="outline-container-orgaa4924f" class="outline-3">
+<h3 id="orgaa4924f">生成dhparam</h3>
+<div class="outline-text-3" id="text-orgaa4924f">
 <div class="highlight"><pre><span></span>openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 </pre></div>
 </div>
 </div>
 
 
-<div id="outline-container-org0addb36" class="outline-3">
-<h3 id="org0addb36">配置nginx站点</h3>
-<div class="outline-text-3" id="text-org0addb36">
+<div id="outline-container-org99eb19c" class="outline-3">
+<h3 id="org99eb19c">配置nginx站点</h3>
+<div class="outline-text-3" id="text-org99eb19c">
 <p>
 以example.com域名为例子：
 </p>
@@ -197,7 +197,7 @@ server {
         </div>
                 <ul class="pager hidden-print">
 <li class="previous">
-                <a href="../python-meta-class/" rel="prev" title="python meta class">前一篇</a>
+                <a href="../python-abclei/" rel="prev" title="python ABC类">前一篇</a>
             </li>
             <li class="next">
                 <a href="../python-grpc-shi-yong/" rel="next" title="python grpc 使用">后一篇</a>

@@ -1,0 +1,22 @@
+#+BEGIN_COMMENT
+.. title: python 基础二：如何更好编写python程序
+.. slug: python-ji-chu-er-ru-he-geng-hao-bian-xie-pythoncheng-xu
+.. date: 2020-02-17 10:10:08 UTC+08:00
+.. tags: draft python, draft
+.. category: python 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+** 代码工程结构管理
+** 代码风格
+** 编写测试代码
+** 日志
+
+** 发布代码
+** 如何找到你想要的类库
+
+搜索引擎是最直接简单的工具：比如，你想使用使用python链接mysql数据库，直接在直接搜索"python mysql",如果你想在Django里使用mysql数据库，搜索“python Django mysql”。
+
+

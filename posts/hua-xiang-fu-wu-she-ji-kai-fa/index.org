@@ -22,7 +22,6 @@
 
 #+BEGIN_COMMENT
 
-{{{TEASER_END}}}
 
 #+END_COMMENT
 

@@ -1,0 +1,12 @@
+#+BEGIN_COMMENT
+.. title: python 基础三：设计模式
+.. slug: python-ji-chu-san-she-ji-mo-shi
+.. date: 2020-03-02 13:21:47 UTC+08:00
+.. tags: draft
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+[[https://python-3-patterns-idioms-test.readthedocs.io/en/latest/Singleton.html][python3 设计模式]]

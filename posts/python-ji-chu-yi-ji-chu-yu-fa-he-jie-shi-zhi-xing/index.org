@@ -1,0 +1,521 @@
+#+BEGIN_COMMENT
+.. title: python 基础一：基础语法和解释运行
+.. slug: python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing
+.. date: 2020-02-09 17:07:45 UTC+08:00
+.. tags: python 
+.. category: python
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+#+OPTIONS: \n:t
+#+OPTIONS: ^:nil
+
+
+#+begin_src ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing  :exports none
+  %matplotlib inline
+  import matplotlib.pyplot as plt
+  import numpy as np
+#+end_src
+
+#+RESULTS:
+: # Out[1]:
+
+* 认识python
+***  python是解释执行的动态语言
+
+python一般是运行解释器解析python文件（模块）来运行，或者可以通过调用（python -i）进行交互式开发（边写代码，边运行，是不是很酷？）
+
+作为初学者，可以先通过“pip install ipython”安装ipython，然后通过调用“ipython”来启动交互界面，ipython是python交互式开发的增强工具，提供了自动补全，语法高亮的功能，可以更好的进行更好的进行交互式开发。
+
+后面大部分提供的代码示例都可以放到ipython里演示。
+
+{{{TEASER_END}}}
+
+*** 语法简洁，优美，工程简单
+
+1. python没有大多数语言的“;”语句分割符号，依靠缩进来规范语句段落间隔，同时因为python大量的内置函数，支持函数式和面向对象编程范式，语法非常精简，良好规范后的python的代码简洁优美。后面会介绍如何使用flake8工具来规范代码。
+
+2. 简单的python程序可以是单个文件，也可以是一个python包（模块， 后面会介绍python的包管理），
+所以很多运维工程师和自动化测试工程师会选择python作为任务脚本语言，一个文件就是一个完整的程序，结构简单。
+
+*** python和CPython
+
+python是一种语言规范，Cpython是基于c语言实现的一个现实版本，多数情况下我们说的python其实是CPYthon，除了cpython还有其他的实现版本，
+如：JPython（java）， RPython(R语言), PyPython（这个有意思是基于python语言的自实现版本）...
+
+  
+*** 功能扩展库多，应用广泛
+
+因为多数情况我们用的是CPython（目前的系统级底层大部分都是基于c、c++的），所以除了纯python实现的三方库以外，
+还有很多基于其他的语言实现库，所以python应用范围很广。例如：基于pytest可以做一些简单的自动化测试工作，
+pyqt、wxwidget做简单的gui程序，还有目前热门的大数据、AI方面也是很多人的主要开发语言。
+  
+
+*** python2.x & python 3.x
+
+目前python有python2.x和python3.x两个流行的版本，python3是在python2的基础上，做了一些语法的优化，和加入了一些新的特性和优化。
+由于python2在2020年官方就不再支持安全更新了，所以现在学习python3就可以了，
+两者的大部分的语法都是一致的，对于差异，在学习和工作中稍作留意即可。
+
+一般类unix系统（linux、mac os）都自带python，但是不一定默认是python3，可以在终端执行'python --version',查看当前版本是否是python3版本。
+如果不是python3或者没有安装python，可以从[[https://www.python.org/downloads/][python org]]下载安装包安装。
+
+安装完python后，通常还必须[[https://pip.pypa.io/en/stable/installing/][安装pip python包管理工具]]，用来安装其他三方库。
+
+*** 开发工具
+
+pycharm，VSCode(强烈推荐),IPython, vim, emacs,等等。
+
+*** 检查环境
+
+很多时候需要管理多个python环境，如果你对你的运行、安装环境有疑问，可以运行一下代码检查一下
+\\
+
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+
+import sys
+
+print("sys.path 包含了当前pythonpath路径，也就是python寻找包的路径列表")
+
+for p in sys.path:
+    print(p)
+
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[4]:
+sys.path 包含了当前pythonpath路径，也就是python寻找包的路径列表
+/Users/vincent/anaconda3/envs/python36/lib/python36.zip
+/Users/vincent/anaconda3/envs/python36/lib/python3.6
+/Users/vincent/anaconda3/envs/python36/lib/python3.6/lib-dynload
+\\                              
+/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages
+/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/IPython/extensions
+/Users/vincent/.ipython 
+:end:
+
+\\
+可以看到上面的路径顺序，中间的空格表示当前目录，所以三方包（通过pip install安装或者python setup.py instal·l安装的包，
+一般都会安装到site-packages目录下）优先级是比当前工作目录下的python模块优先级低，如果本地模块和三方包有同名的情况，会优先import本地的。
+
+
+* 基础语法
+*** 模块名、文件名
+
+python的模块可以是一个文件也可以是一个包或者目录，模块名不能包含“.”（除了".py"后缀）符号。如果是目录的话，目录中必须包含"__init__.py"文件，才会被python识别为模块，从而被“import”。
+
+"import"包时使用显式引入包名，不要使用"*",后者会降低代码可读性，也可能导致一些冲突。
+
+如，下面的显示引入包名：
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+
+from math import sqrt
+
+print(sqrt(3))
+
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[5]:
+1.7320508075688772
+:end:
+
+明显比下面的代码可读性更强，同时也可以避免一些同名模块或变量的歧义，冲突。
+\\
+
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+
+from math import *
+
+print(sqrt(3))
+
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[6]:
+1.7320508075688772
+:end:
+
+**** python3 的模块引入规范
+
+只有模块名在全局路路径（sys.path）中才可以直接"import",否则需要使用相对路径"import"。
+
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+
+  import math # ok , 因为math在sys.path所有路径中有包含
+  from . import your_own_mod  # ok，相对路径
+  import your_own_mod # 如果your_own_mod是在当前运行环境目录中，正确，否则会报错误
+
+#+END_SRC
+
+
+*** 变量
+
+python是动态语言，变量无需声明，可以直接定义、赋值。所以变量的类型也是动态类型,并且运行过程中同一个变量可以有不同的值甚至不同的类型。
+所以在python程序中，如果你的程序是由多个文件、模块构成的，应该尽量避免使用全局变量。
+ 
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+
+a = "hello world"
+
+print("a is ", a)
+
+a = 0
+print("a is ", a)
+
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[3]:
+a is  hello world
+a is  0
+:end:
+
+
+*** 函数
+
+函数以def定义，python通过空行和缩进来区分函数作用域，函数定义的开始和结束，至少空一行，最好是空两行。语句段落间，推荐空一行，保证程序结构清晰。
+
+
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+
+
+# *args 表示可变参数，**kw表示可变的key参数。是处理未知参数的两种扩展参数
+# fname 是普通的站位参数，sname是一个key参数，key参数必须在所有普通参数后面定义，函数调用时同理，但是key参数调用时顺序是可变的
+# 例如： echo("vincent", sname="wang", addr="", 1, 2, 3) 错误
+# echo("vincent",  1, 2, 3, addr="", sname="wang") 正确
+def echo(fname,  *args, sname="", **kw):
+	print(fname, sname, args, kw)
+
+echo("vincent", 1, 2, 3, sname="wang", addr="")
+
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[33]:
+vincent wang (1, 2, 3) {'addr': ''}
+:end:
+
+*** 类&对象
+
+python类型定义使用class 关键字，创建对象类似于函数调用，只是调用者为类。
+
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+
+class Student(object):
+    # 这里定义的定义 会同事定义class和object属性
+    fname = "??"
+    sname = "????"
+    age = 12
+    addr = "......"
+    phone = "1000000"
+
+    def __init__(self, fname: str, sname: str, age: int, **kw):
+        """初始化方法"""
+        self.fname = fname
+        self.sname = sname
+        # class 属性可以作为默认值
+        self.age = kw.get("age", self.age)
+        self.phone = kw.get("phone", self.phone)
+        self.addr = kw.get("addr", self.addr)
+        # sex只是对象的属性，不是class的属性
+        self.sex = kw.get("sex", 0)
+
+    def echo(self):
+        print(str(self))
+
+    @classmethod
+    def echo_class(cls):
+        print(cls, cls.fname, cls.sname, cls.age, cls.addr, cls.phone)
+
+
+    def __str__(self):
+        """当对象转化成字符串时回调用对象的__str__方法"""
+        return str({
+            "fname": self.fname,
+            "sname": self.sname,
+            "age": self.age,
+            "addr": self.addr,
+            "phone": self.phone,
+            "sex": self.sex
+        })
+
+
+Student.echo_class()
+
+s1 = Student("vincent", "wang", 32, sex=1)
+
+s1.echo()
+
+Student.addr = "??????xxxx"
+Student.echo_class()
+
+s2 = Student("vincent", "wang", 32, sex=1)
+
+# 可以看到s2和s1的addr属性是不一致的，原因是对象在初始化前，首先拷贝的类的属性和值
+s2.echo()
+
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[34]:
+<class '__main__.Student'> ?? ???? 12 ...... 1000000
+{'fname': 'vincent', 'sname': 'wang', 'age': 12, 'addr': '......', 'phone': '1000000', 'sex': 1}
+<class '__main__.Student'> ?? ???? 12 ??????xxxx 1000000
+{'fname': 'vincent', 'sname': 'wang', 'age': 12, 'addr': '??????xxxx', 'phone': '1000000', 'sex': 1}
+:end:
+
+其实在python中类也是一种对象，也是可以在运行时动态创建和修改定义的。
+新的python规范中所有的类都是继承object这个根类，所以也自带一些内置的函数和方法。如上个例子中的"__str__"方法。初学者可以稍微浏览一下这些方法，一遍更深入的了解python类和对象的运行机制.
+
+*** 注释
+
+一般单行注释可以使用“#”,多行注释可以使用三个（单、双）引号对包括。
+
+* 数据类型
+*** python是面向对象编程的语言,但是也可以像函数式语言工作
+\\
+
+python 中所有类型都可以看作类、对象。例如所有的函数都是"第一类"的对象，函数有自己的方法，属性，类型，也可以作为任何函数的参数。
+
+如:
+
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+# 通过type函数打印print函数类型
+print(type(print))
+# 通过dir函数访问print函数（对象）属性
+print(dir(print))
+
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[8]:
+['__call__', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__name__', '__ne__', '__new__', '__qualname__', '__reduce__', '__reduce_ex__', '__repr__', '__self__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__text_signature__'] <class 'builtin_function_or_method'>
+:end:
+\\
+可以看到print函数类型是“class 'builtin_function_or_method'”类， 以及它的属性和方法。
+
+\\
+虽然python所有类型都是类和对象，但是在语法上很灵活，和一般的面向对象的语言不一样（如java），用户可以选择不显示的使用面向对象的方法，创建类，对象来设计程序，可以只是定义函数（虽然实际上也是对象），来使用类似函数式编程的方式完成程序开发。
+
+\\
+#+begin_comment
+函数式编程优点：纯函数（不引用类似全局变量的函数，当输入确定时，无论执行多少，结果确定的函数）有明确的输入和输出，能保持输入一致时结果也是一致的，函数是无状态的。所以在网络编程等并发编程场景下，能避免并发竞争和数据一致性问题。和纯函数对应的是有副作用的函数，例如，在很多场景下，会在函数中显示或隐式包含一个上下文参数，保存一切会话状态，函数的行为根据上下文环境有不同的行为和输出结果。
+\\
+面向对象编程优点：封装数据和行为，重用代码，简化问题（封装，继承，多态）
+\\
+
+#+end_comment
+
+*** 基本类型
+如上文所述，python的基本类型其实也都是类的实例对象，int（整形），string，float， bool等，这点和其他静态语言是有很大不一样的。所以python的基本类型也都有自己丰富的成员函数。
+
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+
+  a = 1
+
+  print("a 为", type(a), a)
+
+  a = "hello python"
+
+  print("a 为", type(a), a)
+
+  a = 1.0
+  print("a 为", type(a), a)
+
+  a = True
+  print("a 为", type(a), a)
+
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[15]:
+a 为 <class 'int'> 1
+a 为 <class 'str'> hello python
+a 为 <class 'float'> 1.0
+a 为 <class 'bool'> True
+:end:
+
+关于一些基本类型的成员方法，可以在官方文档中详细了解[[https://docs.python.org/3/reference/datamodel.html#the-standard-type-hierarchy][python 基本类型分类]]。
+
+*** 复合类型
+**** 序列（sequences）
+***** 不可修改序列（Immutable）
+	  不可修改的序列，意思是类型创建后就不能再次修改。包括：strings（str字符串类型），tuple(元组类型)，bytes（子杰串类型）。注意：只有不可修改的序列才是可以hash化的，也就是可以作为map类型的key值以及set类型的元素。
+
+
+***** 可修改序列类型（mutable）
+	  和不可修改的序列类型对应的的是可修改的序列类型，例如：list（列表类型，相当于数组），bytearray。
+	  可修改的序列类型，创建后，可以进行切片操作，任意修改，例如：
+
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+
+# list
+
+a_list = [1, 2, 3, 4]
+
+a_list.append(5) # 新增元素
+# 切片操作
+print(a_list, a_list[:-1])
+
+a_list[-1] = a_list[-1]
+
+# tuple元组类型
+
+a_tuple = tuple(a_list)
+
+# 以下操作是错误的
+# a_tuple[-1] = a_tuple[-1]
+
+# 序列类型，我们在函数定义中定义缺省参数很多时候会用到
+print("*a_tuple=", *a_tuple)
+
+def echo(*args):
+  print("echo", args)
+
+echo(a_tuple)
+echo("hello", "python")
+
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[20]:
+[1, 2, 3, 4, 5] [1, 2, 3, 4]
+*a_tuple= 1 2 3 4 5
+echo ((1, 2, 3, 4, 5),)
+echo ('hello', ' ', 'python')
+:end:
+
+**** 集合(set)
+	 集合类型保存的是一些无序的Immutable对象，提供了一些集合操作的常用成员函数，如：add(添加元素)，remove（删除元素），intersection（交集）, union（合集）, difference（差集）等操作。
+
+   注意set类型本身是可以修改的，如果想要使用Immutable set类型，可以使用fronzenset。fronzenset创建后不可修改，可以被hash化，也可以作为其它set对象的元素,也可以作为地点类型的key值。
+
+
+**** 字典（map）
+
+python的map类型，标准库里目前只有字典类型（dict()函数创建，也可以直接使用"{}"赋值）, 字典类型的key值必须是可以hash化的，也就是immutable的。
+
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+
+a_dict1 = {1:2} # ok
+
+a_dict2 = dict({1:2}) # ok
+
+a_dict3 = dict([tuple([1, 2])]) # ok, 从元组数组转换
+
+print(a_dict1, a_dict2, a_dict3)
+
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[2]:
+{1: 2} {1: 2} {1: 2}
+:end:
+
+
+*** 可调用类型（可以像函数一样可以调用的类型） 
+
+**** 用户定义函数
+
+**** 类或者对象的函数
+
+**** 生成器函数（yield）
+
+**** 协程函数
+
+**** 异步生成器函数
+
+**** 内建函数（通常是c语言函数封装而来）
+
+
+**** 内建成员方法
+
+**** 类构造函数
+
+**** 可调用对象（实现"__call__"函数）
+
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+
+  class CallerObject(object):
+		def __call__(self, *args, **kw):
+			"""
+             可调用对象,必须实现“__call__”成员方法          
+			"""
+			print("hello ", *args, **kw)
+
+
+  caller = CallerObject()
+
+  caller("object caller")
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[4]:
+hello  object caller
+:end:
+
+*** 用户定义类型
+*** 类的实例化对象
+
+* 简单规范
+
+*** 开始第一个python项目
+周边接触到很多使用python的工作的人，不喜欢使用python的工程规范来管理自己的代码，其实这是很不明智的。一个好的习惯是，
+将自己的代码用python标准的工程管理起来，这有很多好处，如：
+
+1. 熟练python的setup tools包管理工具， 方便后面使用setup tools一些非常有用的功能
+2. 加深理解python环境引用（import）包的一些规则
+3. 合理管理程序依赖，发布程序，例如：
+
+  - 使用"python setup.py develop",安装开发环境，实际是生成本地工程的包信息，然后连接到PYTHONPATH中,
+ 这样如果你改变了你工程代码，不需要任何类似拷贝的操作，在任何地方都可以引用该包,当你的工程是由多个工程或者模块组成的时候这很重要。
+  - 使用"python setup.py build",构建的你程序包，验证依赖环境，同时当你想分享你的代码时，其他人可以很方便的安装你的程序（使用“pip install”或者“python setup.py install”）
+  - 集成一些必要的功能到你的项目，如：自动化测试，自动安装依赖，自动生成项目文档，发布代码等。
+
+*** 项目样例
+
+   首先可以从github上下载[[https://github.com/navdeep-G/samplemod][python setup 例子github连接]] ，然后在此基础上进行你自己的代码开发。下面将简单介绍里面各个部分的功能，
+并以此为基础演示一些有用的技巧。
+
+   首先我们看看这个例子的目录结构：
+
+#+begin_src sh :exports result
+
+ls ../files/python-samplemod
+#+end_src
+
+#+RESULTS:
+| LICENSE          | 代码法律许可声明，在你需要开放分享你的代码的时候很重要 |
+| Makefile         | 使用make来简化一些构建任务                             |
+| README.rst       | 本工程说明                                             |
+| docs             | 项目文档                                               |
+| requirements.txt | 依赖包                                               |
+| sample           | 实际代码目录                                           |
+| setup.py         | 包管理模需要的setup.py文件                             |
+| tests            | 放置的你的测试代码                                        |
+
+
+
+然后简单学习一下setup.py 文件编写：
+
+#+include: "../files/python-samplemod/setup.py" src python :minlevel 4
+
+ 
+* 常见问题
+
+浏览了上面的内容后，可以使用python进行基本的程序开发，中间可能会还有一些异常故障，但是相信自己，通过上面的基础知识能快速的找到问题的根源，解决问题，如果不行，尝试搜索引擎搜索问题答案, 也可以浏览官方中文文档,查找相关问题。
+
+[[https://docs.python.org/zh-cn/3.7/faq/programming.html][python fqa]]
