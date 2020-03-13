@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog</title><link>https://wisonwang.github.io/</link><description>python, go, ML, bigdata</description><atom:link href="https://wisonwang.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Wed, 11 Mar 2020 07:24:35 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>python 基础一：基础语法和解释运行</title><link>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org3c753c2" class="outline-2"&gt;
-&lt;h2 id="org3c753c2"&gt;认识python&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org3c753c2"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog</title><link>https://wisonwang.github.io/</link><description>python, go, ML, bigdata</description><atom:link href="https://wisonwang.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Fri, 13 Mar 2020 04:45:27 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>python 基础一：基础语法和解释运行</title><link>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org4e8058a" class="outline-2"&gt;
+&lt;h2 id="org4e8058a"&gt;认识python&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org4e8058a"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orga34e9af" class="outline-4"&gt;
-&lt;h4 id="orga34e9af"&gt;python是解释执行的动态语言&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orga34e9af"&gt;
+&lt;div id="outline-container-orgea44571" class="outline-4"&gt;
+&lt;h4 id="orgea44571"&gt;python是解释执行的动态语言&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgea44571"&gt;
 &lt;p&gt;
 python一般是运行解释器解析python文件（模块）来运行，或者可以通过调用（python -i）进行交互式开发（边写代码，边运行，是不是很酷？）&lt;br&gt;
 &lt;/p&gt;
