@@ -15,6 +15,7 @@
 ;;; Add any custom configuration that you would like to 'conf.el'.
 (setq nikola-use-pygments t
       org-export-with-toc nil
+	  org-export-with-sub-superscripts nil
       org-export-with-section-numbers nil
       org-startup-folded 'showeverything)
 
