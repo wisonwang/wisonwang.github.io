@@ -108,9 +108,9 @@ grpc 是google开发的远程通信协议,和它最相近的产品的产品是ap
 [[<a href="https://github.com/grpc/grpc/blob/v1.24.0/examples/protos/route_guide.proto">https://github.com/grpc/grpc/blob/v1.24.0/examples/protos/route_guide.proto</a>]grpc router guide]]
 </p>
 
-<div id="outline-container-org7497fe2" class="outline-2">
-<h2 id="org7497fe2">创建.proto</h2>
-<div class="outline-text-2" id="text-org7497fe2">
+<div id="outline-container-org35b86d6" class="outline-2">
+<h2 id="org35b86d6">创建.proto</h2>
+<div class="outline-text-2" id="text-org35b86d6">
 <p>
 创建.proto文件：
 </p>
@@ -208,9 +208,9 @@ grpc 是google开发的远程通信协议,和它最相近的产品的产品是ap
 </div>
 </div>
 
-<div id="outline-container-orgae7ffe2" class="outline-2">
-<h2 id="orgae7ffe2">编译</h2>
-<div class="outline-text-2" id="text-orgae7ffe2">
+<div id="outline-container-org5e11d4e" class="outline-2">
+<h2 id="org5e11d4e">编译</h2>
+<div class="outline-text-2" id="text-org5e11d4e">
 <p>
 安装grpcio-tools
 </p>
@@ -226,18 +226,18 @@ grpc 是google开发的远程通信协议,和它最相近的产品的产品是ap
 </pre></div>
 
 <p>
-编译会生成两个文件，$package<sub>name</sub>+"<sub>pb2.py</sub>" 和 $package<sub>name</sub> + "<sub>pb2</sub><sub>grpc.py</sub>", 前者实现了结构体的序列化协议，后者实现了grpc的通信接口。
+编译会生成两个文件，$package_name+"_pb2.py" 和 $package_name + "_pb2_grpc.py", 前者实现了结构体的序列化协议，后者实现了grpc的通信接口。
 </p>
 
 <p>
-(需要注意的是生成的<sub>pb2这个后缀表示的pb对于的python</sub> pb api的实现版本，不是pb IDL语言协议的"proto3")
+(需要注意的是生成的_pb2这个后缀表示的pb对于的python pb api的实现版本，不是pb IDL语言协议的"proto3")
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc46f868" class="outline-2">
-<h2 id="orgc46f868">编写server-client代码</h2>
-<div class="outline-text-2" id="text-orgc46f868">
+<div id="outline-container-orgbcbd595" class="outline-2">
+<h2 id="orgbcbd595">编写server-client代码</h2>
+<div class="outline-text-2" id="text-orgbcbd595">
 <p>
 client 样例：
 </p>
@@ -521,9 +521,9 @@ server 样例:
 </div>
 
 
-<div id="outline-container-org67d3410" class="outline-2">
-<h2 id="org67d3410">运行演示</h2>
-<div class="outline-text-2" id="text-org67d3410">
+<div id="outline-container-orgad294c9" class="outline-2">
+<h2 id="orgad294c9">运行演示</h2>
+<div class="outline-text-2" id="text-orgad294c9">
 <div class="highlight"><pre><span></span>cd ../files/python-grpc/
 
 python demo.py &gt; output.log
@@ -923,9 +923,9 @@ python demo.py &gt; output.log
 </div>
 </div>
 
-<div id="outline-container-orgfcc91b0" class="outline-2">
-<h2 id="orgfcc91b0">grpc stream 说明</h2>
-<div class="outline-text-2" id="text-orgfcc91b0">
+<div id="outline-container-orgbd7edac" class="outline-2">
+<h2 id="orgbd7edac">grpc stream 说明</h2>
+<div class="outline-text-2" id="text-orgbd7edac">
 <p>
 grpc stream 概念和管道的概念很相似，grpc 输入的stream参数，相当于客户端链接服务端的一个管道，
 返回的stream参数相当于服务端连接到客户端的管道。这样不管是客户端还是服务端在一次请求中，可以完全异步的进行通信。

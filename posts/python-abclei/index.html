@@ -69,43 +69,43 @@ python的元类(metaclass)和虚基类（ABC）
 <p>
 使用方法：
 </p>
-<div class="highlight"><pre><span></span>class a:
-	def __init__(self, data):
-		self.data = data
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">a</span><span class="p">:</span>
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
 
-	def getd3(self):
-		return self.data * 3
+	<span class="k">def</span> <span class="nf">getd3</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="mi">3</span>
 
 
-class MyMeta(type):
-	def __new__(metaname, classname, baseclasses, attrs):
-		print('New called with')
-		print('metaname', metaname)
-		print('classname', classname)
-		print('baseclasses', baseclasses)
-		print('attrs', attrs)
-		attrs['getdata'] = a.__dict__['getd3']
-		# attrs['getdata'] = a.getd3
-		return type.__new__(metaname, classname, baseclasses, attrs)
+<span class="k">class</span> <span class="nc">MyMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+	<span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="n">metaname</span><span class="p">,</span> <span class="n">classname</span><span class="p">,</span> <span class="n">baseclasses</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s1">'New called with'</span><span class="p">)</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s1">'metaname'</span><span class="p">,</span> <span class="n">metaname</span><span class="p">)</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s1">'classname'</span><span class="p">,</span> <span class="n">classname</span><span class="p">)</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s1">'baseclasses'</span><span class="p">,</span> <span class="n">baseclasses</span><span class="p">)</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s1">'attrs'</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
+		<span class="n">attrs</span><span class="p">[</span><span class="s1">'getdata'</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s1">'getd3'</span><span class="p">]</span>
+		<span class="c1"># attrs['getdata'] = a.getd3</span>
+		<span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">metaname</span><span class="p">,</span> <span class="n">classname</span><span class="p">,</span> <span class="n">baseclasses</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
 
-	def __init__(classobject, classname, baseclasses, attrs):
-		print('init called with')
-		print('classobject', classobject)
-		print('classname', classname)
-		print('baseclasses', baseclasses) 
-		print('attrs', attrs)
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="n">classobject</span><span class="p">,</span> <span class="n">classname</span><span class="p">,</span> <span class="n">baseclasses</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s1">'init called with'</span><span class="p">)</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s1">'classobject'</span><span class="p">,</span> <span class="n">classobject</span><span class="p">)</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s1">'classname'</span><span class="p">,</span> <span class="n">classname</span><span class="p">)</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s1">'baseclasses'</span><span class="p">,</span> <span class="n">baseclasses</span><span class="p">)</span> 
+		<span class="nb">print</span><span class="p">(</span><span class="s1">'attrs'</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
 
-# py2 和py3对metaclass工作方式不也一样， 以下是py3写法
-class Kls(metaclass=MyMeta):
-	def __init__(self,data):
-		self.data = data
+<span class="c1"># py2 和py3对metaclass工作方式不也一样， 以下是py3写法</span>
+<span class="k">class</span> <span class="nc">Kls</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">MyMeta</span><span class="p">):</span>
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
 
-	def printd(self):
-		print(self.data)
+	<span class="k">def</span> <span class="nf">printd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 
-ik = Kls('arun')
-ik.printd()
-print(ik.getdata())
+<span class="n">ik</span> <span class="o">=</span> <span class="n">Kls</span><span class="p">(</span><span class="s1">'arun'</span><span class="p">)</span>
+<span class="n">ik</span><span class="o">.</span><span class="n">printd</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ik</span><span class="o">.</span><span class="n">getdata</span><span class="p">())</span>
 </pre></div>
 
 <p>
@@ -113,54 +113,54 @@ New called with
 metaname &lt;class '<span class="underline"><span class="underline">main</span></span>.MyMeta'&gt;
 classname Kls
 baseclasses ()
-attrs {'<span class="underline"><span class="underline">module</span></span>': '<span class="underline"><span class="underline">main</span></span>', '<span class="underline"><span class="underline">qualname</span></span>': 'Kls', '<span class="underline"><span class="underline">init</span></span>': &lt;function Kls._<sub>init</sub>__ at 0x115a2b048&gt;, 'printd': &lt;function Kls.printd at 0x115a2ba60&gt;}
+attrs {'<span class="underline"><span class="underline">module</span></span>': '<span class="underline"><span class="underline">main</span></span>', '<span class="underline"><span class="underline">qualname</span></span>': 'Kls', '<span class="underline"><span class="underline">init</span></span>': &lt;function Kls.__init__ at 0x115a2b048&gt;, 'printd': &lt;function Kls.printd at 0x115a2ba60&gt;}
 init called with
 classobject &lt;class '<span class="underline"><span class="underline">main</span></span>.Kls'&gt;
 classname Kls
 baseclasses ()
-attrs {'<span class="underline"><span class="underline">module</span></span>': '<span class="underline"><span class="underline">main</span></span>', '<span class="underline"><span class="underline">qualname</span></span>': 'Kls', '<span class="underline"><span class="underline">init</span></span>': &lt;function Kls._<sub>init</sub>__ at 0x115a2b048&gt;, 'printd': &lt;function Kls.printd at 0x115a2ba60&gt;, 'getdata': &lt;function a.getd3 at 0x115a2b158&gt;}
+attrs {'<span class="underline"><span class="underline">module</span></span>': '<span class="underline"><span class="underline">main</span></span>', '<span class="underline"><span class="underline">qualname</span></span>': 'Kls', '<span class="underline"><span class="underline">init</span></span>': &lt;function Kls.__init__ at 0x115a2b048&gt;, 'printd': &lt;function Kls.printd at 0x115a2ba60&gt;, 'getdata': &lt;function a.getd3 at 0x115a2b158&gt;}
 arun
 arunarunarun
 </p>
 
-<div class="highlight"><pre><span></span>from abc import ABCMeta
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span>
 
 
-# 构造元类
-def with_metaclass(meta, *bases):
-    # This requires a bit of explanation: the basic idea is to make a
-    # dummy metaclass for one level of class instantiation that replaces
-    # itself with the actual metaclass.  Because of internal type checks
-    # we also need to make sure that we downgrade the custom metaclass
-    # for one level to something closer to type (that's why __call__ and
-    # __init__ comes back from type etc.).
-    #
-    # This has the advantage over six.with_metaclass in that it does not
-    # introduce dummy classes into the final MRO.
-    class metaclass(meta):
-	__call__ = type.__call__
-	__init__ = type.__init__
-	def __new__(cls, name, this_bases, d):
-	    if this_bases is None:
-		return type.__new__(cls, name, (), d)
-	    return meta(name, bases, d)
+<span class="c1"># 构造元类</span>
+<span class="k">def</span> <span class="nf">with_metaclass</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="o">*</span><span class="n">bases</span><span class="p">):</span>
+    <span class="c1"># This requires a bit of explanation: the basic idea is to make a</span>
+    <span class="c1"># dummy metaclass for one level of class instantiation that replaces</span>
+    <span class="c1"># itself with the actual metaclass.  Because of internal type checks</span>
+    <span class="c1"># we also need to make sure that we downgrade the custom metaclass</span>
+    <span class="c1"># for one level to something closer to type (that's why __call__ and</span>
+    <span class="c1"># __init__ comes back from type etc.).</span>
+    <span class="c1">#</span>
+    <span class="c1"># This has the advantage over six.with_metaclass in that it does not</span>
+    <span class="c1"># introduce dummy classes into the final MRO.</span>
+    <span class="k">class</span> <span class="nc">metaclass</span><span class="p">(</span><span class="n">meta</span><span class="p">):</span>
+	<span class="fm">__call__</span> <span class="o">=</span> <span class="nb">type</span><span class="o">.</span><span class="fm">__call__</span>
+	<span class="fm">__init__</span> <span class="o">=</span> <span class="nb">type</span><span class="o">.</span><span class="fm">__init__</span>
+	<span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">this_bases</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+	    <span class="k">if</span> <span class="n">this_bases</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="p">(),</span> <span class="n">d</span><span class="p">)</span>
+	    <span class="k">return</span> <span class="n">meta</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
 
-    return metaclass('temporary_class', None, {})
-
-
-class MyList(with_metaclass(ABCMeta,  )):
-    pass
+    <span class="k">return</span> <span class="n">metaclass</span><span class="p">(</span><span class="s1">'temporary_class'</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">{})</span>
 
 
-MyList.register(list)
+<span class="k">class</span> <span class="nc">MyList</span><span class="p">(</span><span class="n">with_metaclass</span><span class="p">(</span><span class="n">ABCMeta</span><span class="p">,</span>  <span class="p">)):</span>
+    <span class="k">pass</span>
 
-assert issubclass(list, MyList)
+
+<span class="n">MyList</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">MyList</span><span class="p">)</span>
 </pre></div>
 
-<div class="highlight"><pre><span></span>from abc import ABC
-import collections
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span>
+<span class="kn">import</span> <span class="nn">collections</span>
 
-print(type(1))
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 
 <p>
@@ -168,13 +168,13 @@ print(type(1))
 </p>
 
 
-<div class="highlight"><pre><span></span>print(collections.Set)
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">Set</span><span class="p">)</span>
 
-print(set.__class__)
+<span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
 
-print(set)
+<span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
 
-print(set.__doc__)
+<span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 
 <p>

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog (文章分类：golang)</title><link>https://wisonwang.github.io/</link><description></description><atom:link href="https://wisonwang.github.io/categories/golang.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Mon, 17 Feb 2020 02:02:18 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>golang cluster</title><link>https://wisonwang.github.io/posts/golang%2Ccluster/</link><dc:creator>vincent wang</dc:creator><description>&lt;p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog (文章分类：golang)</title><link>https://wisonwang.github.io/</link><description></description><atom:link href="https://wisonwang.github.io/categories/golang.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Fri, 13 Mar 2020 07:39:06 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>golang cluster</title><link>https://wisonwang.github.io/posts/golang%2Ccluster/</link><dc:creator>vincent wang</dc:creator><description>&lt;p&gt;
 golang服务的集群方案
 &lt;/p&gt;
-&lt;div id="outline-container-org17376c7" class="outline-2"&gt;
-&lt;h2 id="org17376c7"&gt;服务发现&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org17376c7"&gt;
+&lt;div id="outline-container-org373eefa" class="outline-2"&gt;
+&lt;h2 id="org373eefa"&gt;服务发现&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org373eefa"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgc76ac2d" class="outline-3"&gt;
-&lt;h3 id="orgc76ac2d"&gt;基于zookeeper&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgc76ac2d"&gt;
+&lt;div id="outline-container-org9494ba6" class="outline-3"&gt;
+&lt;h3 id="org9494ba6"&gt;基于zookeeper&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org9494ba6"&gt;
 &lt;p&gt;
 &lt;a href="https://www.v2ex.com/t/440662"&gt;手把手教你使用 Go 基于 zookeeper 编写服务发现&lt;/a&gt;
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org25c16bc" class="outline-3"&gt;
-&lt;h3 id="org25c16bc"&gt;consul 轻量级服务发现服务&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org25c16bc"&gt;
+&lt;div id="outline-container-org801a863" class="outline-3"&gt;
+&lt;h3 id="org801a863"&gt;consul 轻量级服务发现服务&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org801a863"&gt;
 &lt;p&gt;
 &lt;a href="https://www.consul.io/"&gt;consul 服务发现&lt;/a&gt;
 &lt;/p&gt;
@@ -26,13 +26,13 @@ golang服务的集群方案
 &lt;/div&gt;
 
 
-&lt;div id="outline-container-org6011bba" class="outline-2"&gt;
-&lt;h2 id="org6011bba"&gt;配置中心&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org6011bba"&gt;
+&lt;div id="outline-container-org6165cb4" class="outline-2"&gt;
+&lt;h2 id="org6165cb4"&gt;配置中心&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org6165cb4"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org142173c" class="outline-3"&gt;
-&lt;h3 id="org142173c"&gt;apollo配置中心&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org142173c"&gt;
+&lt;div id="outline-container-orgd6aaf27" class="outline-3"&gt;
+&lt;h3 id="orgd6aaf27"&gt;apollo配置中心&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-orgd6aaf27"&gt;
 &lt;p&gt;
 &lt;a href="https://github.com/ctripcorp/apollo"&gt;apollo配置中心&lt;/a&gt;
 &lt;/p&gt;
