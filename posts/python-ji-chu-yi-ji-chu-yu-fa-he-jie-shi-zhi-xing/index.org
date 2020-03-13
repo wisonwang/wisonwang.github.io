@@ -11,7 +11,6 @@
 #+OPTIONS: \n:t
 #+OPTIONS: ^:nil
 
-
 #+begin_src ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing  :exports none
   %matplotlib inline
   import matplotlib.pyplot as plt
@@ -124,7 +123,6 @@ print(sqrt(3))
 :end:
 
 明显比下面的代码可读性更强，同时也可以避免一些同名模块或变量的歧义，冲突。
-\\
 
 #+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
 

@@ -2264,8 +2264,8 @@ a:focus {
   -ms-hyphens: auto;
   -o-hyphens: auto;
   hyphens: auto;
-  margin: 5 5 12px;
-  line-height:1.5;
+  margin: 0 0 12px;
+  line-height:3;
 }
 .page-content > .content em {
   font-style: italic;
