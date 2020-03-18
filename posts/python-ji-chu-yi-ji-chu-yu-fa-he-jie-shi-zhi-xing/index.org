@@ -11,6 +11,10 @@
 #+OPTIONS: \n:t
 #+OPTIONS: ^:nil
 
+#+BEGIN_EXPORT md
+<h1 align="center"><font color="0066FF" size=110%>A notebook from org-mode</font></h1>
+#+END_EXPORT
+
 #+begin_src ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing  :exports none
   %matplotlib inline
   import matplotlib.pyplot as plt
@@ -118,7 +122,7 @@ print(sqrt(3))
 
 #+RESULTS:
 :results:
-# Out[5]:
+# Out[2]:
 1.7320508075688772
 :end:
 
