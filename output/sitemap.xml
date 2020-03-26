@@ -23,11 +23,11 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/archive.html</loc>
-  <lastmod>2020-03-13T07:38:00Z</lastmod>
+  <lastmod>2020-03-26T06:05:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/</loc>
-  <lastmod>2020-03-13T07:39:00Z</lastmod>
+  <lastmod>2020-03-26T06:05:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/blog/</loc>
@@ -36,6 +36,10 @@
  <url>
   <loc>https://wisonwang.github.io/categories/cat_nikola/</loc>
   <lastmod>2020-03-13T07:39:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/categories/cat_python-python2-python3-2to3/</loc>
+  <lastmod>2020-03-26T06:05:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/cat_python/</loc>
@@ -87,7 +91,7 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/index-1.html</loc>
-  <lastmod>2020-03-13T07:39:00Z</lastmod>
+  <lastmod>2020-03-26T06:05:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/listings/</loc>
@@ -155,6 +159,10 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</loc>
+  <lastmod>2020-03-13T07:39:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/</loc>
   <lastmod>2020-03-13T07:39:00Z</lastmod>
  </url>
  <url>

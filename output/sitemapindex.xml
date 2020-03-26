@@ -14,8 +14,12 @@
   <lastmod>2020-03-13T07:39:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://wisonwang.github.io/categories/cat_python-python2-python3-2to3.xml</loc>
+  <lastmod>2020-03-26T06:05:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://wisonwang.github.io/categories/cat_python.xml</loc>
-  <lastmod>2020-03-13T07:39:00Z</lastmod>
+  <lastmod>2020-03-18T03:59:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/categories/cat_spark.xml</loc>
@@ -39,7 +43,7 @@
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/categories/python.xml</loc>
-  <lastmod>2020-03-13T07:39:00Z</lastmod>
+  <lastmod>2020-03-18T03:59:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/categories/scala.xml</loc>
@@ -63,10 +67,10 @@
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/rss.xml</loc>
-  <lastmod>2020-03-13T07:39:00Z</lastmod>
+  <lastmod>2020-03-26T06:05:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/sitemap.xml</loc>
-  <lastmod>2020-03-13T07:39:00Z</lastmod>
+  <lastmod>2020-03-26T06:05:00Z</lastmod>
  </sitemap>
 </sitemapindex>
