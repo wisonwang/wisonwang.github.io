@@ -2,7 +2,7 @@
 .. title: python2&python3程序兼容
 .. slug: python2python3cheng-xu-jian-rong
 .. date: 2020-03-09 15:53:04 UTC+08:00
-.. tags: draft
+.. tags: 
 .. category: python python2 python3 2to3
 .. link: 
 .. description: python2升级python3自动修复器2to3
@@ -37,6 +37,8 @@
 1. 对于引入库的不兼容问题，虽然现在主流的python都意见兼容python3，但是还是有些python2的库不兼容，有些是库的名字改了，有些是有了新的替代库。
 2. 对于编码问题处理，由于python3对字符编码机制做了很大改动，特别是对于中文编码问题，大多时候需要人工修复。
 3. 其他不能修复的兼容问题，由于python2在2020年1月份就不再进行一些安全方面的更新了，同时python3社区已经很成熟，如果遇到其他引入库不兼容问题，可以尝试升级引入库，如不能解决再尝试是有搜索引擎寻寻找解决办法。
+
+相关链接：
 
 [[https://blog.csdn.net/weixin_35640856/article/details/76779997][MySqldb库python3不兼容问题]]
 
