@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://wisonwang.github.io/</loc>
-  <lastmod>2020-03-13T07:39:00Z</lastmod>
+  <lastmod>2020-03-30T02:24:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/2018/</loc>
@@ -23,11 +23,11 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/archive.html</loc>
-  <lastmod>2020-03-26T06:05:00Z</lastmod>
+  <lastmod>2020-03-27T07:31:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/</loc>
-  <lastmod>2020-03-26T06:05:00Z</lastmod>
+  <lastmod>2020-03-30T02:24:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/blog/</loc>
@@ -48,6 +48,10 @@
  <url>
   <loc>https://wisonwang.github.io/categories/cat_spark/</loc>
   <lastmod>2020-03-13T07:39:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/categories/cat_yan-gao-advertising/</loc>
+  <lastmod>2020-03-30T02:24:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/emacs/</loc>
@@ -91,7 +95,11 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/index-1.html</loc>
-  <lastmod>2020-03-26T06:05:00Z</lastmod>
+  <lastmod>2020-03-27T07:31:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/index-2.html</loc>
+  <lastmod>2020-03-27T07:31:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/listings/</loc>
@@ -128,6 +136,10 @@
  <url>
   <loc>https://wisonwang.github.io/pages/social_buttons/</loc>
   <lastmod>2020-03-13T07:39:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/</loc>
+  <lastmod>2020-03-18T03:59:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/posts/devops%2Ctools/</loc>

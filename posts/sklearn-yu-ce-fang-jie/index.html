@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="zh_cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>sklearn 预测房价 | vincent blog</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://wisonwang.github.io/posts/sklearn-yu-ce-fang-jie/">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
+<meta property="og:site_name" content="vincent blog">
+<meta property="og:title" content="sklearn 预测房价">
+<meta property="og:url" content="https://wisonwang.github.io/posts/sklearn-yu-ce-fang-jie/">
+<meta property="og:description" content='import os
+import tarfile
+from six.moves import urllib
+
+DOWNLOAD_ROOT = "https://raw.githubusercontent.com/ageron/handson-ml/master/"
+HOUSING_PATH = "datasets/housing"
+HOUSING_URL = DOWNLOAD_ROOT + HOU'>
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-03-27T14:35:37+08:00">
+</head>
+<body>
+    <section class="social"><ul>
+<li><a href="../../index.html" title="Home"><i class="icon-home"></i></a></li>
+            <li><a href="../../archive.html" title="文章存档"><i class="icon-archive"></i></a></li>
+            <li><a href="../../categories/" title="标签"><i class="icon-tags"></i></a></li>
+            <li><a href="../../pages/about" title="About"><i class="icon-about"></i></a></li>
+            <li><a href="../../rss.xml" title="RSS 源"><i class="icon-rss"></i></a></li>
+            <li><a href="https://twitter.com/wisonwang" title="My Twitter"><i class="icon-twitter"></i></a></li>
+            <li><a href="https://github.com/wisonwang" title="My Github"><i class="icon-github"></i></a></li>
+
+        </ul></section><section class="page-content"><div class="content" rel="main">
+    <div class="post">
+        <h1 class="p-name entry-title" itemprop="headline name">sklearn 预测房价</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2020-03-27T14:35:37+08:00">2020-03-27 14:35</time>
+            
+                      |  
+        <a href="index.org" id="sourcelink">源代码</a>
+
+            </div>
+            
+        </div>
+        <div class="body">
+            <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">tarfile</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="kn">import</span> <span class="n">urllib</span>
+
+<span class="n">DOWNLOAD_ROOT</span> <span class="o">=</span> <span class="s2">"https://raw.githubusercontent.com/ageron/handson-ml/master/"</span>
+<span class="n">HOUSING_PATH</span> <span class="o">=</span> <span class="s2">"datasets/housing"</span>
+<span class="n">HOUSING_URL</span> <span class="o">=</span> <span class="n">DOWNLOAD_ROOT</span> <span class="o">+</span> <span class="n">HOUSING_PATH</span> <span class="o">+</span> <span class="s2">"/housing.tgz"</span>
+
+<span class="k">def</span> <span class="nf">fetch_housing_data</span><span class="p">(</span><span class="n">housing_url</span><span class="o">=</span><span class="n">HOUSING_URL</span><span class="p">,</span> <span class="n">housing_path</span><span class="o">=</span><span class="n">HOUSING_PATH</span><span class="p">):</span>
+	<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">housing_path</span><span class="p">):</span>
+		<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">housing_path</span><span class="p">)</span>
+	<span class="n">tgz_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">housing_path</span><span class="p">,</span> <span class="s2">"housing.tgz"</span><span class="p">)</span>
+	<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">housing_url</span><span class="p">,</span> <span class="n">tgz_path</span><span class="p">)</span>
+	<span class="n">housing_tgz</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">tgz_path</span><span class="p">)</span>
+	<span class="n">housing_tgz</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">housing_path</span><span class="p">)</span>
+	<span class="n">housing_tgz</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+<p>
+使用panda读取数据
+</p>
+<div class="highlight"><pre><span></span>  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+  <span class="k">def</span> <span class="nf">load_housing_data</span><span class="p">(</span><span class="n">housing_path</span><span class="o">=</span><span class="n">HOUSING_PATH</span><span class="p">):</span>
+   <span class="n">csv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">housing_path</span><span class="p">,</span> <span class="s2">"housing.csv"</span><span class="p">)</span>
+   <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv_path</span><span class="p">)</span>
+
+
+<span class="n">fetch_housing_data</span><span class="p">()</span>
+<span class="n">housing</span> <span class="o">=</span> <span class="n">load_housing_data</span><span class="p">()</span>
+<span class="n">housing</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+<pre class="example">
+longitude  latitude  housing_median_age  total_rooms  total_bedrooms  \
+0    -122.23     37.88                41.0        880.0           129.0
+1    -122.22     37.86                21.0       7099.0          1106.0
+2    -122.24     37.85                52.0       1467.0           190.0
+3    -122.25     37.85                52.0       1274.0           235.0
+4    -122.25     37.85                52.0       1627.0           280.0
+
+population  households  median_income  median_house_value ocean_proximity
+0       322.0       126.0         8.3252            452600.0        NEAR BAY
+1      2401.0      1138.0         8.3014            358500.0        NEAR BAY
+2       496.0       177.0         7.2574            352100.0        NEAR BAY
+3       558.0       219.0         5.6431            341300.0        NEAR BAY
+4       565.0       259.0         3.8462            342200.0        NEAR BAY
+</pre>
+
+<p>
+数据描述
+</p>
+
+<div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+<pre class="example">
+longitude      latitude  housing_median_age   total_rooms  \
+count  20640.000000  20640.000000        20640.000000  20640.000000
+mean    -119.569704     35.631861           28.639486   2635.763081
+std        2.003532      2.135952           12.585558   2181.615252
+min     -124.350000     32.540000            1.000000      2.000000
+25%     -121.800000     33.930000           18.000000   1447.750000
+50%     -118.490000     34.260000           29.000000   2127.000000
+75%     -118.010000     37.710000           37.000000   3148.000000
+max     -114.310000     41.950000           52.000000  39320.000000
+
+total_bedrooms    population    households  median_income  \
+count    20433.000000  20640.000000  20640.000000   20640.000000
+mean       537.870553   1425.476744    499.539680       3.870671
+std        421.385070   1132.462122    382.329753       1.899822
+min          1.000000      3.000000      1.000000       0.499900
+25%        296.000000    787.000000    280.000000       2.563400
+50%        435.000000   1166.000000    409.000000       3.534800
+75%        647.000000   1725.000000    605.000000       4.743250
+max       6445.000000  35682.000000   6082.000000      15.000100
+
+median_house_value
+count        20640.000000
+mean        206855.816909
+std         115395.615874
+min          14999.000000
+25%         119600.000000
+50%         179700.000000
+75%         264725.000000
+max         500001.000000
+</pre>
+
+<p>
+柱状图：
+</p>
+
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+</pre></div>
+
+
+<div class="figure">
+<p><img src="obipy-resources/tWvfW7.png" alt="tWvfW7.png"></p>
+</div>
+
+<p>
+分层采样
+</p>
+
+<div class="highlight"><pre><span></span>   <span class="n">housing</span><span class="p">[</span><span class="s2">"income_cat"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">housing</span><span class="p">[</span><span class="s2">"median_income"</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1.5</span><span class="p">)</span>
+   <span class="n">housing</span><span class="p">[</span><span class="s2">"income_cat"</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">housing</span><span class="p">[</span><span class="s2">"income_cat"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+   <span class="c1"># housing.describe()</span>
+
+   <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedShuffleSplit</span>
+
+   <span class="n">split</span> <span class="o">=</span> <span class="n">StratifiedShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+   <span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">split</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">housing</span><span class="p">,</span> <span class="n">housing</span><span class="p">[</span><span class="s2">"income_cat"</span><span class="p">]):</span>
+	   <span class="n">strat_train_set</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">train_index</span><span class="p">]</span>
+	   <span class="n">strat_test_set</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+
+
+<span class="n">housing</span><span class="p">[</span><span class="s2">"income_cat"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">housing</span><span class="p">)</span>
+</pre></div>
+
+<pre class="example">
+3.0    0.350581
+2.0    0.318847
+4.0    0.176308
+5.0    0.114438
+1.0    0.039826
+Name: income_cat, dtype: float64
+</pre>
+
+<p>
+还原数据
+</p>
+
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="nb">set</span> <span class="ow">in</span> <span class="p">(</span><span class="n">strat_train_set</span><span class="p">,</span> <span class="n">strat_test_set</span><span class="p">):</span> 
+	<span class="nb">set</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">"income_cat"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+<p>
+划出地理分布
+</p>
+<div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"scatter"</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"longitude"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"latitude"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+
+<pre class="example">
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x11f838908&gt;
+
+</pre>
+
+<div class="figure">
+<p><img src="obipy-resources/ahtv8W.png" alt="ahtv8W.png"></p>
+</div>
+
+<p>
+彩色图
+</p>
+
+<div class="highlight"><pre><span></span>
+</pre></div>
+        </div>
+        
+                            <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="wisonwanghomepage",
+            disqus_url="https://wisonwang.github.io/posts/sklearn-yu-ce-fang-jie/",
+        disqus_title="sklearn \u9884\u6d4b\u623f\u4ef7",
+        disqus_identifier="cache/posts/sklearn-yu-ce-fang-jie.html",
+        disqus_config = function () {
+            this.language = "zh_cn";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    </div>
+                     <footer id="footer"><p>Contents © 2020         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+    </section><script src="../../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+    </script><script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>
