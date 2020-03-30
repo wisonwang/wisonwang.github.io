@@ -1,0 +1,199 @@
+#+BEGIN_COMMENT
+.. title: sklearn 预测房价
+.. slug: sklearn-yu-ce-fang-jie
+.. date: 2020-03-27 14:35:37 UTC+08:00
+.. tags: draft
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+#+begin_src ipython :session sklearn_predit_house_price :exports none
+  %matplotlib inline
+  import matplotlib.pyplot as plt
+  import numpy as np
+#+end_src
+
+#+RESULTS:
+: # Out[1]:
+
+
+#+BEGIN_SRC ipython :session sklearn_predit_house_price :exports both :results raw drawer
+
+  import os
+  import tarfile
+  from six.moves import urllib
+
+  DOWNLOAD_ROOT = "https://raw.githubusercontent.com/ageron/handson-ml/master/"
+  HOUSING_PATH = "datasets/housing"
+  HOUSING_URL = DOWNLOAD_ROOT + HOUSING_PATH + "/housing.tgz"
+
+  def fetch_housing_data(housing_url=HOUSING_URL, housing_path=HOUSING_PATH):
+	  if not os.path.isdir(housing_path):
+		  os.makedirs(housing_path)
+	  tgz_path = os.path.join(housing_path, "housing.tgz")
+	  urllib.request.urlretrieve(housing_url, tgz_path)
+	  housing_tgz = tarfile.open(tgz_path)
+	  housing_tgz.extractall(path=housing_path)
+	  housing_tgz.close()
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[2]:
+:end:
+
+使用panda读取数据
+#+BEGIN_SRC ipython :session sklearn_predit_house_price :exports both :results raw drawer
+
+  import pandas as pd
+
+  def load_housing_data(housing_path=HOUSING_PATH):
+   csv_path = os.path.join(housing_path, "housing.csv")
+   return pd.read_csv(csv_path)
+
+
+fetch_housing_data()
+housing = load_housing_data()
+housing.head()
+
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[6]:
+#+BEGIN_EXAMPLE
+  longitude  latitude  housing_median_age  total_rooms  total_bedrooms  \
+  0    -122.23     37.88                41.0        880.0           129.0
+  1    -122.22     37.86                21.0       7099.0          1106.0
+  2    -122.24     37.85                52.0       1467.0           190.0
+  3    -122.25     37.85                52.0       1274.0           235.0
+  4    -122.25     37.85                52.0       1627.0           280.0
+  
+  population  households  median_income  median_house_value ocean_proximity
+  0       322.0       126.0         8.3252            452600.0        NEAR BAY
+  1      2401.0      1138.0         8.3014            358500.0        NEAR BAY
+  2       496.0       177.0         7.2574            352100.0        NEAR BAY
+  3       558.0       219.0         5.6431            341300.0        NEAR BAY
+  4       565.0       259.0         3.8462            342200.0        NEAR BAY
+#+END_EXAMPLE
+:end:
+
+数据描述
+
+#+BEGIN_SRC ipython :session sklearn_predit_house_price :exports both :results raw drawer
+housing.describe()
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[7]:
+#+BEGIN_EXAMPLE
+  longitude      latitude  housing_median_age   total_rooms  \
+  count  20640.000000  20640.000000        20640.000000  20640.000000
+  mean    -119.569704     35.631861           28.639486   2635.763081
+  std        2.003532      2.135952           12.585558   2181.615252
+  min     -124.350000     32.540000            1.000000      2.000000
+  25%     -121.800000     33.930000           18.000000   1447.750000
+  50%     -118.490000     34.260000           29.000000   2127.000000
+  75%     -118.010000     37.710000           37.000000   3148.000000
+  max     -114.310000     41.950000           52.000000  39320.000000
+  
+  total_bedrooms    population    households  median_income  \
+  count    20433.000000  20640.000000  20640.000000   20640.000000
+  mean       537.870553   1425.476744    499.539680       3.870671
+  std        421.385070   1132.462122    382.329753       1.899822
+  min          1.000000      3.000000      1.000000       0.499900
+  25%        296.000000    787.000000    280.000000       2.563400
+  50%        435.000000   1166.000000    409.000000       3.534800
+  75%        647.000000   1725.000000    605.000000       4.743250
+  max       6445.000000  35682.000000   6082.000000      15.000100
+  
+  median_house_value
+  count        20640.000000
+  mean        206855.816909
+  std         115395.615874
+  min          14999.000000
+  25%         119600.000000
+  50%         179700.000000
+  75%         264725.000000
+  max         500001.000000
+#+END_EXAMPLE
+:end:
+
+柱状图：
+
+#+BEGIN_SRC ipython :session sklearn_predit_house_price :exports both :results raw  drawer
+ import matplotlib.pyplot as plt
+ _ = housing.hist(bins=50, figsize=(20,15))
+
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[15]:
+[[file:./obipy-resources/tWvfW7.png]]
+:end:
+
+分层采样
+
+#+BEGIN_SRC ipython :session sklearn_predit_house_price  :exports both :results raw drawer
+   housing["income_cat"] = np.ceil(housing["median_income"] / 1.5)
+   housing["income_cat"].where(housing["income_cat"] < 5, 5.0, inplace=True)
+   # housing.describe()
+
+   from sklearn.model_selection import StratifiedShuffleSplit
+
+   split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
+
+   for train_index, test_index in split.split(housing, housing["income_cat"]):
+	   strat_train_set = housing.loc[train_index]
+	   strat_test_set = housing.loc[test_index]
+
+
+housing["income_cat"].value_counts() / len(housing)
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[25]:
+#+BEGIN_EXAMPLE
+  3.0    0.350581
+  2.0    0.318847
+  4.0    0.176308
+  5.0    0.114438
+  1.0    0.039826
+  Name: income_cat, dtype: float64
+#+END_EXAMPLE
+:end:
+
+还原数据
+
+#+BEGIN_SRC ipython :session sklearn_predit_house_price :exports both :results raw drawer
+  for set in (strat_train_set, strat_test_set): 
+	  set.drop(["income_cat"], axis=1, inplace=True)
+ 
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[26]:
+:end:
+
+划出地理分布
+#+BEGIN_SRC ipython :session sklearn_predit_house_price :exports both :results raw drawer
+housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.1)
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out[29]:
+: <matplotlib.axes._subplots.AxesSubplot at 0x11f838908>
+[[file:./obipy-resources/ahtv8W.png]]
+:end:
+
+彩色图
+
+#+BEGIN_SRC ipython :session sklearn_predit_house_price :exports both :results raw drawer
+
+#+END_SRC

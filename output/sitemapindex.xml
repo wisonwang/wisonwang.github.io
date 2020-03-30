@@ -26,6 +26,10 @@
   <lastmod>2020-03-13T07:39:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://wisonwang.github.io/categories/cat_yan-gao-advertising.xml</loc>
+  <lastmod>2020-03-30T02:24:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://wisonwang.github.io/categories/emacs.xml</loc>
   <lastmod>2020-03-13T07:39:00Z</lastmod>
  </sitemap>
@@ -67,10 +71,10 @@
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/rss.xml</loc>
-  <lastmod>2020-03-26T06:05:00Z</lastmod>
+  <lastmod>2020-03-30T02:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/sitemap.xml</loc>
-  <lastmod>2020-03-26T06:05:00Z</lastmod>
+  <lastmod>2020-03-30T02:24:00Z</lastmod>
  </sitemap>
 </sitemapindex>
