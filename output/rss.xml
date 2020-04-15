@@ -1,491 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog</title><link>https://wisonwang.github.io/</link><description>python, go, ML, bigdata</description><atom:link href="https://wisonwang.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Mon, 30 Mar 2020 02:24:19 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>程序化广告术语概述</title><link>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org1a26200" class="outline-2"&gt;
-&lt;h2 id="org1a26200"&gt;传统互联网广告术语&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org1a26200"&gt;
-&lt;/div&gt;
-&lt;div id="outline-container-org6c121e5" class="outline-4"&gt;
-&lt;h4 id="org6c121e5"&gt;DSP (Demand-Side Platform)&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org6c121e5"&gt;
-&lt;p&gt;
-DSP为需求方（即广告主或代理商）提供实时竞价投放平台。广告需求方可以在平台上管理广告活动及其投放策略，包括设置目标受众的定向条件、预算、出价、创意等。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id="outline-container-orgabcdae3" class="outline-4"&gt;
-&lt;h4 id="orgabcdae3"&gt;Trading Desk&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgabcdae3"&gt;
-&lt;p&gt;
-Trading Desk（采购交易平台），简称TD。
-&lt;/p&gt;
-
-&lt;p&gt;
-类似DSP，但需求方可以在TD上统一管理多个DSP平台的投放，包括分配投放预算、制定和调整投放策略，查看数据报告。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-orgd12205c" class="outline-4"&gt;
-&lt;h4 id="orgd12205c"&gt;Ad Network&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgd12205c"&gt;
-&lt;p&gt;
-Ad Network(广告网盟)，简称ADN。
-&lt;/p&gt;
-
-&lt;p&gt;
-ADN可以被理解为媒体代理公司，通过为广告主采购媒体方流量，赚取中间差价，其代表有百度网盟等。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id="outline-container-org46c7a88" class="outline-4"&gt;
-&lt;h4 id="org46c7a88"&gt;SSP(Supply-Side Platform（供应方平台），简称SSP)&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org46c7a88"&gt;
-&lt;p&gt;
-SSP服务于媒体方，可以作为分散的流量入口、大小媒体的聚合平台。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-org64e0922" class="outline-4"&gt;
-&lt;h4 id="org64e0922"&gt;Ad Exchange(Ad Exchange（广告交易平台），简称ADX。)&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org64e0922"&gt;
-&lt;p&gt;
-ADX提供的功能是交换，实现实时竞价、广告库存和广告需求的匹配。广告需求方可以随时改变自己的出价策略和所选择的资源。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id="outline-container-org5893c6a" class="outline-4"&gt;
-&lt;h4 id="org5893c6a"&gt;PCP(Programmatic Creative Platform（程序化创意平台），简称PCP)&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org5893c6a"&gt;
-&lt;p&gt;
-PCP专注于广告创意的投放优化，通过技术自动生成海量创意，并利用算法和数据对不同受众动态地展示广告并进行创意优化。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id="outline-container-org26d2da4" class="outline-4"&gt;
-&lt;h4 id="org26d2da4"&gt;AVP(Data Management Platform（数据管理平台），简称DMP)&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org26d2da4"&gt;
-&lt;p&gt;
-DMP能够为广告投放提供人群标签进行受众精准定向，并通过投放数据建立用户画像，进行人群标签的管理以及再投放。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id="outline-container-org061f59f" class="outline-4"&gt;
-&lt;h4 id="org061f59f"&gt;MAP(Measurement&amp;amp;Analytics Platform（监测分析平台），简称MAP。)&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org061f59f"&gt;
-&lt;p&gt;
-MAP被广告主用于同步监测广告投放数据，评估广告投放平台数据的真实性，比如曝光量、点击量、受众属性等。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-org2b366b3" class="outline-2"&gt;
-&lt;h2 id="org2b366b3"&gt;程序化互联网广告术语&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org2b366b3"&gt;
-&lt;/div&gt;
-&lt;div id="outline-container-org75ee029" class="outline-4"&gt;
-&lt;h4 id="org75ee029"&gt;Demographics&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org75ee029"&gt;
-&lt;p&gt;
-人口统计特征，典型的人口统计特征包括年龄、性别、地区、学历、职业和收入等。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-orgf0a7058" class="outline-4"&gt;
-&lt;h4 id="orgf0a7058"&gt;Cookie&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgf0a7058"&gt;
-&lt;p&gt;
-电脑中记录用户在网络中的行为的文件；网站可通过Cookie来识别用户是否曾经访问过该网站。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-org959b0dd" class="outline-4"&gt;
-&lt;h4 id="org959b0dd"&gt;Frequency&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org959b0dd"&gt;
-&lt;p&gt;
-接触频次，在一个阶段或者时间内广告传输给同一个浏览器的次数；站点需要使用Cookie来管理广告频次；广告主可以通过限定这个次数来达到提高广告效果的目的。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-org0a0ea96" class="outline-4"&gt;
-&lt;h4 id="org0a0ea96"&gt;Targeting&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org0a0ea96"&gt;
-&lt;p&gt;
-定向，通过内容匹配、用户构成或者过滤传递最适宜的广告给用户。例如：地域定向、操作系统定向、媒体定向、点位定向、浏览器定向、时段定向等等。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-orgf4edff4" class="outline-4"&gt;
-&lt;h4 id="orgf4edff4"&gt;Target Audience&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgf4edff4"&gt;
-&lt;p&gt;
-目标受众，简称TA, 即广告投放的目标对象。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-org59ff5f5" class="outline-4"&gt;
-&lt;h4 id="org59ff5f5"&gt;Retargeting&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org59ff5f5"&gt;
-&lt;p&gt;
-重定向。即找出曾经对广告主的产品或服务产生兴趣的人，重新向他们投放该广告主的广告，被公认为精准程度最高、效果最突出的定向方式。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-orgd91e4a3" class="outline-4"&gt;
-&lt;h4 id="orgd91e4a3"&gt;频控&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgd91e4a3"&gt;
-&lt;p&gt;
-频次控制，即限制某个用户在某一时间段内看到该广告的次数，有效控制信息流失率。一般来说，用户看到同一广告创意的次数上升，点击率随之下降，所以根据频次控制用户触及广告创意便十分重要。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-orgaae4f7b" class="outline-4"&gt;
-&lt;h4 id="orgaae4f7b"&gt;Cookie Mapping&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgaae4f7b"&gt;
-&lt;p&gt;
-因不同网站域名下Cookie无法跨域名调用，每个域名只能存储使用本域名下的Cookie，所以需要一个“Cookie Mapping”的环节，对不同域名下的Cookie进行匹配，便于跨域名识别用户。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-org122b777" class="outline-4"&gt;
-&lt;h4 id="org122b777"&gt;Lookalike&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org122b777"&gt;
-&lt;p&gt;
-目标用户扩量的方法，在目标用户定向时，根据种子用户的网络行为聚类分析类似的行为相似的网络行为的用户进行扩量。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-org03f84f7" class="outline-4"&gt;
-&lt;h4 id="org03f84f7"&gt;API&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org03f84f7"&gt;
-&lt;p&gt;
-Application Programming Interface（应用程序编程接口/应用程序界面），简称API。
-&lt;/p&gt;
-
-&lt;p&gt;
-是偏技术，技术接口的代名词。程序化广告很多时候需要通过技术接口的方式交换数据，是一些预先定义的程序代码。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-&lt;div id="outline-container-orge378d12" class="outline-2"&gt;
-&lt;h2 id="orge378d12"&gt;程序化广告-交易模式术语&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orge378d12"&gt;
-&lt;/div&gt;
-&lt;div id="outline-container-org1acab04" class="outline-3"&gt;
-&lt;h3 id="org1acab04"&gt;RTB&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org1acab04"&gt;
-&lt;p&gt;
-Real Time Bidding(实时竞价)，也叫Open Auction（公开竞价），简称RTB。
-&lt;/p&gt;
-
-&lt;p&gt;
-流量需求方在广告交易平台中，设定广告流量底价的情况下，当有流量过来时，与其他程序化广告买家一起对流量出价，广告交易平台收到各个程序化买家的出价后，进行比价，价高者获得流量并同步竞价成功的结果。整个过程都是通过程序化的方式在 100 毫秒内完成的。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-&lt;div id="outline-container-orgb027b6b" class="outline-3"&gt;
-&lt;h3 id="orgb027b6b"&gt;PDB&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgb027b6b"&gt;
-&lt;p&gt;
-Private Direct Buy（程序化直接购买）,简称PDB.
-&lt;/p&gt;
-
-&lt;p&gt;
-是目前国内市场最为常见和主流应用的一种私有交易模式。指流量需求方用确定的价格买断固定、优质的媒体资源，然后进行程序化广告的精准定向投放。常说的“保价保量”。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-&lt;div id="outline-container-orgdc4a360" class="outline-3"&gt;
-&lt;h3 id="orgdc4a360"&gt;PD&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgdc4a360"&gt;
-&lt;p&gt;
-Preferred Deals（优先交易），简称PD.
-&lt;/p&gt;
-
-&lt;p&gt;
-与 PDB 区别在于，这种私有交易方式在广告资源上具有一定的不确定性。即流量需求方可以购买某一优质广告位，但其能获得多少曝光展示量却不能预先保证。常说的“保价不保量”。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-orgad6c630" class="outline-3"&gt;
-&lt;h3 id="orgad6c630"&gt;PA&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgad6c630"&gt;
-&lt;p&gt;
-Private Auction（私有竞价）,简称PA。
-&lt;/p&gt;
-
-&lt;p&gt;
-供应方平台将较优质的固定广告位资源专门拿出来，放在一个半公开市场中，仅由进入白名单的买方（VIP）进行竞价，价高者得。因此，广告位可以锁定，但采买价格和是否最终获得曝光都不能预先保证。常说的“不保价不保量”。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-&lt;div id="outline-container-orga850c38" class="outline-2"&gt;
-&lt;h2 id="orga850c38"&gt;程序化广告-结算方式术语&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orga850c38"&gt;
-&lt;/div&gt;
-&lt;div id="outline-container-org9b657e3" class="outline-3"&gt;
-&lt;h3 id="org9b657e3"&gt;CPM&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org9b657e3"&gt;
-&lt;p&gt;
-Cost Per Mille（每千次展示成本），简称CPM。
-&lt;/p&gt;
-
-&lt;p&gt;
-是曝光付费广告，即广告每被展现（曝光）一千次，广告主所应付的费用。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-org0be4611" class="outline-3"&gt;
-&lt;h3 id="org0be4611"&gt;CPC&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org0be4611"&gt;
-&lt;p&gt;
-Cost Per Click（每次点击成本），简称CPC。
-&lt;/p&gt;
-
-&lt;p&gt;
-是点击付费广告，即根据广告被点击的次数进行收费。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-org8a8c1e2" class="outline-3"&gt;
-&lt;h3 id="org8a8c1e2"&gt;CPA&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org8a8c1e2"&gt;
-&lt;p&gt;
-Cost Per Action（每次行动成本），简称CPA。
-&lt;/p&gt;
-
-&lt;p&gt;
-是按用户行为作为指标来计费的广告。行为可以是注册、下载、安装、加入购物车、下单、咨询等。可细分如下：
-&lt;/p&gt;
-
-&lt;p&gt;
-CPD（Cost Per Download 每下载成本：按 APP 下载量计费）
-CPI（Cost Per Install 每安装成本：按 APP 安装量计费）
-CPS（Cost Per Sale 每销售成本：按实际销售产品量计费）
-CPL（Cost Per Lead 每潜在客户获取成本：按搜集到潜在客户名单/销售线索数计费）等。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-org130dfd8" class="outline-3"&gt;
-&lt;h3 id="org130dfd8"&gt;oCPX&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org130dfd8"&gt;
-&lt;p&gt;
-oCPX是以目标转化为优化方式的出价方式。其中o为Optimized （优化），包括 oCPC（优化点击出价）、oCPM（优化千次展现出价）、oCPA（优化行为出价）等。
-&lt;/p&gt;
-
-&lt;p&gt;
-oCPX 的本质还是广告主按照 CPC、CPM、CPA 付费，只是投放系统会采用更精准的点击率和转化率预估机制及算法等，将广告展现给最容易产生转化效果的用户，以获取到更精准流量的同时，提升广告效果，并降低转化成本。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id="outline-container-org7519f2d" class="outline-2"&gt;
-&lt;h2 id="org7519f2d"&gt;程序化广告-效果术语&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org7519f2d"&gt;
-&lt;p&gt;
-广告传播影响受众的认知、心理、行为和态度，由此带来的直接和间接广告效益，对广告效果的评估的也有着多方面要素和维度。
-&lt;/p&gt;
-&lt;/div&gt;
-
-
-&lt;div id="outline-container-orgdb955e0" class="outline-3"&gt;
-&lt;h3 id="orgdb955e0"&gt;ROI&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgdb955e0"&gt;
-&lt;p&gt;
-Return On Investment（投资回报率），简称ROI。即营销者通过广告投放得到的经济回报占广告投入（花费）的比例。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-&lt;div id="outline-container-org8f7be04" class="outline-3"&gt;
-&lt;h3 id="org8f7be04"&gt;曝光量&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org8f7be04"&gt;
-&lt;p&gt;
-Impression，即曝光量，也被称为“展示量”、“展现量”。即投放期广告被展示的总次数。一般用户每浏览一次页面，同时页面中广告位的广告被展示一次，就是一个曝光。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-&lt;div id="outline-container-orgf16ec25" class="outline-3"&gt;
-&lt;h3 id="orgf16ec25"&gt;点击量&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgf16ec25"&gt;
-&lt;p&gt;
-Click，即点击量，为投放期用户点击某个广告的总次数。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-&lt;div id="outline-container-org63869d4" class="outline-3"&gt;
-&lt;h3 id="org63869d4"&gt;点击率&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org63869d4"&gt;
-&lt;p&gt;
-Click-Through-Rate，即点击率，为广告被点击的次数与广告曝光次数的比例（Click/Impression*100%）。反映了广告的受关注程度，或用来衡量广告的吸引程度。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-&lt;div id="outline-container-org6f484c3" class="outline-3"&gt;
-&lt;h3 id="org6f484c3"&gt;到达率&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org6f484c3"&gt;
-&lt;p&gt;
-Reach Rate，即到达率，为到达量与点击量的比例（到达量/点击量*100%）。
-&lt;/p&gt;
-
-&lt;p&gt;
-到达量：即有多少用户点击广告后进入落地页。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-&lt;div id="outline-container-orgfeec4a6" class="outline-3"&gt;
-&lt;h3 id="orgfeec4a6"&gt;转化率&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgfeec4a6"&gt;
-&lt;p&gt;
-Conversion Rate，即转化率，为转化量与点击量的比例（转化量/点击量*100%）。
-&lt;/p&gt;
-
-&lt;p&gt;
-转化量：即有多少用户点击广告并进入落地页（活动页）后，继续发生咨询、注册、下载、加入购物车、下单等行为。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-&lt;div id="outline-container-org74eedb8" class="outline-3"&gt;
-&lt;h3 id="org74eedb8"&gt;留存率&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org74eedb8"&gt;
-&lt;p&gt;
-特定周期内（如次日留存、七日留存等），留存用户数量（有多少用户留下来）占广告（当时）导入的新增用户数量的比例。留存率=留存用户数/新增用户数量*100%。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-org4dbb479" class="outline-3"&gt;
-&lt;h3 id="org4dbb479"&gt;LT&amp;amp;ARPU&amp;amp;LTV&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org4dbb479"&gt;
-&lt;p&gt;
-和游戏行业相关的三个效果术语：
-&lt;/p&gt;
-
-&lt;p&gt;
-Life Time（生命周期）,简称LT：一个用户从第1次到最后1次参与游戏之间的时间段，一般按月计算平均值；
-Average Revenue Per User（每用户平均收入），简称ARPU：活跃用户对游戏产生的平均收入。即ARPU = 总收入/总活跃用户；
-Life Time Value（用户终生价值），简称LTV：用户在生命周期内为该游戏创造的收入总计，可以看成是一个ARPU 值的长期累计。即LTV = ARPUxLT。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="outline-container-org52ce83e" class="outline-2"&gt;
-&lt;h2 id="org52ce83e"&gt;其他广告常用术语&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org52ce83e"&gt;
-&lt;p&gt;
-1、CP：不同于娱乐界的胡歌霍建华这种搭档CP，在App推广领域对应，CP是指每个App对应的开发商，意思是App的推广人员
-2、PM：产品经理，对就是互联网公司最危险的那个岗位，经常有段子说被技术和运营联合暴打。
-3、UI：在创业公司，也有的被叫成美工，或者P图的，但是他们不会这么理解，每一个P图的心里都是住着一个伟大的设计师的 ，也会和你App推广经常打交道的，会被蠢死。
-4、UED：用户体验设计，比较装逼的岗位，就是前段时间百度用户体验总监演讲被喊太low被开除的岗位。包括交互设计师、视 觉设计师、用户体验设计师，用户界面设计师
-5、Operation Manager：运营经理，和你所属的App推广最为接近的岗位，建议：抱团取暖。
-&lt;/p&gt;
-
-&lt;p&gt;
-App推广中常用名词篇：
-&lt;/p&gt;
-
-&lt;p&gt;
-1、CPD：两种叫法，1：（Cost per day） 按天计费的广告合作方式，某某广告位一天费用价钱。
-2,CPD：（Cost per Download） 按下载付费，根据实际下载量收费。
-2、CPM：（Cost Per Mille） 按应用广告的千次展示计费千人成本=广告成本 x 1000 / 点击量。
-3、CPC：（Cost Per Click） 按应用广告的点击计费。
-4、CPA：（Cost Per Action) 按用户行为计费，指按照激活/注册计费。
-5、CPS：（Cost Per Sale) 按销售额付费，是指以实际销售产品数量来换算广告刊登金额。
-即根据每个订单/每次交易来收费的 方式。用户每成功达成一笔交易,销售可获得佣金。
-6、CPT：（Cost Per Time)按时长计费投放广告，广告主选择广告位和投放时间，费用与广告点击量无关
-7、ASO：(App Store Optimization)应用商店优化，提升App在应用商店的搜索排名、榜单排名等技术手段。
-8、SEO：（SearchEngineOptimization）搜索引擎优化，主要是针对PC站。
-9、SEM：（Search Engine Marketing）搜索引擎营销。
-10、ASM：（App Store Serach Marketing）苹果应用商店搜索竞价广告市场。
-11、DAU (Daily Active User) 即日活跃用户数量，统计的是一日之内，登录或使用过某个应用的用户数（去除重复登录的用户 ）。
-12、WAU (Weekly Active User) 即周活跃用户数量，是指在一周之内登录或使用该应用的用户数量。13、MAU（Monthly Active Users）即月活跃用户数，指的是在一个月中至少使用过一次该应用的独立用户数量。
-14、UV（Unique Vister）独立访客。
-15、PV（page view）页面浏览的总次数。
-16、ROI（Return On Investment）投资报酬率。
-17、APK：安卓市场安装包。
-18、IPA：iOS系统下安装包。
-19、SDK：即软件开发工具包， SDK是渠道提供的、集成了App软件所有功能模块，这个功能模块CP必须要植入到自己的app里，接 入SDK后CP和渠道都要对SDK包进行测试，测试通过才能上线。
-20、IDFA：IOS系统中广告标示符，可用来检测换量、推广等活动效果。
-21、首发：分为独家首发和联合首发，独家首发是指App新版本第一个选择的分发渠道，期间只在指定的市场进行新版本发布，其 他渠道的发布时间至少须晚于首发市场24小时。
-联合首发是指在多个应用市场同步进行新版本发布。
-22、换量：App推广的一种方式，通俗一点就是置换资源、抱团取暖。
-23、刷量：指推广渠道通过技术手段或预装的方式模拟自然用户的应用激活或注册、留存等行为，以产生虚假推广流量的行为。
-24、刷榜：广告公司通过技术手段操作提升AppStore总榜单（分类榜单）排名的行为。
-25、扣量：量没给够，广告商在推广中，实际有效推广量基础上扣除一定比例的常见行为。
-26、专题：是指应用市场的定期/不定期的活动，多数应用市场都有专题推荐，对CP来说是一个很好的免费推广资源，可以到对应 的开发者后台或者开发者论坛去申请。
-27、抓包：一个市场的App安装包被其他应用市场抓取，多数发生在版本首发期间，或者版本更新期间不同的市场相隔时间太长。
-28、马甲App：为了让产品获得更多的曝光，很多公司会采取用马甲App从而在AppStore获得更多关键词覆盖、榜单排名流量，其 特点是相似，目的是像主App导量。
-29、热搜词：是指AppStore搜索页面的提示搜索词语，也会带来一定的下载（转化）
-30、锁榜：AppStore榜单长时间（超过5个小时）不更新。
-31、加速审核：主要是针对 AppStore 提交时的加速上线操作，目前市场上所有自称“官方代理”，都是坑！没有一家公司是苹 果公司的代理商。
-32、积分墙：移动广告平台提供给CP的用户激励型下载注册平台，有下载试玩App拿积分形式，也有下载试玩直接。金形式，目前 主流的玩法就是配合ASO的工作原理。
-33、PPC ：（Pay-per-Click）是根据点击广告或者电子邮件信息的用户数量来付费的定价模式。
-34、PPS :（Pay-per-Sale）根据网络广告所产生的直接销售数量而付费的定价模式 。
-35、PPL :（Pay-per-Lead）根据每次通过网络广告产生的引导付费的定价模式。例如，广告客户为访问者点击广告完成了在线表 单而向广告服务商付费。
-36、AdWords ：Google的关键词竞价广告。
-37、Banner ：横幅广告
-38、Button ：图标广告
-39、PR推广 ：软文推广
-40、Banner Ad ：(横幅广告)网页顶部、底部或者侧边的广告展示位置；
-41、DSP展示广告 ：是Demand-Side Platform的缩写，即需求方平台，常见的有有道DSP、多盟DSP、力美DSP、Imobi、Admob、聚 效等。
-42、超级App：超级APP，是指那些拥有庞大的用户数，成为用户手机上的“装机必备”的基础应用，例如WiFi万能钥匙。其它关键名词：
-1、KOL（Key Opinion Leader）关键意见领袖。 微博、微信有话语权的人。这些人在一些行业可能是专业的，或者非常有经验 的，所以他们的话通常都能够让他的粉丝信服。
-2、ARPU : (Average Revenue Per User)即每用户平均收入，衡量公司业务收入的指标。
-3、CR ：（Conversion Rate）是指访问某一网站访客中，转化的访客占全部访客的比例。
-4、跳出率 ：（Bounce Rate）跳出率是指浏览了一个页面就离开的用户占一组页面或一个页面访问次数的百分比。
-5、UGC （User Generated Content），也就是用户生成内容的意思
-6、PGC（Professional Generated Content），专家创造内容，名人创造的内容。
-7、LBS基于位置的服务，在地理信息系统平台的支持下，为用户提供相应服务的一种增值业务。
-8、SNS（Social NetworkingServices）指个人之间的关系网络，即社交网站(SNS网站)国内流行的SNS有知乎、校内、开心网等 。
-9、TMT ：数字新媒体（Technology，Media，Telecom）产业。TMT是电信、媒体和科技三个英文单词的缩写的第一个字头，整合 在一起。
-10、SPAM ：搜索引擎营销中所说的SPAM是专门针对那些欺骗搜索引擎的信息。
-11、CMS ：（Content Management System）内容管理系统，如果你想快速搭建一个像知乎一样的社区，你就可以去买一个域名、 租个空间，然后找一套开源CMS程序。
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/</guid><pubDate>Tue, 17 Mar 2020 03:23:05 GMT</pubDate></item><item><title>python2&amp;python3程序兼容</title><link>https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org66a52cc" class="outline-2"&gt;
-&lt;h2 id="org66a52cc"&gt;2to3工具&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org66a52cc"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog</title><link>https://wisonwang.github.io/</link><description>python, go, ML, bigdata</description><atom:link href="https://wisonwang.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Wed, 15 Apr 2020 10:04:00 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>python2&amp;python3程序兼容</title><link>https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-orgbbce091" class="outline-2"&gt;
+&lt;h2 id="orgbbce091"&gt;2to3工具&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgbbce091"&gt;
 &lt;p&gt;
 2to3一般会随python解释器一起安装，是自动转化python2代码到python3代码的脚本工具，能够解决大部分常见的python3解释器不兼容python2代码问题。
 &lt;/p&gt;
@@ -498,13 +14,13 @@ App推广中常用名词篇：
 &lt;a href="https://docs.python.org/zh-cn/3.7/index.html"&gt;python官方中文文档&lt;/a&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/</guid><pubDate>Mon, 09 Mar 2020 07:53:04 GMT</pubDate></item><item><title>python 基础一：基础语法和解释运行</title><link>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-orgdf2bb90" class="outline-2"&gt;
-&lt;h2 id="orgdf2bb90"&gt;认识python&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgdf2bb90"&gt;
+&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/</guid><pubDate>Mon, 09 Mar 2020 07:53:04 GMT</pubDate></item><item><title>python 基础一：基础语法和解释运行</title><link>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org0911d0b" class="outline-2"&gt;
+&lt;h2 id="org0911d0b"&gt;认识python&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org0911d0b"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgab12bfb" class="outline-4"&gt;
-&lt;h4 id="orgab12bfb"&gt;python是解释执行的动态语言&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgab12bfb"&gt;
+&lt;div id="outline-container-orgd0532fb" class="outline-4"&gt;
+&lt;h4 id="orgd0532fb"&gt;python是解释执行的动态语言&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgd0532fb"&gt;
 &lt;p&gt;
 python一般是运行解释器解析python文件（模块）来运行，或者可以通过调用（python -i）进行交互式开发（边写代码，边运行，是不是很酷？）&lt;br&gt;
 &lt;/p&gt;
@@ -908,4 +424,86 @@ p.integ(k=6) =     3     2
 &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-</description><guid>https://wisonwang.github.io/posts/ipython%2Bmatplotlib%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA/</guid><pubDate>Tue, 15 Jan 2019 13:54:29 GMT</pubDate></item></channel></rss>
+</description><guid>https://wisonwang.github.io/posts/ipython%2Bmatplotlib%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA/</guid><pubDate>Tue, 15 Jan 2019 13:54:29 GMT</pubDate></item><item><title>python类机制</title><link>https://wisonwang.github.io/posts/pythonlei-ji-zhi/</link><dc:creator>vincent wang</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+    &lt;div class="container" id="notebook-container"&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;python 类机制&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;A&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"A"&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"A Class init: "&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;print_name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"object name: "&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;B&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"B"&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"B Class init: "&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"C"&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"C Class init:"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;print_name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"C object name: "&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [11]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;print_name&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;C Class init: C
+A Class init:  C
+C object name:  C
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</description><guid>https://wisonwang.github.io/posts/pythonlei-ji-zhi/</guid><pubDate>Mon, 14 Jan 2019 05:46:23 GMT</pubDate></item></channel></rss>

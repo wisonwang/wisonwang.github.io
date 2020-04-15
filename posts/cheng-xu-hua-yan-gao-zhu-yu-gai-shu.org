@@ -2,13 +2,14 @@
 .. title: 程序化广告术语概述
 .. slug: cheng-xu-hua-yan-gao-zhu-yu-gai-shu
 .. date: 2020-03-17 11:23:05 UTC+08:00
-.. tags: 
+.. tags: draft
 .. category: 广告 advertising
 .. link: 
 .. description: 
 .. type: text
 #+END_COMMENT
 
+{{{TEASER_END}}}
 * 传统互联网广告术语
 
 *** DSP (Demand-Side Platform)

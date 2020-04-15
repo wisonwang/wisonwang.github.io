@@ -9,7 +9,6 @@
 .. type: text
 #+END_COMMENT
 #+OPTIONS: \n:t
-#+OPTIONS: ^:nil
 
 #+BEGIN_EXPORT md
 <h1 align="center"><font color="0066FF" size=110%>A notebook from org-mode</font></h1>
@@ -62,9 +61,9 @@ pyqt、wxwidget做简单的gui程序，还有目前热门的大数据、AI方面
 两者的大部分的语法都是一致的，对于差异，在学习和工作中稍作留意即可。
 
 一般类unix系统（linux、mac os）都自带python，但是不一定默认是python3，可以在终端执行'python --version',查看当前版本是否是python3版本。
-如果不是python3或者没有安装python，可以从[[https://www.python.org/downloads/][python org]]下载安装包安装。
+如果不是python3或者没有安装python，可以从[[https:www.python.org/downloads/][python org]]下载安装包安装。
 
-安装完python后，通常还必须[[https://pip.pypa.io/en/stable/installing/][安装pip python包管理工具]]，用来安装其他三方库。
+安装完python后，通常还必须[[https:pip.pypa.io/en/stable/installing/][安装pip python包管理工具]]，用来安装其他三方库。
 
 *** 开发工具
 
@@ -107,7 +106,7 @@ sys.path 包含了当前pythonpath路径，也就是python寻找包的路径列�
 * 基础语法
 *** 模块名、文件名
 
-python的模块可以是一个文件也可以是一个包或者目录，模块名不能包含“.”（除了".py"后缀）符号。如果是目录的话，目录中必须包含"__init__.py"文件，才会被python识别为模块，从而被“import”。
+python的模块可以是一个文件也可以是一个包或者目录，模块名不能包含“.”（除了".py"后缀）符号。如果是目录的话，目录中必须包含"____init____.py"文件，才会被python识别为模块，从而被“import”。
 
 "import"包时使用显式引入包名，不要使用"*",后者会降低代码可读性，也可能导致一些冲突。
 
@@ -218,7 +217,7 @@ class Student(object):
     addr = "......"
     phone = "1000000"
 
-    def __init__(self, fname: str, sname: str, age: int, **kw):
+    def ____init____(self, fname: str, sname: str, age: int, **kw):
         """初始化方法"""
         self.fname = fname
         self.sname = sname
@@ -237,8 +236,8 @@ class Student(object):
         print(cls, cls.fname, cls.sname, cls.age, cls.addr, cls.phone)
 
 
-    def __str__(self):
-        """当对象转化成字符串时回调用对象的__str__方法"""
+    def ____str____(self):
+        """当对象转化成字符串时回调用对象的____str____方法"""
         return str({
             "fname": self.fname,
             "sname": self.sname,
@@ -268,14 +267,14 @@ s2.echo()
 #+RESULTS:
 :results:
 # Out[34]:
-<class '__main__.Student'> ?? ???? 12 ...... 1000000
+<class '____main____.Student'> ?? ???? 12 ...... 1000000
 {'fname': 'vincent', 'sname': 'wang', 'age': 12, 'addr': '......', 'phone': '1000000', 'sex': 1}
-<class '__main__.Student'> ?? ???? 12 ??????xxxx 1000000
+<class '____main____.Student'> ?? ???? 12 ??????xxxx 1000000
 {'fname': 'vincent', 'sname': 'wang', 'age': 12, 'addr': '??????xxxx', 'phone': '1000000', 'sex': 1}
 :end:
 
 其实在python中类也是一种对象，也是可以在运行时动态创建和修改定义的。
-新的python规范中所有的类都是继承object这个根类，所以也自带一些内置的函数和方法。如上个例子中的"__str__"方法。初学者可以稍微浏览一下这些方法，一遍更深入的了解python类和对象的运行机制.
+新的python规范中所有的类都是继承object这个根类，所以也自带一些内置的函数和方法。如上个例子中的"____str____"方法。初学者可以稍微浏览一下这些方法，一遍更深入的了解python类和对象的运行机制.
 
 *** 注释
 
@@ -300,20 +299,20 @@ print(dir(print))
 #+RESULTS:
 :results:
 # Out[8]:
-['__call__', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__name__', '__ne__', '__new__', '__qualname__', '__reduce__', '__reduce_ex__', '__repr__', '__self__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__text_signature__'] <class 'builtin_function_or_method'>
+['____call____', '____class____', '____delattr____', '____dir____', '____doc____', '____eq____', '____format____', '____ge____', '____getattribute____', '____gt____', '____hash____', '____init____', '____init_subclass____', '____le____', '____lt____', '____module____', '____name____', '____ne____', '____new____', '____qualname____', '____reduce____', '____reduce_ex____', '____repr____', '____self____', '____setattr____', '____sizeof____', '____str____', '____subclasshook____', '____text_signature____'] <class 'builtin_function_or_method'>
 :end:
-\\
+
 可以看到print函数类型是“class 'builtin_function_or_method'”类， 以及它的属性和方法。
 
-\\
+
 虽然python所有类型都是类和对象，但是在语法上很灵活，和一般的面向对象的语言不一样（如java），用户可以选择不显示的使用面向对象的方法，创建类，对象来设计程序，可以只是定义函数（虽然实际上也是对象），来使用类似函数式编程的方式完成程序开发。
 
-\\
+
 #+begin_comment
 函数式编程优点：纯函数（不引用类似全局变量的函数，当输入确定时，无论执行多少，结果确定的函数）有明确的输入和输出，能保持输入一致时结果也是一致的，函数是无状态的。所以在网络编程等并发编程场景下，能避免并发竞争和数据一致性问题。和纯函数对应的是有副作用的函数，例如，在很多场景下，会在函数中显示或隐式包含一个上下文参数，保存一切会话状态，函数的行为根据上下文环境有不同的行为和输出结果。
-\\
+
 面向对象编程优点：封装数据和行为，重用代码，简化问题（封装，继承，多态）
-\\
+
 
 #+end_comment
 
@@ -446,14 +445,14 @@ print(a_dict1, a_dict2, a_dict3)
 
 **** 类构造函数
 
-**** 可调用对象（实现"__call__"函数）
+**** 可调用对象（实现"____call____"函数）
 
 #+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
 
 class CallerObject(object):
-  def __call__(self, *args, **kw):
+  def ____call____(self, *args, **kw):
   """
-  可调用对象,必须实现“__call__”成员方法          
+  可调用对象,必须实现“____call____”成员方法          
   """
     print("hello ", *args, **kw)
 
@@ -489,7 +488,7 @@ hello  object caller
 
 *** 项目样例
 
-   首先可以从github上下载[[https://github.com/navdeep-G/samplemod][python setup 例子github连接]] ，然后在此基础上进行你自己的代码开发。下面将简单介绍里面各个部分的功能，
+   首先可以从github上下载[[https:github.com/navdeep-G/samplemod][python setup 例子github连接]] ，然后在此基础上进行你自己的代码开发。下面将简单介绍里面各个部分的功能，
 并以此为基础演示一些有用的技巧。
 
    首先我们看看这个例子的目录结构：

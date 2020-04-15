@@ -4,9 +4,14 @@
 ;; Requires org-mode v8.x
 
 (require 'package)
+
+
+(let ((default-directory  "~/.emacs.d/elpa/develop/"))
+  (normal-top-level-add-subdirs-to-load-path ))
+
 (setq package-load-list '((htmlize t)))
 (package-initialize)
-
+;;(require 'htmlize)
 (require 'org)
 (require 'ox-html)
 
@@ -15,7 +20,7 @@
 ;;; Add any custom configuration that you would like to 'conf.el'.
 (setq nikola-use-pygments t
       org-export-with-toc nil
-	  org-export-with-sub-superscripts nil
+	  org-export-with-sub-superscripts (quote {})
       org-export-with-section-numbers nil
       org-startup-folded 'showeverything)
 

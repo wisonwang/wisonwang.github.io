@@ -1,0 +1,104 @@
+#+BEGIN_COMMENT
+.. title: 程序化广告流量接入流程
+.. slug: cheng-xu-hua-yan-gao-liu-liang-jie-ru-liu-cheng
+.. date: 2020-03-30 10:27:44 UTC+08:00
+.. tags: draft
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+#+STARTUP: inlineimages
+
+* 广告投放常规流程
+
+[[../files/images/Adservingfull.svg.png]]
+
+
+* SSP&ADX*DSP
+
+#+begin_src plantuml :file ../files/chengxuhuajiaoyi.png 
+header
+<font color=red>Warning:</font>
+Do not use in production.
+endheader
+
+title RTA
+
+scale 800*300
+sprite $bProcess jar:archimate/business-process
+sprite $aService jar:archimate/application-service
+sprite $aComponent jar:archimate/application-component
+
+!includeurl Archimate.puml
+
+'Elements'
+
+frame "前端/需求端"{
+Application_Service(AdOwner, "Advertiser") <<business-process>>
+Application_Service(AdAgent, "AdAgent") <<business-process>>
+Application_Service(DSP, "DSP") <<business-process>>
+}
+
+Rel_Flow_Right(AdOwner, AdAgent, "")
+Rel_Flow_Right(AdAgent, DSP, "")
+
+frame "中端/服务端"{
+Application_Service(ADX_SSP, "ADX&SSP") <<business-process>>
+}
+
+Rel_Flow_Right(DSP, ADX_SSP, "")
+
+frame "后端/落地端"{
+Application_Service(Media, "媒体") <<business-process>>
+}
+
+
+Rel_Flow_Right(ADX_SSP, Media, "")
+
+legend left
+说明:
+==
+<$bProcess> :流量/资源
+==
+<$aService> :服务
+==
+<$aComponent> :组件
+endlegend
+
+#+end_src
+
+#+RESULTS:
+[[file:../files/chengxuhuajiaoyi.png]]
+
+* 广告接入类型
+1. cpt排期广告
+2. 自建广告品台
+3. 接入广告联盟
+4. 接入外部dsp
+
+* 广告归因模型
+
+** 点击归因
+
+1. 首次点击归因
+2. 最终点击归因
+3. 最终非直接点击归因
+
+** 根据时间位置，周期等不同要素赋予不同比重或者比例进行归因
+
+1. 时间衰减归因
+2. 线性归因
+3. 基于位置归因
+
+** 常用归因模型
+首次点击归因和最终点击归因
+
+* 相关链接
+
+[[https://en.wikipedia.org/wiki/Online_advertising][online advertising]]
+
+[[https://en.wikipedia.org/wiki/Demand-side_platform][DSP]]
+
+[[https://en.wikipedia.org/wiki/Supply-side_platform][SSP]]
+
