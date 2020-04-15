@@ -75,13 +75,13 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 和scala开发spark程序的优缺点。
 </p>
 
-<div id="outline-container-org6fc5de8" class="outline-2">
-<h2 id="org6fc5de8">scala和python开发spark程序各自优点</h2>
-<div class="outline-text-2" id="text-org6fc5de8">
+<div id="outline-container-org32ca478" class="outline-2">
+<h2 id="org32ca478">scala和python开发spark程序各自优点</h2>
+<div class="outline-text-2" id="text-org32ca478">
 </div>
-<div id="outline-container-org9bd0f1f" class="outline-3">
-<h3 id="org9bd0f1f">pyspark优点</h3>
-<div class="outline-text-3" id="text-org9bd0f1f">
+<div id="outline-container-org18de540" class="outline-3">
+<h3 id="org18de540">pyspark优点</h3>
+<div class="outline-text-3" id="text-org18de540">
 <ol class="org-ol">
 <li>动态语言开发效率高，工程难度低</li>
 <li>算法类库丰富，易于移移植现有算法到spark平台</li>
@@ -90,9 +90,9 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 </div>
 </div>
 
-<div id="outline-container-org44dc2ac" class="outline-3">
-<h3 id="org44dc2ac">pyspark缺点</h3>
-<div class="outline-text-3" id="text-org44dc2ac">
+<div id="outline-container-org88e1562" class="outline-3">
+<h3 id="org88e1562">pyspark缺点</h3>
+<div class="outline-text-3" id="text-org88e1562">
 <ol class="org-ol">
 <li>性能差： 动态语言载加上通过py4j来和spark交互的，在计算量很大的情况下慢的可怕；</li>
 <li>不能使用全部spark api： 因为是通过py4j调用，需要必要的封装（pyspark），不能像scala那样和java可以直接调用， 导致不能直接调用java或者scala类库。</li>
@@ -102,9 +102,9 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 </div>
 </div>
 
-<div id="outline-container-orgadf362c" class="outline-2">
-<h2 id="orgadf362c">总结</h2>
-<div class="outline-text-2" id="text-orgadf362c">
+<div id="outline-container-orgb934bdb" class="outline-2">
+<h2 id="orgb934bdb">总结</h2>
+<div class="outline-text-2" id="text-orgb934bdb">
 <ol class="org-ol">
 <li>对于算法实现的初步阶段可以使用python开发原型，配合一些工具进行快速评估，演示;</li>
 
@@ -113,13 +113,13 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 </div>
 </div>
 
-<div id="outline-container-org022f839" class="outline-2">
-<h2 id="org022f839">python 开发spark程序的一些问题</h2>
-<div class="outline-text-2" id="text-org022f839">
+<div id="outline-container-org21a29d4" class="outline-2">
+<h2 id="org21a29d4">python 开发spark程序的一些问题</h2>
+<div class="outline-text-2" id="text-org21a29d4">
 </div>
-<div id="outline-container-org7aba818" class="outline-3">
-<h3 id="org7aba818">python 依赖环境分发</h3>
-<div class="outline-text-3" id="text-org7aba818">
+<div id="outline-container-orgd73a61e" class="outline-3">
+<h3 id="orgd73a61e">python 依赖环境分发</h3>
+<div class="outline-text-3" id="text-orgd73a61e">
 <p>
 用 Java 和 Scala 访问 Spark 提供了许多优点 : 因为 Spark 它自己运行在 JVM 中，运行在 JVM 内部是平台无关的，独立的代码包和它打入到 JAR 文件中的依赖，以及更高的性能。如果您使用 Spark Python API 将会失去这些优势。
 </p>

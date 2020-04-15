@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog (文章分类：scala)</title><link>https://wisonwang.github.io/</link><description></description><atom:link href="https://wisonwang.github.io/categories/scala.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Fri, 13 Mar 2020 07:39:06 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>使用python还是scala开发spark程序？</title><link>https://wisonwang.github.io/posts/spark-with-python-or-scala/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog (文章分类：scala)</title><link>https://wisonwang.github.io/</link><description></description><atom:link href="https://wisonwang.github.io/categories/scala.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Wed, 15 Apr 2020 09:38:37 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>使用python还是scala开发spark程序？</title><link>https://wisonwang.github.io/posts/spark-with-python-or-scala/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
 spark 官方提供了python,java, scala,R 三种语言的封装，scala和java都建立jvm可以相互调用，R一般人用的不多，如下比较一下python
 和scala开发spark程序的优缺点。
 &lt;/p&gt;
 
-&lt;div id="outline-container-org6fc5de8" class="outline-2"&gt;
-&lt;h2 id="org6fc5de8"&gt;scala和python开发spark程序各自优点&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org6fc5de8"&gt;
+&lt;div id="outline-container-org32ca478" class="outline-2"&gt;
+&lt;h2 id="org32ca478"&gt;scala和python开发spark程序各自优点&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org32ca478"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org9bd0f1f" class="outline-3"&gt;
-&lt;h3 id="org9bd0f1f"&gt;pyspark优点&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org9bd0f1f"&gt;
+&lt;div id="outline-container-org18de540" class="outline-3"&gt;
+&lt;h3 id="org18de540"&gt;pyspark优点&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org18de540"&gt;
 &lt;ol class="org-ol"&gt;
 &lt;li&gt;动态语言开发效率高，工程难度低&lt;/li&gt;
 &lt;li&gt;算法类库丰富，易于移移植现有算法到spark平台&lt;/li&gt;
@@ -19,9 +19,9 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org44dc2ac" class="outline-3"&gt;
-&lt;h3 id="org44dc2ac"&gt;pyspark缺点&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org44dc2ac"&gt;
+&lt;div id="outline-container-org88e1562" class="outline-3"&gt;
+&lt;h3 id="org88e1562"&gt;pyspark缺点&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org88e1562"&gt;
 &lt;ol class="org-ol"&gt;
 &lt;li&gt;性能差： 动态语言载加上通过py4j来和spark交互的，在计算量很大的情况下慢的可怕；&lt;/li&gt;
 &lt;li&gt;不能使用全部spark api： 因为是通过py4j调用，需要必要的封装（pyspark），不能像scala那样和java可以直接调用， 导致不能直接调用java或者scala类库。&lt;/li&gt;
