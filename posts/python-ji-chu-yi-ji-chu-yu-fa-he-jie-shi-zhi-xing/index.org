@@ -217,7 +217,7 @@ class Student(object):
     addr = "......"
     phone = "1000000"
 
-    def ____init____(self, fname: str, sname: str, age: int, **kw):
+    def __init__(self, fname: str, sname: str, age: int, **kw):
         """初始化方法"""
         self.fname = fname
         self.sname = sname
@@ -236,8 +236,8 @@ class Student(object):
         print(cls, cls.fname, cls.sname, cls.age, cls.addr, cls.phone)
 
 
-    def ____str____(self):
-        """当对象转化成字符串时回调用对象的____str____方法"""
+    def __str__(self):
+        """当对象转化成字符串时回调用对象的__str__方法"""
         return str({
             "fname": self.fname,
             "sname": self.sname,
@@ -450,7 +450,7 @@ print(a_dict1, a_dict2, a_dict3)
 #+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
 
 class CallerObject(object):
-  def ____call____(self, *args, **kw):
+  def __call__(self, *args, **kw):
   """
   可调用对象,必须实现“____call____”成员方法          
   """
