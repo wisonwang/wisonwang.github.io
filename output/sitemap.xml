@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://wisonwang.github.io/</loc>
-  <lastmod>2020-04-15T09:38:00Z</lastmod>
+  <lastmod>2020-04-15T10:04:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/2018/</loc>
@@ -27,7 +27,7 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/</loc>
-  <lastmod>2020-04-15T09:38:00Z</lastmod>
+  <lastmod>2020-04-15T10:04:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/blog/</loc>
@@ -47,10 +47,6 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/cat_spark/</loc>
-  <lastmod>2020-04-15T09:38:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/categories/cat_yan-gao-advertising/</loc>
   <lastmod>2020-04-15T09:38:00Z</lastmod>
  </url>
  <url>
@@ -96,10 +92,6 @@
  <url>
   <loc>https://wisonwang.github.io/index-1.html</loc>
   <lastmod>2020-04-15T09:41:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/index-2.html</loc>
-  <lastmod>2020-04-15T09:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/listings/</loc>
