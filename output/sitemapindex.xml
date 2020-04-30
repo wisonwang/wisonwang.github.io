@@ -19,11 +19,15 @@
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/categories/cat_python.xml</loc>
-  <lastmod>2020-04-16T00:56:00Z</lastmod>
+  <lastmod>2020-04-16T00:57:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/categories/cat_spark.xml</loc>
   <lastmod>2020-04-15T09:38:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://wisonwang.github.io/categories/cat_yan-gao-advertising.xml</loc>
+  <lastmod>2020-04-16T00:58:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/categories/emacs.xml</loc>
@@ -43,7 +47,7 @@
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/categories/python.xml</loc>
-  <lastmod>2020-04-16T00:56:00Z</lastmod>
+  <lastmod>2020-04-16T00:57:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/categories/scala.xml</loc>
@@ -67,10 +71,10 @@
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/rss.xml</loc>
-  <lastmod>2020-04-16T00:56:00Z</lastmod>
+  <lastmod>2020-04-30T06:57:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/sitemap.xml</loc>
-  <lastmod>2020-04-16T00:56:00Z</lastmod>
+  <lastmod>2020-04-30T06:57:00Z</lastmod>
  </sitemap>
 </sitemapindex>

@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://wisonwang.github.io/</loc>
-  <lastmod>2020-04-15T10:04:00Z</lastmod>
+  <lastmod>2020-04-16T00:58:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/2018/</loc>
@@ -23,11 +23,11 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/archive.html</loc>
-  <lastmod>2020-04-15T09:41:00Z</lastmod>
+  <lastmod>2020-04-30T06:57:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/</loc>
-  <lastmod>2020-04-15T10:04:00Z</lastmod>
+  <lastmod>2020-04-16T00:58:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/blog/</loc>
@@ -48,6 +48,10 @@
  <url>
   <loc>https://wisonwang.github.io/categories/cat_spark/</loc>
   <lastmod>2020-04-15T09:38:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/categories/cat_yan-gao-advertising/</loc>
+  <lastmod>2020-04-16T00:58:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/emacs/</loc>
@@ -91,7 +95,11 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/index-1.html</loc>
-  <lastmod>2020-04-15T09:41:00Z</lastmod>
+  <lastmod>2020-04-30T06:57:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/index-2.html</loc>
+  <lastmod>2020-04-16T00:58:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/listings/</loc>
@@ -130,15 +138,7 @@
   <lastmod>2020-04-15T09:38:00Z</lastmod>
  </url>
  <url>
-  <loc>https://wisonwang.github.io/posts/devops%2Ctools/</loc>
-  <lastmod>2020-04-15T09:38:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/posts/golang%2Ccluster/</loc>
-  <lastmod>2020-04-15T09:38:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/posts/ipython%2Bmatplotlib%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA/</loc>
+  <loc>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/</loc>
   <lastmod>2020-04-15T09:38:00Z</lastmod>
  </url>
  <url>
@@ -166,10 +166,6 @@
   <lastmod>2020-04-15T09:38:00Z</lastmod>
  </url>
  <url>
-  <loc>https://wisonwang.github.io/posts/python_tools/</loc>
-  <lastmod>2020-04-15T09:38:00Z</lastmod>
- </url>
- <url>
   <loc>https://wisonwang.github.io/posts/pythonlei-ji-zhi/</loc>
   <lastmod>2020-04-15T09:38:00Z</lastmod>
  </url>
@@ -178,27 +174,11 @@
   <lastmod>2020-04-15T09:38:00Z</lastmod>
  </url>
  <url>
-  <loc>https://wisonwang.github.io/posts/scala_sbt_on_spacemacs/</loc>
-  <lastmod>2020-04-15T09:38:00Z</lastmod>
- </url>
- <url>
   <loc>https://wisonwang.github.io/posts/scipy_example/</loc>
   <lastmod>2020-04-15T09:38:00Z</lastmod>
  </url>
  <url>
-  <loc>https://wisonwang.github.io/posts/shi-yong-ipython-notebookxie-bo-ke/</loc>
-  <lastmod>2020-04-15T09:38:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/posts/sklearn-word2vecsuan-fa/</loc>
-  <lastmod>2020-04-15T09:38:00Z</lastmod>
- </url>
- <url>
   <loc>https://wisonwang.github.io/posts/spark-with-python-or-scala/</loc>
-  <lastmod>2020-04-15T09:38:00Z</lastmod>
- </url>
- <url>
-  <loc>https://wisonwang.github.io/posts/word2vec/</loc>
   <lastmod>2020-04-15T09:38:00Z</lastmod>
  </url>
  <url>

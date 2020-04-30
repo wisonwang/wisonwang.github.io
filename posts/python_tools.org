@@ -3,7 +3,7 @@
 .. title: python_tools
 .. slug: python_tools
 .. date: 2018-04-28 12:30:35 UTC+08:00
-.. tags: 
+.. tags: draft
 .. type: text
 .. status: private
 #+end_comment

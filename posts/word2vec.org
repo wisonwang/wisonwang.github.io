@@ -2,7 +2,7 @@
 .. title: word2vec
 .. slug: word2vec
 .. date: 2018-04-13 17:55:51 UTC+08:00
-.. tags: 
+.. tags: draft
 .. type: text
 .. status: private
 #+end_comment
