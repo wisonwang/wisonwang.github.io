@@ -19,6 +19,7 @@
 
 ;;; Add any custom configuration that you would like to 'conf.el'.
 (setq nikola-use-pygments t
+	  org-export-use-babel t
       org-export-with-toc nil
 	  org-export-with-sub-superscripts (quote {})
       org-export-with-section-numbers nil
@@ -116,12 +117,84 @@ contextual information."
           (pygmentize (downcase lang) (org-html-decode-plain-text code))
         code-html))))
 
+(defun ob-ipython--process-response (ret file result-type)
+  (let ((result (cdr (assoc :result ret)))
+        (output (cdr (assoc :output ret))))
+	
+    (if (eq result-type 'output)
+        (format "#+BEGIN_EXAMPLE\n%s\n#+END_EXAMPLE" output)
+      (ob-ipython--output output nil)
+      (s-concat
+       (format "# Out[%d]:\n" (cdr (assoc :exec-count ret)))
+       (s-join "\n" (->> (-map (-partial 'ob-ipython--render file)
+                               (list (cdr (assoc :value result))
+                                     (cdr (assoc :display result))))
+                         (remove-if-not nil)))))))
+
+;; https://org-babel.readthedocs.io/en/latest/header-args/#default-languages-specific-header-arguments-shipped-with-org-mode
+(setq org-babel-default-header-args:ipython
+			 '((:session . "none")
+			   (:results . "output")
+			   (:exports . "none")
+			   (:result-type "output")
+			   (:cache . "no")
+			   (:noweb . "no")
+			   (:hlines . "no")
+			   (:tangle . "no")
+			   (:eval . "never-export"))
+             )
+
+(setq org-babel-default-header-args:python
+			 '((:session . "none")
+			   (:results . "output")
+			   (:exports . "none")
+			   (:result-type "output")
+			   (:cache . "no")
+			   (:noweb . "no")
+			   (:hlines . "no")
+			   (:tangle . "no")
+			   (:eval . "never-export"))
+             )
+
+
+(defun org-html-example-block (example-block _contents info)
+  "Transcode a EXAMPLE-BLOCK element from Org to HTML.
+CONTENTS is nil.  INFO is a plist holding contextual
+information."
+  (let ((attributes (org-export-read-attribute :attr_html example-block)))
+    (if (plist-get attributes :textarea)
+		(org-html--textarea-block example-block)
+      (format "<pre class=\"example\"%s>\n%s</pre>"
+			  (let* ((name (org-element-property :name example-block))
+					 (a (org-html--make-attribute-string
+						 (if (or (not name) (plist-member attributes :id))
+							 attributes
+						   (plist-put attributes :id name)))))
+				(if (org-string-nw-p a) (concat " " a) ""))
+			  (org-html-format-code example-block info)))))
+
 ;; Export images with custom link type
 (defun org-custom-link-img-url-export (path desc format)
   (cond
    ((eq format 'html)
     (format "<img src=\"%s\" alt=\"%s\"/>" path desc))))
 (org-add-link-type "img-url" nil 'org-custom-link-img-url-export)
+
+
+(defun ob-ipython--process-response (ret file result-type)
+  (let ((result (cdr (assoc :result ret)))
+        (output (cdr (assoc :output ret))))
+	
+    (if (eq result-type 'output)
+        (format "#+BEGIN_EXAMPLE\n%s\n#+END_EXAMPLE" output)
+      (ob-ipython--output output nil)
+      (s-concat
+       (format "# Out[%d]:\n" (cdr (assoc :exec-count ret)))
+       (s-join "\n" (->> (-map (-partial 'ob-ipython--render file)
+                               (list (cdr (assoc :value result))
+                                     (cdr (assoc :display result))))
+                         (remove-if-not nil)))))))
+
 
 ;; Export function used by Nikola.
 (defun nikola-html-export (infile outfile)
