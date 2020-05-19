@@ -9,6 +9,7 @@
 .. type: text
 #+END_COMMENT
 
+#+OPTIONS: \n:t
 
 python的元类(metaclass)和虚基类（ABC）
 
@@ -22,11 +23,9 @@ import numpy as np
 #+end_src
 
 #+RESULTS:
-: # Out[18]:
+: # Out[1]:
 
-
-
-#+begin_src ipython :session pythonabc :exports both :results raw drawer
+#+begin_src ipython :session pythonabc :exports both :results raw drawer output
 
 
 class a:
@@ -71,19 +70,21 @@ print(ik.getdata())
 
 #+RESULTS:
 :results:
-# Out[43]:
+#+BEGIN_EXAMPLE
 New called with
 metaname <class '__main__.MyMeta'>
 classname Kls
 baseclasses ()
-attrs {'__module__': '__main__', '__qualname__': 'Kls', '__init__': <function Kls.__init__ at 0x115a2b048>, 'printd': <function Kls.printd at 0x115a2ba60>}
+attrs {'__module__': '__main__', '__qualname__': 'Kls', '__init__': <function Kls.__init__ at 0x11a4cc7b8>, 'printd': <function Kls.printd at 0x11a4f7f28>}
 init called with
 classobject <class '__main__.Kls'>
 classname Kls
 baseclasses ()
-attrs {'__module__': '__main__', '__qualname__': 'Kls', '__init__': <function Kls.__init__ at 0x115a2b048>, 'printd': <function Kls.printd at 0x115a2ba60>, 'getdata': <function a.getd3 at 0x115a2b158>}
+attrs {'__module__': '__main__', '__qualname__': 'Kls', '__init__': <function Kls.__init__ at 0x11a4cc7b8>, 'printd': <function Kls.printd at 0x11a4f7f28>, 'getdata': <function a.getd3 at 0x11a4ccea0>}
 arun
 arunarunarun
+
+#+END_EXAMPLE
 :end:
 
 #+BEGIN_SRC ipython :session pythonabc :exports both :results raw drawer
@@ -123,9 +124,9 @@ assert issubclass(list, MyList)
 
 #+RESULTS:
 :results:
-# Out[3]:
+# Out[38]:
 :end:
-#+BEGIN_SRC ipython :session pythonabc :exports both :results raw drawer
+#+BEGIN_SRC ipython :session pythonabc :exports both :results raw drawer output
 from abc import ABC
 import collections
 
@@ -135,12 +136,14 @@ print(type(1))
 
 #+RESULTS:
 :results:
-# Out[44]:
+#+BEGIN_EXAMPLE
 <class 'int'>
+
+#+END_EXAMPLE
 :end:
 
 
-#+BEGIN_SRC ipython :session pythonabc :exports both :results raw drawer
+#+BEGIN_SRC ipython :session pythonabc :exports both :results raw drawer output
 
 print(collections.Set)
 
@@ -154,7 +157,7 @@ print(set.__doc__)
 
 #+RESULTS:
 :results:
-# Out[45]:
+#+BEGIN_EXAMPLE
 <class 'collections.abc.Set'>
 <class 'type'>
 <class 'set'>
@@ -162,4 +165,6 @@ set() -> new empty set object
 set(iterable) -> new set object
 
 Build an unordered collection of unique elements.
+
+#+END_EXAMPLE
 :end:

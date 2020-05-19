@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog (文章分类：python)</title><link>https://wisonwang.github.io/</link><description></description><atom:link href="https://wisonwang.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Thu, 16 Apr 2020 00:57:08 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>python 基础一：基础语法和解释运行</title><link>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org4355609" class="outline-2"&gt;
-&lt;h2 id="org4355609"&gt;认识python&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org4355609"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog (文章分类：python)</title><link>https://wisonwang.github.io/</link><description></description><atom:link href="https://wisonwang.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Tue, 19 May 2020 06:52:25 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>python 基础一：基础语法和解释运行</title><link>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org319673c" class="outline-2"&gt;
+&lt;h2 id="org319673c"&gt;认识python&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org319673c"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgcc875fa" class="outline-4"&gt;
-&lt;h4 id="orgcc875fa"&gt;python是解释执行的动态语言&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgcc875fa"&gt;
+&lt;div id="outline-container-orgd78390c" class="outline-4"&gt;
+&lt;h4 id="orgd78390c"&gt;python是解释执行的动态语言&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgd78390c"&gt;
 &lt;p&gt;
 python一般是运行解释器解析python文件（模块）来运行，或者可以通过调用（python -i）进行交互式开发（边写代码，边运行，是不是很酷？）&lt;br&gt;
 &lt;/p&gt;
@@ -18,18 +18,18 @@ python一般是运行解释器解析python文件（模块）来运行，或者�
 后面大部分提供的代码示例都可以放到ipython里演示。&lt;br&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/"&gt;更多…&lt;/a&gt; (剩余 3 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>python</category><guid>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</guid><pubDate>Sun, 09 Feb 2020 09:07:45 GMT</pubDate></item><item><title>使用python还是scala开发spark程序？</title><link>https://wisonwang.github.io/posts/spark-with-python-or-scala/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
+&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/"&gt;更多…&lt;/a&gt; (剩余 2 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>python</category><guid>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</guid><pubDate>Sun, 09 Feb 2020 09:07:45 GMT</pubDate></item><item><title>使用python还是scala开发spark程序？</title><link>https://wisonwang.github.io/posts/spark-with-python-or-scala/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
 spark 官方提供了python,java, scala,R 三种语言的封装，scala和java都建立jvm可以相互调用，R一般人用的不多，如下比较一下python
 和scala开发spark程序的优缺点。
 &lt;/p&gt;
 
-&lt;div id="outline-container-org32ca478" class="outline-2"&gt;
-&lt;h2 id="org32ca478"&gt;scala和python开发spark程序各自优点&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org32ca478"&gt;
+&lt;div id="outline-container-orgfaa0f18" class="outline-2"&gt;
+&lt;h2 id="orgfaa0f18"&gt;scala和python开发spark程序各自优点&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgfaa0f18"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org18de540" class="outline-3"&gt;
-&lt;h3 id="org18de540"&gt;pyspark优点&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org18de540"&gt;
+&lt;div id="outline-container-orge8bdbec" class="outline-3"&gt;
+&lt;h3 id="orge8bdbec"&gt;pyspark优点&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-orge8bdbec"&gt;
 &lt;ol class="org-ol"&gt;
 &lt;li&gt;动态语言开发效率高，工程难度低&lt;/li&gt;
 &lt;li&gt;算法类库丰富，易于移移植现有算法到spark平台&lt;/li&gt;
@@ -38,9 +38,9 @@ spark 官方提供了python,java, scala,R 三种语言的封装，scala和java�
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org88e1562" class="outline-3"&gt;
-&lt;h3 id="org88e1562"&gt;pyspark缺点&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org88e1562"&gt;
+&lt;div id="outline-container-org1dc5fcd" class="outline-3"&gt;
+&lt;h3 id="org1dc5fcd"&gt;pyspark缺点&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org1dc5fcd"&gt;
 &lt;ol class="org-ol"&gt;
 &lt;li&gt;性能差： 动态语言载加上通过py4j来和spark交互的，在计算量很大的情况下慢的可怕；&lt;/li&gt;
 &lt;li&gt;不能使用全部spark api： 因为是通过py4j调用，需要必要的封装（pyspark），不能像scala那样和java可以直接调用， 导致不能直接调用java或者scala类库。&lt;/li&gt;

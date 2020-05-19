@@ -9,6 +9,7 @@
 .. type: text
 #+END_COMMENT
 #+OPTIONS: \n:t
+#+OPTIONS: ^:nil
 
 #+BEGIN_EXPORT md
 <h1 align="center"><font color="0066FF" size=110%>A notebook from org-mode</font></h1>
@@ -21,7 +22,9 @@
 #+end_src
 
 #+RESULTS:
-: # Out[1]:
+: #+BEGIN_EXAMPLE
+: 
+: #+END_EXAMPLE
 
 * 认识python
 ***  python是解释执行的动态语言
@@ -72,9 +75,9 @@ pycharm，VSCode(强烈推荐),IPython, vim, emacs,等等。
 *** 检查环境
 
 很多时候需要管理多个python环境，如果你对你的运行、安装环境有疑问，可以运行一下代码检查一下
-\\
 
-#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer output
 
 import sys
 
@@ -87,18 +90,18 @@ for p in sys.path:
 
 #+RESULTS:
 :results:
-# Out[4]:
+#+BEGIN_EXAMPLE
 sys.path 包含了当前pythonpath路径，也就是python寻找包的路径列表
 /Users/vincent/anaconda3/envs/python36/lib/python36.zip
 /Users/vincent/anaconda3/envs/python36/lib/python3.6
 /Users/vincent/anaconda3/envs/python36/lib/python3.6/lib-dynload
-\\                              
+
 /Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages
-/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/IPython/extensions
-/Users/vincent/.ipython 
+...
+
+#+END_EXAMPLE
 :end:
 
-\\
 可以看到上面的路径顺序，中间的空格表示当前目录，所以三方包（通过pip install安装或者python setup.py instal·l安装的包，
 一般都会安装到site-packages目录下）优先级是比当前工作目录下的python模块优先级低，如果本地模块和三方包有同名的情况，会优先import本地的。
 
@@ -111,7 +114,8 @@ python的模块可以是一个文件也可以是一个包或者目录，模块�
 "import"包时使用显式引入包名，不要使用"*",后者会降低代码可读性，也可能导致一些冲突。
 
 如，下面的显示引入包名：
-#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer output
 
 from math import sqrt
 
@@ -121,13 +125,15 @@ print(sqrt(3))
 
 #+RESULTS:
 :results:
-# Out[2]:
+#+BEGIN_EXAMPLE
 1.7320508075688772
+
+#+END_EXAMPLE
 :end:
 
 明显比下面的代码可读性更强，同时也可以避免一些同名模块或变量的歧义，冲突。
 
-#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer output
 
 from math import *
 
@@ -137,15 +143,22 @@ print(sqrt(3))
 
 #+RESULTS:
 :results:
-# Out[6]:
+#+BEGIN_EXAMPLE
 1.7320508075688772
+
+#+END_EXAMPLE
 :end:
+:results:
+#+BEGIN_EXAMPLE
+1.7320508075688772
+
+#+END
 
 **** python3 的模块引入规范
 
 只有模块名在全局路路径（sys.path）中才可以直接"import",否则需要使用相对路径"import"。
 
-#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer output output
 
   import math # ok , 因为math在sys.path所有路径中有包含
   from . import your_own_mod  # ok，相对路径
@@ -159,7 +172,7 @@ print(sqrt(3))
 python是动态语言，变量无需声明，可以直接定义、赋值。所以变量的类型也是动态类型,并且运行过程中同一个变量可以有不同的值甚至不同的类型。
 所以在python程序中，如果你的程序是由多个文件、模块构成的，应该尽量避免使用全局变量。
  
-#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer output output
 
 a = "hello world"
 
@@ -183,7 +196,7 @@ a is  0
 函数以def定义，python通过空行和缩进来区分函数作用域，函数定义的开始和结束，至少空一行，最好是空两行。语句段落间，推荐空一行，保证程序结构清晰。
 
 
-#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer output output
 
 
 # *args 表示可变参数，**kw表示可变的key参数。是处理未知参数的两种扩展参数
@@ -207,7 +220,7 @@ vincent wang (1, 2, 3) {'addr': ''}
 
 python类型定义使用class 关键字，创建对象类似于函数调用，只是调用者为类。
 
-#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer output output
 
 class Student(object):
     # 这里定义的定义 会同事定义class和object属性
@@ -282,13 +295,13 @@ s2.echo()
 
 * 数据类型
 *** python是面向对象编程的语言,但是也可以像函数式语言工作
-\\
+
 
 python 中所有类型都可以看作类、对象。例如所有的函数都是"第一类"的对象，函数有自己的方法，属性，类型，也可以作为任何函数的参数。
 
 如:
 
-#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer output output
 # 通过type函数打印print函数类型
 print(type(print))
 # 通过dir函数访问print函数（对象）属性
@@ -298,8 +311,11 @@ print(dir(print))
 
 #+RESULTS:
 :results:
-# Out[8]:
-['____call____', '____class____', '____delattr____', '____dir____', '____doc____', '____eq____', '____format____', '____ge____', '____getattribute____', '____gt____', '____hash____', '____init____', '____init_subclass____', '____le____', '____lt____', '____module____', '____name____', '____ne____', '____new____', '____qualname____', '____reduce____', '____reduce_ex____', '____repr____', '____self____', '____setattr____', '____sizeof____', '____str____', '____subclasshook____', '____text_signature____'] <class 'builtin_function_or_method'>
+#+BEGIN_EXAMPLE
+<class 'builtin_function_or_method'>
+['__call__', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__name__', '__ne__', '__new__', '__qualname__', '__reduce__', '__reduce_ex__', '__repr__', '__self__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__text_signature__']
+
+#+END_EXAMPLE
 :end:
 
 可以看到print函数类型是“class 'builtin_function_or_method'”类， 以及它的属性和方法。
@@ -319,7 +335,7 @@ print(dir(print))
 *** 基本类型
 如上文所述，python的基本类型其实也都是类的实例对象，int（整形），string，float， bool等，这点和其他静态语言是有很大不一样的。所以python的基本类型也都有自己丰富的成员函数。
 
-#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer output output
 
   a = 1
 
@@ -339,11 +355,13 @@ print(dir(print))
 
 #+RESULTS:
 :results:
-# Out[15]:
+#+BEGIN_EXAMPLE
 a 为 <class 'int'> 1
 a 为 <class 'str'> hello python
 a 为 <class 'float'> 1.0
 a 为 <class 'bool'> True
+
+#+END_EXAMPLE
 :end:
 
 关于一些基本类型的成员方法，可以在官方文档中详细了解[[https://docs.python.org/3/reference/datamodel.html#the-standard-type-hierarchy][python 基本类型分类]]。
@@ -358,7 +376,7 @@ a 为 <class 'bool'> True
 	  和不可修改的序列类型对应的的是可修改的序列类型，例如：list（列表类型，相当于数组），bytearray。
 	  可修改的序列类型，创建后，可以进行切片操作，任意修改，例如：
 
-#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer output output
 
 # list
 
@@ -390,11 +408,13 @@ echo("hello", "python")
 
 #+RESULTS:
 :results:
-# Out[20]:
+#+BEGIN_EXAMPLE
 [1, 2, 3, 4, 5] [1, 2, 3, 4]
 *a_tuple= 1 2 3 4 5
 echo ((1, 2, 3, 4, 5),)
-echo ('hello', ' ', 'python')
+echo ('hello', 'python')
+
+#+END_EXAMPLE
 :end:
 
 **** 集合(set)
@@ -407,7 +427,7 @@ echo ('hello', ' ', 'python')
 
 python的map类型，标准库里目前只有字典类型（dict()函数创建，也可以直接使用"{}"赋值）, 字典类型的key值必须是可以hash化的，也就是immutable的。
 
-#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer output output
 
 a_dict1 = {1:2} # ok
 
@@ -421,8 +441,10 @@ print(a_dict1, a_dict2, a_dict3)
 
 #+RESULTS:
 :results:
-# Out[2]:
+#+BEGIN_EXAMPLE
 {1: 2} {1: 2} {1: 2}
+
+#+END_EXAMPLE
 :end:
 
 
@@ -445,27 +467,29 @@ print(a_dict1, a_dict2, a_dict3)
 
 **** 类构造函数
 
-**** 可调用对象（实现"____call____"函数）
+**** 可调用对象（实现"__call__"函数）
 
-#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer
+#+BEGIN_SRC ipython :session python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing :exports both :results raw drawer output output
 
-class CallerObject(object):
-  def __call__(self, *args, **kw):
-  """
-  可调用对象,必须实现“____call____”成员方法          
-  """
-    print("hello ", *args, **kw)
+  class CallerObject(object):
+	  def __call__(self, *args, **kw):
+	      """
+	      可调用对象,必须实现“__call__”成员方法          
+	      """
+	      print("hello ", *args, **kw)
 
 
-caller = CallerObject()
+  caller = CallerObject()
 
-caller("object caller")
+  caller("object caller")
 #+END_SRC
 
 #+RESULTS:
 :results:
-# Out[4]:
+#+BEGIN_EXAMPLE
 hello  object caller
+
+#+END_EXAMPLE
 :end:
 
 *** 用户定义类型

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog (文章分类：python)</title><link>https://wisonwang.github.io/</link><description></description><atom:link href="https://wisonwang.github.io/categories/cat_python.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Thu, 16 Apr 2020 00:57:08 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>python 基础一：基础语法和解释运行</title><link>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org4355609" class="outline-2"&gt;
-&lt;h2 id="org4355609"&gt;认识python&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org4355609"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog (文章分类：python)</title><link>https://wisonwang.github.io/</link><description></description><atom:link href="https://wisonwang.github.io/categories/cat_python.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Tue, 19 May 2020 06:52:25 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>python 基础一：基础语法和解释运行</title><link>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org319673c" class="outline-2"&gt;
+&lt;h2 id="org319673c"&gt;认识python&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org319673c"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgcc875fa" class="outline-4"&gt;
-&lt;h4 id="orgcc875fa"&gt;python是解释执行的动态语言&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgcc875fa"&gt;
+&lt;div id="outline-container-orgd78390c" class="outline-4"&gt;
+&lt;h4 id="orgd78390c"&gt;python是解释执行的动态语言&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgd78390c"&gt;
 &lt;p&gt;
 python一般是运行解释器解析python文件（模块）来运行，或者可以通过调用（python -i）进行交互式开发（边写代码，边运行，是不是很酷？）&lt;br&gt;
 &lt;/p&gt;
@@ -18,4 +18,4 @@ python一般是运行解释器解析python文件（模块）来运行，或者�
 后面大部分提供的代码示例都可以放到ipython里演示。&lt;br&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/"&gt;更多…&lt;/a&gt; (剩余 3 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>python</category><guid>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</guid><pubDate>Sun, 09 Feb 2020 09:07:45 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/"&gt;更多…&lt;/a&gt; (剩余 2 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>python</category><guid>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</guid><pubDate>Sun, 09 Feb 2020 09:07:45 GMT</pubDate></item></channel></rss>

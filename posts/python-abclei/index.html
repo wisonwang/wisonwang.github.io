@@ -61,14 +61,12 @@ class MyMeta(type):
         </div>
         <div class="body">
             <p>
-python的元类(metaclass)和虚基类（ABC）
-</p>
+python的元类(metaclass)和虚基类（ABC）<br></p>
 
 <!-- TEASER_END -->
 
 <p>
-使用方法：
-</p>
+使用方法：<br></p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">a</span><span class="p">:</span>
 	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
@@ -108,20 +106,21 @@ python的元类(metaclass)和虚基类（ABC）
 <span class="nb">print</span><span class="p">(</span><span class="n">ik</span><span class="o">.</span><span class="n">getdata</span><span class="p">())</span>
 </pre></div>
 
-<p>
+<pre class="example">
 New called with
-metaname &lt;class '<span class="underline"><span class="underline">main</span></span>.MyMeta'&gt;
+metaname &lt;class '__main__.MyMeta'&gt;
 classname Kls
 baseclasses ()
-attrs {'<span class="underline"><span class="underline">module</span></span>': '<span class="underline"><span class="underline">main</span></span>', '<span class="underline"><span class="underline">qualname</span></span>': 'Kls', '<span class="underline"><span class="underline">init</span></span>': &lt;function Kls.__init__ at 0x115a2b048&gt;, 'printd': &lt;function Kls.printd at 0x115a2ba60&gt;}
+attrs {'__module__': '__main__', '__qualname__': 'Kls', '__init__': &lt;function Kls.__init__ at 0x11a4cc7b8&gt;, 'printd': &lt;function Kls.printd at 0x11a4f7f28&gt;}
 init called with
-classobject &lt;class '<span class="underline"><span class="underline">main</span></span>.Kls'&gt;
+classobject &lt;class '__main__.Kls'&gt;
 classname Kls
 baseclasses ()
-attrs {'<span class="underline"><span class="underline">module</span></span>': '<span class="underline"><span class="underline">main</span></span>', '<span class="underline"><span class="underline">qualname</span></span>': 'Kls', '<span class="underline"><span class="underline">init</span></span>': &lt;function Kls.__init__ at 0x115a2b048&gt;, 'printd': &lt;function Kls.printd at 0x115a2ba60&gt;, 'getdata': &lt;function a.getd3 at 0x115a2b158&gt;}
+attrs {'__module__': '__main__', '__qualname__': 'Kls', '__init__': &lt;function Kls.__init__ at 0x11a4cc7b8&gt;, 'printd': &lt;function Kls.printd at 0x11a4f7f28&gt;, 'getdata': &lt;function a.getd3 at 0x11a4ccea0&gt;}
 arun
 arunarunarun
-</p>
+
+</pre>
 
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span>
 
@@ -163,9 +162,10 @@ arunarunarun
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 
-<p>
+<pre class="example">
 &lt;class 'int'&gt;
-</p>
+
+</pre>
 
 
 <div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">Set</span><span class="p">)</span>
@@ -177,17 +177,16 @@ arunarunarun
 <span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 
-<p>
+<pre class="example">
 &lt;class 'collections.abc.Set'&gt;
 &lt;class 'type'&gt;
 &lt;class 'set'&gt;
 set() -&gt; new empty set object
 set(iterable) -&gt; new set object
-</p>
 
-<p>
 Build an unordered collection of unique elements.
-</p>
+
+</pre>
         </div>
                 <ul class="pager hidden-print">
 <li class="previous">

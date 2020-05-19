@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog</title><link>https://wisonwang.github.io/</link><description>python, go, ML, bigdata</description><atom:link href="https://wisonwang.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Thu, 30 Apr 2020 06:57:04 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>程序化广告术语概述</title><link>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/</link><dc:creator>vincent wang</dc:creator><description>&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/"&gt;更多…&lt;/a&gt; (剩余 2 分钟去阅读)&lt;/p&gt;</description><guid>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/</guid><pubDate>Tue, 17 Mar 2020 03:23:05 GMT</pubDate></item><item><title>python2&amp;python3程序兼容</title><link>https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-orgbbce091" class="outline-2"&gt;
-&lt;h2 id="orgbbce091"&gt;2to3工具&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgbbce091"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog</title><link>https://wisonwang.github.io/</link><description>python, go, ML, bigdata</description><atom:link href="https://wisonwang.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Tue, 19 May 2020 06:52:25 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>程序化广告术语概述</title><link>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/</link><dc:creator>vincent wang</dc:creator><description>&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/"&gt;更多…&lt;/a&gt; (剩余 2 分钟去阅读)&lt;/p&gt;</description><guid>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/</guid><pubDate>Tue, 17 Mar 2020 03:23:05 GMT</pubDate></item><item><title>python2&amp;python3程序兼容</title><link>https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org9f6316c" class="outline-2"&gt;
+&lt;h2 id="org9f6316c"&gt;2to3工具&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org9f6316c"&gt;
 &lt;p&gt;
 2to3一般会随python解释器一起安装，是自动转化python2代码到python3代码的脚本工具，能够解决大部分常见的python3解释器不兼容python2代码问题。
 &lt;/p&gt;
@@ -14,13 +14,13 @@
 &lt;a href="https://docs.python.org/zh-cn/3.7/index.html"&gt;python官方中文文档&lt;/a&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/</guid><pubDate>Mon, 09 Mar 2020 07:53:04 GMT</pubDate></item><item><title>python 基础一：基础语法和解释运行</title><link>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org4355609" class="outline-2"&gt;
-&lt;h2 id="org4355609"&gt;认识python&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org4355609"&gt;
+&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/</guid><pubDate>Mon, 09 Mar 2020 07:53:04 GMT</pubDate></item><item><title>python 基础一：基础语法和解释运行</title><link>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org319673c" class="outline-2"&gt;
+&lt;h2 id="org319673c"&gt;认识python&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org319673c"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgcc875fa" class="outline-4"&gt;
-&lt;h4 id="orgcc875fa"&gt;python是解释执行的动态语言&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgcc875fa"&gt;
+&lt;div id="outline-container-orgd78390c" class="outline-4"&gt;
+&lt;h4 id="orgd78390c"&gt;python是解释执行的动态语言&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgd78390c"&gt;
 &lt;p&gt;
 python一般是运行解释器解析python文件（模块）来运行，或者可以通过调用（python -i）进行交互式开发（边写代码，边运行，是不是很酷？）&lt;br&gt;
 &lt;/p&gt;
@@ -33,7 +33,7 @@ python一般是运行解释器解析python文件（模块）来运行，或者�
 后面大部分提供的代码示例都可以放到ipython里演示。&lt;br&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/"&gt;更多…&lt;/a&gt; (剩余 3 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>python</category><guid>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</guid><pubDate>Sun, 09 Feb 2020 09:07:45 GMT</pubDate></item><item><title>python grpc 使用</title><link>https://wisonwang.github.io/posts/python-grpc-shi-yong/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
+&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/"&gt;更多…&lt;/a&gt; (剩余 2 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>python</category><guid>https://wisonwang.github.io/posts/python-ji-chu-yi-ji-chu-yu-fa-he-jie-shi-zhi-xing/</guid><pubDate>Sun, 09 Feb 2020 09:07:45 GMT</pubDate></item><item><title>python grpc 使用</title><link>https://wisonwang.github.io/posts/python-grpc-shi-yong/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
 grpc 是google开发的远程通信协议,和它最相近的产品的产品是apache基金会下的thrift协议。
 &lt;/p&gt;
 
@@ -49,7 +49,7 @@ grpc 是google开发的远程通信协议,和它最相近的产品的产品是ap
 这也带来相对于thrfit的优点：
 &lt;/p&gt;
 
-&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-grpc-shi-yong/"&gt;更多…&lt;/a&gt; (剩余 11 分钟去阅读)&lt;/p&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/python-grpc-shi-yong/</guid><pubDate>Fri, 11 Oct 2019 01:48:21 GMT</pubDate></item><item><title>自建https站点</title><link>https://wisonwang.github.io/posts/zi-jian-httpszhan-dian/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
+&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-grpc-shi-yong/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/python-grpc-shi-yong/</guid><pubDate>Fri, 11 Oct 2019 01:48:21 GMT</pubDate></item><item><title>自建https站点</title><link>https://wisonwang.github.io/posts/zi-jian-httpszhan-dian/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
 现在https已经成为web服务的标配了，由于完整的https部署流程需要一系列的备案申请ca的一些过程，
 不适合开发人员调试https服务功能，这样创建自授权的https就很有用了。
 &lt;/p&gt;
@@ -63,7 +63,7 @@ grpc 是google开发的远程通信协议,和它最相近的产品的产品是ap
 &lt;/p&gt;
 
 &lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/zi-jian-httpszhan-dian/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/zi-jian-httpszhan-dian/</guid><pubDate>Wed, 09 Oct 2019 07:05:23 GMT</pubDate></item><item><title>python ABC类</title><link>https://wisonwang.github.io/posts/python-abclei/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
-python的元类(metaclass)和虚基类（ABC）
+python的元类(metaclass)和虚基类（ABC）&lt;br&gt;
 &lt;/p&gt;
 
 &lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-abclei/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/python-abclei/</guid><pubDate>Mon, 15 Apr 2019 10:10:46 GMT</pubDate></item><item><title>python function tools</title><link>https://wisonwang.github.io/posts/python-function-tools/</link><dc:creator>vincent wang</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
