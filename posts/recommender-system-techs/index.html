@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="zh_cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>recommender system techs | vincent blog</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://wisonwang.github.io/posts/recommender-system-techs/">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
+<meta property="og:site_name" content="vincent blog">
+<meta property="og:title" content="recommender system techs">
+<meta property="og:url" content="https://wisonwang.github.io/posts/recommender-system-techs/">
+<meta property="og:description" content="推荐系统解析
+
+
+
+推荐系统&amp;个性化
+
+
+推荐系统以相关方式向用户展示商品。相关的定义是特定于产品/上下文的。
+个性化个性化系统以与个人用户相关的方式呈现推荐。用户期望其体验会根据与系统的交互而改变。相关性仍然可以是特定于产品/上下文的。
+
+
+
+
+互动行为
+
+
+正面（评价）
+负面（评价）
+显式
+隐式
+
+
+
+
+特征
+
+
+indicator features: 标示特征，每个用户/物品唯一，如user">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-03-16T11:15:12+08:00">
+</head>
+<body>
+    <section class="social"><ul>
+<li><a href="../../index.html" title="Home"><i class="icon-home"></i></a></li>
+            <li><a href="../../archive.html" title="文章存档"><i class="icon-archive"></i></a></li>
+            <li><a href="../../categories/" title="标签"><i class="icon-tags"></i></a></li>
+            <li><a href="../../pages/about" title="About"><i class="icon-about"></i></a></li>
+            <li><a href="../../rss.xml" title="RSS 源"><i class="icon-rss"></i></a></li>
+            <li><a href="https://twitter.com/wisonwang" title="My Twitter"><i class="icon-twitter"></i></a></li>
+            <li><a href="https://github.com/wisonwang" title="My Github"><i class="icon-github"></i></a></li>
+
+        </ul></section><section class="page-content"><div class="content" rel="main">
+    <div class="post">
+        <h1 class="p-name entry-title" itemprop="headline name">recommender system techs</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2021-03-16T11:15:12+08:00">2021-03-16 11:15</time>
+            
+                      |  
+        <a href="index.org" id="sourcelink">源代码</a>
+
+            </div>
+            
+        </div>
+        <div class="body">
+            <div id="outline-container-orgb8a9d63" class="outline-2">
+<h2 id="orgb8a9d63">推荐系统解析</h2>
+<div class="outline-text-2" id="text-orgb8a9d63">
+</div>
+<div id="outline-container-org4191b77" class="outline-3">
+<h3 id="org4191b77">推荐系统&amp;个性化</h3>
+<div class="outline-text-3" id="text-org4191b77">
+<ol class="org-ol">
+<li>推荐系统以相关方式向用户展示商品。相关的定义是特定于产品/上下文的。</li>
+<li>个性化个性化系统以与个人用户相关的方式呈现推荐。用户期望其体验会根据与系统的交互而改变。相关性仍然可以是特定于产品/上下文的。</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org55b4121" class="outline-3">
+<h3 id="org55b4121">互动行为</h3>
+<div class="outline-text-3" id="text-org55b4121">
+<ol class="org-ol">
+<li>正面（评价）</li>
+<li>负面（评价）</li>
+<li>显式</li>
+<li>隐式</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org812c1b8" class="outline-3">
+<h3 id="org812c1b8">特征</h3>
+<div class="outline-text-3" id="text-org812c1b8">
+<ol class="org-ol">
+<li>indicator features: 标示特征，每个用户/物品唯一，如userID</li>
+<li>metadata features: 用户或者物品共享的特征，如年龄，性别，地域，标签等等</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org8c0c196" class="outline-3">
+<h3 id="org8c0c196">representation 隐藏特征表示</h3>
+<div class="outline-text-3" id="text-org8c0c196">
+<ol class="org-ol">
+<li>representation, 通常是将用户/物品的特征转化成低纬的向量。也通常称为："latent user/item",
+"embedding", "lantent representation"</li>
+<li>隐藏特征标示方法：a. mf 矩阵分解;b. linear kernels;c. deep nets； d. word2vec; e. autoencode</li>
+</ol>
+<p>
+…
+</p>
+</div>
+</div>
+<div id="outline-container-org363d34d" class="outline-3">
+<h3 id="org363d34d">predictions 预测</h3>
+<div class="outline-text-3" id="text-org363d34d">
+<ol class="org-ol">
+<li>prediction 在推荐系统中指对物品对于用户的相关度进行预估（estimate）,
+预测可以来物品对用户相关度的排序，可以间接近似表示用户对物品的互动行为（预测潜在行为）</li>
+<li>通过latent representation预测的方法： a. dot product点积 b. cosine similarity distance</li>
+</ol>
+<p>
+预选相似距离 c. Euclidean similarity distance d. Manhattan similarity distance e. deep net
+</p>
+</div>
+</div>
+<div id="outline-container-orgd4a727e" class="outline-3">
+<h3 id="orgd4a727e">loss &amp; learning</h3>
+<div class="outline-text-3" id="text-orgd4a727e">
+<ol class="org-ol">
+<li>loss function : 计算预测值和真实数据的误差 主要方法： 1. RMSE 2. KLD 3. ALS 4. BPR 5. WAEP 6. WMRP …</li>
+<li>learn-to-rank : 损失函数分为两种： 1. 用来计算预测误差 2. 第二种是排序学习<a href="https://zhuanlan.zhihu.com/p/26539920">learning to rank</a>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org7b710fe" class="outline-3">
+<h3 id="org7b710fe">如何设计推荐系统</h3>
+<div class="outline-text-3" id="text-org7b710fe">
+</div>
+<div id="outline-container-orgf591358" class="outline-4">
+<h4 id="orgf591358">准备</h4>
+<div class="outline-text-4" id="text-orgf591358">
+<ol class="org-ol">
+<li>正向/负向反馈</li>
+<li>implicit/explicit 反馈</li>
+<li>metadata 选取</li>
+<li>representation 方法选取 linear kernel/mf/deep net/</li>
+<li>相关度预测方法选取 dot-product, cosine distance, euclidean distance</li>
+<li>loss function(RSME, KLD, WMRB…), 决定任务是简单的预估行为，还是排名学习</li>
+<li>sparse&amp;dense&amp;sampled</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org1973482" class="outline-4">
+<h4 id="org1973482">购物推荐系统</h4>
+<div class="outline-text-4" id="text-org1973482">
+<ol class="org-ol">
+<li>purchase recommender</li>
+</ol>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup>
+<col class="org-left">
+<col class="org-left">
+</colgroup>
+<thead><tr>
+<th scope="col" class="org-left">step/item</th>
+<th scope="col" class="org-left">type/method</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="org-left">user features</td>
+<td class="org-left">indicator</td>
+</tr>
+<tr>
+<td class="org-left">user representation</td>
+<td class="org-left">linear</td>
+</tr>
+<tr>
+<td class="org-left">item features</td>
+<td class="org-left">indicator+MetaData</td>
+</tr>
+<tr>
+<td class="org-left">item representation</td>
+<td class="org-left">*</td>
+</tr>
+<tr>
+<td class="org-left">prediction</td>
+<td class="org-left">dot product</td>
+</tr>
+<tr>
+<td class="org-left">learning</td>
+<td class="org-left">*</td>
+</tr>
+</tbody>
+</table>
+<ol class="org-ol">
+<li>YMAL(you may also like)</li>
+</ol>
+<p>
+使用1中推荐系统产生的repsentations, 在新的上下文场景下推荐：
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup>
+<col class="org-left">
+<col class="org-left">
+</colgroup>
+<thead><tr>
+<th scope="col" class="org-left">step/item</th>
+<th scope="col" class="org-left">type/method</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="org-left">user features</td>
+<td class="org-left">context item representation</td>
+</tr>
+<tr>
+<td class="org-left">user representation</td>
+<td class="org-left">none</td>
+</tr>
+<tr>
+<td class="org-left">item features</td>
+<td class="org-left">None</td>
+</tr>
+<tr>
+<td class="org-left">item representation</td>
+<td class="org-left">all item representation</td>
+</tr>
+<tr>
+<td class="org-left">prediction</td>
+<td class="org-left">dot product, consine, …</td>
+</tr>
+<tr>
+<td class="org-left">learning</td>
+<td class="org-left">X</td>
+</tr>
+</tbody>
+</table>
+<ol class="org-ol">
+<li>personal YMAL</li>
+</ol>
+<p>
+和上面的类似，只是将上面输出结果，同user representation 进行二次排序(rerank)
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup>
+<col class="org-left">
+<col class="org-left">
+</colgroup>
+<thead><tr>
+<th scope="col" class="org-left">step/item</th>
+<th scope="col" class="org-left">type/method</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="org-left">user features</td>
+<td class="org-left">user representation</td>
+</tr>
+<tr>
+<td class="org-left">user representation</td>
+<td class="org-left">none</td>
+</tr>
+<tr>
+<td class="org-left">item features</td>
+<td class="org-left">None</td>
+</tr>
+<tr>
+<td class="org-left">item representation</td>
+<td class="org-left">YMAL similar items' representation</td>
+</tr>
+<tr>
+<td class="org-left">prediction</td>
+<td class="org-left">dot product</td>
+</tr>
+<tr>
+<td class="org-left">learning</td>
+<td class="org-left">X</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-orga16cf29" class="outline-4">
+<h4 id="orga16cf29">youtube (covington, adams, sargin)</h4>
+<div class="outline-text-4" id="text-orga16cf29">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup>
+<col class="org-left">
+<col class="org-left">
+</colgroup>
+<thead><tr>
+<th scope="col" class="org-left">step/item</th>
+<th scope="col" class="org-left">type/method</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="org-left">interactions</td>
+<td class="org-left">wathches, searches, impressions</td>
+</tr>
+<tr>
+<td class="org-left">user features</td>
+<td class="org-left">geography, age, gender…</td>
+</tr>
+<tr>
+<td class="org-left">user representation</td>
+<td class="org-left">deep net</td>
+</tr>
+<tr>
+<td class="org-left">item features</td>
+<td class="org-left">prelearned embeddings, language, previous impressions…</td>
+</tr>
+<tr>
+<td class="org-left">item representation</td>
+<td class="org-left">deep net</td>
+</tr>
+<tr>
+<td class="org-left">prediction</td>
+<td class="org-left">deep net</td>
+</tr>
+<tr>
+<td class="org-left">learning</td>
+<td class="org-left">sampled cross-entropy</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org98e2fb2" class="outline-4">
+<h4 id="org98e2fb2">news article recommendation</h4>
+<div class="outline-text-4" id="text-org98e2fb2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup>
+<col class="org-left">
+<col class="org-left">
+</colgroup>
+<thead><tr>
+<th scope="col" class="org-left">step/item</th>
+<th scope="col" class="org-left">type/method</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="org-left">interactions</td>
+<td class="org-left">clicks, page dwells…</td>
+</tr>
+<tr>
+<td class="org-left">user features</td>
+<td class="org-left">indicator + geography, age, gender…</td>
+</tr>
+<tr>
+<td class="org-left">user representation</td>
+<td class="org-left">linear</td>
+</tr>
+<tr>
+<td class="org-left">item features</td>
+<td class="org-left">tf-idf, categories…</td>
+</tr>
+<tr>
+<td class="org-left">item representation</td>
+<td class="org-left">deep net</td>
+</tr>
+<tr>
+<td class="org-left">prediction</td>
+<td class="org-left">consine</td>
+</tr>
+<tr>
+<td class="org-left">learning</td>
+<td class="org-left">balanced WMRB</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<ul class="org-ul">
+<li>
+<a id="orgbd66b7e"></a>daily training<br><div class="outline-text-5" id="text-orgbd66b7e">
+<ol class="org-ol">
+<li>use sklearn features -&gt; vectors transformation</li>
+<li>use <a href="https://github.com/jfkirk/tensorrec">tensorrec</a> vectorized features learn user representations and train deep net for article representation</li>
+<li>use <a href="https://github.com/spotify/annoy">annoy </a>  for ranking</li>
+</ol>
+</div>
+</li>
+
+<li>
+<a id="orgb145db2"></a>new article recomendation<br><div class="outline-text-5" id="text-orgb145db2">
+<ol class="org-ol">
+<li>use sklearn features -&gt; vectors transformation</li>
+<li>use <a href="https://github.com/jfkirk/tensorrec">tensorrec</a> pretrained model to caculate new articles' representation</li>
+<li>use <a href="https://github.com/spotify/annoy">annoy </a>  for ranking（rebuild）</li>
+</ol>
+</div>
+</li>
+
+<li>
+<a id="org9929d31"></a>Serving User traffic/ online recommendation<br><div class="outline-text-5" id="text-org9929d31">
+<ol class="org-ol">
+<li>persists user representation to database, so recommender system can easily using</li>
+<li>annoy ranking</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4b4d729" class="outline-2">
+<h2 id="org4b4d729">links</h2>
+<div class="outline-text-2" id="text-org4b4d729">
+<p>
+<a href="https://www.slideshare.net/JamesKirk58/boston-ml-architecting-recommender-systems">波士顿机器学习和推荐系统架构</a>
+</p>
+
+<p>
+<a href="https://github.com/spotify/annoy">annoy高效最近邻搜索</a>
+</p>
+
+
+<p>
+<a href="https://deepctr-doc.readthedocs.io/en/latest/">基于deep fm算法的deepctr项目</a>
+</p>
+
+<p>
+<a href="https://making.lyst.com/lightfm/docs/home.html">lightfm</a>
+</p>
+
+<p>
+<a href="https://github.com/jfkirk/tensorrec">tensorrec</a>
+</p>
+
+<p>
+<a href="https://blog.csdn.net/w28971023/article/details/8240756">mart / GBDT</a>
+</p>
+</div>
+</div>
+        </div>
+        
+                            <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="wisonwanghomepage",
+            disqus_url="https://wisonwang.github.io/posts/recommender-system-techs/",
+        disqus_title="recommender system techs",
+        disqus_identifier="cache/posts/recommender-system-techs.html",
+        disqus_config = function () {
+            this.language = "zh_cn";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    </div>
+                     <footer id="footer"><p>Contents © 2021         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+    </section><script src="../../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+    </script><script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>

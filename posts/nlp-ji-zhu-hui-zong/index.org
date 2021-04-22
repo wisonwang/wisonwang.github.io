@@ -1,0 +1,26 @@
+#+BEGIN_COMMENT
+.. title: nlp 技术汇总
+.. slug: nlp-ji-zhu-hui-zong
+.. date: 2021-03-29 14:42:01 UTC+08:00
+.. tags: draft
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+
+* 算法 
+
+[[https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270][bert]]
+
+lda
+
+word2vec/doc2vec
+
+
+simhash/hamminghash
+
+[[https://www.codenong.com/cs105671415/][bert 生成词/句向量方法]]
+
+

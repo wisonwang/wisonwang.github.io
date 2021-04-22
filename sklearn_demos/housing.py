@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import redis
+import os
+import sys
 
 import pandas as pd
+import redis
+
+sys.path
