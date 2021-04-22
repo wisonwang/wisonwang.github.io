@@ -1,0 +1,32 @@
+#+BEGIN_COMMENT
+.. title: ray
+.. slug: ray
+.. date: 2021-01-07 15:40:53 UTC+08:00
+.. tags: draft
+.. category: ML python
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+* Install 
+
+#+BEGIN_SRC sh
+
+pip install ray 
+  
+#+END_SRC
+ 
+
+#+BEGIN_SRC ipython :session ray :exports both :results raw drawer
+  
+  import sys
+  
+
+  print(sys.path)
+#+END_SRC
+
+#+RESULTS:
+:results:
+['/Users/vincent/anaconda3/envs/python36/lib/python36.zip', '/Users/vincent/anaconda3/envs/python36/lib/python3.6', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/lib-dynload', '', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages', '/Users/vincent/workspace/RecallAdminView', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/apollo-4.1-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/presto_python_client-0.7.0-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/Werkzeug-0.12.2-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/urllib3-1.22-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/thrift-0.11.0-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/SQLAlchemy-1.1.9-py3.6-macosx-10.7-x86_64.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/requests-2.18.4-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/redis-2.10.5-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/PyMySQL-0.8.1-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/pymongo-3.4.0-py3.6-macosx-10.7-x86_64.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/Jinja2-2.9.6-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/jedi-0.12.1-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/html5lib-0.9999999-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/happybase-1.1.0-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/gevent-1.2.2-py3.6-macosx-10.7-x86_64.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/future-0.16.0-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/funcsigs-1.0.2-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/Flask_Admin-1.5.0-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/Flask-0.12.1-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/flake8-3.3.0-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/filelock-3.0.4-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/configparser-3.5.0-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/bcbio_gff-0.6.6-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/wrapt-1.12.0-py3.6-macosx-10.7-x86_64.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/Click-7.0-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/cachetools-4.0.0-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/biopython-1.76-py3.6-macosx-10.7-x86_64.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/idna-2.6-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/thriftpy-0.3.9-py3.6-macosx-10.7-x86_64.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/greenlet-0.4.15-py3.6-macosx-10.7-x86_64.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/WTForms-2.2.1-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/itsdangerous-1.1.0-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/pyflakes-1.5.0-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/pycodestyle-2.3.1-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/ply-3.11-py3.6.egg', '/Users/vincent/workspace/video_analyze', '/Users/vincent/workspace/vmaf-python/src', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/sureal-0.4.2-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/h5py-2.10.0-py3.6-macosx-10.7-x86_64.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/scikit_image-0.17.2-py3.6-macosx-10.7-x86_64.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/tifffile-2020.6.3-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/networkx-2.4-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/imageio-2.8.0-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/PyWavelets-1.1.1-py3.6-macosx-10.7-x86_64.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/decorator-4.3.0-py3.6.egg', '/Users/vincent/anaconda3/envs/python36/lib/python3.6/site-packages/IPython/extensions', '/Users/vincent/.ipython']
+:end:

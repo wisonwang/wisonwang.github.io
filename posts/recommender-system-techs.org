@@ -1,0 +1,143 @@
+#+BEGIN_COMMENT
+.. title: recommender system techs
+.. slug: recommender-system-techs
+.. date: 2021-03-16 11:15:12 UTC+08:00
+.. tags: draft
+.. category: 
+.. link: 
+.. description: 
+.. type: text
+#+END_COMMENT
+
+* 推荐系统解析
+**  推荐系统&个性化
+
+ 1. 推荐系统以相关方式向用户展示商品。相关的定义是特定于产品/上下文的。
+ 2. 个性化个性化系统以与个人用户相关的方式呈现推荐。用户期望其体验会根据与系统的交互而改变。相关性仍然可以是特定于产品/上下文的。
+** 互动行为
+
+1. 正面（评价）
+2. 负面（评价）
+3. 显式
+4. 隐式
+** 特征
+1. indicator features: 标示特征，每个用户/物品唯一，如userID
+2. metadata features: 用户或者物品共享的特征，如年龄，性别，地域，标签等等
+** representation 隐藏特征表示
+1. representation, 通常是将用户/物品的特征转化成低纬的向量。也通常称为："latent user/item",
+ "embedding", "lantent representation"
+2. 隐藏特征标示方法：a. mf 矩阵分解;b. linear kernels;c. deep nets； d. word2vec; e. autoencode
+...
+** predictions 预测
+1. prediction 在推荐系统中指对物品对于用户的相关度进行预估（estimate）,
+ 预测可以来物品对用户相关度的排序，可以间接近似表示用户对物品的互动行为（预测潜在行为）
+2. 通过latent representation预测的方法： a. dot product点积 b. cosine similarity distance
+预选相似距离 c. Euclidean similarity distance d. Manhattan similarity distance e. deep net
+** loss & learning
+1. loss function : 计算预测值和真实数据的误差 主要方法： 1. RMSE 2. KLD 3. ALS 4. BPR 5. WAEP 6. WMRP ... 
+2. learn-to-rank : 损失函数分为两种： 1. 用来计算预测误差 2. 第二种是排序学习[[https://zhuanlan.zhihu.com/p/26539920][learning to rank]]
+
+** 如何设计推荐系统
+*** 准备
+1. 正向/负向反馈
+2. implicit/explicit 反馈
+3. metadata 选取
+4. representation 方法选取 linear kernel/mf/deep net/
+5. 相关度预测方法选取 dot-product, cosine distance, euclidean distance
+6. loss function(RSME, KLD, WMRB...), 决定任务是简单的预估行为，还是排名学习
+7. sparse&dense&sampled
+*** 购物推荐系统
+
+1. purchase recommender
+
+| step/item           | type/method        |
+|---------------------+--------------------|
+| user features       | indicator          |
+| user representation | linear             |
+| item features       | indicator+MetaData |
+| item representation | *                  |
+| prediction          | dot product        |
+| learning            | *                  |
+
+2. YMAL(you may also like)
+
+使用1中推荐系统产生的repsentations, 在新的上下文场景下推荐：
+
+| step/item           | type/method                 |
+|---------------------+-----------------------------|
+| user features       | context item representation |
+| user representation | none                        |
+| item features       | None                        |
+| item representation | all item representation     |
+| prediction          | dot product, consine, ...   |
+| learning            | X                           |
+
+3. personal YMAL 
+
+和上面的类似，只是将上面输出结果，同user representation 进行二次排序(rerank)
+
+| step/item           | type/method                        |
+|---------------------+------------------------------------|
+| user features       | user representation                |
+| user representation | none                               |
+| item features       | None                               |
+| item representation | YMAL similar items' representation |
+| prediction          | dot product                        |
+| learning            | X                                  |
+
+
+*** youtube (covington, adams, sargin)
+
+| step/item           | type/method                                              |
+|---------------------+----------------------------------------------------------|
+| interactions        | wathches, searches, impressions                          |
+| user features       | geography, age, gender...                                |
+| user representation | deep net                                                 |
+| item features       | prelearned embeddings, language, previous impressions... |
+| item representation | deep net                                                 |
+| prediction          | deep net                                                 |
+| learning            | sampled cross-entropy                                    |
+
+*** news article recommendation
+
+| step/item           | type/method                           |
+|---------------------+---------------------------------------|
+| interactions        | clicks, page dwells...                |
+| user features       | indicator + geography, age, gender... |
+| user representation | linear                                |
+| item features       | tf-idf, categories...                 |
+| item representation | deep net                              |
+| prediction          | consine                               |
+| learning            | balanced WMRB                         |
+
+**** daily training
+
+1. use sklearn features -> vectors transformation
+2. use [[https://github.com/jfkirk/tensorrec][tensorrec]] vectorized features learn user representations and train deep net for article representation
+3. use [[https://github.com/spotify/annoy][annoy ]]  for ranking
+
+**** new article recomendation
+
+1. use sklearn features -> vectors transformation
+2. use [[https://github.com/jfkirk/tensorrec][tensorrec]] pretrained model to caculate new articles' representation
+3. use [[https://github.com/spotify/annoy][annoy ]]  for ranking（rebuild）
+
+**** Serving User traffic/ online recommendation
+
+1. persists user representation to database, so recommender system can easily using 
+2. annoy ranking 
+
+* links
+
+[[https://www.slideshare.net/JamesKirk58/boston-ml-architecting-recommender-systems][波士顿机器学习和推荐系统架构]]
+
+[[https://github.com/spotify/annoy][annoy高效最近邻搜索]]
+
+
+[[https://deepctr-doc.readthedocs.io/en/latest/][基于deep fm算法的deepctr项目]]
+
+[[https://making.lyst.com/lightfm/docs/home.html][lightfm]]
+
+[[https://github.com/jfkirk/tensorrec][tensorrec]]
+
+[[https://blog.csdn.net/w28971023/article/details/8240756][mart / GBDT]]
