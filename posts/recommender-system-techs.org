@@ -2,10 +2,10 @@
 .. title: recommender system techs
 .. slug: recommender-system-techs
 .. date: 2021-03-16 11:15:12 UTC+08:00
-.. tags: draft
-.. category: 
+.. tags: 
+.. category: ML RecomenderSys
 .. link: 
-.. description: 
+.. description: 推荐系统机器学习技术应用
 .. type: text
 #+END_COMMENT
 
@@ -20,6 +20,9 @@
 2. 负面（评价）
 3. 显式
 4. 隐式
+
+{{{TEASER_END}}}
+
 ** 特征
 1. indicator features: 标示特征，每个用户/物品唯一，如userID
 2. metadata features: 用户或者物品共享的特征，如年龄，性别，地域，标签等等

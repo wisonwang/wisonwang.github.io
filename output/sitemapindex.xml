@@ -10,6 +10,10 @@
   <lastmod>2020-05-19T04:00:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://wisonwang.github.io/categories/cat_ml-recomendersys.xml</loc>
+  <lastmod>2021-07-05T02:02:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://wisonwang.github.io/categories/cat_nikola.xml</loc>
   <lastmod>2020-05-19T04:00:00Z</lastmod>
  </sitemap>
@@ -59,18 +63,18 @@
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/galleries/demo/rss.xml</loc>
-  <lastmod>2021-04-22T10:27:00Z</lastmod>
+  <lastmod>2021-07-05T02:02:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/galleries/rss.xml</loc>
-  <lastmod>2021-04-22T10:27:00Z</lastmod>
+  <lastmod>2021-07-05T02:02:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/rss.xml</loc>
-  <lastmod>2020-05-19T06:52:00Z</lastmod>
+  <lastmod>2021-07-05T02:02:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://wisonwang.github.io/sitemap.xml</loc>
-  <lastmod>2021-04-29T09:34:00Z</lastmod>
+  <lastmod>2021-07-05T02:02:00Z</lastmod>
  </sitemap>
 </sitemapindex>

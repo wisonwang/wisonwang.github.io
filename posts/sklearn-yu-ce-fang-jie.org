@@ -192,8 +192,3 @@ housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.1)
 [[file:./obipy-resources/ahtv8W.png]]
 :end:
 
-彩色图
-
-#+BEGIN_SRC ipython :session sklearn_predit_house_price :exports both :results raw drawer
-
-#+END_SRC

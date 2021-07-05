@@ -647,7 +647,7 @@ REDIRECTIONS = []
 # in a `nikola deploy` command as you like.
 DEPLOY_COMMANDS = {
      'default': [
-         "rsync -rav --delete output/ vincent@mydev:/home/vincent/work/myblog/output",
+         # "rsync -rav --delete output/ vincent@mydev:/home/vincent/work/myblog/output",
          "nikola github_deploy"
     ]
 }

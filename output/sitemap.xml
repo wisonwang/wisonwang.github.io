@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://wisonwang.github.io/</loc>
-  <lastmod>2020-05-19T04:00:00Z</lastmod>
+  <lastmod>2021-07-05T02:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/2018/</loc>
@@ -22,16 +22,24 @@
   <lastmod>2020-05-19T04:00:00Z</lastmod>
  </url>
  <url>
+  <loc>https://wisonwang.github.io/2021/</loc>
+  <lastmod>2021-07-05T02:02:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://wisonwang.github.io/archive.html</loc>
-  <lastmod>2021-04-22T10:27:00Z</lastmod>
+  <lastmod>2021-07-05T02:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/</loc>
-  <lastmod>2020-05-19T04:00:00Z</lastmod>
+  <lastmod>2021-07-05T02:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/blog/</loc>
   <lastmod>2020-05-19T04:00:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/categories/cat_ml-recomendersys/</loc>
+  <lastmod>2021-07-05T02:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/categories/cat_nikola/</loc>
@@ -91,7 +99,7 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/index-1.html</loc>
-  <lastmod>2021-04-22T10:27:00Z</lastmod>
+  <lastmod>2021-07-05T02:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/listings/</loc>
@@ -99,7 +107,7 @@
  </url>
  <url>
   <loc>https://wisonwang.github.io/listings/hello.py.html</loc>
-  <lastmod>2021-04-22T10:27:00Z</lastmod>
+  <lastmod>2021-07-05T02:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/pages/about/</loc>
@@ -162,6 +170,14 @@
   <lastmod>2020-05-19T04:00:00Z</lastmod>
  </url>
  <url>
+  <loc>https://wisonwang.github.io/posts/recommender-system-arch/</loc>
+  <lastmod>2021-07-05T02:02:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/posts/recommender-system-techs/</loc>
+  <lastmod>2021-04-22T10:27:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://wisonwang.github.io/posts/scala_maven_to_sbt/</loc>
   <lastmod>2020-05-19T04:00:00Z</lastmod>
  </url>
@@ -172,6 +188,10 @@
  <url>
   <loc>https://wisonwang.github.io/posts/spark-with-python-or-scala/</loc>
   <lastmod>2020-05-19T04:00:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://wisonwang.github.io/posts/xian-xing-hui-gui/</loc>
+  <lastmod>2021-07-05T02:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://wisonwang.github.io/posts/zi-jian-httpszhan-dian/</loc>
