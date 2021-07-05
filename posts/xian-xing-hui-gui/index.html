@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="zh_cn">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="简单机器学习模型，线性回归过程演示">
+<meta name="viewport" content="width=device-width">
+<title>线性回归 | vincent blog</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://wisonwang.github.io/posts/xian-xing-hui-gui/">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
+<meta property="og:site_name" content="vincent blog">
+<meta property="og:title" content="线性回归">
+<meta property="og:url" content="https://wisonwang.github.io/posts/xian-xing-hui-gui/">
+<meta property="og:description" content="简单机器学习模型，线性回归过程演示">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-06-25T17:01:43+08:00">
+</head>
+<body>
+    <section class="social"><ul>
+<li><a href="../../index.html" title="Home"><i class="icon-home"></i></a></li>
+            <li><a href="../../archive.html" title="文章存档"><i class="icon-archive"></i></a></li>
+            <li><a href="../../categories/" title="标签"><i class="icon-tags"></i></a></li>
+            <li><a href="../../pages/about" title="About"><i class="icon-about"></i></a></li>
+            <li><a href="../../rss.xml" title="RSS 源"><i class="icon-rss"></i></a></li>
+            <li><a href="https://twitter.com/wisonwang" title="My Twitter"><i class="icon-twitter"></i></a></li>
+            <li><a href="https://github.com/wisonwang" title="My Github"><i class="icon-github"></i></a></li>
+
+        </ul></section><section class="page-content"><div class="content" rel="main">
+    <div class="post">
+        <h1 class="p-name entry-title" itemprop="headline name">线性回归</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2021-06-25T17:01:43+08:00">2021-06-25 17:01</time>
+            
+                      |  
+        <a href="index.org" id="sourcelink">源代码</a>
+
+            </div>
+            
+        </div>
+        <div class="body">
+            <p>
+线性回顾是最近基本的机器学习模型，它包含了机器最基本的思想。
+</p>
+
+<div class="org-center">
+<ol class="org-ol">
+<li>确定学习模型和损失函数，初始化参数</li>
+<li>损失函数的各个变量的梯度，根据学习步长产生新的变量</li>
+<li>迭代步骤2，直到损失函数值不在缩小或者达到预定的迭代次数时，
+退出循环，损失函数最小时，就是当前学习到的最优模型</li>
+</ol>
+</div>
+
+<!-- TEASER_END -->
+
+<div id="outline-container-org229044e" class="outline-2">
+<h2 id="org229044e">准备实验数据</h2>
+<div class="outline-text-2" id="text-org229044e">
+<div class="highlight"><pre><span></span>  <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'font.sans-serif'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'SimHei'</span><span class="p">]</span> <span class="c1"># 指定默认字体</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'axes.unicode_minus'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># 解决保存图像是负号'-'显示为方块的问题</span>
+</pre></div>
+
+<pre class="example">
+# Out[10]:
+</pre>
+
+
+<div class="highlight"><pre><span></span><span class="n">x_data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">338.</span><span class="p">,</span> <span class="mf">333.</span><span class="p">,</span> <span class="mf">328.</span><span class="p">,</span> <span class="mf">207.</span><span class="p">,</span> <span class="mf">226.</span><span class="p">,</span> <span class="mf">25.</span><span class="p">,</span> <span class="mf">179.</span><span class="p">,</span> <span class="mf">60.</span><span class="p">,</span> <span class="mf">208.</span><span class="p">,</span> <span class="mf">606.</span><span class="p">]</span>
+<span class="n">y_data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">640.</span><span class="p">,</span> <span class="mf">633.</span><span class="p">,</span> <span class="mf">619.</span><span class="p">,</span> <span class="mf">393.</span><span class="p">,</span> <span class="mf">428.</span><span class="p">,</span> <span class="mf">27.</span><span class="p">,</span> <span class="mf">193.</span><span class="p">,</span> <span class="mf">66.</span><span class="p">,</span> <span class="mf">226.</span><span class="p">,</span> <span class="mf">1591.</span><span class="p">]</span>
+<span class="n">x_d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>
+<span class="n">y_d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+<div id="outline-container-org59cb0cc" class="outline-2">
+<h2 id="org59cb0cc">初始化模型</h2>
+<div class="outline-text-2" id="text-org59cb0cc">
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># loss</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
+	<span class="n">b</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+	<span class="n">w</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+	<span class="n">Z</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># meshgrid吐出结果：y为行，x为列</span>
+	<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_data</span><span class="p">)):</span>
+	    <span class="n">Z</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">y_data</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span> <span class="o">-</span> <span class="n">w</span> <span class="o">*</span> <span class="n">x_data</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span>
+	<span class="n">Z</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>
+
+
+<span class="c1"># linear regression</span>
+<span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">120</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># 先人工利用先验知识 设置参数b, w的不同学习步长</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">0.00005</span>
+<span class="n">lrb</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">iteration</span> <span class="o">=</span> <span class="mi">14000</span>
+</pre></div>
+</div>
+</div>
+
+<div id="outline-container-org5764b79" class="outline-2">
+<h2 id="org5764b79">训练迭代</h2>
+<div class="outline-text-2" id="text-org5764b79">
+<div class="highlight"><pre><span></span><span class="n">b_history</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">]</span>
+<span class="n">w_history</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="p">]</span>
+<span class="n">loss_history</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iteration</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_d</span><span class="p">))</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="n">x_d</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y_d</span> <span class="o">-</span> <span class="n">y_hat</span><span class="p">,</span> <span class="n">y_d</span> <span class="o">-</span> <span class="n">y_hat</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
+    <span class="n">grad_b</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_d</span> <span class="o">-</span> <span class="n">y_hat</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
+    <span class="n">grad_w</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">y_d</span> <span class="o">-</span> <span class="n">y_hat</span><span class="p">,</span> <span class="n">x_d</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
+    <span class="c1"># update param</span>
+    <span class="n">b</span> <span class="o">-=</span> <span class="n">lrb</span> <span class="o">*</span> <span class="n">grad_b</span>
+    <span class="n">w</span> <span class="o">-=</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">grad_w</span>
+
+    <span class="n">b_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">w_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="n">loss_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">"Step </span><span class="si">%i</span><span class="s2">, w: </span><span class="si">%0.4f</span><span class="s2">, b: </span><span class="si">%.4f</span><span class="s2">, Loss: </span><span class="si">%.4f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">loss</span><span class="p">))</span>
+
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"大约需要时间："</span><span class="p">,</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+<div id="outline-container-org8fcf0b1" class="outline-2">
+<h2 id="org8fcf0b1">绘制学习曲线</h2>
+<div class="outline-text-2" id="text-org8fcf0b1">
+<div class="highlight"><pre><span></span><span class="c1"># plot the figure</span>
+
+
+<span class="n">cp</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">'jet'</span><span class="p">))</span>  <span class="c1"># 填充等高线</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mf">188.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.67</span><span class="p">],</span> <span class="s1">'x'</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">mew</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"orange"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">b_history</span><span class="p">,</span> <span class="n">w_history</span><span class="p">,</span> <span class="s1">'o-'</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$b$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$w$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"线性回归"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+
+<div class="figure">
+<p><img src="../../linear_regression.png" alt="linear_regression.png"></p>
+</div>
+</div>
+</div>
+        </div>
+                <ul class="pager hidden-print">
+<li class="previous">
+                <a href="../recommender-system-techs/" rel="prev" title="recommender system techs">前一篇</a>
+            </li>
+            <li class="next">
+                <a href="../recommender-system-arch/" rel="next" title="推荐系统常用技术&amp;架构">后一篇</a>
+            </li>
+        </ul>
+<div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="wisonwanghomepage",
+            disqus_url="https://wisonwang.github.io/posts/xian-xing-hui-gui/",
+        disqus_title="\u7ebf\u6027\u56de\u5f52",
+        disqus_identifier="cache/posts/xian-xing-hui-gui.html",
+        disqus_config = function () {
+            this.language = "zh_cn";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    </div>
+                     <footer id="footer"><p>Contents © 2021         <a href="mailto:fangfu2012@gmail.com">vincent wang</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+    </section><script src="../../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+    </script><script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>

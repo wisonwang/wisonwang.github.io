@@ -1,5 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog</title><link>https://wisonwang.github.io/</link><description>python, go, ML, bigdata</description><atom:link href="https://wisonwang.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2020 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Tue, 19 May 2020 06:52:25 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>程序化广告术语概述</title><link>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/</link><dc:creator>vincent wang</dc:creator><description>&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/"&gt;更多…&lt;/a&gt; (剩余 2 分钟去阅读)&lt;/p&gt;</description><guid>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/</guid><pubDate>Tue, 17 Mar 2020 03:23:05 GMT</pubDate></item><item><title>python2&amp;python3程序兼容</title><link>https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org9f6316c" class="outline-2"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog</title><link>https://wisonwang.github.io/</link><description>python, go, ML, bigdata</description><atom:link href="https://wisonwang.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2021 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Mon, 05 Jul 2021 06:58:57 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>推荐系统常用技术&amp;架构</title><link>https://wisonwang.github.io/posts/recommender-system-arch/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
+因为在业界带来了巨大的用户体验价值和商业价值，最近10年推荐系统在互联网系统应用的越来越广泛。
+同时因为推荐系统是一个复杂的系统工程，各个公司算法/策略都是五花八门，同时也因为新的机器学习技术的应用，推荐系统方案也是在不断演进。
+本文主要总结业界目前常用的技术/架构，是为对本人自身的经验总结，也希望这方面的初学者能够得到借鉴。
+&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/recommender-system-arch/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/recommender-system-arch/</guid><pubDate>Thu, 01 Jul 2021 07:15:12 GMT</pubDate></item><item><title>线性回归</title><link>https://wisonwang.github.io/posts/xian-xing-hui-gui/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
+线性回顾是最近基本的机器学习模型，它包含了机器最基本的思想。
+&lt;/p&gt;
+
+&lt;div class="org-center"&gt;
+&lt;ol class="org-ol"&gt;
+&lt;li&gt;确定学习模型和损失函数，初始化参数&lt;/li&gt;
+&lt;li&gt;损失函数的各个变量的梯度，根据学习步长产生新的变量&lt;/li&gt;
+&lt;li&gt;迭代步骤2，直到损失函数值不在缩小或者达到预定的迭代次数时，
+退出循环，损失函数最小时，就是当前学习到的最优模型&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/xian-xing-hui-gui/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/xian-xing-hui-gui/</guid><pubDate>Fri, 25 Jun 2021 09:01:43 GMT</pubDate></item><item><title>recommender system techs</title><link>https://wisonwang.github.io/posts/recommender-system-techs/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org2900007" class="outline-2"&gt;
+&lt;h2 id="org2900007"&gt;推荐系统解析&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org2900007"&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-org1eeba4b" class="outline-3"&gt;
+&lt;h3 id="org1eeba4b"&gt;推荐系统&amp;amp;个性化&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org1eeba4b"&gt;
+&lt;ol class="org-ol"&gt;
+&lt;li&gt;推荐系统以相关方式向用户展示商品。相关的定义是特定于产品/上下文的。&lt;/li&gt;
+&lt;li&gt;个性化个性化系统以与个人用户相关的方式呈现推荐。用户期望其体验会根据与系统的交互而改变。相关性仍然可以是特定于产品/上下文的。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-org7841a11" class="outline-3"&gt;
+&lt;h3 id="org7841a11"&gt;互动行为&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org7841a11"&gt;
+&lt;ol class="org-ol"&gt;
+&lt;li&gt;正面（评价）&lt;/li&gt;
+&lt;li&gt;负面（评价）&lt;/li&gt;
+&lt;li&gt;显式&lt;/li&gt;
+&lt;li&gt;隐式&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/recommender-system-techs/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/recommender-system-techs/</guid><pubDate>Tue, 16 Mar 2021 03:15:12 GMT</pubDate></item><item><title>程序化广告术语概述</title><link>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
+互联网程序化广告进些年有了飞速的发展，各种资讯/视频的头部app都有自身的广告业务，给公司带来巨大商业收益。本文整理了一些程序化交易的常用属于，权当自己的知识整理。
+&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/</guid><pubDate>Tue, 17 Mar 2020 03:23:05 GMT</pubDate></item><item><title>python2&amp;python3程序兼容</title><link>https://wisonwang.github.io/posts/python2python3cheng-xu-jian-rong/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org9f6316c" class="outline-2"&gt;
 &lt;h2 id="org9f6316c"&gt;2to3工具&lt;/h2&gt;
 &lt;div class="outline-text-2" id="text-org9f6316c"&gt;
 &lt;p&gt;
@@ -72,237 +118,4 @@ python的元类(metaclass)和虚基类（ABC）&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-function-tools/"&gt;更多…&lt;/a&gt; (剩余 2 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/python-function-tools/</guid><pubDate>Tue, 02 Apr 2019 08:55:28 GMT</pubDate></item><item><title>scipy_example</title><link>https://wisonwang.github.io/posts/scipy_example/</link><dc:creator>vincent wang</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;scipy&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;concatenate&lt;/span&gt;&lt;span class="p"&gt;(([&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.002&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;9.0&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"a = "&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"np.r_[3,[0]*5,-1:1:10j] = "&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;r_&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;a =  [ 3.          0.          0.          0.          0.          0.
- -1.         -0.77777778 -0.55555556 -0.33333333 -0.11111111  0.11111111
-  0.33333333  0.55555556  0.77777778  1.        ]
-np.r_[3,[0]*5,-1:1:10j] =  [ 3.          0.          0.          0.          0.          0.
- -1.         -0.77777778 -0.55555556 -0.33333333 -0.11111111  0.11111111
-  0.33333333  0.55555556  0.77777778  1.        ]
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [5]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"np.mgrid[0:5:4j,0:5:4j] = "&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mgrid&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;np.mgrid[0:5:4j,0:5:4j] =  [[[0.         0.         0.         0.        ]
-  [1.66666667 1.66666667 1.66666667 1.66666667]
-  [3.33333333 3.33333333 3.33333333 3.33333333]
-  [5.         5.         5.         5.        ]]
-
- [[0.         1.66666667 3.33333333 5.        ]
-  [0.         1.66666667 3.33333333 5.        ]
-  [0.         1.66666667 3.33333333 5.        ]
-  [0.         1.66666667 3.33333333 5.        ]]]
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poly1d&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"p = "&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"p*p="&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'p.integ(k=6) = '&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;integ&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;p =     2
-3 x + 4 x + 5
-p*p=    4      3      2
-9 x + 24 x + 46 x + 40 x + 25
-p.integ(k=6) =     3     2
-1 x + 2 x + 5 x + 6
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><guid>https://wisonwang.github.io/posts/scipy_example/</guid><pubDate>Fri, 18 Jan 2019 02:26:50 GMT</pubDate></item><item><title>python类机制</title><link>https://wisonwang.github.io/posts/pythonlei-ji-zhi/</link><dc:creator>vincent wang</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;python 类机制&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;A&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"A"&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"A Class init: "&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;print_name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"object name: "&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;B&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"B"&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"B Class init: "&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"C"&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"C Class init:"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;print_name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"C object name: "&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [11]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-
-&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;print_name&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;C Class init: C
-A Class init:  C
-C object name:  C
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><guid>https://wisonwang.github.io/posts/pythonlei-ji-zhi/</guid><pubDate>Mon, 14 Jan 2019 05:46:23 GMT</pubDate></item><item><title>numpy_example</title><link>https://wisonwang.github.io/posts/numpy_example/</link><dc:creator>vincent wang</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;介绍numpy/scipy库的基本用法.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/numpy_example/"&gt;更多…&lt;/a&gt; (剩余 5 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/numpy_example/</guid><pubDate>Tue, 22 May 2018 08:58:15 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-function-tools/"&gt;更多…&lt;/a&gt; (剩余 2 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/python-function-tools/</guid><pubDate>Tue, 02 Apr 2019 08:55:28 GMT</pubDate></item></channel></rss>
