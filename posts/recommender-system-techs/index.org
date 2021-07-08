@@ -1,11 +1,11 @@
 #+BEGIN_COMMENT
-.. title: recommender system techs
+.. title: 推荐系统技术解析
 .. slug: recommender-system-techs
 .. date: 2021-03-16 11:15:12 UTC+08:00
 .. tags: 
 .. category: ML RecomenderSys
 .. link: 
-.. description: 推荐系统机器学习技术应用
+.. description: 推荐系统机器学习技术解析
 .. type: text
 #+END_COMMENT
 
@@ -24,13 +24,12 @@
 {{{TEASER_END}}}
 
 ** 特征
-1. indicator features: 标示特征，每个用户/物品唯一，如userID
+1. indicator features: 标识特征，每个用户/物品唯一，如userID，itemID
 2. metadata features: 用户或者物品共享的特征，如年龄，性别，地域，标签等等
 ** representation 隐藏特征表示
 1. representation, 通常是将用户/物品的特征转化成低纬的向量。也通常称为："latent user/item",
  "embedding", "lantent representation"
-2. 隐藏特征标示方法：a. mf 矩阵分解;b. linear kernels;c. deep nets； d. word2vec; e. autoencode
-...
+2. 隐藏特征标示方法：a. mf 矩阵分解;b. linear kernels;c. deep nets； d. word2vec; e. autoencode...
 ** predictions 预测
 1. prediction 在推荐系统中指对物品对于用户的相关度进行预估（estimate）,
  预测可以来物品对用户相关度的排序，可以间接近似表示用户对物品的互动行为（预测潜在行为）

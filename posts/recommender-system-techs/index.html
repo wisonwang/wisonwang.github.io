@@ -5,17 +5,17 @@ article: http://ogp.me/ns/article#
 " lang="zh_cn">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="推荐系统机器学习技术应用">
+<meta name="description" content="推荐系统机器学习技术解析">
 <meta name="viewport" content="width=device-width">
-<title>recommender system techs | vincent blog</title>
+<title>推荐系统技术解析 | vincent blog</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://wisonwang.github.io/posts/recommender-system-techs/">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vincent wang">
 <meta property="og:site_name" content="vincent blog">
-<meta property="og:title" content="recommender system techs">
+<meta property="og:title" content="推荐系统技术解析">
 <meta property="og:url" content="https://wisonwang.github.io/posts/recommender-system-techs/">
-<meta property="og:description" content="推荐系统机器学习技术应用">
+<meta property="og:description" content="推荐系统机器学习技术解析">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2021-03-16T11:15:12+08:00">
 </head>
@@ -31,7 +31,7 @@ article: http://ogp.me/ns/article#
 
         </ul></section><section class="page-content"><div class="content" rel="main">
     <div class="post">
-        <h1 class="p-name entry-title" itemprop="headline name">recommender system techs</h1>
+        <h1 class="p-name entry-title" itemprop="headline name">推荐系统技术解析</h1>
 
         <div class="meta">
             <div class="authordate">
@@ -44,22 +44,22 @@ article: http://ogp.me/ns/article#
             
         </div>
         <div class="body">
-            <div id="outline-container-org2900007" class="outline-2">
-<h2 id="org2900007">推荐系统解析</h2>
-<div class="outline-text-2" id="text-org2900007">
+            <div id="outline-container-org1796009" class="outline-2">
+<h2 id="org1796009">推荐系统解析</h2>
+<div class="outline-text-2" id="text-org1796009">
 </div>
-<div id="outline-container-org1eeba4b" class="outline-3">
-<h3 id="org1eeba4b">推荐系统&amp;个性化</h3>
-<div class="outline-text-3" id="text-org1eeba4b">
+<div id="outline-container-orgd05f0c7" class="outline-3">
+<h3 id="orgd05f0c7">推荐系统&amp;个性化</h3>
+<div class="outline-text-3" id="text-orgd05f0c7">
 <ol class="org-ol">
 <li>推荐系统以相关方式向用户展示商品。相关的定义是特定于产品/上下文的。</li>
 <li>个性化个性化系统以与个人用户相关的方式呈现推荐。用户期望其体验会根据与系统的交互而改变。相关性仍然可以是特定于产品/上下文的。</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org7841a11" class="outline-3">
-<h3 id="org7841a11">互动行为</h3>
-<div class="outline-text-3" id="text-org7841a11">
+<div id="outline-container-orgb1028d6" class="outline-3">
+<h3 id="orgb1028d6">互动行为</h3>
+<div class="outline-text-3" id="text-orgb1028d6">
 <ol class="org-ol">
 <li>正面（评价）</li>
 <li>负面（评价）</li>
@@ -70,31 +70,28 @@ article: http://ogp.me/ns/article#
 </div>
 </div>
 
-<div id="outline-container-org2637d52" class="outline-3">
-<h3 id="org2637d52">特征</h3>
-<div class="outline-text-3" id="text-org2637d52">
+<div id="outline-container-org1acd147" class="outline-3">
+<h3 id="org1acd147">特征</h3>
+<div class="outline-text-3" id="text-org1acd147">
 <ol class="org-ol">
-<li>indicator features: 标示特征，每个用户/物品唯一，如userID</li>
+<li>indicator features: 标识特征，每个用户/物品唯一，如userID，itemID</li>
 <li>metadata features: 用户或者物品共享的特征，如年龄，性别，地域，标签等等</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgeed1601" class="outline-3">
-<h3 id="orgeed1601">representation 隐藏特征表示</h3>
-<div class="outline-text-3" id="text-orgeed1601">
+<div id="outline-container-org037a734" class="outline-3">
+<h3 id="org037a734">representation 隐藏特征表示</h3>
+<div class="outline-text-3" id="text-org037a734">
 <ol class="org-ol">
 <li>representation, 通常是将用户/物品的特征转化成低纬的向量。也通常称为："latent user/item",
 "embedding", "lantent representation"</li>
-<li>隐藏特征标示方法：a. mf 矩阵分解;b. linear kernels;c. deep nets； d. word2vec; e. autoencode</li>
+<li>隐藏特征标示方法：a. mf 矩阵分解;b. linear kernels;c. deep nets； d. word2vec; e. autoencode…</li>
 </ol>
-<p>
-…
-</p>
 </div>
 </div>
-<div id="outline-container-org8b9cf96" class="outline-3">
-<h3 id="org8b9cf96">predictions 预测</h3>
-<div class="outline-text-3" id="text-org8b9cf96">
+<div id="outline-container-org029c0da" class="outline-3">
+<h3 id="org029c0da">predictions 预测</h3>
+<div class="outline-text-3" id="text-org029c0da">
 <ol class="org-ol">
 <li>prediction 在推荐系统中指对物品对于用户的相关度进行预估（estimate）,
 预测可以来物品对用户相关度的排序，可以间接近似表示用户对物品的互动行为（预测潜在行为）</li>
@@ -105,9 +102,9 @@ article: http://ogp.me/ns/article#
 </p>
 </div>
 </div>
-<div id="outline-container-org653deb1" class="outline-3">
-<h3 id="org653deb1">loss &amp; learning</h3>
-<div class="outline-text-3" id="text-org653deb1">
+<div id="outline-container-orgeed9d83" class="outline-3">
+<h3 id="orgeed9d83">loss &amp; learning</h3>
+<div class="outline-text-3" id="text-orgeed9d83">
 <ol class="org-ol">
 <li>loss function : 计算预测值和真实数据的误差 主要方法： 1. RMSE 2. KLD 3. ALS 4. BPR 5. WAEP 6. WMRP …</li>
 <li>learn-to-rank : 损失函数分为两种： 1. 用来计算预测误差 2. 第二种是排序学习<a href="https://zhuanlan.zhihu.com/p/26539920">learning to rank</a>
@@ -116,13 +113,13 @@ article: http://ogp.me/ns/article#
 </div>
 </div>
 
-<div id="outline-container-org6db208a" class="outline-3">
-<h3 id="org6db208a">如何设计推荐系统</h3>
-<div class="outline-text-3" id="text-org6db208a">
+<div id="outline-container-org96a58df" class="outline-3">
+<h3 id="org96a58df">如何设计推荐系统</h3>
+<div class="outline-text-3" id="text-org96a58df">
 </div>
-<div id="outline-container-org27562a2" class="outline-4">
-<h4 id="org27562a2">准备</h4>
-<div class="outline-text-4" id="text-org27562a2">
+<div id="outline-container-org8f721d2" class="outline-4">
+<h4 id="org8f721d2">准备</h4>
+<div class="outline-text-4" id="text-org8f721d2">
 <ol class="org-ol">
 <li>正向/负向反馈</li>
 <li>implicit/explicit 反馈</li>
@@ -134,9 +131,9 @@ article: http://ogp.me/ns/article#
 </ol>
 </div>
 </div>
-<div id="outline-container-orge7adb00" class="outline-4">
-<h4 id="orge7adb00">购物推荐系统</h4>
-<div class="outline-text-4" id="text-orge7adb00">
+<div id="outline-container-orgca4a025" class="outline-4">
+<h4 id="orgca4a025">购物推荐系统</h4>
+<div class="outline-text-4" id="text-orgca4a025">
 <ol class="org-ol">
 <li>purchase recommender</li>
 </ol>
@@ -266,9 +263,9 @@ article: http://ogp.me/ns/article#
 </div>
 
 
-<div id="outline-container-org543819b" class="outline-4">
-<h4 id="org543819b">youtube (covington, adams, sargin)</h4>
-<div class="outline-text-4" id="text-org543819b">
+<div id="outline-container-orgd156efb" class="outline-4">
+<h4 id="orgd156efb">youtube (covington, adams, sargin)</h4>
+<div class="outline-text-4" id="text-orgd156efb">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup>
 <col class="org-left">
@@ -312,9 +309,9 @@ article: http://ogp.me/ns/article#
 </div>
 </div>
 
-<div id="outline-container-orgde2db96" class="outline-4">
-<h4 id="orgde2db96">news article recommendation</h4>
-<div class="outline-text-4" id="text-orgde2db96">
+<div id="outline-container-org3c40550" class="outline-4">
+<h4 id="org3c40550">news article recommendation</h4>
+<div class="outline-text-4" id="text-org3c40550">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup>
 <col class="org-left">
@@ -359,7 +356,7 @@ article: http://ogp.me/ns/article#
 
 <ul class="org-ul">
 <li>
-<a id="org968891f"></a>daily training<br><div class="outline-text-5" id="text-org968891f">
+<a id="orgbe95b1e"></a>daily training<br><div class="outline-text-5" id="text-orgbe95b1e">
 <ol class="org-ol">
 <li>use sklearn features -&gt; vectors transformation</li>
 <li>use <a href="https://github.com/jfkirk/tensorrec">tensorrec</a> vectorized features learn user representations and train deep net for article representation</li>
@@ -369,7 +366,7 @@ article: http://ogp.me/ns/article#
 </li>
 
 <li>
-<a id="org86ce32e"></a>new article recomendation<br><div class="outline-text-5" id="text-org86ce32e">
+<a id="org9b950a6"></a>new article recomendation<br><div class="outline-text-5" id="text-org9b950a6">
 <ol class="org-ol">
 <li>use sklearn features -&gt; vectors transformation</li>
 <li>use <a href="https://github.com/jfkirk/tensorrec">tensorrec</a> pretrained model to caculate new articles' representation</li>
@@ -379,7 +376,7 @@ article: http://ogp.me/ns/article#
 </li>
 
 <li>
-<a id="org592966d"></a>Serving User traffic/ online recommendation<br><div class="outline-text-5" id="text-org592966d">
+<a id="orge4c279f"></a>Serving User traffic/ online recommendation<br><div class="outline-text-5" id="text-orge4c279f">
 <ol class="org-ol">
 <li>persists user representation to database, so recommender system can easily using</li>
 <li>annoy ranking</li>
@@ -391,9 +388,9 @@ article: http://ogp.me/ns/article#
 </div>
 </div>
 
-<div id="outline-container-org5284a55" class="outline-2">
-<h2 id="org5284a55">links</h2>
-<div class="outline-text-2" id="text-org5284a55">
+<div id="outline-container-orga483648" class="outline-2">
+<h2 id="orga483648">links</h2>
+<div class="outline-text-2" id="text-orga483648">
 <p>
 <a href="https://www.slideshare.net/JamesKirk58/boston-ml-architecting-recommender-systems">波士顿机器学习和推荐系统架构</a>
 </p>
@@ -433,7 +430,7 @@ article: http://ogp.me/ns/article#
         <script>
         var disqus_shortname ="wisonwanghomepage",
             disqus_url="https://wisonwang.github.io/posts/recommender-system-techs/",
-        disqus_title="recommender system techs",
+        disqus_title="\u63a8\u8350\u7cfb\u7edf\u6280\u672f\u89e3\u6790",
         disqus_identifier="cache/posts/recommender-system-techs.html",
         disqus_config = function () {
             this.language = "zh_cn";
