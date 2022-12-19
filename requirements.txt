@@ -5,3 +5,5 @@ jupyter_console
 jupyter_client
 jupyter_contrib_nbextensions
 ghp-import2
+doit==0.35.0
+

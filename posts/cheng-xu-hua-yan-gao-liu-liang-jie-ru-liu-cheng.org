@@ -2,7 +2,7 @@
 .. title: 程序化广告流量接入流程
 .. slug: cheng-xu-hua-yan-gao-liu-liang-jie-ru-liu-cheng
 .. date: 2020-03-30 10:27:44 UTC+08:00
-.. tags: draft
+.. tags: 
 .. category: 
 .. link: 
 .. description: 

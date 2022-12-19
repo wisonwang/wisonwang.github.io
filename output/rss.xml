@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog</title><link>https://wisonwang.github.io/</link><description>python, go, ML, bigdata</description><atom:link href="https://wisonwang.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2021 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Thu, 08 Jul 2021 02:14:38 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>推荐系统常用技术&amp;架构</title><link>https://wisonwang.github.io/posts/recommender-system-arch/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vincent blog</title><link>https://wisonwang.github.io/</link><description>python, go, ML, bigdata</description><atom:link href="https://wisonwang.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>zh_cn</language><copyright>Contents © 2022 &lt;a href="mailto:fangfu2012@gmail.com"&gt;vincent wang&lt;/a&gt; </copyright><lastBuildDate>Mon, 19 Dec 2022 08:51:09 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>推荐系统常用技术&amp;架构</title><link>https://wisonwang.github.io/posts/recommender-system-arch/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
 因为在业界带来了巨大的用户体验价值和商业价值，最近10年推荐系统在互联网系统应用的越来越广泛。
 同时因为推荐系统是一个复杂的系统工程，各个公司算法/策略都是五花八门，同时也因为新的机器学习技术的应用，推荐系统方案也是在不断演进。
 本文主要总结业界目前常用的技术/架构，是为对本人自身的经验总结，也希望这方面的初学者能够得到借鉴。
@@ -41,7 +41,136 @@
 &lt;li&gt;隐式&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/recommender-system-techs/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/recommender-system-techs/</guid><pubDate>Tue, 16 Mar 2021 03:15:12 GMT</pubDate></item><item><title>程序化广告术语概述</title><link>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
+&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/recommender-system-techs/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/recommender-system-techs/</guid><pubDate>Tue, 16 Mar 2021 03:15:12 GMT</pubDate></item><item><title>程序化广告流量接入流程</title><link>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-liu-liang-jie-ru-liu-cheng/</link><dc:creator>vincent wang</dc:creator><description>&lt;div id="outline-container-org2e8ba29" class="outline-2"&gt;
+&lt;h2 id="org2e8ba29"&gt;广告投放常规流程&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org2e8ba29"&gt;
+
+&lt;div id="org0b26c7c" class="figure"&gt;
+&lt;p&gt;&lt;img src="https://wisonwang.github.io/posts/files/images/Adservingfull.svg.png" alt="Adservingfull.svg.png"&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;div id="outline-container-org41328f8" class="outline-2"&gt;
+&lt;h2 id="org41328f8"&gt;SSP&amp;amp;ADX*DSP&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org41328f8"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;header
+&amp;lt;font color=red&amp;gt;Warning:&amp;lt;/font&amp;gt;
+Do not use in production.
+endheader
+
+title RTA
+
+scale 800*300
+sprite $bProcess jar:archimate/business-process
+sprite $aService jar:archimate/application-service
+sprite $aComponent jar:archimate/application-component
+
+!includeurl Archimate.puml
+
+'Elements'
+
+frame "前端/需求端"{
+Application_Service(AdOwner, "Advertiser") &amp;lt;&amp;lt;business-process&amp;gt;&amp;gt;
+Application_Service(AdAgent, "AdAgent") &amp;lt;&amp;lt;business-process&amp;gt;&amp;gt;
+Application_Service(DSP, "DSP") &amp;lt;&amp;lt;business-process&amp;gt;&amp;gt;
+}
+
+Rel_Flow_Right(AdOwner, AdAgent, "")
+Rel_Flow_Right(AdAgent, DSP, "")
+
+frame "中端/服务端"{
+Application_Service(ADX_SSP, "ADX&amp;amp;SSP") &amp;lt;&amp;lt;business-process&amp;gt;&amp;gt;
+}
+
+Rel_Flow_Right(DSP, ADX_SSP, "")
+
+frame "后端/落地端"{
+Application_Service(Media, "媒体") &amp;lt;&amp;lt;business-process&amp;gt;&amp;gt;
+}
+
+
+Rel_Flow_Right(ADX_SSP, Media, "")
+
+legend left
+说明:
+==
+&amp;lt;$bProcess&amp;gt; :流量/资源
+==
+&amp;lt;$aService&amp;gt; :服务
+==
+&amp;lt;$aComponent&amp;gt; :组件
+endlegend
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="outline-container-org0e129c0" class="outline-2"&gt;
+&lt;h2 id="org0e129c0"&gt;广告接入类型&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org0e129c0"&gt;
+&lt;ol class="org-ol"&gt;
+&lt;li&gt;cpt排期广告&lt;/li&gt;
+&lt;li&gt;自建广告品台&lt;/li&gt;
+&lt;li&gt;接入广告联盟&lt;/li&gt;
+&lt;li&gt;接入外部dsp&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="outline-container-org09919da" class="outline-2"&gt;
+&lt;h2 id="org09919da"&gt;广告归因模型&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org09919da"&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-org62d6c73" class="outline-3"&gt;
+&lt;h3 id="org62d6c73"&gt;点击归因&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org62d6c73"&gt;
+&lt;ol class="org-ol"&gt;
+&lt;li&gt;首次点击归因&lt;/li&gt;
+&lt;li&gt;最终点击归因&lt;/li&gt;
+&lt;li&gt;最终非直接点击归因&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="outline-container-orga71ec97" class="outline-3"&gt;
+&lt;h3 id="orga71ec97"&gt;根据时间位置，周期等不同要素赋予不同比重或者比例进行归因&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-orga71ec97"&gt;
+&lt;ol class="org-ol"&gt;
+&lt;li&gt;时间衰减归因&lt;/li&gt;
+&lt;li&gt;线性归因&lt;/li&gt;
+&lt;li&gt;基于位置归因&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="outline-container-org1b5f3a2" class="outline-3"&gt;
+&lt;h3 id="org1b5f3a2"&gt;常用归因模型&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org1b5f3a2"&gt;
+&lt;p&gt;
+首次点击归因和最终点击归因
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="outline-container-org897f8f5" class="outline-2"&gt;
+&lt;h2 id="org897f8f5"&gt;相关链接&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org897f8f5"&gt;
+&lt;p&gt;
+&lt;a href="https://en.wikipedia.org/wiki/Online_advertising"&gt;online advertising&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+&lt;a href="https://en.wikipedia.org/wiki/Demand-side_platform"&gt;DSP&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+&lt;a href="https://en.wikipedia.org/wiki/Supply-side_platform"&gt;SSP&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-liu-liang-jie-ru-liu-cheng/</guid><pubDate>Mon, 30 Mar 2020 02:27:44 GMT</pubDate></item><item><title>程序化广告术语概述</title><link>https://wisonwang.github.io/posts/cheng-xu-hua-yan-gao-zhu-yu-gai-shu/</link><dc:creator>vincent wang</dc:creator><description>&lt;div&gt;&lt;p&gt;
 互联网程序化广告进些年有了飞速的发展，各种资讯/视频的头部app都有自身的广告业务，给公司带来巨大商业收益。本文整理了一些程序化交易的常用属于，权当自己的知识整理。
 &lt;/p&gt;
 
@@ -112,10 +241,4 @@ grpc 是google开发的远程通信协议,和它最相近的产品的产品是ap
 python的元类(metaclass)和虚基类（ABC）&lt;br&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-abclei/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/python-abclei/</guid><pubDate>Mon, 15 Apr 2019 10:10:46 GMT</pubDate></item><item><title>python function tools</title><link>https://wisonwang.github.io/posts/python-function-tools/</link><dc:creator>vincent wang</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-function-tools/"&gt;更多…&lt;/a&gt; (剩余 2 分钟去阅读)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/python-function-tools/</guid><pubDate>Tue, 02 Apr 2019 08:55:28 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="https://wisonwang.github.io/posts/python-abclei/"&gt;更多…&lt;/a&gt; (剩余 1 分钟去阅读)&lt;/p&gt;&lt;/div&gt;</description><guid>https://wisonwang.github.io/posts/python-abclei/</guid><pubDate>Mon, 15 Apr 2019 10:10:46 GMT</pubDate></item></channel></rss>
